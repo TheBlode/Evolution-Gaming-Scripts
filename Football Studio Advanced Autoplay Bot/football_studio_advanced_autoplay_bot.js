@@ -305,7 +305,45 @@ function randomNumber(min, max) {
 }
 
 /* =====================
+ * Function name: click
+ * Function description: this function will send a simulated mouse click
+ * Date: 07/11/20
+ * =====================
+ */
+function click(x, y) {
+    var ev = new MouseEvent('click', {
+        'view': window,
+        'bubbles': true,
+        'cancelable': true,
+        'screenX': x,
+        'screenY': y
+    });
+
+    var el = document.elementFromPoint(x, y);
+
+    el.dispatchEvent(ev);
+}
+
+/* =====================
  * Main code
  * =====================
  */
-autoPlay();
+// Inject jQuery for us to use
+javascript:(function() {
+    function l(u, i) {
+        var d = document;
+        if (!d.getElementById(i)) {
+            var s = d.createElement('script');
+            s.src = u;
+            s.id = i;
+            d.body.appendChild(s);
+        }
+    }
+    l('//code.jquery.com/jquery-3.2.1.min.js', 'jquery')
+})();
+
+// Run bot
+setTimeout(function() {
+    // Play!
+    autoPlay();
+}, 5000);
