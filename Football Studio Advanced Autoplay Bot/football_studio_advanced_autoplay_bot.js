@@ -342,7 +342,7 @@ javascript:(function() {
     l('//code.jquery.com/jquery-3.2.1.min.js', 'jquery')
 })();
 
-// Run bot
+// Run bot after 5 seconds
 setTimeout(function() {
     // Play!
     autoPlay();
