@@ -36,7 +36,6 @@ if (autoplay_mode == 1) {
     // Bet randomly on a number
 }
 
-
 // Add some spacing for the output for the user
 var spacing = "==========================";
 var one_streak = 0;
@@ -114,27 +113,6 @@ function autoPlay() {
             if (autoplay_mode == 1) {
                 // Fetch random number
                 bet_type = randomNumber(1, 6);
-
-                // Toggle bet type
-                if (bet_type == 1) {
-                    // Set bet type to 1
-                    bet_type = 1;
-                } else if (bet_type == 2) {
-                    // Set bet type to 2
-                    bet_type = 2;
-                } else if (bet_type == 3) {
-                    // Set bet type to 2
-                    bet_type = 5;
-                } else if (bet_type == 4) {
-                    // Set bet type to 2
-                    bet_type = 10;
-                } else if (bet_type == 5) {
-                    // Set bet type to 2
-                    bet_type = 20;
-                } else {
-                    // Set bet type to 2
-                    bet_type = 40;
-                }
 
                 // Place bet
                 if (bet_type == 1) {
