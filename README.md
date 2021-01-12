@@ -16,6 +16,8 @@ Welcome to my Evolution Gaming Scripts page! Evolution's autoplay feature is sev
 ## Crazy Time Advanced Autoplay Bot
 Crazy Time Advanced Autoplay Bot offers the following autoplay modes;
 - Random bets
+- Incremental betting eg: (1, 2, 5, 10, Coin Flip, Pachinko, Cash Hunt, Crazy Time then start over)
+- Decremental betting eg: (Crazy Time, Cash Hunt, Pachunko, Coin Flip, 10, 5, 2, 1 then start over)
 
 ## Dream Catcher Advanced Autoplay Bot
 Dream Catcher Advanced Autoplay Bot offers the following autoplay modes;
