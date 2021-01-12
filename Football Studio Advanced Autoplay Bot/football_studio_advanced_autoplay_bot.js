@@ -10,6 +10,8 @@
  * Autoplay mode #2 - // Bet on home and away in numbered sequences. Example: if sequence_amount is set to 3 in a row, the bot will play; home, home, home then away, away, away and repeat.
  * Autoplay mode #3 - Bet randomly on home or away
  * Autoplay mode #4 - Bet only after a certain sequence of results. Example: if streak_size is set to 4, then place a bet after 4 homes or 4 aways in a row
+ * Autoplay mode #5 - Bet randomly on home or away (with round skipping)
+
  */
 /* ========================================================================
  * Set autoplay mode and other game settings
@@ -71,6 +73,12 @@ if (autoplay_mode == 3) {
 // Bet only after a certain sequence of results. Example: if streak_size is set to 4, then place a bet after 4 homes or 4 aways in a row
 if (autoplay_mode == 4) {
     var streak_size = user_streak_size;
+}
+
+// Autoplay mode #3
+// Bet randomly on home or away (with round skipping)
+if (autoplay_mode == 5) {
+    // Bet randomly on home or away
 }
 
 // Add some spacing for the output for the user
@@ -240,6 +248,44 @@ function autoPlay() {
                         // Click away betting spot
                         $(".mainBet--3JDdD").eq(1).click();
                     }, click_delay);
+                }
+            }
+
+            // Autoplay mode #5
+            if (autoplay_mode == 5) {
+                // Fetch random number
+                bet_type = randomNumber(1, 3);
+
+                // Place bet
+                if (bet_type == 1) {
+                    // Output
+                    console.log(spacing);
+                    console.log("The randomizer chose home as the next bet!");
+                    console.log(spacing);
+                    console.log(spacing);
+                    console.log("I'm placing a bet on home now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        // Click home betting spot
+                        $(".mainBet--3JDdD").eq(0).click();
+                    }, click_delay);
+                } else if (bet_type == 2) {
+                        // Output
+                    console.log(spacing);
+                    console.log("The randomizer chose away as the next bet!");
+                    console.log(spacing);
+                    console.log(spacing);
+                    console.log("I'm placing a bet on away now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        // Click away betting spot
+                        $(".mainBet--3JDdD").eq(1).click();
+                    }, click_delay);
+                } else {
+                    // Skip the round
+                    console.log(spacing);
+                    console.log("I'm skipping this round!");
+                    console.log(spacing);
                 }
             }
 
