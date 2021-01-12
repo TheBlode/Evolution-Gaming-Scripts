@@ -16,6 +16,8 @@
  * Autoplay mode #4 - sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)
  * Autoplay mode #5 - bonus games only betting
  * Autoplay mode #6 - Bet randomly on a number (but skip some rounds)
+ * Autoplay mode #7 - random bonus games only betting
+ * Autoplay mode #8 - random bonus games only betting (but skip some rounds)
 /* ========================================================================
  * Set autoplay mode and other game settings
  * ======================================================================== */
@@ -74,13 +76,25 @@ if (autoplay_mode == 4) {
 
 // Autoplay mode #5
 // Bonus games betting only
-if (autoplay_mode == 4) {
+if (autoplay_mode == 5) {
     var increment_sequence = 1;
 }
 
 // Autoplay mode #6
 // Bet randomly on a number (with round skipping)
-if (autoplay_mode == 1) {
+if (autoplay_mode == 6) {
+    // Bet randomly on a number
+}
+
+// Autoplay mode #7
+// Random bonus games only betting
+if (autoplay_mode == 7) {
+    // Bet randomly on a number
+}
+
+// Autoplay mode #8
+// Random bonus games only betting
+if (autoplay_mode == 8) {
     // Bet randomly on a number
 }
 
@@ -580,6 +594,73 @@ function autoPlay() {
                     }, click_delay);
                 } else if (bet_type == 6) {
                     // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on 4 rolls now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpot--VXrdG").eq(5).click();
+                        }
+                    }, click_delay);
+                } else {
+                    // Skip the round
+                    console.log(spacing);
+                    console.log("I'm skipping this round!");
+                    console.log(spacing);
+                }
+            }
+
+            // Autoplay mode #7
+            if (autoplay_mode == 7) {
+                // Fetch random number
+                bet_type = randomNumber(1, 2);
+
+                // Place bet
+                if (bet_type == 1) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on 2 rolls now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpot--VXrdG").eq(2).click();
+                        }
+                    }, click_delay);
+                } else {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on 4 rolls now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpot--VXrdG").eq(5).click();
+                        }
+                    }, click_delay);
+                }
+            }
+
+            // Autoplay mode #8
+            if (autoplay_mode == 8) {
+                // Fetch random number
+                bet_type = randomNumber(1, 2, 3);
+
+                // Place bet
+                if (bet_type == 1) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on 2 rolls now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpot--VXrdG").eq(2).click();
+                        }
+                    }, click_delay);
+                } else if (bet_type == 2) {
+                        // Output
                     console.log(spacing);
                     console.log("I'm placing a bet on 4 rolls now.");
                     console.log(spacing);
