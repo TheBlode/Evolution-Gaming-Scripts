@@ -25,9 +25,19 @@ Dream Catcher Advanced Autoplay Bot offers the following autoplay modes;
 - Incremental betting eg: (1, 2, 5, 10, 20, 40 then start over)
 - Decremental betting eg: (40, 20, 10, 5, 2, 1 then start over)
 
+## Monopoly Advanced Autoplay Bot
+Monopoly Autoplay Bot offers the following autoplay modes;
+- Random bets
+- Incremental betting eg: (1, 2, 5, 10, 2 rolls, 4 rolls then start over)
+- Decremental betting eg: (4 rolls, 2 rolls, 10, 5, 2, 1 then start over)
+
 ## Football Studio Advanced Autoplay Bot
 Football Studio offers the following autoplay modes;
 - Random bets
 - Alternate betting eg: (home, away, home, away, etc)
 - Sequence betting eg: (home, home, away, away, home, home, away, away, etc)
 - Streak betting eg: (4 home wins in a row, bet on away)
+
+## Currently known bugs
+- Bets are not correctly placed after Crazy Time bonus rounds
+- Bets are not correctly placed after Monopoly bonus rounds
