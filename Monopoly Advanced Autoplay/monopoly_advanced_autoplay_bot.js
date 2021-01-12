@@ -13,11 +13,12 @@
 /* Autoplay mode #1 - Bet randomly on a number
  * Autoplay mode #2 - increment bet in a sequence (1, 2, 5, 10, 2 rolls, 4 rolls then start over)
  * Autoplay mode #3 - decrement bet in a sequence (4 rolls, 2 rolls, 10, 5, 2, 1 then start over)
+ * Autoplay mode #4 - sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)
  */
 /* ========================================================================
  * Set autoplay mode and other game settings
  * ======================================================================== */
-var autoplay_mode = 3;
+var autoplay_mode = 4;
 
 /* ========================================================================
  * Disable video (when you set this to 1, video will be disabled)
@@ -33,13 +34,16 @@ var click_delay = 8000;
  * Set wager amount in units (default is 1 unit)
  * ======================================================================== */
 var user_wager_amount = 1;
+
+/* ========================================================================
+ * Set sequence amount to play with in a row
+ * ======================================================================== */
+var user_sequence_amount = 2;
+
 /* =====================
  * End of bot settings
  * =====================
  */
-
-// Set sequence amount to play with
-var user_sequence_amount = 3;
 // Set streak size to wait for before betting
 var user_streak_size = 2;
 
@@ -61,6 +65,12 @@ if (autoplay_mode == 3) {
     var decrement_sequence = 6;
 }
 
+// Autoplay mode #4
+// Sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)
+if (autoplay_mode == 4) {
+    var increment_sequence = 1;
+}
+
 // Add some spacing for the output for the user
 var spacing = "==========================";
 // Initialise all the script's variables
@@ -75,6 +85,7 @@ var five_streak = 0;
 var ten_streak = 0;
 var twenty_streak = 0;
 var forty_streak = 0;
+var sequence_counter = 0;
 var check = false;
 var count = 0;
 
@@ -366,6 +377,97 @@ function autoPlay() {
 
                 // Decrement sequence
                 decrement_sequence--;
+            }
+
+            // Autoplay mode #4
+            if (autoplay_mode == 4) {
+                // Place bet
+                if (increment_sequence == 1) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on #1 now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpot--VXrdG").eq(0).click();
+                        }
+                    }, click_delay);
+                } else if (increment_sequence == 2) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on #2 now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpot--VXrdG").eq(1).click();
+                        }
+                    }, click_delay);
+                } else if (increment_sequence == 3) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on 2 rolls now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpot--VXrdG").eq(2).click();
+                        }
+                    }, click_delay);
+                } else if (increment_sequence == 4) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on #5 now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpot--VXrdG").eq(3).click();
+                        }
+                    }, click_delay);
+                } else if (increment_sequence == 5) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on #10 now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpot--VXrdG").eq(4).click();
+                        }
+                    }, click_delay);
+                } else {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on 4 rolls now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpot--VXrdG").eq(5).click();
+                        }
+                    }, click_delay);
+
+                    if (sequence_counter >= user_sequence_amount) {
+                        // Reset sequence counter
+                        sequence_counter = -1;
+    
+                        // Increment sequence
+                        increment_sequence++;
+                    }
+                }
+
+                // Increment sequence counter
+                sequence_counter++;
+
+                if (sequence_counter >= user_sequence_amount) {
+                    // Reset sequence counter
+                    sequence_counter = 0;
+
+                    // Increment sequence
+                    increment_sequence++;
+                }
             }
         }
 
