@@ -13,15 +13,15 @@ Welcome to my Evolution Gaming Scripts page! Evolution's autoplay feature is sev
 
 ## Crazy Time Advanced Autoplay Bot
 Crazy Time Advanced Autoplay Bot offers the following autoplay modes;
-- random bets
+- Random bets
 
 ## Dream Catcher Advanced Autoplay Bot
 Dream Catcher Advanced Autoplay Bot offers the following autoplay modes;
-- random bets
+- Random bets
 
 ## Football Studio Advanced Autoplay Bot
 Football Studio offers the following autoplay modes;
-- random bets
-- alternate betting eg: (home, away, home, away, etc)
-- sequence betting eg: (home, home, away, away, home, home, away, away, etc)
-- streak betting eg: (4 home wins in a row, bet on away)
+- Random bets
+- Alternate betting eg: (home, away, home, away, etc)
+- Sequence betting eg: (home, home, away, away, home, home, away, away, etc)
+- Streak betting eg: (4 home wins in a row, bet on away)
