@@ -10,19 +10,34 @@
  * Define your bot settings here!
  * =====================
  */
-// Initialise all the script's variables
-// Starting position (it's best to leave this as it's default of 0)
-var i = 0;
+/* Autoplay mode #1 - Bet randomly on a number
+ * Autoplay mode #2 - increment bet in a sequence (1, 2, 5, 10, Coin Flip, Pachinko, Cash Hunt, Crazy Time then start over)
+ * Autoplay mode #3 - decrement bet in a sequence (Crazy Time, Cash Hunt, Pachunko, Coin Flip, 10, 5, 2, 1 then start over)
+ */
+/* ========================================================================
+ * Set autoplay mode and other game settings
+ * ======================================================================== */
+var autoplay_mode = 3;
 
-// This variable will determine how long the bot will run for (a setting of 100 means the bot will run for 50 seconds. (The sum is how_many_times / 2) * 1 = x seconds)
-var how_many_times = 1000000;
-
-// Disable video (when you set this to 1, video will be disabled
+/* ========================================================================
+ * Disable video (when you set this to 1, video will be disabled)
+ * ======================================================================== */
 var disable_video = 0;
 
-// Set autoplay mode and other game settings
-// Set autoplay mode
-var autoplay_mode = 1;
+/* ========================================================================
+ * Set click delay (if you're having issues with clicks on the UI)
+ * ======================================================================== */
+var click_delay = 8000;
+
+/* ========================================================================
+ * Set wager amount in units (default is 1 unit)
+ * ======================================================================== */
+var user_wager_amount = 1;
+/* =====================
+ * End of bot settings
+ * =====================
+ */
+
 // Set sequence amount to play with
 var user_sequence_amount = 3;
 // Set streak size to wait for before betting
@@ -36,19 +51,32 @@ if (autoplay_mode == 1) {
     // Bet randomly on a number
 }
 
+// Autoplay mode #2
+// Increment bet in a sequence (1, 2, 5, 10, Coin Flip, Pachinko, Cash Hunt, Crazy Time then start over)
+if (autoplay_mode == 2) {
+    var increment_sequence = 1;
+}
+
+// Autoplay mode #3
+// Decrement bet in a sequence (Crazy Time, Cash Hunt, Pachunko, Coin Flip, 10, 5, 2, 1 then start over)
+if (autoplay_mode == 3) {
+    var decrement_sequence = 8;
+}
+
 // Add some spacing for the output for the user
 var spacing = "==========================";
+// Initialise all the script's variables
+// Starting position (it's best to leave this as it's default of 0)
+var i = 0;
+
+// This variable will determine how long the bot will run for (a setting of 100 means the bot will run for 50 seconds. (The sum is how_many_times / 2) * 1 = x seconds)
+var how_many_times = 1000000;
 var one_streak = 0;
 var two_streak = 0;
 var five_streak = 0;
 var ten_streak = 0;
 var check = false;
 var count = 0;
-
-/* =====================
- * End of bot settings
- * =====================
- */
 
 /* =====================
  * Functions that will be used by the bot
@@ -77,7 +105,7 @@ function autoPlay() {
         click(0, 0);
 
         // Get winning result
-        var result = $(".gameResult--neLl-.parentDimensions--23VHg").html();
+        var result = $(".gameResult--neLl-").html();
 
         if (result != undefined) {
             // Find result
@@ -122,9 +150,9 @@ function autoPlay() {
                     setTimeout(function() {
                         for (var x = 0; x < user_wager_amount; x++) {
                             // Click betting spot
-                            $(".betSpotContainer--3V3jM.isDesktop--2xFIU").eq(0).click();
+                            $(".betSpotContainer--3V3jM").eq(0).click();
                         }
-                    }, 8000);
+                    }, click_delay);
                 } else if (bet_type == 2) {
                     // Output
                     console.log(spacing);
@@ -133,9 +161,9 @@ function autoPlay() {
                     setTimeout(function() {
                         for (var x = 0; x < user_wager_amount; x++) {
                             // Click betting spot
-                            $(".betSpotContainer--3V3jM.isDesktop--2xFIU").eq(1).click();
+                            $(".betSpotContainer--3V3jM").eq(1).click();
                         }
-                    }, 8000);
+                    }, click_delay);
                 } else if (bet_type == 3) {
                     // Output
                     console.log(spacing);
@@ -144,9 +172,9 @@ function autoPlay() {
                     setTimeout(function() {
                         for (var x = 0; x < user_wager_amount; x++) {
                             // Click betting spot
-                            $(".betSpotContainer--3V3jM.isDesktop--2xFIU").eq(2).click();
+                            $(".betSpotContainer--3V3jM").eq(2).click();
                         }
-                    }, 8000);
+                    }, click_delay);
                 } else if (bet_type == 4) {
                     // Output
                     console.log(spacing);
@@ -155,9 +183,9 @@ function autoPlay() {
                     setTimeout(function() {
                         for (var x = 0; x < user_wager_amount; x++) {
                             // Click betting spot
-                            $(".betSpotContainer--3V3jM.isDesktop--2xFIU").eq(3).click();
+                            $(".betSpotContainer--3V3jM").eq(3).click();
                         }
-                    }, 8000);
+                    }, click_delay);
                 } else if (bet_type == 5) {
                     // Output
                     console.log(spacing);
@@ -166,9 +194,9 @@ function autoPlay() {
                     setTimeout(function() {
                         for (var x = 0; x < user_wager_amount; x++) {
                             // Click betting spot
-                            $(".betSpotContainer--3V3jM.isDesktop--2xFIU").eq(4).click();
+                            $(".betSpotContainer--3V3jM").eq(4).click();
                         }
-                    }, 8000);
+                    }, click_delay);
                 } else if (bet_type == 6) {
                     // Output
                     console.log(spacing);
@@ -177,9 +205,9 @@ function autoPlay() {
                     setTimeout(function() {
                         for (var x = 0; x < user_wager_amount; x++) {
                             // Click betting spot
-                            $(".betSpotContainer--3V3jM.isDesktop--2xFIU").eq(5).click();
+                            $(".betSpotContainer--3V3jM").eq(5).click();
                         }
-                    }, 8000);
+                    }, click_delay);
                 } else if (bet_type == 7) {
                     // Output
                     console.log(spacing);
@@ -188,9 +216,9 @@ function autoPlay() {
                     setTimeout(function() {
                         for (var x = 0; x < user_wager_amount; x++) {
                             // Click betting spot
-                            $(".betSpotContainer--3V3jM.isDesktop--2xFIU").eq(6).click();
+                            $(".betSpotContainer--3V3jM").eq(6).click();
                         }
-                    }, 8000);
+                    }, click_delay);
                 } else {
                     // Output
                     console.log(spacing);
@@ -199,10 +227,210 @@ function autoPlay() {
                     setTimeout(function() {
                         for (var x = 0; x < user_wager_amount; x++) {
                             // Click betting spot
-                            $(".betSpotContainer--3V3jM.isDesktop--2xFIU").eq(7).click();
+                            $(".betSpotContainer--3V3jM").eq(7).click();
                         }
-                    }, 8000);
+                    }, click_delay);
                 }
+            }
+
+            // Autoplay mode #2
+            if (autoplay_mode == 2) {
+                // Place bet
+                if (increment_sequence == 1) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on #1 now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpotContainer--3V3jM").eq(0).click();
+                        }
+                    }, click_delay);
+                } else if (increment_sequence == 2) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on #2 now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpotContainer--3V3jM").eq(1).click();
+                        }
+                    }, click_delay);
+                } else if (increment_sequence == 5) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on Coin Flip now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpotContainer--3V3jM").eq(2).click();
+                        }
+                    }, click_delay);
+                } else if (increment_sequence == 6) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on Pachinko now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpotContainer--3V3jM").eq(3).click();
+                        }
+                    }, click_delay);
+                } else if (increment_sequence == 3) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on #5 now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpotContainer--3V3jM").eq(4).click();
+                        }
+                    }, click_delay);
+                } else if (increment_sequence == 4) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on #10 now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpotContainer--3V3jM").eq(5).click();
+                        }
+                    }, click_delay);
+                } else if (increment_sequence == 7) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on Cash Hunt now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpotContainer--3V3jM").eq(6).click();
+                        }
+                    }, click_delay);
+                } else {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on Crazy Time now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpotContainer--3V3jM").eq(7).click();
+                        }
+                    }, click_delay);
+
+                    // Reset increment sequence
+                    increment_sequence = 0;
+                }
+
+                // Increment sequence
+                increment_sequence++;
+            }
+
+            // Autoplay mode #3
+            if (autoplay_mode == 3) {
+                // Place bet
+                if (decrement_sequence == 1) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on #1 now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpotContainer--3V3jM").eq(0).click();
+                        }
+                    }, click_delay);
+
+                    // Reset increment sequence
+                    decrement_sequence = 9;
+                } else if (decrement_sequence == 2) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on #2 now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpotContainer--3V3jM").eq(1).click();
+                        }
+                    }, click_delay);
+                } else if (decrement_sequence == 5) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on Coin Flip now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpotContainer--3V3jM").eq(2).click();
+                        }
+                    }, click_delay);
+                } else if (decrement_sequence == 6) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on Pachinko now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpotContainer--3V3jM").eq(3).click();
+                        }
+                    }, click_delay);
+                } else if (decrement_sequence == 3) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on #5 now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpotContainer--3V3jM").eq(4).click();
+                        }
+                    }, click_delay);
+                } else if (decrement_sequence == 4) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on #10 now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpotContainer--3V3jM").eq(5).click();
+                        }
+                    }, click_delay);
+                } else if (decrement_sequence == 7) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on Cash Hunt now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpotContainer--3V3jM").eq(6).click();
+                        }
+                    }, click_delay);
+                } else {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on Crazy Time now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpotContainer--3V3jM").eq(7).click();
+                        }
+                    }, click_delay);
+                }
+
+                // Increment sequence
+                decrement_sequence--;
             }
         }
 
