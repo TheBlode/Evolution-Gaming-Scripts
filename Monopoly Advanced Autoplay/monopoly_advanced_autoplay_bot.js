@@ -14,11 +14,12 @@
  * Autoplay mode #2 - increment bet in a sequence (1, 2, 5, 10, 2 rolls, 4 rolls then start over)
  * Autoplay mode #3 - decrement bet in a sequence (4 rolls, 2 rolls, 10, 5, 2, 1 then start over)
  * Autoplay mode #4 - sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)
- */
+ * Autoplay mode #5 - bonus games only betting
+ * Autoplay mode #6 - Bet randomly on a number (but skip some rounds)
 /* ========================================================================
  * Set autoplay mode and other game settings
  * ======================================================================== */
-var autoplay_mode = 4;
+var autoplay_mode = 6;
 
 /* ========================================================================
  * Disable video (when you set this to 1, video will be disabled)
@@ -69,6 +70,18 @@ if (autoplay_mode == 3) {
 // Sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)
 if (autoplay_mode == 4) {
     var increment_sequence = 1;
+}
+
+// Autoplay mode #5
+// Bonus games betting only
+if (autoplay_mode == 4) {
+    var increment_sequence = 1;
+}
+
+// Autoplay mode #6
+// Bet randomly on a number (with round skipping)
+if (autoplay_mode == 1) {
+    // Bet randomly on a number
 }
 
 // Add some spacing for the output for the user
@@ -467,6 +480,120 @@ function autoPlay() {
 
                     // Increment sequence
                     increment_sequence++;
+                }
+            }
+
+            // Autoplay mode #5
+            if (autoplay_mode == 5) {
+                // Place bet
+                if (increment_sequence == 1) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on 2 rolls now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpot--VXrdG").eq(2).click();
+                        }
+                    }, click_delay);
+                } else {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on 4 rolls now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpot--VXrdG").eq(5).click();
+                        }
+                    }, click_delay);
+
+                    // Reset increment sequence
+                    increment_sequence = 0;
+                }
+
+                // Increment sequence
+                increment_sequence++;
+            }
+
+            // Autoplay mode #6
+            if (autoplay_mode == 6) {
+                // Fetch random number
+                bet_type = randomNumber(1, 7);
+
+                // Place bet
+                if (bet_type == 1) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on #1 now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpot--VXrdG").eq(0).click();
+                        }
+                    }, click_delay);
+                } else if (bet_type == 2) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on #2 now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpot--VXrdG").eq(1).click();
+                        }
+                    }, click_delay);
+                } else if (bet_type == 3) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on 2 rolls now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpot--VXrdG").eq(2).click();
+                        }
+                    }, click_delay);
+                } else if (bet_type == 4) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on #5 now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpot--VXrdG").eq(3).click();
+                        }
+                    }, click_delay);
+                } else if (bet_type == 5) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on #10 now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpot--VXrdG").eq(4).click();
+                        }
+                    }, click_delay);
+                } else if (bet_type == 6) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on 4 rolls now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpot--VXrdG").eq(5).click();
+                        }
+                    }, click_delay);
+                } else {
+                    // Skip the round
+                    console.log(spacing);
+                    console.log("I'm skipping this round!");
+                    console.log(spacing);
                 }
             }
         }
