@@ -44,6 +44,7 @@ Football Studio offers the following autoplay modes;
 - Alternate betting eg: (home, away, home, away, etc)
 - Sequence betting eg: (home, home, away, away, home, home, away, away, etc)
 - Streak betting eg: (4 home wins in a row, bet on away)
+- Random bets (with round skipping)
 
 ## Currently known bugs
 - Bets are not correctly placed after Crazy Time bonus rounds
