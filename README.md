@@ -5,6 +5,8 @@ Welcome to my Evolution Gaming Scripts page! Evolution's autoplay feature is sev
 
 ## How to run these scripts
 - These scripts run entirely inside your browser's console. Nothing else is required.
+- To customise the bot settings, go to "Define your bot settings here!" and edit the values below that line up until "End of bot settings".
+
 - Open up your browser's developer tools (usually F12).
 - Make sure you select the iFrame that the game is loaded into;
     - You can right click on the game to discover the game's direct URL and can load the game directly in your browser with no need to select the iFrame.
@@ -18,6 +20,8 @@ Crazy Time Advanced Autoplay Bot offers the following autoplay modes;
 ## Dream Catcher Advanced Autoplay Bot
 Dream Catcher Advanced Autoplay Bot offers the following autoplay modes;
 - Random bets
+- Incremental betting eg: (1, 2, 5, 10, 20, 40 then start over)
+- Decremental betting eg: (40, 20, 10, 5, 2, 1 then start over)
 
 ## Football Studio Advanced Autoplay Bot
 Football Studio offers the following autoplay modes;
