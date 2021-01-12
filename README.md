@@ -37,6 +37,8 @@ Monopoly Autoplay Bot offers the following autoplay modes;
 - Sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)
 - Bonus game betting eg: (alternates between 2 rolls and 4 rolls)
 - Random bets (with round skipping)
+- Random bonus games only betting
+- Random bonus games only betting (but skip some rounds)
 
 ## Football Studio Advanced Autoplay Bot
 Football Studio offers the following autoplay modes;
