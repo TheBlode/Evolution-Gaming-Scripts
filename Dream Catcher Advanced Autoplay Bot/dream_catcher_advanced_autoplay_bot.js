@@ -20,7 +20,7 @@
 var autoplay_mode = 3;
 
 /* ========================================================================
- * Disable video (when you set this to 1, video will be disabled
+ * Disable video (when you set this to 1, video will be disabled)
  * ======================================================================== */
 var disable_video = 0;
 
