@@ -18,18 +18,21 @@ Crazy Time Advanced Autoplay Bot offers the following autoplay modes;
 - Random bets
 - Incremental betting eg: (1, 2, 5, 10, Coin Flip, Pachinko, Cash Hunt, Crazy Time then start over)
 - Decremental betting eg: (Crazy Time, Cash Hunt, Pachunko, Coin Flip, 10, 5, 2, 1 then start over)
+- Sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)
 
 ## Dream Catcher Advanced Autoplay Bot
 Dream Catcher Advanced Autoplay Bot offers the following autoplay modes;
 - Random bets
 - Incremental betting eg: (1, 2, 5, 10, 20, 40 then start over)
 - Decremental betting eg: (40, 20, 10, 5, 2, 1 then start over)
+- Sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)
 
 ## Monopoly Advanced Autoplay Bot
 Monopoly Autoplay Bot offers the following autoplay modes;
 - Random bets
 - Incremental betting eg: (1, 2, 5, 10, 2 rolls, 4 rolls then start over)
 - Decremental betting eg: (4 rolls, 2 rolls, 10, 5, 2, 1 then start over)
+- Sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)
 
 ## Football Studio Advanced Autoplay Bot
 Football Studio offers the following autoplay modes;
