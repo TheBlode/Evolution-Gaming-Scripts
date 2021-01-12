@@ -41,3 +41,8 @@ Football Studio offers the following autoplay modes;
 ## Currently known bugs
 - Bets are not correctly placed after Crazy Time bonus rounds
 - Bets are not correctly placed after Monopoly bonus rounds
+
+## Coming Soon
+- Lightning Roulette Advanced Autoplay Bot
+- Infinite Blackjack / Power Blackjack / Freebet Blackjack Advanced Autoplay Bots
+- More betting modes for all bots
