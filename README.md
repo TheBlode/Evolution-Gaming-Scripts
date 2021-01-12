@@ -48,6 +48,9 @@ Football Studio offers the following autoplay modes;
 - Streak betting eg: (4 home wins in a row, bet on away)
 - Random bets (with round skipping)
 
+## Troubleshooting
+- If clicks are not registering on your game, try adjusting the click_delay value in the script to a higher or lower value.
+
 ## Currently known bugs
 - Bets are not correctly placed after Crazy Time bonus rounds
 - Bets are not correctly placed after Monopoly bonus rounds
