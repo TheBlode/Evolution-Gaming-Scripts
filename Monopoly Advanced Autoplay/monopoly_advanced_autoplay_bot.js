@@ -51,7 +51,7 @@ var user_round_skipping = 2;
 
 /* ========================================================================
  * Hide UI elements if you want a cleaner interface to play with
- * Hides all UI elements apart from the betting spots
+ * Hides all UI elements apart from the betting spots (0 will disable this option)
  * ======================================================================== */
 var user_clean_interface = 1;
 
@@ -148,6 +148,7 @@ function autoPlay() {
     if (user_clean_interface == 1) {
         // Hide game history
         $(".footerRightContent--D9xWT").hide();
+        $(".historyStatisticContainer--25GyA").hide();
 
         // Hide game logo
         $(".footerLeftContent--4fEIj").hide();
@@ -722,7 +723,7 @@ function autoPlay() {
         i++;
 
         if (i < how_many_times) {
-            setTimeout( f, 500 );
+            setTimeout( f, 1000 );
         }
     }
 

@@ -170,6 +170,7 @@ function autoPlay() {
     if (user_clean_interface == 1) {
         // Hide game history
         $(".statistics--2RWNf").hide();
+        $(".historyStatisticContainer--3KMr5").hide();
 
         // Hide game logo
         $(".footerLeftContent--4fEIj").hide();
@@ -1157,7 +1158,7 @@ function autoPlay() {
         i++;
 
         if (i < how_many_times) {
-            setTimeout( f, 2000 );
+            setTimeout( f, 1000 );
         }
     }
 
