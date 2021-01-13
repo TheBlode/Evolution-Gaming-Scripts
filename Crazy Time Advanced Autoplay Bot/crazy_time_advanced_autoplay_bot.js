@@ -176,6 +176,9 @@ function autoPlay() {
 
         // Hide game limits and all UI information
         $(".box--2RTUm").hide();
+
+        // Hide winner's chat
+        $(".messagesWinnersChat--2UVhf").hide();
     }
 
     // Debug for the console
