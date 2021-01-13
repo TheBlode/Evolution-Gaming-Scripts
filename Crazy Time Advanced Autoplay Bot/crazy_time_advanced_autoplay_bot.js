@@ -25,7 +25,7 @@
 /* ========================================================================
  * Set autoplay mode and other game settings
  * ======================================================================== */
-var autoplay_mode = 9;
+var autoplay_mode = 11;
 
 /* ========================================================================
  * Disable video (when you set this to 1, video will be disabled)
@@ -51,7 +51,13 @@ var user_sequence_amount = 2;
  * Set round skipping frequency. The higher the number, the more rounds will be skipped.
  * For use of random modes that allow skipping rounds.
  * ======================================================================== */
-var user_round_skipping = 5;
+var user_round_skipping = 2;
+
+/* ========================================================================
+ * Hide UI elements if you want a cleaner interface to play with
+ * Hides all UI elements apart from the betting spots
+ * ======================================================================== */
+var user_clean_interface = 1;
 
 /* =====================
  * End of bot settings
@@ -158,6 +164,18 @@ function autoPlay() {
     // Disable video
     if (disable_video == 1) {
         var html = document.getElementsByClassName("transformWrapper--1ywHP")[0].innerHTML = "";
+    }
+
+    // Hide all game elements to make the interface nice and clean
+    if (user_clean_interface == 1) {
+        // Hide game history
+        $(".statistics--2RWNf").hide();
+
+        // Hide game logo
+        $(".footerLeftContent--4fEIj").hide();
+
+        // Hide game limits and all UI information
+        $(".box--2RTUm").hide();
     }
 
     // Debug for the console
