@@ -20,6 +20,9 @@ Crazy Time Advanced Autoplay Bot offers the following autoplay modes;
 - Decremental betting eg: (Crazy Time, Cash Hunt, Pachunko, Coin Flip, 10, 5, 2, 1 then start over)
 - Sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)
 - Random bets (with round skipping)
+- Bonus game betting eg: (cycling through Coin Flip, Pachinko, Cash Hunt and Crazy Time)
+- Random bonus games only betting
+- Random bonus games only betting (but skip some rounds)
 
 ## Dream Catcher Advanced Autoplay Bot
 Dream Catcher Advanced Autoplay Bot offers the following autoplay modes;
