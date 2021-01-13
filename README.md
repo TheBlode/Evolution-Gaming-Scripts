@@ -6,7 +6,7 @@ Welcome to my Evolution Gaming Scripts page! Evolution's autoplay feature is sev
 ## How to run these scripts
 - These scripts run entirely inside your browser's console. Nothing else is required.
 - To customise the bot settings, go to "Define your bot settings here!" and edit the values below that line up until "End of bot settings".
-
+    - autoplay_mode (set this to the number)
 - Open up your browser's developer tools (usually F12).
 - Make sure you select the iFrame that the game is loaded into;
     - You can right click on the game to discover the game's direct URL and can load the game directly in your browser with no need to select the iFrame.
@@ -23,6 +23,10 @@ Crazy Time Advanced Autoplay Bot offers the following autoplay modes;
 - Bonus game betting eg: (cycling through Coin Flip, Pachinko, Cash Hunt and Crazy Time)
 - Random bonus games only betting
 - Random bonus games only betting (but skip some rounds)
+- Bonus round betting only (double bonus so Coin Flip + Pachinko, Coin Flip + Cash Hunt, Coin Flip + Crazy Time, Pachinko + Cash Hunt, Pachinko + Crazy Time, Cash Hunt + Crazy Time)
+
+- Random bonus games only betting (double bonus)
+- Random bonus games only betting (but skip some rounds) (double bonus)
 
 ## Dream Catcher Advanced Autoplay Bot
 Dream Catcher Advanced Autoplay Bot offers the following autoplay modes;
