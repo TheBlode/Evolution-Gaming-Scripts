@@ -357,7 +357,7 @@ function autoPlay() {
         i++;
 
         if (i < how_many_times) {
-            setTimeout( f, 500 );
+            setTimeout( f, 2000 );
         }
     }
 

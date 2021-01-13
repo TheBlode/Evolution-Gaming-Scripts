@@ -485,6 +485,7 @@ function autoPlay() {
 
             // Autoplay mode #1
             if (autoplay_mode == 1) {
+                // Generate number with frequency of skipping rounds.
                 random_number = user_round_skipping + 7;
 
                 // Fetch random number
@@ -576,7 +577,7 @@ function autoPlay() {
         i++;
 
         if (i < how_many_times) {
-            setTimeout( f, 500 );
+            setTimeout( f, 2000 );
         }
     }
 
