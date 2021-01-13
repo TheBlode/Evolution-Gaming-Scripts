@@ -18,11 +18,14 @@
  * Autoplay mode #6 - Bonus round betting only
  * Autoplay mode #7 - random bonus games only betting
  * Autoplay mode #8 - random bonus games only betting (but skip some rounds)
+ * Autoplay mode #9 - Bonus round betting only (double bonus so Coin Flip + Pachinko, Coin Flip + Cash Hunt, Coin Flip + Crazy Time, Pachinko + Cash Hunt, Pachinko + Crazy Time, Cash Hunt + Crazy Time)
+ * Autoplay mode #10 - random bonus games only betting (double bonus)
+ * Autoplay mode #11 - random bonus games only betting (but skip some rounds) (double bonus)
  */
 /* ========================================================================
  * Set autoplay mode and other game settings
  * ======================================================================== */
-var autoplay_mode = 8;
+var autoplay_mode = 9;
 
 /* ========================================================================
  * Disable video (when you set this to 1, video will be disabled)
@@ -48,7 +51,7 @@ var user_sequence_amount = 2;
  * Set round skipping frequency. The higher the number, the more rounds will be skipped.
  * For use of random modes that allow skipping rounds.
  * ======================================================================== */
-var user_round_skipping = 2;
+var user_round_skipping = 5;
 
 /* =====================
  * End of bot settings
@@ -103,6 +106,24 @@ if (autoplay_mode == 7) {
 
 // Autoplay mode #8
 // Random bonus games only betting (but skip some rounds)
+if (autoplay_mode == 8) {
+    // Bet randomly on a number
+}
+
+// Autoplay mode #9
+// Bonus round betting only (double bonus)
+if (autoplay_mode == 9) {
+    var increment_sequence = 1;
+}
+
+// Autoplay mode #10
+// Random bonus games only betting (double bonus)
+if (autoplay_mode == 7) {
+    // Bet randomly on a number
+}
+
+// Autoplay mode #11
+// Random bonus games only betting (but skip some rounds) (double bonus)
 if (autoplay_mode == 8) {
     // Bet randomly on a number
 }
@@ -859,6 +880,244 @@ function autoPlay() {
                         }
                     }, click_delay);
                 } else {
+                    // Skip the round
+                    console.log(spacing);
+                    console.log("I'm skipping this round!");
+                    console.log(spacing);
+                }
+            }
+
+            // Autoplay mode #9
+            if (autoplay_mode == 9) {
+                // Place bet
+                if (increment_sequence == 1) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on Coin Flip now and Pachinko.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpotContainer--3V3jM").eq(2).click();
+                            $(".betSpotContainer--3V3jM").eq(3).click();
+                        }
+                    }, click_delay);
+                } else if (increment_sequence == 2) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on Coin Flip and Cash Hunt now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpotContainer--3V3jM").eq(2).click();
+                            $(".betSpotContainer--3V3jM").eq(6).click();
+                        }
+                    }, click_delay);
+                } else if (increment_sequence == 3) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on Coin Flip and Crazy Time now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpotContainer--3V3jM").eq(2).click();
+                            $(".betSpotContainer--3V3jM").eq(7).click();
+                        }
+                    }, click_delay);
+                } else if (increment_sequence == 4) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on Pachinko and Cash Hunt now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpotContainer--3V3jM").eq(3).click();
+                            $(".betSpotContainer--3V3jM").eq(6).click();
+                        }
+                    }, click_delay);
+                } else if (increment_sequence == 5) {
+                        // Output
+                        console.log(spacing);
+                        console.log("I'm placing a bet on Pachinko and Crazy Time now.");
+                        console.log(spacing);
+                        setTimeout(function() {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(3).click();
+                                $(".betSpotContainer--3V3jM").eq(7).click();
+                            }
+                        }, click_delay);
+                } else {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on Cash Hunt and Crazy Time now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpotContainer--3V3jM").eq(6).click();
+                            $(".betSpotContainer--3V3jM").eq(7).click();
+                        }
+                    }, click_delay);
+
+                    // Reset increment sequence
+                    increment_sequence = 0;
+                }
+
+                // Increment sequence
+                increment_sequence++;
+            }
+
+            // Autoplay mode #10
+            if (autoplay_mode == 10) {
+                // Fetch random number
+                bet_type = randomNumber(1, 4);
+                var bet_type_two = bet_type;
+
+                // Find available games
+                while (bet_type_two == bet_type) {
+                    // Generate another random number
+                    bet_type_two = randomNumber(1, 4);
+
+                    if (bet_type_two != bet_type) {
+                        // Break out of the loop
+                        break;
+                    }
+                }
+
+                // Place bet
+                if (bet_type == 1 || bet_type_two == 1) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on Coin Flip now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpotContainer--3V3jM").eq(2).click();
+                        }
+                    }, click_delay);
+                }
+
+                if (bet_type == 2 || bet_type_two == 2) {
+                        // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on Pachinko now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpotContainer--3V3jM").eq(3).click();
+                        }
+                    }, click_delay);
+                }
+
+                if (bet_type == 3 || bet_type_two == 3) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on Cash Hunt now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpotContainer--3V3jM").eq(6).click();
+                        }
+                    }, click_delay);
+                }
+
+                if (bet_type == 4 || bet_type_two == 4) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on Crazy Time now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpotContainer--3V3jM").eq(7).click();
+                        }
+                    }, click_delay);
+                }
+            }
+
+            // Autoplay mode #11
+            if (autoplay_mode == 11) {
+                // Generate number with frequency of skipping rounds.
+                random_number = user_round_skipping + 5;
+
+                // Fetch random number
+                bet_type = randomNumber(1, random_number);
+                var bet_type_two = bet_type;
+
+                if (bet_type < 5) { 
+                    // Find available games
+                    while (bet_type_two == bet_type) {
+                        // Generate another random number
+                        bet_type_two = randomNumber(1, 4);
+
+                        if (bet_type_two != bet_type) {
+                            // Break out of the loop
+                            break;
+                        }
+                    }
+                }
+
+                // Place bet
+                if (bet_type == 1 || bet_type_two == 1) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on Coin Flip now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpotContainer--3V3jM").eq(2).click();
+                        }
+                    }, click_delay);
+                }
+
+                if (bet_type == 2 || bet_type_two == 2) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on Pachinko now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpotContainer--3V3jM").eq(3).click();
+                        }
+                    }, click_delay);
+                }
+
+                if (bet_type == 3 || bet_type_two == 3) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on Cash Hunt now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpotContainer--3V3jM").eq(6).click();
+                        }
+                    }, click_delay);
+                }
+
+                if (bet_type == 4 || bet_type_two == 4) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on Crazy Time now.");
+                    console.log(spacing);
+                    setTimeout(function() {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpotContainer--3V3jM").eq(7).click();
+                        }
+                    }, click_delay);
+                }
+
+                if (bet_type > 4) {
                     // Skip the round
                     console.log(spacing);
                     console.log("I'm skipping this round!");
