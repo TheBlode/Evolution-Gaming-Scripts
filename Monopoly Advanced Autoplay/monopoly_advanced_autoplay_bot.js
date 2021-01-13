@@ -21,7 +21,7 @@
 /* ========================================================================
  * Set autoplay mode and other game settings
  * ======================================================================== */
-var autoplay_mode = 8;
+var autoplay_mode = 7;
 
 /* ========================================================================
  * Disable video (when you set this to 1, video will be disabled)
@@ -156,7 +156,7 @@ function autoPlay() {
         // Hide game limits and all UI information
         $(".box--2RTUm").hide();
 
-        // Hide winner's chat$(".balance--fy1K_").html();
+        // Hide winner's chat
         $(".messagesWinnersChat--2UVhf").hide();
     }
 
@@ -723,7 +723,7 @@ function autoPlay() {
         i++;
 
         if (i < how_many_times) {
-            setTimeout( f, 1000 );
+            setTimeout(f, 500);
         }
     }
 

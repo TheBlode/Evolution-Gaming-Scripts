@@ -25,7 +25,7 @@
 /* ========================================================================
  * Set autoplay mode and other game settings
  * ======================================================================== */
-var autoplay_mode = 11;
+var autoplay_mode = 10;
 
 /* ========================================================================
  * Disable video (when you set this to 1, video will be disabled)
@@ -1158,7 +1158,7 @@ function autoPlay() {
         i++;
 
         if (i < how_many_times) {
-            setTimeout( f, 1000 );
+            setTimeout(f, 500);
         }
     }
 
