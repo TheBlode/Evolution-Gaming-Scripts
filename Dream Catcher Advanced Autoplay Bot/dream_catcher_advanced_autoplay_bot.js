@@ -41,6 +41,12 @@ var user_wager_amount = 1;
  * ======================================================================== */
 var user_sequence_amount = 2;
 
+/* ========================================================================
+ * Set round skipping frequency. The higher the number, the more rounds will be skipped.
+ * For use of random modes that allow skipping rounds.
+ * ======================================================================== */
+var user_round_skipping = 2;
+
 /* =====================
  * End of bot settings
  * =====================
@@ -479,8 +485,10 @@ function autoPlay() {
 
             // Autoplay mode #1
             if (autoplay_mode == 1) {
+                random_number = user_round_skipping + 7;
+
                 // Fetch random number
-                bet_type = randomNumber(1, 7);
+                bet_type = randomNumber(1, random_number);
 
                 // Place bet
                 if (bet_type == 1) {

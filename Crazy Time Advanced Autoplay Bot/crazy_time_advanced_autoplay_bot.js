@@ -593,6 +593,7 @@ function autoPlay() {
 
             // Autoplay mode #5
             if (autoplay_mode == 5) {
+                // Generate number with frequency of skipping rounds.
                 random_number = user_round_skipping + 9;
 
                 // Fetch random number
@@ -806,6 +807,7 @@ function autoPlay() {
 
             // Autoplay mode #8
             if (autoplay_mode == 8) {
+                // Generate number with frequency of skipping rounds.
                 random_number = user_round_skipping + 5;
 
                 // Fetch random number

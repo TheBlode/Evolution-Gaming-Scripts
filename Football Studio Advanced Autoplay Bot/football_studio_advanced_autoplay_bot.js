@@ -16,7 +16,7 @@
 /* ========================================================================
  * Set autoplay mode and other game settings
  * ======================================================================== */
-var autoplay_mode = 3;
+var autoplay_mode = 5;
 
 /* ========================================================================
  * Disable video (when you set this to 1, video will be disabled)
@@ -42,6 +42,13 @@ var user_streak_size = 2;
  * Set sequence amount to play with
  * ======================================================================== */
 var user_sequence_amount = 3;
+
+/* ========================================================================
+ * Set round skipping frequency. The higher the number, the more rounds will be skipped.
+ * For use of random modes that allow skipping rounds.
+ * ======================================================================== */
+var user_round_skipping = 2;
+
 /* =====================
  * End of bot settings
  * =====================
@@ -253,8 +260,11 @@ function autoPlay() {
 
             // Autoplay mode #5
             if (autoplay_mode == 5) {
+                // Generate number with frequency of skipping rounds.
+                random_number = user_round_skipping + 3;
+
                 // Fetch random number
-                bet_type = randomNumber(1, 3);
+                bet_type = randomNumber(1, random_number);
 
                 // Place bet
                 if (bet_type == 1) {
