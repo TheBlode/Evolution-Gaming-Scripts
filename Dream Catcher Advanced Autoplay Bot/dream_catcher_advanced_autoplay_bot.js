@@ -47,6 +47,12 @@ var user_sequence_amount = 2;
  * ======================================================================== */
 var user_round_skipping = 2;
 
+/* ========================================================================
+ * Hide UI elements if you want a cleaner interface to play with
+ * Hides all UI elements apart from the betting spots (0 will disable this option)
+ * ======================================================================== */
+var user_clean_interface = 1;
+
 /* =====================
  * End of bot settings
  * =====================
@@ -119,6 +125,22 @@ function autoPlay() {
     // Disable video
     if (disable_video == 1) {
         var html = document.getElementsByClassName("transformWrapper--1ywHP")[0].innerHTML = "";
+    }
+
+    // Hide all game elements to make the interface nice and clean
+    if (user_clean_interface == 1) {
+        // Hide game history
+        $(".statistics--2RWNf").hide();
+        $(".historyStatisticContainer--3KMr5").hide();
+
+        // Hide game logo
+        $(".footerLeftContent--4fEIj").hide();
+
+        // Hide game limits and all UI information
+        $(".box--2RTUm").hide();
+
+        // Hide winner's chat
+        $(".messagesWinnersChat--2UVhf").hide();
     }
 
     // Debug for the console
