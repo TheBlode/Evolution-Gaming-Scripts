@@ -2554,7 +2554,7 @@ function checkBetSpot() {
  */
 function scrollToTopOfDebug() {
     // Scroll to top of debug area
-    $("#debug_area").scrollTop($("#debug_area").height());
+    $("#debug_area").scrollTop(1000000);
 }
 
 // Run bot after 5 seconds
