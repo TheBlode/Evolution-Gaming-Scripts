@@ -24,7 +24,6 @@ Crazy Time Advanced Autoplay Bot offers the following autoplay modes;
 - Random bonus games only betting
 - Random bonus games only betting (but skip some rounds)
 - Bonus round betting only (double bonus so Coin Flip + Pachinko, Coin Flip + Cash Hunt, Coin Flip + Crazy Time, Pachinko + Cash Hunt, Pachinko + Crazy Time, Cash Hunt + Crazy Time)
-
 - Random bonus games only betting (double bonus)
 - Random bonus games only betting (but skip some rounds) (double bonus)
 
@@ -59,8 +58,7 @@ Football Studio offers the following autoplay modes;
 - If clicks are not registering on your game, try adjusting the click_delay value in the script to a higher or lower value.
 
 ## Currently known bugs
-- Bets are not correctly placed after Crazy Time bonus rounds
-- Bets are not correctly placed after Monopoly bonus rounds
+- None known at the moment.
 
 ## Coming Soon
 - Lightning Roulette Advanced Autoplay Bot
