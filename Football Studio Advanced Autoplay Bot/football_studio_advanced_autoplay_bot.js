@@ -6,8 +6,8 @@
  * =====================
  */
 
-/* Autoplay mode #1 - // Alternate bets. Example: Bet home, then away, then home, then away, then home, then away, etc
- * Autoplay mode #2 - // Bet on home and away in numbered sequences. Example: if sequence_amount is set to 3 in a row, the bot will play; home, home, home then away, away, away and repeat.
+/* Autoplay mode #1 - Alternate bets. Example: Bet home, then away, then home, then away, then home, then away, etc
+ * Autoplay mode #2 - Bet on home and away in numbered sequences. Example: if sequence_amount is set to 3 in a row, the bot will play; home, home, home then away, away, away and repeat.
  * Autoplay mode #3 - Bet randomly on home or away
  * Autoplay mode #4 - Bet only after a certain sequence of results. Example: if streak_size is set to 4, then place a bet after 4 homes or 4 aways in a row
  * Autoplay mode #5 - Bet randomly on home or away (with round skipping)
@@ -16,7 +16,7 @@
 /* ========================================================================
  * Set autoplay mode and other game settings
  * ======================================================================== */
-var autoplay_mode = 5;
+var autoplay_mode = 1;
 
 /* ========================================================================
  * Disable video (when you set this to 1, video will be disabled)
@@ -26,17 +26,17 @@ var disable_video = 0;
 /* ========================================================================
  * Set click delay (if you're having issues with clicks on the UI)
  * ======================================================================== */
-var click_delay = 6000;
+var click_delay = 2000;
 
 /* ========================================================================
  * Set wager amount in units (default is 1 unit)
  * ======================================================================== */
-var user_wager_amount = 2;
+var user_wager_amount = 1;
 
 /* ========================================================================
  * Set streak size to wait for before betting
  * ======================================================================== */
-var user_streak_size = 2;
+var user_streak_size = 4;
 
 /* ========================================================================
  * Set sequence amount to play with
@@ -100,6 +100,7 @@ var home_streak = 0;
 var away_streak = 0;
 var check = false;
 var count = 0;
+var clicking = "";
 
 /* =====================
  * Functions that will be used by the bot
@@ -163,10 +164,18 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on home now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click home betting spot
-                            $(".mainBet--3JDdD").eq(0).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".mainBet--3JDdD").eq(0).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else {
@@ -174,10 +183,18 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on away now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click away betting spot
-                            $(".mainBet--3JDdD").eq(1).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".mainBet--3JDdD").eq(1).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 }
@@ -200,18 +217,38 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on home now. Sequence #" + sequence_start);
                     console.log(spacing);
-                    setTimeout(function() {
-                        // Click home betting spot
-                        $(".mainBet--3JDdD").eq(0).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".mainBet--3JDdD").eq(0).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
+                        }
                     }, click_delay);
                 } else {
                     // Output
                     console.log(spacing);
                     console.log("I'm placing a bet on away now.Sequence #" + sequence_start);
                     console.log(spacing);
-                    setTimeout(function() {
-                        // Click away betting spot
-                        $(".mainBet--3JDdD").eq(1).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".mainBet--3JDdD").eq(1).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
+                        }
                     }, click_delay);
                 }
 
@@ -239,9 +276,19 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on home now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        // Click home betting spot
-                        $(".mainBet--3JDdD").eq(0).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".mainBet--3JDdD").eq(0).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
+                        }
                     }, click_delay);
                 } else {
                     // Output
@@ -251,9 +298,19 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on away now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        // Click away betting spot
-                        $(".mainBet--3JDdD").eq(1).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".mainBet--3JDdD").eq(1).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
+                        }
                     }, click_delay);
                 }
             }
@@ -275,9 +332,19 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on home now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        // Click home betting spot
-                        $(".mainBet--3JDdD").eq(0).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".mainBet--3JDdD").eq(0).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
+                        }
                     }, click_delay);
                 } else if (bet_type == 2) {
                         // Output
@@ -287,9 +354,19 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on away now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        // Click away betting spot
-                        $(".mainBet--3JDdD").eq(1).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".mainBet--3JDdD").eq(1).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
+                        }
                     }, click_delay);
                 } else {
                     // Skip the round
@@ -320,7 +397,11 @@ function autoPlay() {
                console.log(spacing);
                console.log("Away wins! There have been " + away_streak + " wins in a row now.");
                console.log(spacing);
-            }     
+            } else {
+                // It's a draw! Increment both sides
+                home_streak++;
+                away_streak++;
+            }
 
             // Autoplay mode #4
             if (autoplay_mode == 4) {
@@ -330,18 +411,38 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on home now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        // Click home betting spot
-                        $(".mainBet--3JDdD").eq(0).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".mainBet--3JDdD").eq(0).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
+                        }
                     }, click_delay);
                 } else if (away_streak == streak_size) {
                     // Output
                     console.log(spacing);
                     console.log("I'm placing a bet on away now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        // Click away betting spot
-                        $(".mainBet--3JDdD").eq(1).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".mainBet--3JDdD").eq(1).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
+                        }
                     }, click_delay);
                 }
             }       
@@ -393,6 +494,24 @@ function click(x, y) {
     var el = document.elementFromPoint(x, y);
 
     el.dispatchEvent(ev);
+}
+
+/* =====================
+ * Function name: checkBetSpot
+ * Function description: this function will check if the betting spot is available
+ * Date: 07/11/20
+ * =====================
+ */
+function checkBetSpot() {
+    // Grab betting spot
+    var betting_spot = $(".perspective--5cLlU.perspectiveActive--2VeJ7").length;
+
+    // Determine if it's available to click or not
+    if (betting_spot == 1) {
+        return false;
+    } else {
+        return true;
+    }
 }
 
 /* =====================
