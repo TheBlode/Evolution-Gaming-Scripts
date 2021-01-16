@@ -101,6 +101,9 @@ var forty_streak = 0;
 var sequence_counter = 0;
 var check = false;
 var count = 0;
+var clicking = "";
+var bonus_round = false;
+var bonus_round_counter = 0;
 
 /* =====================
  * Functions that will be used by the bot
@@ -146,7 +149,7 @@ function autoPlay() {
         }
 
         // Main bot logic
-        if (regex_formatted != undefined && check == false) {
+        if (regex_formatted != undefined && check == false && bonus_round == false) {
             // Flip check flag
             check = true;
 
@@ -156,13 +159,20 @@ function autoPlay() {
             // Set counter value
             count = iteration_number + 40;
 
+            // Check for bonus round
+            var bonus_round_check = regex_formatted.match(/x/g);
+
+            if (bonus_round_check != null) {
+                bonus_round = true;
+            }
+
             // Output final hand to console
             console.log(spacing);
             console.log("The final result is " + regex_formatted);
             console.log(spacing);
 
             // Autoplay mode #1
-            if (autoplay_mode == 1) {
+            if (autoplay_mode == 1 && bonus_round == false) {
                 // Fetch random number
                 bet_type = randomNumber(1, 6);
 
@@ -172,10 +182,18 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #1 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot---OSvn").eq(0).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot---OSvn").eq(0).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 2) {
@@ -183,10 +201,18 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #2 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot---OSvn").eq(1).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot---OSvn").eq(1).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 3) {
@@ -194,10 +220,18 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #5 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot---OSvn").eq(2).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot---OSvn").eq(2).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 4) {
@@ -205,10 +239,18 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #10 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot---OSvn").eq(3).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot---OSvn").eq(3).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 5) {
@@ -216,10 +258,18 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #20 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot---OSvn").eq(4).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot---OSvn").eq(4).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else {
@@ -227,27 +277,43 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #40 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot---OSvn").eq(5).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot---OSvn").eq(5).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 }
             }
 
             // Autoplay mode #2
-            if (autoplay_mode == 2) {
+            if (autoplay_mode == 2 && bonus_round == false) {
                 // Place bet
                 if (increment_sequence == 1) {
                     // Output
                     console.log(spacing);
                     console.log("I'm placing a bet on #1 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot---OSvn").eq(0).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot---OSvn").eq(0).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (increment_sequence == 2) {
@@ -255,10 +321,18 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #2 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot---OSvn").eq(1).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot---OSvn").eq(1).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (increment_sequence == 3) {
@@ -266,10 +340,18 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #5 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot---OSvn").eq(2).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot---OSvn").eq(2).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (increment_sequence == 4) {
@@ -277,10 +359,18 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #10 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot---OSvn").eq(3).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot---OSvn").eq(3).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (increment_sequence == 5) {
@@ -288,10 +378,18 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #20 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot---OSvn").eq(4).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot---OSvn").eq(4).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else {
@@ -299,10 +397,18 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #40 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot---OSvn").eq(5).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot---OSvn").eq(5).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
 
@@ -315,17 +421,25 @@ function autoPlay() {
             }
 
             // Autoplay mode #3
-            if (autoplay_mode == 3) {
+            if (autoplay_mode == 3 && bonus_round == false) {
                 // Place bet
                 if (decrement_sequence == 1) {
                     // Output
                     console.log(spacing);
                     console.log("I'm placing a bet on #1 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot---OSvn").eq(0).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot---OSvn").eq(0).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
 
@@ -336,10 +450,18 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #2 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot---OSvn").eq(1).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot---OSvn").eq(1).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (decrement_sequence == 3) {
@@ -347,10 +469,18 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #5 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot---OSvn").eq(2).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot---OSvn").eq(2).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (decrement_sequence == 4) {
@@ -358,10 +488,18 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #10 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot---OSvn").eq(3).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot---OSvn").eq(3).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (decrement_sequence == 5) {
@@ -369,10 +507,18 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #20 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot---OSvn").eq(4).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot---OSvn").eq(4).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else {
@@ -380,10 +526,18 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #40 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot---OSvn").eq(5).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot---OSvn").eq(5).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 }
@@ -393,17 +547,25 @@ function autoPlay() {
             }
 
             // Autoplay mode #4
-            if (autoplay_mode == 4) {
+            if (autoplay_mode == 4 && bonus_round == false) {
                 // Place bet
                 if (increment_sequence == 1) {
                     // Output
                     console.log(spacing);
                     console.log("I'm placing a bet on #1 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot---OSvn").eq(0).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot---OSvn").eq(0).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (increment_sequence == 2) {
@@ -411,10 +573,18 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #2 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot---OSvn").eq(1).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot---OSvn").eq(1).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (increment_sequence == 3) {
@@ -422,10 +592,18 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #5 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot---OSvn").eq(2).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot---OSvn").eq(2).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (increment_sequence == 4) {
@@ -433,10 +611,18 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #10 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot---OSvn").eq(3).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot---OSvn").eq(3).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (increment_sequence == 5) {
@@ -444,10 +630,18 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #20 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot---OSvn").eq(4).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot---OSvn").eq(4).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else {
@@ -455,10 +649,18 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #40 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot---OSvn").eq(5).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot---OSvn").eq(5).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
 
@@ -483,8 +685,8 @@ function autoPlay() {
                 }
             }
 
-            // Autoplay mode #1
-            if (autoplay_mode == 1) {
+            // Autoplay mode #5
+            if (autoplay_mode == 5 && bonus_round == false) {
                 // Generate number with frequency of skipping rounds.
                 random_number = user_round_skipping + 7;
 
@@ -497,10 +699,18 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #1 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot---OSvn").eq(0).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot---OSvn").eq(0).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 2) {
@@ -508,10 +718,18 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #2 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot---OSvn").eq(1).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot---OSvn").eq(1).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 3) {
@@ -519,10 +737,18 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #5 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot---OSvn").eq(2).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot---OSvn").eq(2).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 4) {
@@ -530,10 +756,18 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #10 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot---OSvn").eq(3).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot---OSvn").eq(3).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 5) {
@@ -541,10 +775,18 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #20 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot---OSvn").eq(4).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot---OSvn").eq(4).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 6) {
@@ -552,10 +794,18 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #40 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot---OSvn").eq(5).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot---OSvn").eq(5).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else {
@@ -571,6 +821,7 @@ function autoPlay() {
         if (i > count) {
             check = false;
             iteration_number = 0;
+            bonus_round = false;
         }
 
         // Increment counter
@@ -613,6 +864,24 @@ function click(x, y) {
     var el = document.elementFromPoint(x, y);
 
     el.dispatchEvent(ev);
+}
+
+/* =====================
+ * Function name: checkBetSpot
+ * Function description: this function will check if the betting spot is available
+ * Date: 07/11/20
+ * =====================
+ */
+function checkBetSpot() {
+    // Grab betting spot
+    var betting_spot = $(".footerBettingGrid--9QTFm.collapsed--3oC2R").length;
+
+    // Determine if it's available to click or not
+    if (betting_spot == 1) {
+        return false;
+    } else {
+        return true;
+    }
 }
 
 /* =====================
