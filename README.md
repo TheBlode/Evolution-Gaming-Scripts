@@ -9,7 +9,11 @@ Welcome to my Evolution Gaming Scripts page! Evolution's autoplay feature is sev
     - autoplay_mode (set this to the number)
 - Open up your browser's developer tools (usually F12).
 - Make sure you select the iFrame that the game is loaded into;
-    - You can right click on the game to discover the game's direct URL and can load the game directly in your browser with no need to select the iFrame.
+    - You can right click on the game to discover the game's direct URL and can load the game directly in your browser with no need to select the iFrame. The iFrame URLs for Unibet are as follows;
+        - Crazy Time: https://evolivecasino.unibet.co.uk/frontend/evo/r2/#table_id=CrazyTime0000001&category=crazytime&game=crazytime
+        - Dream Catcher: https://evolivecasino.unibet.co.uk/frontend/evo/r2/#table_id=MOWDream00000001&category=moneywheel&game=moneywheel
+        - Monopoly: https://evolivecasino.unibet.co.uk/frontend/evo/r2/#table_id=Monopoly00000001&category=monopoly&game=monopoly
+        - Football Studio: https://evolivecasino.unibet.co.uk/frontend/evo/r2/#table_id=TopCard000000001&category=topcard&game=topcard
     - Otherwise, in Chrome, you can select the iFrame by navigating to the Console tab, selecting the "top" dropdown and selecting "KindredGameIframe". 
 - Open up the JavaScript file in any text editor, copy **ALL** the text, paste into your browsers console and run the code.
 
