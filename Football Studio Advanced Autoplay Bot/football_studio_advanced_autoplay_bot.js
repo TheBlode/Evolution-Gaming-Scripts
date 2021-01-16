@@ -16,12 +16,12 @@
 /* ========================================================================
  * Set autoplay mode and other game settings
  * ======================================================================== */
-var autoplay_mode = 1;
+var autoplay_mode = 4;
 
 /* ========================================================================
  * Disable video (when you set this to 1, video will be disabled)
  * ======================================================================== */
-var disable_video = 0;
+var disable_video = 1;
 
 /* ========================================================================
  * Set click delay (if you're having issues with clicks on the UI)
@@ -36,7 +36,7 @@ var user_wager_amount = 1;
 /* ========================================================================
  * Set streak size to wait for before betting
  * ======================================================================== */
-var user_streak_size = 4;
+var user_streak_size = 5;
 
 /* ========================================================================
  * Set sequence amount to play with
@@ -54,6 +54,11 @@ var user_round_skipping = 2;
  * Hides all UI elements apart from the betting spots (0 will disable this option)
  * ======================================================================== */
 var user_clean_interface = 1;
+
+/* ========================================================================
+ * Show on screen debug on the game window
+ * ======================================================================== */
+var user_on_screen_debug = 1;
 
 /* =====================
  * End of bot settings
@@ -140,7 +145,17 @@ function autoPlay() {
         $(".footerLeftContent--4fEIj").hide();
 
         // Hide winner's chat
-        $("..messagesWinnersChat--2UVhf").hide();
+        $(".messagesWinnersChat--2UVhf").hide();
+    }
+
+    // Output debug on game screen if user wants it
+    if (user_on_screen_debug == 1) {
+        // Create debug area
+        var $div = $("<div />").appendTo("body");
+        $div.attr("id", "debug_area");
+
+        // CSS
+        $("#debug_area").css({"position": "absolute", "font-size": "x-large", "width": "100%", "height": "98%", "overflow": "overlay", "line-height": "20pt"});
     }
 
     // Debug for the console
@@ -148,10 +163,19 @@ function autoPlay() {
     console.log("I'm going to start playing!");
     console.log(spacing);
 
+    // Debug for page
+    if (user_on_screen_debug == 1) {
+        // Append to debug area
+        $("#debug_area").append("I'm going to start playing!<br />");
+
+        // Scroll to top
+        scrollToTopOfDebug();
+    }
+
     // Perform main loop
     function f() {
         // Send fake click to keep game alive
-        click(0, 0);
+        click(100, 100);
 
         // Get winning result
         var result = $(".genericPhrase--1KynV").html();
@@ -175,6 +199,15 @@ function autoPlay() {
             console.log("The final result is " + result);
             console.log(spacing);
 
+            // Debug for page
+            if (user_on_screen_debug == 1) {
+                // Append to debug area
+                $("#debug_area").append("The final result is " + result + "<br />");
+
+                // Scroll to top
+                scrollToTopOfDebug();
+            }
+
             // Autoplay mode #1
             if (autoplay_mode == 1) {
                 // Toggle bet type from home to away (or from away to home)
@@ -192,6 +225,14 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on home now.");
                     console.log(spacing);
+                    // Debug for page
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on home now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -211,6 +252,14 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on away now.");
                     console.log(spacing);
+                    // Debug for page
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on away now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -245,6 +294,14 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on home now. Sequence #" + sequence_start);
                     console.log(spacing);
+                    // Debug for page
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on home now. Sequence #" + sequence_start + "<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -264,6 +321,14 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on away now.Sequence #" + sequence_start);
                     console.log(spacing);
+                    // Debug for page
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on away now. Sequence #" + sequence_start + "<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -301,9 +366,25 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("The randomizer chose home as the next bet!");
                     console.log(spacing);
+                    // Debug for page
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("The randomizer chose home as the next bet!<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     console.log(spacing);
                     console.log("I'm placing a bet on home now.");
                     console.log(spacing);
+                    // Debug for page
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on home now. <br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -323,9 +404,25 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("The randomizer chose away as the next bet!");
                     console.log(spacing);
+                    // Debug for page
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("The randomizer chose home as the next bet!<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     console.log(spacing);
                     console.log("I'm placing a bet on away now.");
                     console.log(spacing);
+                    // Debug for page
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on away now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -357,9 +454,25 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("The randomizer chose home as the next bet!");
                     console.log(spacing);
+                    // Debug for page
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("The randomizer chose home as the next bet!<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     console.log(spacing);
                     console.log("I'm placing a bet on home now.");
                     console.log(spacing);
+                    // Debug for page
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on home now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -379,9 +492,25 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("The randomizer chose away as the next bet!");
                     console.log(spacing);
+                    // Debug for page
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("The randomizer chose away as the next bet!<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     console.log(spacing);
                     console.log("I'm placing a bet on away now.");
                     console.log(spacing);
+                    // Debug for page
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on away now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -401,6 +530,14 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm skipping this round!");
                     console.log(spacing);
+                    // Debug for page
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm skipping this round!<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                 }
             }
 
@@ -413,18 +550,34 @@ function autoPlay() {
                 away_streak = 0;
 
                 console.log(spacing);
-                console.log("Home wins! There have been " + home_streak + " wins in a row now.");
+                console.log("Home wins! There have been " + home_streak + " home wins in a row now.");
                 console.log(spacing);
+                // Debug for page
+                if (user_on_screen_debug == 1) {
+                    // Append to debug area
+                    $("#debug_area").append("Home wins! There have been " + home_streak + " home wins in a row now.<br />");
+
+                    // Scroll to top
+                    scrollToTopOfDebug();
+                }
             } else if (result = "AWAY") {
-               // Increase away streak
-               away_streak++;
+                // Increase away streak
+                away_streak++;
 
-               // Reset home streak
-               home_streak = 0;
+                // Reset home streak
+                home_streak = 0;
 
-               console.log(spacing);
-               console.log("Away wins! There have been " + away_streak + " wins in a row now.");
-               console.log(spacing);
+                console.log(spacing);
+                console.log("Away wins! There have been " + away_streak + " away wins in a row now.");
+                console.log(spacing);
+                // Debug for page
+                if (user_on_screen_debug == 1) {
+                    // Append to debug area
+                    $("#debug_area").append("Home wins! There have been " + away_streak + " away wins in a row now.<br />");
+
+                    // Scroll to top
+                    scrollToTopOfDebug();
+                }
             } else {
                 // It's a draw! Increment both sides
                 home_streak++;
@@ -439,6 +592,14 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on home now.");
                     console.log(spacing);
+                    // Debug for page
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on home now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -458,6 +619,14 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on away now.");
                     console.log(spacing);
+                    // Debug for page
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on away now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -540,6 +709,17 @@ function checkBetSpot() {
     } else {
         return true;
     }
+}
+
+/* =====================
+ * Function name: scrollToTopOfDebug
+ * Function description: this function show the freshest line of debug on the onscreen debug
+ * Date: 07/11/20
+ * =====================
+ */
+function scrollToTopOfDebug() {
+    // Scroll to top of debug area
+    $("#debug_area").scrollTop(1000000);
 }
 
 /* =====================
