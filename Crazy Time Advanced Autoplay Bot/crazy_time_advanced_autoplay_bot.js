@@ -25,7 +25,7 @@
 /* ========================================================================
  * Set autoplay mode and other game settings
  * ======================================================================== */
-var autoplay_mode = 2;
+var autoplay_mode = 10;
 
 /* ========================================================================
  * Disable video (when you set this to 1, video will be disabled)
@@ -124,13 +124,13 @@ if (autoplay_mode == 9) {
 
 // Autoplay mode #10
 // Random bonus games only betting (double bonus)
-if (autoplay_mode == 7) {
+if (autoplay_mode == 10) {
     // Bet randomly on a number
 }
 
 // Autoplay mode #11
 // Random bonus games only betting (but skip some rounds) (double bonus)
-if (autoplay_mode == 8) {
+if (autoplay_mode == 11) {
     // Bet randomly on a number
 }
 
@@ -150,6 +150,9 @@ var sequence_counter = 0;
 var check = false;
 var count = 0;
 var clicking = "";
+var clicking_two = "";
+var clicking_three = "";
+var clicking_four = "";
 var bonus_round = false;
 var bonus_round_counter = 0;
 
@@ -1739,7 +1742,7 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Pachinko now.");
                     console.log(spacing);
-                    clicking = setInterval(function() {
+                    clicking_two = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
 
@@ -1752,7 +1755,7 @@ function autoPlay() {
                                 bonus_round = false;
 
                                 // Clear interval
-                                clearInterval(clicking);
+                                clearInterval(clicking_two);
                             }
                         }
                     }, click_delay);
@@ -1763,7 +1766,7 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Cash Hunt now.");
                     console.log(spacing);
-                    clicking = setInterval(function() {
+                    clicking_three = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
 
@@ -1776,7 +1779,7 @@ function autoPlay() {
                                 bonus_round = false;
 
                                 // Clear interval
-                                clearInterval(clicking);
+                                clearInterval(clicking_three);
                             }
                         }
                     }, click_delay);
@@ -1787,7 +1790,7 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Crazy Time now.");
                     console.log(spacing);
-                    clicking = setInterval(function() {
+                    clicking_four = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
 
@@ -1800,7 +1803,7 @@ function autoPlay() {
                                 bonus_round = false;
 
                                 // Clear interval
-                                clearInterval(clicking);
+                                clearInterval(clicking_four);
                             }
                         }
                     }, click_delay);
@@ -1859,7 +1862,7 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Pachinko now.");
                     console.log(spacing);
-                    clicking = setInterval(function() {
+                    clicking_two = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
 
@@ -1872,7 +1875,7 @@ function autoPlay() {
                                 bonus_round = false;
 
                                 // Clear interval
-                                clearInterval(clicking);
+                                clearInterval(clicking_two);
                             }
                         }
                     }, click_delay);
@@ -1883,7 +1886,7 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Cash Hunt now.");
                     console.log(spacing);
-                    clicking = setInterval(function() {
+                    clicking_three = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
 
@@ -1896,7 +1899,7 @@ function autoPlay() {
                                 bonus_round = false;
 
                                 // Clear interval
-                                clearInterval(clicking);
+                                clearInterval(clicking_three);
                             }
                         }
                     }, click_delay);
@@ -1907,7 +1910,7 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Crazy Time now.");
                     console.log(spacing);
-                    clicking = setInterval(function() {
+                    clicking_four = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
 
@@ -1920,7 +1923,7 @@ function autoPlay() {
                                 bonus_round = false;
 
                                 // Clear interval
-                                clearInterval(clicking);
+                                clearInterval(clicking_four);
                             }
                         }
                     }, click_delay);
