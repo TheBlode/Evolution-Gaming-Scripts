@@ -25,7 +25,7 @@
 /* ========================================================================
  * Set autoplay mode and other game settings
  * ======================================================================== */
-var autoplay_mode = 10;
+var autoplay_mode = 2;
 
 /* ========================================================================
  * Disable video (when you set this to 1, video will be disabled)
@@ -35,7 +35,7 @@ var disable_video = 0;
 /* ========================================================================
  * Set click delay (if you're having issues with clicks on the UI)
  * ======================================================================== */
-var click_delay = 8000;
+var click_delay = 2000;
 
 /* ========================================================================
  * Set wager amount in units (default is 1 unit)
@@ -149,6 +149,9 @@ var ten_streak = 0;
 var sequence_counter = 0;
 var check = false;
 var count = 0;
+var clicking = "";
+var bonus_round = false;
+var bonus_round_counter = 0;
 
 /* =====================
  * Functions that will be used by the bot
@@ -209,7 +212,7 @@ function autoPlay() {
         }
 
         // Main bot logic
-        if (regex_formatted != undefined && check == false) {
+        if (regex_formatted != undefined && check == false && bonus_round == false) {
             // Flip check flag
             check = true;
 
@@ -218,6 +221,13 @@ function autoPlay() {
 
             // Set counter value
             count = iteration_number + 80;
+
+            // Check for bonus round
+            var bonus_round_check = regex_formatted.match(/b/g);
+
+            if (bonus_round_check != null) {
+                bonus_round = true;
+            }
 
             // Output final hand to console
             console.log(spacing);
@@ -235,10 +245,24 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #1 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(0).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(0).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 2) {
@@ -246,10 +270,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #2 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(1).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(1).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 3) {
@@ -257,10 +292,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Coin Flip now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(2).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(2).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 4) {
@@ -268,10 +314,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Pachinko now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(3).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(3).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 5) {
@@ -279,10 +336,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #5 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(4).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(4).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 6) {
@@ -290,10 +358,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #10 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(5).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(5).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 7) {
@@ -301,10 +380,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Cash Hunt now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(6).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(6).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else {
@@ -312,10 +402,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Crazy Time now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(7).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(7).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 }
@@ -329,10 +430,27 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #1 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(0).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(0).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Reset bonus round delay counter
+                                bonus_round_counter = 0;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (increment_sequence == 2) {
@@ -340,10 +458,27 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #2 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(1).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(1).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Reset bonus round delay counter
+                                bonus_round_counter = 0;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (increment_sequence == 5) {
@@ -351,10 +486,27 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Coin Flip now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(2).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(2).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Reset bonus round delay counter
+                                bonus_round_counter = 0;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (increment_sequence == 6) {
@@ -362,10 +514,27 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Pachinko now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(3).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(3).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Reset bonus round delay counter
+                                bonus_round_counter = 0;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (increment_sequence == 3) {
@@ -373,10 +542,27 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #5 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(4).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(4).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Reset bonus round delay counter
+                                bonus_round_counter = 0;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (increment_sequence == 4) {
@@ -384,10 +570,27 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #10 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(5).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(5).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Reset bonus round delay counter
+                                bonus_round_counter = 0;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (increment_sequence == 7) {
@@ -395,10 +598,27 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Cash Hunt now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(6).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(6).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Reset bonus round delay counter
+                                bonus_round_counter = 0;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else {
@@ -406,10 +626,27 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Crazy Time now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(7).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(7).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Reset bonus round delay counter
+                                bonus_round_counter = 0;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
 
@@ -429,10 +666,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #1 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(0).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(0).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
 
@@ -443,10 +691,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #2 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(1).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(1).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (decrement_sequence == 5) {
@@ -454,10 +713,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Coin Flip now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(2).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(2).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (decrement_sequence == 6) {
@@ -465,10 +735,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Pachinko now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(3).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(3).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (decrement_sequence == 3) {
@@ -476,10 +757,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #5 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(4).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(4).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (decrement_sequence == 4) {
@@ -487,10 +779,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #10 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(5).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(5).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (decrement_sequence == 7) {
@@ -498,10 +801,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Cash Hunt now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(6).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(6).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else {
@@ -509,10 +823,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Crazy Time now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(7).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(7).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 }
@@ -529,10 +854,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #1 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(0).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(0).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (increment_sequence == 2) {
@@ -540,10 +876,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #2 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(1).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(1).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (increment_sequence == 5) {
@@ -551,10 +898,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Coin Flip now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(2).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(2).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (increment_sequence == 6) {
@@ -562,10 +920,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Pachinko now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(3).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(3).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (increment_sequence == 3) {
@@ -573,10 +942,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #5 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(4).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(4).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (increment_sequence == 4) {
@@ -584,10 +964,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #10 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(5).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(5).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (increment_sequence == 7) {
@@ -595,10 +986,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Cash Hunt now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(6).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(6).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else {
@@ -606,10 +1008,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Crazy Time now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(7).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(7).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
 
@@ -648,10 +1061,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #1 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(0).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(0).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 2) {
@@ -659,10 +1083,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #2 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(1).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(1).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 3) {
@@ -670,10 +1105,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Coin Flip now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(2).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(2).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 4) {
@@ -681,10 +1127,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Pachinko now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(3).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(3).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 5) {
@@ -692,10 +1149,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #5 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(4).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(4).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 6) {
@@ -703,10 +1171,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #10 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(5).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(5).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 7) {
@@ -714,10 +1193,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Cash Hunt now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(6).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(6).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 8) {
@@ -725,10 +1215,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Crazy Time now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(7).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(7).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else {
@@ -747,10 +1248,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Coin Flip now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(2).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(2).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (increment_sequence == 2) {
@@ -758,10 +1270,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Pachinko now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(3).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(3).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (increment_sequence == 3) {
@@ -769,10 +1292,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Cash Hunt now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(6).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(6).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else {
@@ -780,10 +1314,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Crazy Time now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(7).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(7).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
 
@@ -806,10 +1351,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Coin Flip now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(2).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(2).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 2) {
@@ -817,10 +1373,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Pachinko now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(3).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(3).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 3) {
@@ -828,10 +1395,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Cash Hunt now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(6).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(6).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else {
@@ -839,10 +1417,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Crazy Time now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(7).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(7).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 }
@@ -862,10 +1451,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Coin Flip now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(2).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(2).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 2) {
@@ -873,10 +1473,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Pachinko now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(3).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(3).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 3) {
@@ -884,10 +1495,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Cash Hunt now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(6).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(6).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 4) {
@@ -895,10 +1517,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Crazy Time now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(7).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(7).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else {
@@ -917,11 +1550,22 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Coin Flip now and Pachinko.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(2).click();
-                            $(".betSpotContainer--3V3jM").eq(3).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(2).click();
+                                $(".betSpotContainer--3V3jM").eq(3).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (increment_sequence == 2) {
@@ -929,11 +1573,22 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Coin Flip and Cash Hunt now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(2).click();
-                            $(".betSpotContainer--3V3jM").eq(6).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(2).click();
+                                $(".betSpotContainer--3V3jM").eq(6).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (increment_sequence == 3) {
@@ -941,11 +1596,22 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Coin Flip and Crazy Time now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(2).click();
-                            $(".betSpotContainer--3V3jM").eq(7).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(2).click();
+                                $(".betSpotContainer--3V3jM").eq(7).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (increment_sequence == 4) {
@@ -953,11 +1619,22 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Pachinko and Cash Hunt now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(3).click();
-                            $(".betSpotContainer--3V3jM").eq(6).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(3).click();
+                                $(".betSpotContainer--3V3jM").eq(6).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (increment_sequence == 5) {
@@ -965,11 +1642,22 @@ function autoPlay() {
                         console.log(spacing);
                         console.log("I'm placing a bet on Pachinko and Crazy Time now.");
                         console.log(spacing);
-                        setTimeout(function() {
-                            for (var x = 0; x < user_wager_amount; x++) {
-                                // Click betting spot
-                                $(".betSpotContainer--3V3jM").eq(3).click();
-                                $(".betSpotContainer--3V3jM").eq(7).click();
+                        clicking = setInterval(function() {
+                            // Check if bet spot is available to click
+                            var test = checkBetSpot();
+    
+                            if (test == true) {
+                                for (var x = 0; x < user_wager_amount; x++) {
+                                    // Click betting spot
+                                    $(".betSpotContainer--3V3jM").eq(3).click();
+                                    $(".betSpotContainer--3V3jM").eq(7).click();
+
+                                    // Clear bonus round flag
+                                    bonus_round = false;
+
+                                    // Clear interval
+                                    clearInterval(clicking);
+                                }
                             }
                         }, click_delay);
                 } else {
@@ -977,11 +1665,22 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Cash Hunt and Crazy Time now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(6).click();
-                            $(".betSpotContainer--3V3jM").eq(7).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(6).click();
+                                $(".betSpotContainer--3V3jM").eq(7).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
 
@@ -1016,10 +1715,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Coin Flip now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(2).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(2).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 }
@@ -1029,10 +1739,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Pachinko now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(3).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(3).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 }
@@ -1042,10 +1763,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Cash Hunt now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(6).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(6).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 }
@@ -1055,10 +1787,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Crazy Time now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(7).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(7).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 }
@@ -1092,10 +1835,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Coin Flip now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(2).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(2).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 }
@@ -1105,10 +1859,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Pachinko now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(3).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(3).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 }
@@ -1118,10 +1883,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Cash Hunt now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(6).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(6).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 }
@@ -1131,10 +1907,21 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on Crazy Time now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(7).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(7).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 }
@@ -1213,6 +2000,24 @@ javascript:(function() {
     }
     l('//code.jquery.com/jquery-3.2.1.min.js', 'jquery')
 })();
+
+/* =====================
+ * Function name: checkBetSpot
+ * Function description: this function will check if the betting spot is available
+ * Date: 07/11/20
+ * =====================
+ */
+function checkBetSpot() {
+    // Grab betting spot
+    var betting_spot = $(".perspectiveContainer--3orzS.collapsed--D0F2p").length;
+
+    // Determine if it's available to click or not
+    if (betting_spot == 1) {
+        return false;
+    } else {
+        return true;
+    }
+}
 
 // Run bot after 5 seconds
 setTimeout(function() {
