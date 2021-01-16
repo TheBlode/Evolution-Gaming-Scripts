@@ -176,7 +176,7 @@ function autoPlay() {
         $div.attr("id", "debug_area");
 
         // CSS
-        $("#debug_area").css({"position": "absolute", "font-size": "x-large", "width": "50%", "height": "98%", "overflow": "overlay", "line-height": "20pt"});
+        $("#debug_area").css({"position": "absolute", "font-size": "x-large", "width": "100%", "height": "98%", "overflow": "overlay", "line-height": "20pt"});
     }
 
     // Debug for the console
@@ -1373,6 +1373,9 @@ function autoPlay() {
                         // Scroll to top
                         scrollToTopOfDebug();
                     }
+
+                    // Clear bonus round flag
+                    bonus_round = false;
                 }
             }
 
@@ -1534,6 +1537,9 @@ function autoPlay() {
                         // Scroll to top
                         scrollToTopOfDebug();
                     }
+
+                    // Clear bonus round flag
+                    bonus_round = false;
                 }
             }
         }
@@ -1545,7 +1551,6 @@ function autoPlay() {
             check = false;
             iteration_number = 0;
             chance_check = false;
-            bonus_round = false;
         }
 
         // Increment counter
