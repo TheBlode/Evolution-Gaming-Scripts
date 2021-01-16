@@ -55,6 +55,11 @@ var user_round_skipping = 2;
  * ======================================================================== */
 var user_clean_interface = 1;
 
+/* ========================================================================
+ * Show on screen debug on the game window
+ * ======================================================================== */
+var user_on_screen_debug = 1;
+
 /* =====================
  * End of bot settings
  * =====================
@@ -164,10 +169,29 @@ function autoPlay() {
         $(".messagesWinnersChat--2UVhf").hide();
     }
 
+    // Output debug on game screen if user wants it
+    if (user_on_screen_debug == 1) {
+        // Create debug area
+        var $div = $("<div />").appendTo("body");
+        $div.attr("id", "debug_area");
+
+        // CSS
+        $("#debug_area").css({"position": "absolute", "font-size": "x-large", "width": "50%", "height": "98%", "overflow": "overlay", "line-height": "20pt"});
+    }
+
     // Debug for the console
     console.log(spacing);
     console.log("I'm going to start playing!");
     console.log(spacing);
+
+    // Debug for page
+    if (user_on_screen_debug == 1) {
+        // Append to debug area
+        $("#debug_area").append("I'm going to start playing!<br />");
+
+        // Scroll to top
+        scrollToTopOfDebug();
+    }
 
     // Perform main loop
     function f() {
@@ -224,6 +248,15 @@ function autoPlay() {
             console.log("The final result is " + regex_formatted);
             console.log(spacing);
 
+            // Debug for page
+            if (user_on_screen_debug == 1) {
+                // Append to debug area
+                $("#debug_area").append("The final result is " + regex_formatted + "<br />");
+
+                // Scroll to top
+                scrollToTopOfDebug();
+            }
+
             // Autoplay mode #1
             if (autoplay_mode == 1 && chance_check == false) {
                 // Fetch random number
@@ -235,6 +268,14 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #1 now.");
                     console.log(spacing);
+                    // Debug for page
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on #1 now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -260,6 +301,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #2 now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on #2 now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -285,6 +333,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on 2 rolls now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on 2 rolls now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -310,6 +365,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #5 now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on #5 now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -335,6 +397,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #10 now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on #10 now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -360,6 +429,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on 4 rolls now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on 4 rolls now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -391,6 +467,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #1 now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on #1 now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -416,6 +499,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #2 now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on #2 now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -441,6 +531,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on 2 rolls now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on 2 rolls now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -466,6 +563,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #5 now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on #5 now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -491,6 +595,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #10 now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on #10 now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -516,6 +627,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on 4 rolls now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on 4 rolls now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -553,6 +671,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #1 now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on #1 now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -581,6 +706,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #2 now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on #2 now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -606,6 +738,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on 2 rolls now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on 2 rolls.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -631,6 +770,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #5 now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on #5 now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -656,6 +802,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #10 now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on #10 now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -681,6 +834,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on 4 rolls now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on 4 rolls now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -715,6 +875,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #1 now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on #1 now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -740,6 +907,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #2 now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on #2 now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -765,6 +939,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on 2 rolls now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on 2 rolls now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -790,6 +971,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #5 now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on #5 now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -815,6 +1003,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #10 now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on #10 now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -840,6 +1035,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on 4 rolls now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on 4 rolls now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -890,6 +1092,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on 2 rolls now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on 2 rolls now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -915,6 +1124,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on 4 rolls now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on 4 rolls now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -958,6 +1174,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #1 now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on #1 now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -983,6 +1206,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #2 now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on #2 now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -1008,6 +1238,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on 2 rolls now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on 2 rolls now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -1033,6 +1270,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #5 now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on #5 now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -1058,6 +1302,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #10 now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on #10 now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -1083,6 +1334,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on 4 rolls now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on 4 rolls now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -1108,6 +1366,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm skipping this round!");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm skipping this round!<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                 }
             }
 
@@ -1122,6 +1387,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on 2 rolls now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on 2 rolls now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -1147,6 +1419,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on 4 rolls now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on 4 rolls now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -1184,6 +1463,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on 2 rolls now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on 2 rolls now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -1209,6 +1495,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on 4 rolls now.");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on 4 rolls now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -1234,6 +1527,13 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm skipping this round!");
                     console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm skipping this round!<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                 }
             }
         }
@@ -1306,6 +1606,17 @@ function checkBetSpot() {
     } else {
         return true;
     }
+}
+
+/* =====================
+ * Function name: scrollToTopOfDebug
+ * Function description: this function show the freshest line of debug on the onscreen debug
+ * Date: 07/11/20
+ * =====================
+ */
+function scrollToTopOfDebug() {
+    // Scroll to top of debug area
+    $("#debug_area").scrollTop(1000000);
 }
 
 /* =====================
