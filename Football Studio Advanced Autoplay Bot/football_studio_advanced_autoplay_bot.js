@@ -167,6 +167,9 @@ function autoPlay() {
             // Set counter value
             count = iteration_number + 10;
 
+            // Clear interval
+            clearInterval(clicking);
+
             // Output final hand to console
             console.log(spacing);
             console.log("The final result is " + result);

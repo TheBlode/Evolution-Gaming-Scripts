@@ -188,6 +188,9 @@ function autoPlay() {
                 bonus_round = true;
             }
 
+            // Clear interval
+            clearInterval(clicking);
+
             // Output final hand to console
             console.log(spacing);
             console.log("The final result is " + regex_formatted);
