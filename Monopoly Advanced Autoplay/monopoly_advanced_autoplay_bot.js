@@ -1242,6 +1242,7 @@ function autoPlay() {
             check = false;
             iteration_number = 0;
             chance_check = false;
+            bonus_round = false;
         }
 
         // Increment counter

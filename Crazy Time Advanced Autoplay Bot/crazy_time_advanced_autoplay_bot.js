@@ -25,7 +25,7 @@
 /* ========================================================================
  * Set autoplay mode and other game settings
  * ======================================================================== */
-var autoplay_mode = 10;
+var autoplay_mode = 11;
 
 /* ========================================================================
  * Disable video (when you set this to 1, video will be disabled)
@@ -1942,6 +1942,7 @@ function autoPlay() {
         if (i > count) {
             check = false;
             iteration_number = 0;
+            bonus_round = false;
         }
 
         // Increment counter
