@@ -21,7 +21,7 @@
 /* ========================================================================
  * Set autoplay mode and other game settings
  * ======================================================================== */
-var autoplay_mode = 7;
+var autoplay_mode = 2;
 
 /* ========================================================================
  * Disable video (when you set this to 1, video will be disabled)
@@ -31,7 +31,7 @@ var disable_video = 0;
 /* ========================================================================
  * Set click delay (if you're having issues with clicks on the UI)
  * ======================================================================== */
-var click_delay = 8000;
+var click_delay = 2000;
 
 /* ========================================================================
  * Set wager amount in units (default is 1 unit)
@@ -127,6 +127,10 @@ var forty_streak = 0;
 var sequence_counter = 0;
 var check = false;
 var count = 0;
+var clicking = "";
+var bonus_round = false;
+var bonus_round_counter = 0;
+var chance_check = false;
 
 /* =====================
  * Functions that will be used by the bot
@@ -188,7 +192,7 @@ function autoPlay() {
         }
 
         // Main bot logic
-        if (regex_formatted != undefined && check == false) {
+        if (regex_formatted != undefined && check == false && bonus_round == false && chance_check == false) {
             // Flip check flag
             check = true;
 
@@ -198,13 +202,27 @@ function autoPlay() {
             // Set counter value
             count = iteration_number + 40;
 
+            // Check for bonus round
+            var bonus_round_check = regex_formatted.match(/r/g);
+
+            if (bonus_round_check != null) {
+                bonus_round = true;
+            }
+
+            // Check for bonus round
+            var chance_round_check = regex_formatted.match(/ch/g);
+
+            if (chance_round_check != null) {
+               chance_check = true;
+            }
+
             // Output final hand to console
             console.log(spacing);
             console.log("The final result is " + regex_formatted);
             console.log(spacing);
 
             // Autoplay mode #1
-            if (autoplay_mode == 1) {
+            if (autoplay_mode == 1 && chance_check == false) {
                 // Fetch random number
                 bet_type = randomNumber(1, 6);
 
@@ -214,10 +232,24 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #1 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(0).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(0).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 2) {
@@ -225,10 +257,24 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #2 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(1).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(1).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 3) {
@@ -236,10 +282,24 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on 2 rolls now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(2).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(2).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 4) {
@@ -247,10 +307,24 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #5 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(3).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(3).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 5) {
@@ -258,10 +332,24 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #10 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(4).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(4).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else {
@@ -269,27 +357,55 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on 4 rolls now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(5).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(5).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 }
             }
 
             // Autoplay mode #2
-            if (autoplay_mode == 2) {
+            if (autoplay_mode == 2 && chance_check == false) {
                 // Place bet
                 if (increment_sequence == 1) {
                     // Output
                     console.log(spacing);
                     console.log("I'm placing a bet on #1 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(0).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(0).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (increment_sequence == 2) {
@@ -297,10 +413,24 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #2 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(1).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(1).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (increment_sequence == 3) {
@@ -308,10 +438,24 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on 2 rolls now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(2).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(2).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (increment_sequence == 4) {
@@ -319,10 +463,24 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #5 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(3).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(3).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (increment_sequence == 5) {
@@ -330,10 +488,24 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #10 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(4).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(4).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else {
@@ -341,10 +513,24 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on 4 rolls now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(5).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(5).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
 
@@ -357,17 +543,31 @@ function autoPlay() {
             }
 
             // Autoplay mode #3
-            if (autoplay_mode == 3) {
+            if (autoplay_mode == 3 && chance_check == false) {
                 // Place bet
                 if (decrement_sequence == 1) {
                     // Output
                     console.log(spacing);
                     console.log("I'm placing a bet on #1 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(0).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(0).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
 
@@ -378,10 +578,24 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #2 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(1).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(1).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (decrement_sequence == 3) {
@@ -389,10 +603,24 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on 2 rolls now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(2).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(2).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (decrement_sequence == 4) {
@@ -400,10 +628,24 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #5 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(3).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(3).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (decrement_sequence == 5) {
@@ -411,10 +653,24 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #10 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(4).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(4).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else {
@@ -422,10 +678,24 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on 4 rolls now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(5).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(5).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 }
@@ -435,17 +705,31 @@ function autoPlay() {
             }
 
             // Autoplay mode #4
-            if (autoplay_mode == 4) {
+            if (autoplay_mode == 4 && chance_check == false) {
                 // Place bet
                 if (increment_sequence == 1) {
                     // Output
                     console.log(spacing);
                     console.log("I'm placing a bet on #1 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(0).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(0).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (increment_sequence == 2) {
@@ -453,10 +737,24 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #2 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(1).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(1).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (increment_sequence == 3) {
@@ -464,10 +762,24 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on 2 rolls now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(2).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(2).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (increment_sequence == 4) {
@@ -475,10 +787,24 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #5 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(3).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(3).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (increment_sequence == 5) {
@@ -486,10 +812,24 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #10 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(4).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(4).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else {
@@ -497,10 +837,24 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on 4 rolls now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(5).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(5).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
 
@@ -526,17 +880,31 @@ function autoPlay() {
             }
 
             // Autoplay mode #5
-            if (autoplay_mode == 5) {
+            if (autoplay_mode == 5 && chance_check == false) {
                 // Place bet
                 if (increment_sequence == 1) {
                     // Output
                     console.log(spacing);
                     console.log("I'm placing a bet on 2 rolls now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(2).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(2).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else {
@@ -544,10 +912,24 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on 4 rolls now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(5).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(5).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
 
@@ -560,7 +942,7 @@ function autoPlay() {
             }
 
             // Autoplay mode #6
-            if (autoplay_mode == 6) {
+            if (autoplay_mode == 6 && chance_check == false) {
                 // Generate number with frequency of skipping rounds.
                 random_number = user_round_skipping + 7;
 
@@ -573,10 +955,24 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #1 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(0).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(0).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 2) {
@@ -584,10 +980,24 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #2 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(1).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(1).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 3) {
@@ -595,10 +1005,24 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on 2 rolls now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(2).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(2).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 4) {
@@ -606,10 +1030,24 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #5 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(3).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(3).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 5) {
@@ -617,10 +1055,24 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on #10 now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(4).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(4).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 6) {
@@ -628,10 +1080,24 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on 4 rolls now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(5).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(5).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else {
@@ -643,7 +1109,7 @@ function autoPlay() {
             }
 
             // Autoplay mode #7
-            if (autoplay_mode == 7) {
+            if (autoplay_mode == 7 && chance_check == false) {
                 // Fetch random number
                 bet_type = randomNumber(1, 2);
 
@@ -653,10 +1119,24 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on 2 rolls now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(2).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(2).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else {
@@ -664,17 +1144,31 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on 4 rolls now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(5).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(5).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 }
             }
 
             // Autoplay mode #8
-            if (autoplay_mode == 8) {
+            if (autoplay_mode == 8 && chance_check == false) {
                 // Generate number with frequency of skipping rounds.
                 random_number = user_round_skipping + 3;
 
@@ -687,10 +1181,24 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on 2 rolls now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(2).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(2).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else if (bet_type == 2) {
@@ -698,10 +1206,24 @@ function autoPlay() {
                     console.log(spacing);
                     console.log("I'm placing a bet on 4 rolls now.");
                     console.log(spacing);
-                    setTimeout(function() {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpot--VXrdG").eq(5).click();
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot--VXrdG").eq(5).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
                         }
                     }, click_delay);
                 } else {
@@ -713,10 +1235,13 @@ function autoPlay() {
             }
         }
 
-        // Check
+        // Unset chance check
+        chance_check = false;
+
         if (i > count) {
             check = false;
             iteration_number = 0;
+            chance_check = false;
         }
 
         // Increment counter
@@ -759,6 +1284,24 @@ function click(x, y) {
     var el = document.elementFromPoint(x, y);
 
     el.dispatchEvent(ev);
+}
+
+/* =====================
+ * Function name: checkBetSpot
+ * Function description: this function will check if the betting spot is available
+ * Date: 07/11/20
+ * =====================
+ */
+function checkBetSpot() {
+    // Grab betting spot
+    var betting_spot = $(".perspectiveContainer--TPit_.collapsed--3MolW").length;
+
+    // Determine if it's available to click or not
+    if (betting_spot == 1) {
+        return false;
+    } else {
+        return true;
+    }
 }
 
 /* =====================
