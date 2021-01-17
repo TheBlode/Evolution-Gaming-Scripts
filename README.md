@@ -14,6 +14,7 @@ Welcome to my Evolution Gaming Scripts page! Evolution's autoplay feature is sev
         - Dream Catcher: https://evolivecasino.unibet.co.uk/frontend/evo/r2/#table_id=MOWDream00000001&category=moneywheel&game=moneywheel
         - Monopoly: https://evolivecasino.unibet.co.uk/frontend/evo/r2/#table_id=Monopoly00000001&category=monopoly&game=monopoly
         - Football Studio: https://evolivecasino.unibet.co.uk/frontend/evo/r2/#table_id=TopCard000000001&category=topcard&game=topcard
+        - Lightning Roulette: https://evolivecasino.unibet.co.uk/frontend/evo/r2/#table_id=LightningTable01&category=roulette&game=roulette
     - Otherwise, in Chrome, you can select the iFrame by navigating to the Console tab, selecting the "top" dropdown and selecting "KindredGameIframe". 
 - Open up the JavaScript file in any text editor, copy **ALL** the text, paste into your browsers console and run the code.
 
@@ -57,6 +58,12 @@ Football Studio offers the following autoplay modes;
 - Sequence betting eg: (home, home, away, away, home, home, away, away, etc)
 - Streak betting eg: (4 home wins in a row, bet on away)
 - Random bets (with round skipping)
+
+## Lightning Roulette Advanced Autoplay Bot
+**NB: Lightning Roulette bot is still in active development. It will only work on a standard build of Chrome (with no bookmark bar) running with a screen resolution of 1280 x 720**
+Lightning Roulette offers the following autoplay modes;
+- random number betting (and skipping some rounds)
+- random number betting (without skipping any rounds)
 
 ## Troubleshooting
 - If clicks are not registering on your game, try adjusting the click_delay value in the script to a higher or lower value.
