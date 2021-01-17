@@ -61,6 +61,7 @@ Football Studio offers the following autoplay modes;
 
 ## Lightning Roulette Advanced Autoplay Bot
 **NB: Lightning Roulette bot is still in active development. It will only work on a standard build of Chrome (with no bookmark bar), with the window maximized and running with a screen resolution of 1280 x 720**
+
 Lightning Roulette offers the following autoplay modes;
 - random number betting (and skipping some rounds)
 - random number betting (without skipping any rounds)
