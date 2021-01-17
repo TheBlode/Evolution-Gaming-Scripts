@@ -73,6 +73,5 @@ Lightning Roulette offers the following autoplay modes;
 - None known at the moment.
 
 ## Coming Soon
-- Lightning Roulette Advanced Autoplay Bot
 - Infinite Blackjack / Power Blackjack / Freebet Blackjack Advanced Autoplay Bots
 - More betting modes for all bots
