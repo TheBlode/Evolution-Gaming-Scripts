@@ -2502,7 +2502,6 @@ function autoPlay() {
                         for (var x = 0; x < user_wager_amount; x++) {
                             // Click betting spot
                             $(".betSpotContainer--3V3jM").eq(0).click();
-                            $(".betSpotContainer--3V3jM").eq(1).click();
 
                             // Clear bonus round flag
                             bonus_round = false;
