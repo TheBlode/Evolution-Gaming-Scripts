@@ -25,7 +25,7 @@
 /* ========================================================================
  * Set autoplay mode and other game settings
  * ======================================================================== */
-var autoplay_mode = 11;
+var autoplay_mode = 10;
 
 /* ========================================================================
  * Disable video (when you set this to 1, video will be disabled)
@@ -272,6 +272,22 @@ function autoPlay() {
             if (user_on_screen_debug == 1) {
                 // Append to debug area
                 $("#debug_area").append("The final result is " + regex_formatted + "<br />");
+
+                // Scroll to top
+                scrollToTopOfDebug();
+            }
+
+            
+            // Debug for the console
+            console.log(spacing);
+            var balance = getBalance();
+            console.log("Your balance is: " + balance);
+            console.log(spacing);
+
+            // Debug for page
+            if (user_on_screen_debug == 1) {
+                // Append to debug area
+                $("#debug_area").append("Your balance is: " + balance + "<br />");
 
                 // Scroll to top
                 scrollToTopOfDebug();
@@ -2520,24 +2536,6 @@ function click(x, y) {
 }
 
 /* =====================
- * Main code
- * =====================
- */
-// Inject jQuery for us to use
-javascript:(function() {
-    function l(u, i) {
-        var d = document;
-        if (!d.getElementById(i)) {
-            var s = d.createElement('script');
-            s.src = u;
-            s.id = i;
-            d.body.appendChild(s);
-        }
-    }
-    l('//code.jquery.com/jquery-3.2.1.min.js', 'jquery')
-})();
-
-/* =====================
  * Function name: checkBetSpot
  * Function description: this function will check if the betting spot is available
  * Date: 07/11/20
@@ -2565,6 +2563,35 @@ function scrollToTopOfDebug() {
     // Scroll to top of debug area
     $("#debug_area").scrollTop(1000000);
 }
+
+/* =====================
+ * Function name: getBalance
+ * Function description: this function fetch your balance
+ * Date: 07/11/20
+ * =====================
+ */
+function getBalance() {
+    // Grab balance
+    return $("span[data-role='balance-label__value']").html();
+}
+
+/* =====================
+ * Main code
+ * =====================
+ */
+// Inject jQuery for us to use
+javascript:(function() {
+    function l(u, i) {
+        var d = document;
+        if (!d.getElementById(i)) {
+            var s = d.createElement('script');
+            s.src = u;
+            s.id = i;
+            d.body.appendChild(s);
+        }
+    }
+    l('//code.jquery.com/jquery-3.2.1.min.js', 'jquery')
+})();
 
 // Run bot after 5 seconds
 setTimeout(function() {
