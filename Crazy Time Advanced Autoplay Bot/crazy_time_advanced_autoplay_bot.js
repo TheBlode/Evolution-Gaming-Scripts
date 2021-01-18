@@ -254,7 +254,7 @@ function autoPlay() {
                     // Append to debug area
                     $("#debug_area").append("Your winnings are: <font color=\"green\">" + winnings + "</font><br />");
                 }
-
+ 
                 // Scroll to top
                 scrollToTopOfDebug();
             }
