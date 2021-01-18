@@ -73,17 +73,6 @@ var user_insurance_bet = 1;
  * End of bot settings
  * =====================
  */
-// Set streak size to wait for before betting
-var user_streak_size = 2;
-// Set wager amount (default is 1 unit)
-var user_wager_amount = 1;
-
-// Autoplay mode #1
-// Bet randomly on a number
-if (autoplay_mode == 1) {
-    // Bet randomly on a number
-}
-
 // Autoplay mode #2
 // Increment bet in a sequence (1, 2, 5, 10, Coin Flip, Pachinko, Cash Hunt, Crazy Time then start over)
 if (autoplay_mode == 2) {
@@ -102,46 +91,16 @@ if (autoplay_mode == 4) {
     var increment_sequence = 1;
 }
 
-// Autoplay mode #5
-// Bet randomly on a number
-if (autoplay_mode == 5) {
-    // Bet randomly on a number
-}
-
 // Autoplay mode #6
 // Bonus round betting only
 if (autoplay_mode == 6) {
     var increment_sequence = 1;
 }
 
-// Autoplay mode #7
-// Random bonus games only betting
-if (autoplay_mode == 7) {
-    // Bet randomly on a number
-}
-
-// Autoplay mode #8
-// Random bonus games only betting (but skip some rounds)
-if (autoplay_mode == 8) {
-    // Bet randomly on a number
-}
-
 // Autoplay mode #9
 // Bonus round betting only (double bonus)
 if (autoplay_mode == 9) {
     var increment_sequence = 1;
-}
-
-// Autoplay mode #10
-// Random bonus games only betting (double bonus)
-if (autoplay_mode == 10) {
-    // Bet randomly on a number
-}
-
-// Autoplay mode #11
-// Random bonus games only betting (but skip some rounds) (double bonus)
-if (autoplay_mode == 11) {
-    // Bet randomly on a number
 }
 
 // Add some spacing for the output for the user
@@ -152,10 +111,6 @@ var i = 0;
 
 // This variable will determine how long the bot will run for (a setting of 100 means the bot will run for 50 seconds. (The sum is how_many_times / 2) * 1 = x seconds)
 var how_many_times = 1000000;
-var one_streak = 0;
-var two_streak = 0;
-var five_streak = 0;
-var ten_streak = 0;
 var sequence_counter = 0;
 var check = false;
 var count = 0;
@@ -284,7 +239,26 @@ function autoPlay() {
                 scrollToTopOfDebug();
             }
 
-            
+            // Debug for the console
+            console.log(spacing);
+            var winnings = getWinnings();
+            console.log("Your winnings are: " + winnings);
+            console.log(spacing);
+
+            // Debug for page
+            if (user_on_screen_debug == 1) {
+                if (winnings == "0") {
+                // Append to debug area
+                $("#debug_area").append("Your winnings are: <font color=\"red\">" + winnings + "</font><br />");
+                } else {
+                    // Append to debug area
+                    $("#debug_area").append("Your winnings are: <font color=\"green\">" + winnings + "</font><br />");
+                }
+
+                // Scroll to top
+                scrollToTopOfDebug();
+            }
+
             // Debug for the console
             console.log(spacing);
             var balance = getBalance();
@@ -2600,6 +2574,17 @@ function scrollToTopOfDebug() {
 function getBalance() {
     // Grab balance
     return $("span[data-role='balance-label__value']").html();
+}
+
+/* =====================
+ * Function name: getWinnings
+ * Function description: this function fetch your winnings
+ * Date: 07/11/20
+ * =====================
+ */
+function getWinnings() {
+    // Grab balance
+    return $("span[data-role='total-bet-label__value']").html();
 }
 
 /* =====================
