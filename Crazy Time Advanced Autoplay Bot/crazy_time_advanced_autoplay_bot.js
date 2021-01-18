@@ -64,6 +64,11 @@ var user_clean_interface = 1;
  * ======================================================================== */
 var user_on_screen_debug = 1;
 
+/* ========================================================================
+ * Insurance on main bet by betting on one (set to 0 to disable) (best used for bonus rounds only)
+ * ======================================================================== */
+var user_insurance_bet = 1;
+
 /* =====================
  * End of bot settings
  * =====================
@@ -160,6 +165,7 @@ var clicking_three = "";
 var clicking_four = "";
 var bonus_round = false;
 var bonus_round_counter = 0;
+var clicking_insurance = "";
 
 /* =====================
  * Functions that will be used by the bot
@@ -262,6 +268,7 @@ function autoPlay() {
             clearInterval(clicking_two);
             clearInterval(clicking_three);
             clearInterval(clicking_four);
+            clearInterval(clicking_insurance);
 
             // Output final hand to console
             console.log(spacing);
@@ -2485,6 +2492,26 @@ function autoPlay() {
                     bonus_round = false;
                 }
             }
+
+            if (user_insurance_bet == 1) {
+                clicking_insurance = setInterval(function() {
+                    // Check if bet spot is available to click
+                    var test = checkBetSpot();
+
+                    if (test == true) {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpotContainer--3V3jM").eq(0).click();
+
+                            // Clear bonus round flag
+                            bonus_round = false;
+
+                            // Clear interval
+                            clearInterval(clicking_insurance);
+                        }
+                    }
+                }, click_delay);
+            }
         }
 
         // Check
@@ -2560,7 +2587,7 @@ function checkBetSpot() {
  * =====================
  */
 function scrollToTopOfDebug() {
-    // Scroll to top of debug area
+    // Scroll to top of debug area  
     $("#debug_area").scrollTop(1000000);
 }
 
