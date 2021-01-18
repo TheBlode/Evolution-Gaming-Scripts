@@ -63,7 +63,7 @@ var i = 0;
 
 // This variable will determine how long the bot will run for (a setting of 100 means the bot will run for 50 seconds. (The sum is how_many_times / 2) * 1 = x seconds)
 var how_many_times = 1000000;
-var timeout = 1000;
+var timeout = 250;
 var check = false;
 var count = 0;
 var new_round = false;
@@ -160,7 +160,7 @@ function autoPlay() {
             iteration_number = i;
 
             // Set counter value
-            count = iteration_number + 40;
+            count = iteration_number + 80;
 
             // Output final hand to console
             console.log(spacing);
@@ -175,8 +175,13 @@ function autoPlay() {
 
             // Debug for page
             if (user_on_screen_debug == 1) {
+                if (winnings == "0") {
                 // Append to debug area
-                $("#debug_area").append("Your winnings are: " + winnings + "<br />");
+                $("#debug_area").append("Your winnings are: <font color=\"red\">" + winnings + "</font><br />");
+                } else {
+                    // Append to debug area
+                    $("#debug_area").append("Your winnings are: <font color=\"green\">" + winnings + "</font><br />");
+                }
 
                 // Scroll to top
                 scrollToTopOfDebug();
