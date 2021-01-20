@@ -17,6 +17,7 @@ Welcome to my Evolution Gaming Scripts page! Evolution's autoplay feature is sev
         - Lightning Roulette: https://evolivecasino.unibet.co.uk/frontend/evo/r2/#table_id=LightningTable01&category=roulette&game=roulette
     - Otherwise, in Chrome, you can select the iFrame by navigating to the Console tab, selecting the "top" dropdown and selecting "KindredGameIframe". 
 - Open up the JavaScript file in any text editor, copy **ALL** the text, paste into your browsers console and run the code.
+- **ALL** bots will only work in Evolution's "classic" UI.
 
 ## Crazy Time Advanced Autoplay Bot
 Crazy Time Advanced Autoplay Bot offers the following autoplay modes;
