@@ -30,7 +30,7 @@ var autoplay_mode = 10;
 /* ========================================================================
  * Disable video (when you set this to 1, video will be disabled)
  * ======================================================================== */
-var disable_video = 1;
+var disable_video = 0;
 
 /* ========================================================================
  * Set click delay (if you're having issues with clicks on the UI)
@@ -66,6 +66,8 @@ var user_on_screen_debug = 1;
 
 /* ========================================================================
  * Insurance on main bet by betting on one (set to 0 to disable) (best used for bonus rounds only)
+ * Set to 1 to cover only 1
+ * Set to 2 to cover 1 & 2
  * ======================================================================== */
 var user_insurance_bet = 1;
 
@@ -121,6 +123,8 @@ var clicking_four = "";
 var bonus_round = false;
 var bonus_round_counter = 0;
 var clicking_insurance = "";
+var game_state_check = null;
+var regex_formatted = "";
 
 /* =====================
  * Functions that will be used by the bot
@@ -152,7 +156,7 @@ function autoPlay() {
 
         // Hide winner's chat
         $(".messagesWinnersChat--2UVhf").hide();
-
+        $(".top-container--33V8c").hide();
     }
 
     // Output debug on game screen if user wants it
@@ -162,7 +166,7 @@ function autoPlay() {
         $div.attr("id", "debug_area");
 
         // CSS
-        $("#debug_area").css({"position": "absolute", "font-size": "x-large", "width": "100%", "height": "98%", "overflow": "overlay", "line-height": "20pt"});
+        $("#debug_area").css({"position": "absolute", "font-size": "x-large", "width": "100%", "height": "98%", "overflow": "overlay", "line-height": "20pt", "background": "black"});
     }
 
     // Debug for the console
@@ -181,9 +185,6 @@ function autoPlay() {
 
     // Perform main loop
     function f() {
-        // Send fake click to keep game alive
-        click(0, 0);
-
         // Get winning result
         var result = $(".gameResult--neLl-").html();
 
@@ -193,15 +194,21 @@ function autoPlay() {
 
             if (regex_match != undefined) {
                 // Format result
-                var regex_formatted = regex_match[0].replace("data-role-name=", "");
+                regex_formatted = regex_match[0].replace("data-role-name=", "");
                 regex_formatted = regex_formatted.replace(/\"/, "");
                 regex_formatted = regex_formatted.replace(/\"/, "");
                 result = regex_formatted;
             }
         }
 
+        var game_state = $("div[data-role='status-text']").html();
+
+        if (game_state != undefined) {
+            game_state_check = game_state.match(/PLACE/g);
+        }
+
         // Main bot logic
-        if (regex_formatted != undefined && check == false && bonus_round == false) {
+        if (check == false && bonus_round == false && game_state_check != null) {
             // Flip check flag
             check = true;
 
@@ -216,6 +223,21 @@ function autoPlay() {
 
             if (bonus_round_check != null) {
                 bonus_round = true;
+
+                // Format bonus output
+                if (regex_formatted == "b1") {
+                    // Cash Hunt
+                    regex_formatted = "Cash Hunt";
+                } else if (regex_formatted == "b2") {
+                    // Pachinko
+                    regex_formatted = "Pachinko";
+                } else if (regex_formatted == "b3") {
+                    // Coin Flip
+                    regex_formatted = "Coin Flip";
+                } else if (regex_formatted == "b4") {
+                    // Crazy Time
+                    regex_formatted = "Crazy Time";
+                }
             }
 
             // Clear pending clicks
@@ -232,8 +254,31 @@ function autoPlay() {
 
             // Debug for page
             if (user_on_screen_debug == 1) {
-                // Append to debug area
-                $("#debug_area").append("The final result is " + regex_formatted + "<br />");
+                if (regex_formatted == "1") {
+                    // Append to debug area
+                    $("#debug_area").append("The final result is <font color=\"#05C3DD\">" + regex_formatted + "</font><br />");
+                } else if (regex_formatted == "2") {
+                    // Append to debug area
+                    $("#debug_area").append("The final result is <font color=\"yellow\">" + regex_formatted + "</font><br />");
+                } else if (regex_formatted == "5") {
+                    // Append to debug area
+                    $("#debug_area").append("The final result is <font color=\"pink\">" + regex_formatted + "</font><br />");
+                } else if (regex_formatted == "10") {
+                    // Append to debug area
+                    $("#debug_area").append("The final result is <font color=\"purple\">" + regex_formatted + "</font><br />");
+                } else if (regex_formatted == "Coin Flip") {
+                    // Append to debug area
+                    $("#debug_area").append("The final result is <font color=\"#006994\">" + regex_formatted + "</font><br />");
+                } else if (regex_formatted == "Cash Hunt") {
+                    // Append to debug area
+                    $("#debug_area").append("The final result is <font color=\"#32CD32\">" + regex_formatted + "</font><br />");
+                } else if (regex_formatted == "Crazy Time") {
+                    // Append to debug area
+                    $("#debug_area").append("The final result is <font color=\"#fe2c54\">" + regex_formatted + "</font><br />");
+                } else if (regex_formatted == "Pachinko") {
+                    // Append to debug area
+                    $("#debug_area").append("The final result is <font color=\"#7F00FF\">" + regex_formatted + "</font><br />");
+                }
 
                 // Scroll to top
                 scrollToTopOfDebug();
@@ -2476,6 +2521,25 @@ function autoPlay() {
                         for (var x = 0; x < user_wager_amount; x++) {
                             // Click betting spot
                             $(".betSpotContainer--3V3jM").eq(0).click();
+
+                            // Clear bonus round flag
+                            bonus_round = false;
+
+                            // Clear interval
+                            clearInterval(clicking_insurance);
+                        }
+                    }
+                }, click_delay);
+            } else if (user_insurance_bet == 2) {
+                clicking_insurance = setInterval(function() {
+                    // Check if bet spot is available to click
+                    var test = checkBetSpot();
+
+                    if (test == true) {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpotContainer--3V3jM").eq(0).click();
+                            $(".betSpotContainer--3V3jM").eq(1).click();
 
                             // Clear bonus round flag
                             bonus_round = false;
