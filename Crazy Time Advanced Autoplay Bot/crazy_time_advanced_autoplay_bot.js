@@ -125,6 +125,7 @@ var bonus_round_counter = 0;
 var clicking_insurance = "";
 var game_state_check = null;
 var regex_formatted = "";
+var skip = false;
 
 /* =====================
  * Functions that will be used by the bot
@@ -1600,6 +1601,7 @@ function autoPlay() {
                     }, click_delay);
                 } else {
                     // Skip the round
+                    skip = true;
                     console.log(spacing);
                     console.log("I'm skipping this round!");
                     console.log(spacing);
@@ -1996,6 +1998,7 @@ function autoPlay() {
                     }, click_delay);
                 } else {
                     // Skip the round
+                    skip = true;
                     console.log(spacing);
                     console.log("I'm skipping this round!");
                     console.log(spacing);
@@ -2496,6 +2499,7 @@ function autoPlay() {
 
                 if (bet_type > 4) {
                     // Skip the round
+                    skip = true;
                     console.log(spacing);
                     console.log("I'm skipping this round!");
                     console.log(spacing);
@@ -2512,44 +2516,49 @@ function autoPlay() {
                 }
             }
 
-            if (user_insurance_bet == 1) {
-                clicking_insurance = setInterval(function() {
-                    // Check if bet spot is available to click
-                    var test = checkBetSpot();
+            if (skip == false) {
+                if (user_insurance_bet == 1) {
+                    clicking_insurance = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
 
-                    if (test == true) {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(0).click();
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(0).click();
 
-                            // Clear bonus round flag
-                            bonus_round = false;
+                                // Clear bonus round flag
+                                bonus_round = false;
 
-                            // Clear interval
-                            clearInterval(clicking_insurance);
+                                // Clear interval
+                                clearInterval(clicking_insurance);
+                            }
                         }
-                    }
-                }, click_delay);
-            } else if (user_insurance_bet == 2) {
-                clicking_insurance = setInterval(function() {
-                    // Check if bet spot is available to click
-                    var test = checkBetSpot();
+                    }, click_delay);
+                } else if (user_insurance_bet == 2) {
+                    clicking_insurance = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
 
-                    if (test == true) {
-                        for (var x = 0; x < user_wager_amount; x++) {
-                            // Click betting spot
-                            $(".betSpotContainer--3V3jM").eq(0).click();
-                            $(".betSpotContainer--3V3jM").eq(1).click();
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(0).click();
+                                $(".betSpotContainer--3V3jM").eq(1).click();
 
-                            // Clear bonus round flag
-                            bonus_round = false;
+                                // Clear bonus round flag
+                                bonus_round = false;
 
-                            // Clear interval
-                            clearInterval(clicking_insurance);
+                                // Clear interval
+                                clearInterval(clicking_insurance);
+                            }
                         }
-                    }
-                }, click_delay);
+                    }, click_delay);
+                }
             }
+
+            // Reset skip flag
+            skip = false;
         }
 
         // Check
