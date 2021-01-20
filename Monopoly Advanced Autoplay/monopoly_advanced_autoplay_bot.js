@@ -21,12 +21,12 @@
 /* ========================================================================
  * Set autoplay mode and other game settings
  * ======================================================================== */
-var autoplay_mode = 7;
+var autoplay_mode = 8;
 
 /* ========================================================================
  * Disable video (when you set this to 1, video will be disabled)
  * ======================================================================== */
-var disable_video = 0;
+var disable_video = 1;
 
 /* ========================================================================
  * Set click delay (if you're having issues with clicks on the UI)
@@ -264,7 +264,7 @@ function autoPlay() {
                     regex_formatted = "2 Rolls";
                 } else if (regex_formatted == "4r") {
                     // Pachinko
-                    regex_formatted = "5 Rolls";
+                    regex_formatted = "4 Rolls";
                 } else if (regex_formatted == "ch") {
                     // Coin Flip
                     regex_formatted = "Chance";
