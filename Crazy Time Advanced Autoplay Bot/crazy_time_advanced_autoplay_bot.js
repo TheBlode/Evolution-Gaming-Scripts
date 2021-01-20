@@ -1,5 +1,5 @@
 /* =====================
- * Evolution's Crazy Time Catcher Advanced Autoplay Bot
+ * Evolution's Crazy Time Advanced Autoplay Bot
  * Written by The_Blode
  * 11/01/21
  * NB! This script must be run in the console of your browser. You must also select the game's iframe by selecting it manually in the Chrome development tools or connecting directly to the iframes URL
