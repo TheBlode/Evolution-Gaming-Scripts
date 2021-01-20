@@ -21,12 +21,12 @@ var autoplay_mode = 4;
 /* ========================================================================
 * Disable video (when you set this to 1, video will be disabled)
 * ======================================================================== */
-var disable_video = 0;
+var disable_video = 1;
 
 /* ========================================================================
 * Set click delay (if you're having issues with clicks on the UI)
 * ======================================================================== */
-var click_delay = 2000;
+var click_delay = 200;
 
 /* ========================================================================
 * Set wager amount in units (default is 1 unit)
@@ -643,7 +643,7 @@ function autoPlay() {
                 // Debug for page
                 if (user_on_screen_debug == 1) {
                     // Append to debug area
-                    $("#debug_area").append("Home wins! There have been " + away_streak + " away wins in a row now.<br />");
+                    $("#debug_area").append("Away wins! There have been " + away_streak + " away wins in a row now.<br />");
 
                     // Scroll to top
                     scrollToTopOfDebug();
@@ -658,33 +658,6 @@ function autoPlay() {
             if (autoplay_mode == 4) {
                 if (home_streak == streak_size) {
                     // Place bet
-                    // Output
-                    console.log(spacing);
-                    console.log("I'm placing a bet on home now.");
-                    console.log(spacing);
-                    // Debug for page
-                    if (user_on_screen_debug == 1) {
-                        // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on home now.<br />");
-
-                        // Scroll to top
-                        scrollToTopOfDebug();
-                    }
-                    clicking = setInterval(function() {
-                        // Check if bet spot is available to click
-                        var test = checkBetSpot();
-
-                        if (test == true) {
-                            for (var x = 0; x < user_wager_amount; x++) {
-                                // Click betting spot
-                                $(".mainBet--3JDdD").eq(0).click();
-
-                                // Clear interval
-                                clearInterval(clicking);
-                            }
-                        }
-                    }, click_delay);
-                } else if (away_streak == streak_size) {
                     // Output
                     console.log(spacing);
                     console.log("I'm placing a bet on away now.");
@@ -705,6 +678,33 @@ function autoPlay() {
                             for (var x = 0; x < user_wager_amount; x++) {
                                 // Click betting spot
                                 $(".mainBet--3JDdD").eq(1).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
+                        }
+                    }, click_delay);
+                } else if (away_streak == streak_size) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on home now.");
+                    console.log(spacing);
+                    // Debug for page
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on home now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".mainBet--3JDdD").eq(0).click();
 
                                 // Clear interval
                                 clearInterval(clicking);
