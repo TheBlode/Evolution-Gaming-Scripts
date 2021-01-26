@@ -848,11 +848,8 @@ function autoPlay() {
                 }
             }
 
-            // Autoplay mode #1
-            if (autoplay_mode == 1 && bonus_round == false) {
-                // Fetch random number
-                bet_type = randomNumber(1, 6);
-
+            // Autoplay mode #6
+            if (autoplay_mode == 6 && bonus_round == false) {
                 // Place bet
                 if (increment_sequence == 1) {
                     // Output
