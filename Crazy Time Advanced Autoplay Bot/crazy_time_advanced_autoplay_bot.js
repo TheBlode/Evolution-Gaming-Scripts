@@ -109,7 +109,7 @@ if (autoplay_mode == 9) {
 
 // Autoplay mode #12
 // Bonus round betting only (double bonus)
-if (autoplay_mode == 9) {
+if (autoplay_mode == 12) {
     var increment_sequence = 1;
 }
 
