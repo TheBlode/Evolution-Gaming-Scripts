@@ -21,6 +21,7 @@
  * Autoplay mode #9 - Bonus round betting only (double bonus so Coin Flip + Pachinko, Coin Flip + Cash Hunt, Coin Flip + Crazy Time, Pachinko + Cash Hunt, Pachinko + Crazy Time, Cash Hunt + Crazy Time)
  * Autoplay mode #10 - random bonus games only betting (double bonus)
  * Autoplay mode #11 - random bonus games only betting (but skip some rounds) (double bonus)
+ * Autoplay mode #12 - bet on 1 and 2 only
  */
 /* ========================================================================
  * Set autoplay mode and other game settings
@@ -100,6 +101,13 @@ if (autoplay_mode == 6) {
 }
 
 // Autoplay mode #9
+// Bonus round betting only (double bonus)
+if (autoplay_mode == 9) {
+    var increment_sequence = 1;
+}
+
+
+// Autoplay mode #12
 // Bonus round betting only (double bonus)
 if (autoplay_mode == 9) {
     var increment_sequence = 1;
@@ -2555,6 +2563,80 @@ function autoPlay() {
                         }
                     }, click_delay);
                 }
+            }
+
+            // Autoplay mode #12
+            if (autoplay_mode == 12) {
+                // Place bet
+                if (increment_sequence == 1) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on #1 now.");
+                    console.log(spacing);
+                    // Debug for page
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on #1 now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        // Increment bonus round counter
+                        bonus_round_counter++;
+
+                        if (test == true && bonus_round_counter > 3) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(0).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
+                        }
+                    }, click_delay);
+                } else if (increment_sequence == 2) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on #2 now.");
+                    console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing a bet on #2 now.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpotContainer--3V3jM").eq(1).click();
+
+                                // Clear bonus round flag
+                                bonus_round = false;
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
+                        }
+                    }, click_delay);
+
+                    // Reset increment sequence
+                    increment_sequence = 0;
+                }
+
+                // Increment sequence
+                increment_sequence++;
             }
 
             // Reset skip flag
