@@ -15,6 +15,7 @@
  * Autoplay mode #3 - decrement bet in a sequence (40, 20, 10, 5, 2, 1 then start over)
  * Autoplay mode #4 - sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)
  * Autoplay mode #5 - Bet randomly on a number (but skip some rounds)
+ * Autoplay mode #6 - Bet on 1 and 2 only
  */
 /* ========================================================================
  * Set autoplay mode and other game settings
@@ -88,6 +89,12 @@ if (autoplay_mode == 4) {
 // Bet randomly on a number
 if (autoplay_mode == 5) {
     // Bet randomly on a number
+}
+
+// Autoplay mode #2
+// Increment bet in a sequence (1, 2, 5, 10, 20, 40 then start over)
+if (autoplay_mode == 6) {
+    var increment_sequence = 1;
 }
 
 // Add some spacing for the output for the user
@@ -839,6 +846,59 @@ function autoPlay() {
                     console.log("I'm skipping this round!");
                     console.log(spacing);
                 }
+            }
+
+            // Autoplay mode #1
+            if (autoplay_mode == 1 && bonus_round == false) {
+                // Fetch random number
+                bet_type = randomNumber(1, 6);
+
+                // Place bet
+                if (increment_sequence == 1) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on #1 now.");
+                    console.log(spacing);
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot---OSvn").eq(0).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
+                        }
+                    }, click_delay);
+                } else if (increment_sequence == 2) {
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on #2 now.");
+                    console.log(spacing);
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".betSpot---OSvn").eq(1).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
+                        }
+                    }, click_delay);
+
+                    // Reset increment sequence
+                    increment_sequence = 0;
+                }
+
+                // Increment sequence
+                increment_sequence++;
             }
         }
 
