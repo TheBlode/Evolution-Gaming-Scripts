@@ -1266,6 +1266,17 @@ function click(x, y) {
 }
 
 /* =====================
+ * Function name: scrollToTopOfDebug
+ * Function description: this function show the freshest line of debug on the onscreen debug
+ * Date: 07/11/20
+ * =====================
+ */
+function scrollToTopOfDebug() {
+    // Scroll to top of debug area  
+    $("#debug_area").scrollTop(1000000);
+}
+
+/* =====================
  * Function name: checkBetSpot
  * Function description: this function will check if the betting spot is available
  * Date: 07/11/20
