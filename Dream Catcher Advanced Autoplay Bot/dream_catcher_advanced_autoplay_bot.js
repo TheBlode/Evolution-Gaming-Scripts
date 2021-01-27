@@ -153,6 +153,7 @@ function autoPlay() {
 
         // Hide winner's chat
         $(".messagesWinnersChat--2UVhf").hide();
+        $(".top-left-2IjNG").hide();
     }
 
     // Output debug on game screen if user wants it
