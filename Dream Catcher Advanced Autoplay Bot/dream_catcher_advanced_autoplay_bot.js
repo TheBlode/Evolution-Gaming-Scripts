@@ -1366,6 +1366,10 @@ javascript:(function() {
 // Welcome message!
 window.alert("Welcome to Dream Catcher Advanced Autoplay Bot!\n\nMake sure you enable classic mode before running this bot.");
 
+// Show setup wizard
+changeOptions();
+
+
 // Register the event handler 
 document.addEventListener('keyup', changeOptionsHotkey, false);
 
