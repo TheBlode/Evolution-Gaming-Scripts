@@ -1320,6 +1320,13 @@ function changeOptions() {
         } while(isNaN(user_round_skipping) || user_round_skipping < 2);
     }
 
+    if (autoplay_mode == 4) {
+        // Ask the user how often they want to skip rounds
+        do {
+            user_sequence_amount = parseInt(window.prompt("How many bets in a row do you want to play in your sequence?\n\nDefault is 2.", "2"), 10);
+        } while(isNaN(user_sequence_amount) || user_sequence_amount > 1);
+    }
+
     // Ask user if they want a clean interface
     do {
         user_clean_interface = parseInt(window.prompt("Do you want a clean interface?\n\nType 1 to enable, or 0 to disable.", "0"), 10);
