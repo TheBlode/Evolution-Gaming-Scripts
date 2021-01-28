@@ -20,7 +20,7 @@
 /* ========================================================================
  * Set autoplay mode and other game settings
  * ======================================================================== */
-var autoplay_mode = 4;
+var autoplay_mode = 1;
 
 /* ========================================================================
  * Disable video (when you set this to 1, video will be disabled)
@@ -30,7 +30,7 @@ var disable_video = 0;
 /* ========================================================================
  * Set click delay (if you're having issues with clicks on the UI)
  * ======================================================================== */
-var click_delay = 8000;
+var click_delay = 2000;
 
 /* ========================================================================
  * Set wager amount in units (default is 1 unit)
@@ -66,42 +66,6 @@ var user_on_screen_debug = 1;
 // Set streak size to wait for before betting
 var user_streak_size = 2;
 
-// Autoplay mode #1
-// Bet randomly on a number
-if (autoplay_mode == 1) {
-    // Bet randomly on a number
-}
-
-// Autoplay mode #2
-// Increment bet in a sequence (1, 2, 5, 10, 20, 40 then start over)
-if (autoplay_mode == 2) {
-    var increment_sequence = 1;
-}
-
-// Autoplay mode #3
-// Decrement bet in a sequence (40, 20, 10, 5, 2, 1 then start over)
-if (autoplay_mode == 3) {
-    var decrement_sequence = 6;
-}
-
-// Autoplay mode #4
-// Sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)
-if (autoplay_mode == 4) {
-    var increment_sequence = 1;
-}
-
-// Autoplay mode #5
-// Bet randomly on a number
-if (autoplay_mode == 5) {
-    // Bet randomly on a number
-}
-
-// Autoplay mode #2
-// Increment bet in a sequence (1, 2, 5, 10, 20, 40 then start over)
-if (autoplay_mode == 6) {
-    var increment_sequence = 1;
-}
-
 // Add some spacing for the output for the user
 var spacing = "==========================";
 // Initialise all the script's variables
@@ -122,6 +86,8 @@ var count = 0;
 var clicking = "";
 var bonus_round = false;
 var bonus_round_counter = 0;
+var increment_sequence = 1;
+var decrement_sequence = 6;
 
 /* =====================
  * Functions that will be used by the bot
@@ -154,6 +120,7 @@ function autoPlay() {
         // Hide winner's chat
         $(".messagesWinnersChat--2UVhf").hide();
         $(".top-left-2IjNG").hide();
+        $(".top-container--33V8c").hide();
     }
 
     // Output debug on game screen if user wants it
@@ -197,6 +164,7 @@ function autoPlay() {
                 var regex_formatted = regex_match[0].replace("data-role-name=", "");
                 regex_formatted = regex_formatted.replace(/\"/, "");
                 regex_formatted = regex_formatted.replace(/\"/, "");
+                regex_formatted = regex_formatted.replace(/^0+/, "");
                 result = regex_formatted;
                 result = result.replace(/^0+/, "");
             }
@@ -230,13 +198,13 @@ function autoPlay() {
 
             // Debug for page
             if (user_on_screen_debug == 1) {
-                if (regex_formatted == "01") {
+                if (regex_formatted == "1") {
                     // Append to debug area
                     $("#debug_area").append("The final result is <font color=\"yellow\">" + regex_formatted + "</font><br />");
-                } else if (regex_formatted == "02") {
+                } else if (regex_formatted == "2") {
                     // Append to debug area
                     $("#debug_area").append("The final result is <font color=\"blue\">" + regex_formatted + "</font><br />");
-                } else if (regex_formatted == "05") {
+                } else if (regex_formatted == "5") {
                     // Append to debug area
                     $("#debug_area").append("The final result is <font color=\"purple\">" + regex_formatted + "</font><br />");
                 } else if (regex_formatted == "10") {
@@ -1318,6 +1286,66 @@ function getWinnings() {
 }
 
 /* =====================
+ * Function name: changeOptionsHotkey
+ * Function description: this function will allow the user to change options during play by pressing a hotkey
+ * Date: 28/01/21
+ * =====================
+ */
+function changeOptions() {
+    // Get autoplay mode from the user
+    do {
+        autoplay_mode = parseInt(window.prompt("Autoplay mode #1 - Bet randomly on a number\n\nAutoplay mode #2 - increment bet in a sequence (1, 2, 5, 10, 20, 40 then start over)\n\nAutoplay mode #3 - decrement bet in a sequence (40, 20, 10, 5, 2, 1 then start over)\n\nAutoplay mode #4 - sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)\n\nAutoplay mode #5 - Bet randomly on a number (but skip some rounds)\n\nAutoplay mode #6 - Bet on 1 and 2 only", "1"), 10);
+    } while(isNaN(autoplay_mode) || autoplay_mode > 6 || autoplay_mode < 1);
+
+    // Ask the user if they want to disable video
+    do {
+        disable_video = parseInt(window.prompt("Do you want to disable video in the game?\n\nType 1 for yes or 0 for no.", "0"), 10);
+    } while(isNaN(disable_video) || disable_video > 1);
+
+
+    // Ask user for click delay
+    do {
+        click_delay = parseInt(window.prompt("Would you like to adjust the click delay?\n\nThe value is in miliseconds.\n\nDefault is 2 seconds.", "2000"), 10);
+    } while(isNaN(click_delay) || click_delay < 100);
+
+    // Ask user for wager amount
+    do {
+        user_wager_amount = parseInt(window.prompt("What is the size of your wager?\n\nDefault wager is 1 unit.", "1"), 10);
+    } while(isNaN(user_wager_amount) || user_wager_amount < 1);
+
+    if (autoplay_mode == 5) {
+        // Ask the user how often they want to skip rounds
+        do {
+            user_round_skipping = parseInt(window.prompt("How often do you want the bot to skip rounds?\n\nDefault is 2 but the higher you set this amount, the more rounds the bot will skip.", "2"), 10);
+        } while(isNaN(user_round_skipping) || user_round_skipping < 2);
+    }
+
+    // Ask user if they want a clean interface
+    do {
+        user_clean_interface = parseInt(window.prompt("Do you want a clean interface?\n\nType 1 to enable, or 0 to disable.", "0"), 10);
+    } while(isNaN(user_clean_interface) || user_clean_interface > 1);
+
+    // Ask the user if they want on-screen debug to be display
+    do {
+        user_on_screen_debug = parseInt(window.prompt("Do you want to view on-screen debug during bot play?\n\nType 1 to enable, or anything else to disable.", "0"), 10);
+    } while(isNaN(user_on_screen_debug) || user_on_screen_debug > 1);
+}
+
+/* =====================
+ * Function name: changeOptionsHotkey
+ * Function description: this function will allow the user to change options during play by pressing a hotkey
+ * Date: 28/01/21
+ * =====================
+ */
+function changeOptionsHotkey(e) {
+    // If Control+1 is pressed
+    if (e.ctrlKey && e.keyCode == 49) {
+        // Change bot options
+        changeOptions();
+    }
+}
+
+/* =====================
  * Main code
  * =====================
  */
@@ -1334,6 +1362,12 @@ javascript:(function() {
     }
     l('//code.jquery.com/jquery-3.2.1.min.js', 'jquery')
 })();
+
+// Welcome message!
+window.alert("Welcome to Dream Catcher Advanced Autoplay Bot!\n\nMake sure you enable classic mode before running this bot.");
+
+// Register the event handler 
+document.addEventListener('keyup', changeOptionsHotkey, false);
 
 // Run bot after 5 seconds
 setTimeout(function() {
