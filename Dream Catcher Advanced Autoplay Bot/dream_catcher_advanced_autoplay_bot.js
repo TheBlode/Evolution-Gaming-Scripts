@@ -1376,7 +1376,6 @@ window.alert("Welcome to Dream Catcher Advanced Autoplay Bot!\n\nMake sure you e
 // Show setup wizard
 changeOptions();
 
-
 // Register the event handler 
 document.addEventListener('keyup', changeOptionsHotkey, false);
 
