@@ -76,43 +76,6 @@ var user_insurance_bet = 1;
  * End of bot settings
  * =====================
  */
-// Autoplay mode #2
-// Increment bet in a sequence (1, 2, 5, 10, Coin Flip, Pachinko, Cash Hunt, Crazy Time then start over)
-if (autoplay_mode == 2) {
-    var increment_sequence = 1;
-}
-
-// Autoplay mode #3
-// Decrement bet in a sequence (Crazy Time, Cash Hunt, Pachunko, Coin Flip, 10, 5, 2, 1 then start over)
-if (autoplay_mode == 3) {
-    var decrement_sequence = 8;
-}
-
-// Autoplay mode #4
-// Sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)
-if (autoplay_mode == 4) {
-    var increment_sequence = 1;
-}
-
-// Autoplay mode #6
-// Bonus round betting only
-if (autoplay_mode == 6) {
-    var increment_sequence = 1;
-}
-
-// Autoplay mode #9
-// Bonus round betting only (double bonus)
-if (autoplay_mode == 9) {
-    var increment_sequence = 1;
-}
-
-
-// Autoplay mode #12
-// Bonus round betting only (double bonus)
-if (autoplay_mode == 12) {
-    var increment_sequence = 1;
-}
-
 // Add some spacing for the output for the user
 var spacing = "==========================";
 // Initialise all the script's variables
@@ -134,6 +97,8 @@ var clicking_insurance = "";
 var game_state_check = null;
 var regex_formatted = "";
 var skip = false;
+var increment_sequence = 1;
+var decrement_sequence = 8;
 
 /* =====================
  * Functions that will be used by the bot
@@ -2743,6 +2708,78 @@ function getWinnings() {
 }
 
 /* =====================
+ * Function name: changeOptionsHotkey
+ * Function description: this function will allow the user to change options during play by pressing a hotkey
+ * Date: 28/01/21
+ * =====================
+ */
+function changeOptions() {
+    // Get autoplay mode from the user
+    do {
+        autoplay_mode = parseInt(window.prompt("Autoplay mode #1 - Bet randomly on a number\nAutoplay mode #2 - increment bet in a sequence (1, 2, 5, 10, Coin Flip, Pachinko, Cash Hunt, Crazy Time then start over)\nAutoplay mode #3 - decrement bet in a sequence (Crazy Time, Cash Hunt, Pachunko, Coin Flip, 10, 5, 2, 1 then start over)\nAutoplay mode #4 - sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)\nAutoplay mode #5 - Bet randomly on a number (but skip some rounds)\nAutoplay mode #6 - Bonus round betting only\nAutoplay mode #7 - random bonus games only betting\nAutoplay mode #8 - random bonus games only betting (but skip some rounds)\nAutoplay mode #9 - Bonus round betting only (double bonus so Coin Flip + Pachinko, Coin Flip + Cash Hunt, Coin Flip + Crazy Time, Pachinko + Cash Hunt, Pachinko + Crazy Time, Cash Hunt + Crazy Time)\nAutoplay mode #10 - random bonus games only betting (double bonus)\nAutoplay mode #11 - random bonus games only betting (but skip some rounds) (double bonus)\nAutoplay mode #12 - bet on 1 and 2 only", "1"), 10);
+    } while(isNaN(autoplay_mode) || autoplay_mode > 12 || autoplay_mode < 1);
+
+    // Ask the user if they want to disable video
+    do {
+        disable_video = parseInt(window.prompt("Do you want to disable video in the game?\n\nType 1 for yes or 0 for no.", "0"), 10);
+    } while(isNaN(disable_video) || disable_video > 1);
+
+
+    // Ask user for click delay
+    do {
+        click_delay = parseInt(window.prompt("Would you like to adjust the click delay?\n\nThe value is in miliseconds.\n\nDefault is 2 seconds.", "2000"), 10);
+    } while(isNaN(click_delay) || click_delay < 100);
+
+    // Ask user for wager amount
+    do {
+        user_wager_amount = parseInt(window.prompt("What is the size of your wager?\n\nDefault wager is 1 unit.", "1"), 10);
+    } while(isNaN(user_wager_amount) || user_wager_amount < 1);
+
+    if (autoplay_mode == 5 || autoplay_mode == 8 || autoplay_mode == 11) {
+        // Ask the user how often they want to skip rounds
+        do {
+            user_round_skipping = parseInt(window.prompt("How often do you want the bot to skip rounds?\n\nDefault is 2 but the higher you set this amount, the more rounds the bot will skip.", "2"), 10);
+        } while(isNaN(user_round_skipping) || user_round_skipping < 2);
+    }
+
+    if (autoplay_mode == 4) {
+        // Ask the user how often they want to skip rounds
+        do {
+            user_sequence_amount = parseInt(window.prompt("How many bets in a row do you want to play in your sequence?\n\nDefault is 2.", "2"), 10);
+        } while(isNaN(user_sequence_amount) || user_sequence_amount > 1);
+    }
+
+    // Ask user if they want a clean interface
+    do {
+        user_clean_interface = parseInt(window.prompt("Do you want a clean interface?\n\nType 1 to enable, or 0 to disable.", "0"), 10);
+    } while(isNaN(user_clean_interface) || user_clean_interface > 1);
+
+    // Ask the user if they want on-screen debug to be display
+    do {
+        user_on_screen_debug = parseInt(window.prompt("Do you want to view on-screen debug during bot play?\n\nType 1 to enable, or anything else to disable.", "0"), 10);
+    } while(isNaN(user_on_screen_debug) || user_on_screen_debug > 1);
+
+    // Ask the user if they want on-screen debug to be display
+    do {
+        user_insurance_bet = parseInt(window.prompt("Do you want to place insurance bets? Set to 1 to cover just 1 and set to 2 to cover 1 & 2. Set to 0 to disable insurance bets.", "0"), 10);
+    } while(isNaN(user_insurance_bet) || user_insurance_bet > 2);
+}
+
+/* =====================
+ * Function name: changeOptionsHotkey
+ * Function description: this function will allow the user to change options during play by pressing a hotkey
+ * Date: 28/01/21
+ * =====================
+ */
+function changeOptionsHotkey(e) {
+    // If Control+1 is pressed
+    if (e.ctrlKey && e.keyCode == 49) {
+        // Change bot options
+        changeOptions();
+    }
+}
+
+/* =====================
  * Main code
  * =====================
  */
@@ -2759,6 +2796,15 @@ javascript:(function() {
     }
     l('//code.jquery.com/jquery-3.2.1.min.js', 'jquery')
 })();
+
+// Welcome message!
+window.alert("Welcome to Crazy Time Advanced Autoplay Bot!\n\nMake sure you enable classic mode before running this bot.");
+
+// Show setup wizard
+changeOptions();
+
+// Register the event handler 
+document.addEventListener('keyup', changeOptionsHotkey, false);
 
 // Run bot after 5 seconds
 setTimeout(function() {
