@@ -2785,12 +2785,12 @@ function changeOptions() {
 
     // Ask the user if they want to set a loss limit balance
     do {
-        user_loss_limit_balance = parseFloat(window.prompt("Set the loss balance you wish the bot to stop playing when reached. Set to 0 to disabled.", "0"), 10);
+        user_loss_limit_balance = parseFloat(window.prompt("Set the loss balance you wish the bot to stop playing when reached.\n\nSet to 0 to disabled.", "0"), 10);
     } while(isNaN(user_loss_limit_balance));
 
     // Ask the user if they want to set a win limit balance
     do {
-        user_win_limit_balance = parseFloat(window.prompt("Set the win balance you wish the bot to stop playing when reached. Set to 0 to disabled.", "0"), 10);
+        user_win_limit_balance = parseFloat(window.prompt("Set the win balance you wish the bot to stop playing when reached.\n\nSet to 0 to disabled.", "0"), 10);
     } while(isNaN(user_win_limit_balance));
 
     // Adjust UI
