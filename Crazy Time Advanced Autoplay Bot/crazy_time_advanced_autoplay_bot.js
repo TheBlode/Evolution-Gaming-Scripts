@@ -76,12 +76,9 @@ var user_insurance_bet = 1;
  * End of bot settings
  * =====================
  */
-// Add some spacing for the output for the user
+// Default variables used in the script
 var spacing = "==========================";
-// Initialise all the script's variables
-// Starting position (it's best to leave this as it's default of 0)
 var i = 0;
-
 // This variable will determine how long the bot will run for (a setting of 100 means the bot will run for 50 seconds. (The sum is how_many_times / 2) * 1 = x seconds)
 var how_many_times = 1000000;
 var sequence_counter = 0;
@@ -114,33 +111,6 @@ function autoPlay() {
     // Disable video
     if (disable_video == 1) {
         var html = document.getElementsByClassName("transformWrapper--1ywHP")[0].innerHTML = "";
-    }
-
-    // Hide all game elements to make the interface nice and clean
-    if (user_clean_interface == 1) {
-        // Hide game history
-        $(".statistics--2RWNf").hide();
-        $(".historyStatisticContainer--3KMr5").hide();
-
-        // Hide game logo
-        $(".footerLeftContent--4fEIj").hide();
-
-        // Hide game limits and all UI information
-        $(".box--2RTUm").hide();
-
-        // Hide winner's chat
-        $(".messagesWinnersChat--2UVhf").hide();
-        $(".top-container--33V8c").hide();
-    }
-
-    // Output debug on game screen if user wants it
-    if (user_on_screen_debug == 1) {
-        // Create debug area
-        var $div = $("<div />").appendTo("body");
-        $div.attr("id", "debug_area");
-
-        // CSS
-        $("#debug_area").css({"position": "absolute", "font-size": "x-large", "width": "100%", "height": "98%", "overflow": "overlay", "line-height": "20pt", "background": "black"});
     }
 
     // Debug for the console
@@ -253,6 +223,15 @@ function autoPlay() {
                     // Append to debug area
                     $("#debug_area").append("The final result is <font color=\"#7F00FF\">" + regex_formatted + "</font><br />");
                 }
+
+                // Scroll to top
+                scrollToTopOfDebug();
+            }
+
+            // Padding for new round
+            if (user_on_screen_debug == 1) {
+                // Append to debug area
+                $("#debug_area").append(spacing + "<br />");
 
                 // Scroll to top
                 scrollToTopOfDebug();
@@ -2491,6 +2470,16 @@ function autoPlay() {
 
             if (skip == false) {
                 if (user_insurance_bet == 1) {
+                    console.log(spacing);
+                    console.log("I'm placing an insurance bet on #1!");
+                    console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing an insurance bet on #1<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking_insurance = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -2509,6 +2498,16 @@ function autoPlay() {
                         }
                     }, click_delay);
                 } else if (user_insurance_bet == 2) {
+                    console.log(spacing);
+                    console.log("I'm placing an insurance bet on #1 & #2!");
+                    console.log(spacing);
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append("I'm placing an insurance bet on #1 & #2<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
                     clicking_insurance = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -2724,7 +2723,6 @@ function changeOptions() {
         disable_video = parseInt(window.prompt("Do you want to disable video in the game?\n\nType 1 for yes or 0 for no.", "0"), 10);
     } while(isNaN(disable_video) || disable_video > 1);
 
-
     // Ask user for click delay
     do {
         click_delay = parseInt(window.prompt("Would you like to adjust the click delay?\n\nThe value is in miliseconds.\n\nDefault is 2 seconds.", "2000"), 10);
@@ -2763,6 +2761,12 @@ function changeOptions() {
     do {
         user_insurance_bet = parseInt(window.prompt("Do you want to place insurance bets? Set to 1 to cover just 1 and set to 2 to cover 1 & 2. Set to 0 to disable insurance bets.", "0"), 10);
     } while(isNaN(user_insurance_bet) || user_insurance_bet > 2);
+
+    // Adjust UI
+    changeInterface(user_clean_interface);
+
+    // Toggle debug
+    toggleDebugMode(user_on_screen_debug);
 }
 
 /* =====================
@@ -2776,6 +2780,62 @@ function changeOptionsHotkey(e) {
     if (e.ctrlKey && e.keyCode == 49) {
         // Change bot options
         changeOptions();
+    }
+}
+
+/* =====================
+ * Function name: changeInterface
+ * Function description: this function will allow the user to change the interface
+ * Date: 28/01/21
+ * =====================
+ */
+function changeInterface(state) {
+    // Hide all game elements to make the interface nice and clean
+    if (state == "1") {
+        // Hide game history
+        $(".statistics--2RWNf").hide();
+        $(".historyStatisticContainer--3KMr5").hide();
+
+        // Hide game logo
+        $(".footerLeftContent--4fEIj").hide();
+
+        // Hide game limits and all UI information
+        $(".box--2RTUm").hide();
+
+        // Hide winner's chat
+        $(".messagesWinnersChat--2UVhf").hide();
+        $(".top-container--33V8c").hide();
+    } else {
+        // Show game history
+        $(".statistics--2RWNf").show();
+        $(".historyStatisticContainer--3KMr5").show();
+
+        // Show game logo
+        $(".footerLeftContent--4fEIj").show();
+
+        // Show game limits and all UI information
+        $(".box--2RTUm").show();
+
+        // Show winner's chat
+        $(".messagesWinnersChat--2UVhf").show();
+        $(".top-container--33V8c").show();
+    }
+}
+
+/* =====================
+ * Function name: toggleDebugMode
+ * Function description: this function will toggle the onscreen debug
+ * Date: 28/01/21
+ * =====================
+ */
+function toggleDebugMode(state) {
+    // Output debug on game screen if user wants it
+    if (state == "1") {
+        // CSS
+        $("#debug_area").css({"position": "absolute", "font-size": "x-large", "width": "100%", "height": "98%", "overflow": "overlay", "line-height": "20pt", "background": "black"});
+    } else {
+        // Hide debug
+        $("#debug_area").hide();
     }
 }
 
@@ -2800,8 +2860,16 @@ javascript:(function() {
 // Welcome message!
 window.alert("Welcome to Crazy Time Advanced Autoplay Bot!\n\nMake sure you enable classic mode before running this bot.");
 
-// Show setup wizard
-changeOptions();
+setTimeout(function() {
+    // Create debug area
+    var $div = $("<div />").appendTo("body");
+    $div.attr("id", "debug_area");
+}, 2000);
+
+setTimeout(function() {
+    // Show setup wizard
+    changeOptions();
+}, 2000);
 
 // Register the event handler 
 document.addEventListener('keyup', changeOptionsHotkey, false);
