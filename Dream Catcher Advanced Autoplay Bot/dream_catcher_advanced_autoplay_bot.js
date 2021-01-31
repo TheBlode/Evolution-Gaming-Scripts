@@ -63,6 +63,11 @@ var user_on_screen_debug = 1;
  * Set the loss limit balance
  * ======================================================================== */
 var user_loss_limit_balance = 0;
+
+/* ========================================================================
+ * Set the win limit balance
+ * ======================================================================== */
+var user_win_limit_balance = 0;
 /* =====================
  * End of bot settings
  * =====================
@@ -233,6 +238,12 @@ function autoPlay() {
             if (user_loss_limit_balance != 0) {
                 // Check for loss limit
                 stopPlayLimit(balance);
+            }
+
+            // Check if win limit has been reached
+            if (user_win_limit_balance != 0) {
+                // Check for loss limit
+                stopPlayWinLimit(balance);
             }
 
             // Autoplay mode #1
@@ -1314,6 +1325,16 @@ function changeOptions() {
         user_on_screen_debug = parseInt(window.prompt("Do you want to view on-screen debug during bot play?\n\nType 1 to enable and type 0 for disable.", "0"), 10);
     } while(isNaN(user_on_screen_debug) || user_on_screen_debug > 1);
 
+    // Ask the user if they want to set a loss limit balance
+    do {
+        user_loss_limit_balance = parseFloat(window.prompt("Set the loss balance you wish the bot to stop playing when reached. Set to 0 to disabled.", "0"), 10);
+    } while(isNaN(user_loss_limit_balance));
+
+    // Ask the user if they want to set a win limit balance
+    do {
+        user_win_limit_balance = parseFloat(window.prompt("Set the win balance you wish the bot to stop playing when reached. Set to 0 to disabled.", "0"), 10);
+    } while(isNaN(user_win_limit_balance));
+
     // Adjust UI
     changeInterface(user_clean_interface);
 
@@ -1427,6 +1448,37 @@ function stopPlayLimit(balance) {
         if (user_on_screen_debug == 1) {
             // Append to debug area
             $("#debug_area").append("The bot will stop playing as the loss balance has been reached.<br />");
+
+            // Scroll to top
+            scrollToTopOfDebug();
+        }
+
+        // Set autoplay to erroneous number
+        autoplay_mode = 1000000;
+    }
+}
+
+/* =====================
+ * Function name: stopPlayWinLimit
+ * Function description: this function will stop playing if the balance is above the threshold
+ * Date: 31/01/21
+ * =====================
+ */
+function stopPlayWinLimit(balance) {
+    // Convert balance to float
+    var balance_as_float = parseFloat(balance);
+
+    // If balance is less than loss limit balance
+    if (balance_as_float > user_win_limit_balance) {
+        // Debug for the console
+        console.log(spacing);
+        console.log("The bot will stop playing as the win balance has been reached.");
+        console.log(spacing);
+
+        // Debug for page
+        if (user_on_screen_debug == 1) {
+            // Append to debug area
+            $("#debug_area").append("The bot will stop playing as the win balance has been reached.<br />");
 
             // Scroll to top
             scrollToTopOfDebug();
