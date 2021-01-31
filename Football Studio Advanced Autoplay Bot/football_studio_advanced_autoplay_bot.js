@@ -64,48 +64,14 @@ var user_on_screen_debug = 1;
 * End of bot settings
 * =====================
 */
-// Autoplay types
-// Autoplay mode #1
-// Alternate bets. Example: Bet home, then away, then home, then away, then home, then away, etc
-// To disable this mode, set autoplay_mode and bet_type values to 0
-if (autoplay_mode == 1) {
-    var bet_type = 0;
-}
-
-// Autoplay mode #2
-// Bet on home and away in numbered sequences. Example: if sequence_amount is set to 3 in a row, the bot will play; home, home, home then away, away, away and repeat.
-if (autoplay_mode == 2) {
-    bet_type = 1;
-    sequence_start = 1;
-    sequence_amount = user_sequence_amount;
-    sequence_total = sequence_amount * 2;
-}
-
-// Autoplay mode #3
-// Bet randomly on home or away
-if (autoplay_mode == 3) {
-    // Bet randomly on home or away
-}
-
-// Autoplay mode #4
-// Bet only after a certain sequence of results. Example: if streak_size is set to 4, then place a bet after 4 homes or 4 aways in a row
-if (autoplay_mode == 4) {
-    var streak_size = user_streak_size;
-}
-
-// Autoplay mode #3
-// Bet randomly on home or away (with round skipping)
-if (autoplay_mode == 5) {
-    // Bet randomly on home or away
-}
-
-// Add some spacing for the output for the user
+// Default variables used in the script
+var bet_type = 1;
+var sequence_start = 1;
+var sequence_amount = user_sequence_amount;
+var sequence_total = sequence_amount * 2;
+var streak_size = user_streak_size;
 var spacing = "==========================";
-// Initialise all the script's variables
-// Starting position (it's best to leave this as it's default of 0)
 var i = 0;
-
-// This variable will determine how long the bot will run for (a setting of 100 means the bot will run for 50 seconds. (The sum is how_many_times / 2) * 1 = x seconds)
 var how_many_times = 1000000;
 var home_streak = 0;
 var away_streak = 0;
@@ -129,36 +95,6 @@ function autoPlay() {
     // Disable video
     if (disable_video == 1) {
         var html = document.getElementsByClassName("transformWrapper--1ywHP")[0].innerHTML = "";
-    }
-
-    // Hide all game elements to make the interface nice and clean
-    if (user_clean_interface == 1) {
-        // Hide game history
-        $(".statistics--2RWNf").hide();
-        $(".footerRightContent--D9xWT").hide();
-
-        // Hide game logo
-        $(".footerLeftContent--4fEIj").hide();
-
-        // Hide game limits and all UI information
-        $(".box--2RTUm").hide();
-
-        // Football info
-        $(".footerLeftContent--4fEIj").hide();
-
-        // Hide winner's chat
-        $(".messagesWinnersChat--2UVhf").hide();
-        $(".top-container--33V8c").hide();
-    }
-
-    // Output debug on game screen if user wants it
-    if (user_on_screen_debug == 1) {
-        // Create debug area
-        var $div = $("<div />").appendTo("body");
-        $div.attr("id", "debug_area");
-
-        // CSS
-        $("#debug_area").css({"position": "absolute", "font-size": "x-large", "width": "100%", "height": "98%", "overflow": "overlay", "line-height": "20pt", "background": "black"});
     }
 
     // Debug for the console
@@ -238,6 +174,15 @@ function autoPlay() {
                     // Append to debug area
                     $("#debug_area").append("The final result is <font color=\"yellow\">" + result_check_found + "</font><br />");
                 }
+
+                // Scroll to top
+                scrollToTopOfDebug();
+            }
+
+            // Padding for new round
+            if (user_on_screen_debug == 1) {
+                // Append to debug area
+                $("#debug_area").append(spacing + "<br />");
 
                 // Scroll to top
                 scrollToTopOfDebug();
@@ -818,6 +763,140 @@ function getWinnings() {
 }
 
 /* =====================
+ * Function name: changeOptionsHotkey
+ * Function description: this function will allow the user to change options during play by pressing a hotkey
+ * Date: 28/01/21
+ * =====================
+ */
+function changeOptions() {
+    // Get autoplay mode from the user
+    do {
+        autoplay_mode = parseInt(window.prompt("Autoplay mode #1 - Alternate bets. Example: Bet home, then away, then home, then away, then home, then away, etc\n\nAutoplay mode #2 - Bet on home and away in numbered sequences. Example: if sequence_amount is set to 3 in a row, the bot will play; home, home, home then away, away, away and repeat.\n\nAutoplay mode #3 - Bet randomly on home or away\n\nAutoplay mode #4 - Bet only after a certain sequence of results. Example: if streak_size is set to 4, then place a bet after 4 homes or 4 aways in a row\n\nAutoplay mode #5 - Bet randomly on home or away (with round skipping)", "1"), 10);
+    } while(isNaN(autoplay_mode) || autoplay_mode > 5 || autoplay_mode < 1);
+
+    // Ask the user if they want to disable video
+    do {
+        disable_video = parseInt(window.prompt("Do you want to disable video in the game?\n\nType 1 for yes or 0 for no.", "0"), 10);
+    } while(isNaN(disable_video) || disable_video > 1);
+
+    // Ask user for click delay
+    do {
+        click_delay = parseInt(window.prompt("Would you like to adjust the click delay?\n\nThe value is in miliseconds.\n\nDefault is 2 seconds.", "2000"), 10);
+    } while(isNaN(click_delay) || click_delay < 100);
+
+    // Ask user for wager amount
+    do {
+        user_wager_amount = parseInt(window.prompt("What is the size of your wager?\n\nDefault wager is 1 unit.", "1"), 10);
+    } while(isNaN(user_wager_amount) || user_wager_amount < 1);
+
+    if (autoplay_mode == 5) {
+        // Ask the user how often they want to skip rounds
+        do {
+            user_round_skipping = parseInt(window.prompt("How often do you want the bot to skip rounds?\n\nDefault is 2 but the higher you set this amount, the more rounds the bot will skip.", "2"), 10);
+        } while(isNaN(user_round_skipping) || user_round_skipping < 2);
+    }
+
+    if (autoplay_mode == 2) {
+        // Ask the user how often they want to skip rounds
+        do {
+            sequence_amount = parseInt(window.prompt("How many bets in a row do you want to play in your sequence?\n\nDefault is 2.", "2"), 10);
+        } while(isNaN(sequence_amount) || sequence_amount > 1);
+    }
+
+    // Ask user if they want a clean interface
+    do {
+        user_clean_interface = parseInt(window.prompt("Do you want a clean interface?\n\nType 1 to enable, or 0 to disable.", "0"), 10);
+    } while(isNaN(user_clean_interface) || user_clean_interface > 1);
+
+    // Ask the user if they want on-screen debug to be display
+    do {
+        user_on_screen_debug = parseInt(window.prompt("Do you want to view on-screen debug during bot play?\n\nType 1 to enable, or anything else to disable.", "0"), 10);
+    } while(isNaN(user_on_screen_debug) || user_on_screen_debug > 1);
+
+    // Adjust UI
+    changeInterface(user_clean_interface);
+
+    // Toggle debug
+    toggleDebugMode(user_on_screen_debug);
+}
+
+/* =====================
+ * Function name: changeOptionsHotkey
+ * Function description: this function will allow the user to change options during play by pressing a hotkey
+ * Date: 28/01/21
+ * =====================
+ */
+function changeOptionsHotkey(e) {
+    // If Control+1 is pressed
+    if (e.ctrlKey && e.keyCode == 49) {
+        // Change bot options
+        changeOptions();
+    }
+}
+
+/* =====================
+ * Function name: changeInterface
+ * Function description: this function will allow the user to change the interface
+ * Date: 28/01/21
+ * =====================
+ */
+function changeInterface(state) {
+    // Hide all game elements to make the interface nice and clean
+    if (state == "1") {
+        // Hide game history
+        $(".statistics--2RWNf").hide();
+        $(".footerRightContent--D9xWT").hide();
+
+        // Hide game logo
+        $(".footerLeftContent--4fEIj").hide();
+
+        // Hide game limits and all UI information
+        $(".box--2RTUm").hide();
+
+        // Football info
+        $(".footerLeftContent--4fEIj").hide();
+
+        // Hide winner's chat
+        $(".messagesWinnersChat--2UVhf").hide();
+        $(".top-container--33V8c").hide();
+    } else {
+        // Show game history
+        $(".statistics--2RWNf").show();
+        $(".footerRightContent--D9xWT").show();
+
+        // Show game logo
+        $(".footerLeftContent--4fEIj").show();
+
+        // Show game limits and all UI information
+        $(".box--2RTUm").show();
+
+        // Football info
+        $(".footerLeftContent--4fEIj").show();
+
+        // Show winner's chat
+        $(".messagesWinnersChat--2UVhf").show();
+        $(".top-container--33V8c").show();
+    }
+}
+
+/* =====================
+ * Function name: toggleDebugMode
+ * Function description: this function will toggle the onscreen debug
+ * Date: 28/01/21
+ * =====================
+ */
+function toggleDebugMode(state) {
+    // Output debug on game screen if user wants it
+    if (state == "1") {
+        // CSS
+        $("#debug_area").css({"position": "absolute", "font-size": "x-large", "width": "100%", "height": "98%", "overflow": "overlay", "line-height": "20pt", "background": "black"});
+    } else {
+        // Hide debug
+        $("#debug_area").hide();
+    }
+}
+
+/* =====================
 * Main code
 * =====================
 */
@@ -834,6 +913,23 @@ javascript:(function() {
     }
     l('//code.jquery.com/jquery-3.2.1.min.js', 'jquery')
 })();
+
+// Welcome message!
+window.alert("Welcome to Football Studio Time Advanced Autoplay Bot!\n\nMake sure you enable classic mode before running this bot.");
+
+setTimeout(function() {
+    // Create debug area
+    var $div = $("<div />").appendTo("body");
+    $div.attr("id", "debug_area");
+}, 2000);
+
+setTimeout(function() {
+    // Show setup wizard
+    changeOptions();
+}, 2000);
+
+// Register the event handler 
+document.addEventListener('keyup', changeOptionsHotkey, false);
 
 // Run bot after 5 seconds
 setTimeout(function() {
