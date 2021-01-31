@@ -947,9 +947,6 @@ function stopPlayLimit(balance) {
 
         // Set autoplay to erroneous number
         autoplay_mode = 1000000;
-
-        // Stop insurance bets
-        user_insurance_bet = 0;
     }
 }
 

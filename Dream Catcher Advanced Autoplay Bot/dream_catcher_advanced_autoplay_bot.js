@@ -229,6 +229,12 @@ function autoPlay() {
                 scrollToTopOfDebug();
             }
 
+            // Check if loss limit has been reached
+            if (user_loss_limit_balance != 0) {
+                // Check for loss limit
+                stopPlayLimit(balance);
+            }
+
             // Autoplay mode #1
             if (autoplay_mode == 1 && bonus_round == false) {
                 // Fetch random number
@@ -1428,9 +1434,6 @@ function stopPlayLimit(balance) {
 
         // Set autoplay to erroneous number
         autoplay_mode = 1000000;
-
-        // Stop insurance bets
-        user_insurance_bet = 0;
     }
 }
 
