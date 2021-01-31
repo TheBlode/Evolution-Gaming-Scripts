@@ -5,8 +5,7 @@ Welcome to my Evolution Gaming Scripts page! Evolution's autoplay feature is sev
 
 ## How to run these scripts
 - These scripts run entirely inside your browser's console. Nothing else is required.
-- To customise the bot settings, go to "Define your bot settings here!" and edit the values below that line up until "End of bot settings".
-    - autoplay_mode (set this to the number)
+- **ALL** bots will only work in Evolution's "classic" UI.
 - Open up your browser's developer tools (usually F12).
 - Make sure you select the iFrame that the game is loaded into;
     - You can right click on the game to discover the game's direct URL and can load the game directly in your browser with no need to select the iFrame. The iFrame URLs for Unibet are as follows;
@@ -17,7 +16,12 @@ Welcome to my Evolution Gaming Scripts page! Evolution's autoplay feature is sev
         - Lightning Roulette: https://evolivecasino.unibet.co.uk/frontend/evo/r2/#table_id=LightningTable01&category=roulette&game=roulette
     - Otherwise, in Chrome, you can select the iFrame by navigating to the Console tab, selecting the "top" dropdown and selecting "KindredGameIframe". 
 - Open up the JavaScript file in any text editor, copy **ALL** the text, paste into your browsers console and run the code.
-- **ALL** bots will only work in Evolution's "classic" UI.
+- You can adjust the settings of each bot at startup. You can also change these bot settings by pressing the following hotkeys;
+    - Control + 1 - allows you to change all bot settings dynamically.
+    - Control + 2 - allows you to change just the betting mode / autoplay mode.
+- All bots have win thresholds and loss thresholds which you can customise when you run the bot code.
+- All bots have the ability to clean up the game interface to make place less clutters.
+- All bots have the ability to show on screen debug of play to make things easier to track.
 
 ## Crazy Time Advanced Autoplay Bot
 Crazy Time Advanced Autoplay Bot offers the following autoplay modes;
@@ -32,6 +36,9 @@ Crazy Time Advanced Autoplay Bot offers the following autoplay modes;
 - Bonus round betting only (double bonus so Coin Flip + Pachinko, Coin Flip + Cash Hunt, Coin Flip + Crazy Time, Pachinko + Cash Hunt, Pachinko + Crazy Time, Cash Hunt + Crazy Time)
 - Random bonus games only betting (double bonus)
 - Random bonus games only betting (but skip some rounds) (double bonus)
+- Insurance bets are also offered on this game;
+    - Insurance bets can be placed on #1 only
+    - Insurance bets can be placed on #1 & #2
 
 ## Dream Catcher Advanced Autoplay Bot
 Dream Catcher Advanced Autoplay Bot offers the following autoplay modes;
@@ -51,6 +58,9 @@ Monopoly Autoplay Bot offers the following autoplay modes;
 - Random bets (with round skipping)
 - Random bonus games only betting
 - Random bonus games only betting (but skip some rounds)
+- Insurance bets are also offered on this game;
+    - Insurance bets can be placed on #1 only
+    - Insurance bets can be placed on #1 & #2
 
 ## Football Studio Advanced Autoplay Bot
 Football Studio offers the following autoplay modes;
@@ -71,8 +81,11 @@ Lightning Roulette offers the following autoplay modes;
 - If clicks are not registering on your game, try adjusting the click_delay value in the script to a higher or lower value.
 
 ## Currently known bugs
-- None known at the moment.
+- When disabling video during bot play, video cannot be restored.
 
 ## Coming Soon
 - Infinite Blackjack / Power Blackjack / Freebet Blackjack Advanced Autoplay Bots
 - More betting modes for all bots
+- Chrome extension
+- Autoswitching of autoplay modes based on game results
+- Implementing progressive betting patterns such as Martingale, Fibonacci, D'Alembert etc
