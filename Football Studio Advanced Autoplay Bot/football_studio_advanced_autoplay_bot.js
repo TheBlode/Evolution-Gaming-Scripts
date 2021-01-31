@@ -800,7 +800,7 @@ function changeOptions() {
         // Ask the user how often they want to skip rounds
         do {
             sequence_amount = parseInt(window.prompt("How many bets in a row do you want to play in your sequence?\n\nDefault is 2.", "2"), 10);
-        } while(isNaN(sequence_amount) || sequence_amount > 1);
+        } while(isNaN(sequence_amount) || sequence_amount < 1);
     }
 
     // Ask user if they want a clean interface
@@ -897,6 +897,19 @@ function toggleDebugMode(state) {
 }
 
 /* =====================
+ * Function name: changeAutoplayMode
+ * Function description: this function will allow the user to change autoplay mode dynamically
+ * Date: 31/01/21
+ * =====================
+ */
+function changeAutoplayMode() {
+    // Get autoplay mode from the user
+    do {
+        autoplay_mode = parseInt(window.prompt("Autoplay mode #1 - Alternate bets. Example: Bet home, then away, then home, then away, then home, then away, etc\n\nAutoplay mode #2 - Bet on home and away in numbered sequences. Example: if sequence_amount is set to 3 in a row, the bot will play; home, home, home then away, away, away and repeat.\n\nAutoplay mode #3 - Bet randomly on home or away\n\nAutoplay mode #4 - Bet only after a certain sequence of results. Example: if streak_size is set to 4, then place a bet after 4 homes or 4 aways in a row\n\nAutoplay mode #5 - Bet randomly on home or away (with round skipping)", "1"), 10);
+    } while(isNaN(autoplay_mode) || autoplay_mode > 5 || autoplay_mode < 1);
+}
+
+/* =====================
 * Main code
 * =====================
 */
@@ -928,8 +941,9 @@ setTimeout(function() {
     changeOptions();
 }, 2000);
 
-// Register the event handler 
+// Register the event handlers 
 document.addEventListener('keyup', changeOptionsHotkey, false);
+document.addEventListener('keyup', changeAutoplayMode, false);
 
 // Run bot after 5 seconds
 setTimeout(function() {
