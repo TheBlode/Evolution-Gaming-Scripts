@@ -71,6 +71,11 @@ var user_insurance_bet = 1;
  * Set the loss limit balance
  * ======================================================================== */
 var user_loss_limit_balance = 0;
+
+/* ========================================================================
+ * Set the win limit balance
+ * ======================================================================== */
+var user_win_limit_balance = 0;
 /* =====================
  * End of bot settings
  * =====================
@@ -266,6 +271,12 @@ function autoPlay() {
             if (user_loss_limit_balance != 0) {
                 // Check for loss limit
                 stopPlayLimit(balance);
+            }
+
+            // Check if win limit has been reached
+            if (user_win_limit_balance != 0) {
+                // Check for loss limit
+                stopPlayWinLimit(balance);
             }
 
             // Autoplay mode #1
@@ -1782,8 +1793,13 @@ function changeOptions() {
 
     // Ask the user if they want to set a loss limit balance
     do {
-        user_loss_limit_balance = parseFloat(window.prompt("Set the balance you wish the bot to stop playing when reached. Set to 0 to disabled.", "0"), 10);
+        user_loss_limit_balance = parseFloat(window.prompt("Set the loss balance you wish the bot to stop playing when reached. Set to 0 to disabled.", "0"), 10);
     } while(isNaN(user_loss_limit_balance));
+
+    // Ask the user if they want to set a win limit balance
+    do {
+        user_win_limit_balance = parseFloat(window.prompt("Set the win balance you wish the bot to stop playing when reached. Set to 0 to disabled.", "0"), 10);
+    } while(isNaN(user_win_limit_balance));
 
     // Adjust UI
     changeInterface(user_clean_interface);
@@ -1863,6 +1879,19 @@ function toggleDebugMode(state) {
 }
 
 /* =====================
+ * Function name: changeAutoplayMode
+ * Function description: this function will allow the user to change autoplay mode dynamically
+ * Date: 31/01/21
+ * =====================
+ */
+function changeAutoplayMode() {
+    // Get autoplay mode from the user
+    do {
+        autoplay_mode = parseInt(window.prompt("Autoplay mode #1 - Bet randomly on a number\n\nAutoplay mode #2 - increment bet in a sequence (1, 2, 5, 10, 2 rolls, 4 rolls then start over)\n\nAutoplay mode #3 - decrement bet in a sequence (4 rolls, 2 rolls, 10, 5, 2, 1 then start over)\n\nAutoplay mode #4 - sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)\n\nAutoplay mode #5 - bonus games only betting\n\nAutoplay mode #6 - Bet randomly on a number (but skip some rounds)\n\nAutoplay mode #7 - random bonus games only betting\n\nAutoplay mode #8 - random bonus games only betting (but skip some rounds)", "1"), 10);
+    } while(isNaN(autoplay_mode) || autoplay_mode > 8 || autoplay_mode < 1);
+}
+
+/* =====================
  * Function name: stopPlayLimit
  * Function description: this function will stop playing if the balance falls below user limit
  * Date: 31/01/21
@@ -1897,39 +1926,26 @@ function stopPlayLimit(balance) {
 }
 
 /* =====================
- * Function name: changeAutoplayMode
- * Function description: this function will allow the user to change autoplay mode dynamically
+ * Function name: stopPlayWinLimit
+ * Function description: this function will stop playing if the balance is above the threshold
  * Date: 31/01/21
  * =====================
  */
-function changeAutoplayMode() {
-    // Get autoplay mode from the user
-    do {
-        autoplay_mode = parseInt(window.prompt("Autoplay mode #1 - Bet randomly on a number\n\nAutoplay mode #2 - increment bet in a sequence (1, 2, 5, 10, 2 rolls, 4 rolls then start over)\n\nAutoplay mode #3 - decrement bet in a sequence (4 rolls, 2 rolls, 10, 5, 2, 1 then start over)\n\nAutoplay mode #4 - sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)\n\nAutoplay mode #5 - bonus games only betting\n\nAutoplay mode #6 - Bet randomly on a number (but skip some rounds)\n\nAutoplay mode #7 - random bonus games only betting\n\nAutoplay mode #8 - random bonus games only betting (but skip some rounds)", "1"), 10);
-    } while(isNaN(autoplay_mode) || autoplay_mode > 8 || autoplay_mode < 1);
-}
-
-/* =====================
- * Function name: stopPlayLimit
- * Function description: this function will stop playing if the balance falls below user limit
- * Date: 31/01/21
- * =====================
- */
-function stopPlayLimit(balance) {
+function stopPlayWinLimit(balance) {
     // Convert balance to float
     var balance_as_float = parseFloat(balance);
 
     // If balance is less than loss limit balance
-    if (balance_as_float < user_loss_limit_balance) {
+    if (balance_as_float > user_win_limit_balance) {
         // Debug for the console
         console.log(spacing);
-        console.log("The bot will stop playing as the loss balance has been reached.");
+        console.log("The bot will stop playing as the win balance has been reached.");
         console.log(spacing);
 
         // Debug for page
         if (user_on_screen_debug == 1) {
             // Append to debug area
-            $("#debug_area").append("The bot will stop playing as the loss balance has been reached.<br />");
+            $("#debug_area").append("The bot will stop playing as the win balance has been reached.<br />");
 
             // Scroll to top
             scrollToTopOfDebug();
