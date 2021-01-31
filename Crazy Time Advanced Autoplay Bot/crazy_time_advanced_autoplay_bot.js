@@ -92,6 +92,11 @@ var time_between_breaks = 0;
 var time_between_breaks_counter = 0;
 var break_time = false;
 
+/* ========================================================================
+ * Set big chat
+ * ======================================================================== */
+big_chat = 0;
+
 /* =====================
  * End of bot settings
  * =====================
@@ -170,6 +175,9 @@ function autoPlay() {
         if (game_state != undefined) {
             game_state_check = game_state.match(/PLACE/g);
         }
+
+        // Enable big chat
+        bigChat(big_chat);
 
         // Main bot logic
         if (check == false && bonus_round == false && game_state_check != null) {
@@ -2858,6 +2866,14 @@ function changeOptions() {
         break_duration = (break_duration * 60) * 2;
     }
 
+    // Ask the user if they want big chat or not
+    do {
+        big_chat = parseInt(window.prompt("Do you want to activate big chat?\n\nSet to 1 to enable big chat or set to 0 to disable.", "0"), 10);
+    } while(isNaN(big_chat) || big_chat < 1);
+
+    // Enable big chat
+    bigChat(big_chat);
+
     // Adjust UI
     changeInterface(user_clean_interface);
 
@@ -3036,22 +3052,46 @@ function showBreakScreen(state) {
 }
 
 /* =====================
+ * Function name: bigChat
+ * Function description: this function will display a big chat
+ * Date: 31/01/21
+ * =====================
+ */
+function bigChat(state) {
+    if (state == 1) {
+        // Output break screen
+        $(".scrollableWrapper--2nhZl").css({"height": "230%", "width": "170%"});
+
+        $(".input--2nx2R").css({"left": "120%"});
+
+        $(".message--1ERGD").css({"font-size": "18px", "line-spacing": "5px"});
+
+        $(".senderName--3tGIw").css({"font-size": "18px", "line-spacing": "5px"});
+    } else {
+        // Output break screen
+        $(".scrollableWrapper--2nhZl").css({"height": "100%", "width": "100%"});
+
+        $(".input--2nx2R").css({"left": "0%"});
+    }
+}
+
+/* =====================
  * Main code
  * =====================
  */
 // Inject jQuery for us to use
-javascript:(function() {
-    function l(u, i) {
-        var d = document;
-        if (!d.getElementById(i)) {
-            var s = d.createElement('script');
-            s.src = u;
-            s.id = i;
-            d.body.appendChild(s);
+    javascript:(function() {
+        function l(u, i) {
+            var d = document;
+            if (!d.getElementById(i)) {
+                var s = d.createElement('script');
+                s.src = u;
+                s.id = i;
+                d.body.appendChild(s);
+            }
         }
-    }
-    l('//code.jquery.com/jquery-3.2.1.min.js', 'jquery')
-})();
+        l('//code.jquery.com/jquery-3.2.1.min.js', 'jquery')
+    })();
 
 // Welcome message!
 window.alert("Welcome to Crazy Time Advanced Autoplay Bot!\n\nMake sure you enable classic mode before running this bot.");

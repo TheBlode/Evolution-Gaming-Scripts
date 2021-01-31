@@ -70,6 +70,11 @@ var user_loss_limit_balance = 0;
 var user_win_limit_balance = 0;
 
 /* ========================================================================
+ * Set big chat
+ * ======================================================================== */
+big_chat = 0;
+
+/* ========================================================================
  * Set break variables
  * ======================================================================== */
 var break_times = 0;
@@ -148,6 +153,9 @@ function autoPlay() {
                 result = result.replace(/^0+/, "");
             }
         }
+
+        // Enable big chat
+        bigChat(big_chat);
 
         // Main bot logic
         if (regex_formatted != undefined && check == false && bonus_round == false && break_time == false) {
@@ -1399,6 +1407,14 @@ function changeOptions() {
         // Calculate break duration
         break_duration = (break_duration * 60) * 2;
     }
+
+    // Ask the user if they want big chat or not
+    do {
+        big_chat = parseInt(window.prompt("Do you want to activate big chat?\n\nSet to 1 to enable big chat or set to 0 to disable.", "0"), 10);
+    } while(isNaN(big_chat) || big_chat < 1);
+
+    // Enable big chat
+    bigChat(big_chat);
 
     // Adjust UI
     changeInterface(user_clean_interface);
