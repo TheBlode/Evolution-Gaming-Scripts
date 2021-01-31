@@ -2869,7 +2869,7 @@ function changeOptions() {
     // Ask the user if they want big chat or not
     do {
         big_chat = parseInt(window.prompt("Do you want to activate big chat?\n\nSet to 1 to enable big chat or set to 0 to disable.", "0"), 10);
-    } while(isNaN(big_chat) || big_chat < 1);
+    } while(isNaN(big_chat) || big_chat > 1);
 
     // Enable big chat
     bigChat(big_chat);
