@@ -92,10 +92,6 @@ function autoPlay() {
         var html = document.getElementsByClassName("transformWrapper--1ywHP")[0].innerHTML = "";
     }
 
-    // Create debug area
-    var $div = $("<div />").appendTo("body");
-    $div.attr("id", "debug_area");
-
     // Debug for the console
     console.log(spacing);
     console.log("I'm going to start playing!");
@@ -180,6 +176,15 @@ function autoPlay() {
                     // Append to debug area
                     $("#debug_area").append("The final result is <font color=\"red\">" + regex_formatted + "</font><br />");
                 }
+
+                // Scroll to top
+                scrollToTopOfDebug();
+            }
+
+            // Padding for new round
+            if (user_on_screen_debug == 1) {
+                // Append to debug area
+                $("#debug_area").append(spacing + "<br />");
 
                 // Scroll to top
                 scrollToTopOfDebug();
@@ -1398,6 +1403,12 @@ javascript:(function() {
 
 // Welcome message!
 window.alert("Welcome to Dream Catcher Advanced Autoplay Bot!\n\nMake sure you enable classic mode before running this bot.");
+
+setTimeout(function() {
+    // Create debug area
+    var $div = $("<div />").appendTo("body");
+    $div.attr("id", "debug_area");
+}, 2000);
 
 setTimeout(function() {
     // Show setup wizard
