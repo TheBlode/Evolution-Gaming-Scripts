@@ -72,6 +72,10 @@ var user_on_screen_debug = 1;
  * ======================================================================== */
 var user_insurance_bet = 1;
 
+/* ========================================================================
+ * Set the loss limit balance
+ * ======================================================================== */
+var user_loss_limit_balance = 0;
 /* =====================
  * End of bot settings
  * =====================
@@ -270,6 +274,12 @@ function autoPlay() {
 
                 // Scroll to top
                 scrollToTopOfDebug();
+            }
+
+            // Check if loss limit has been reached
+            if (user_loss_limit_balance != 0) {
+                // Check for loss limit
+                stopPlayLimit(balance);
             }
 
             // Autoplay mode #1
@@ -2850,6 +2860,40 @@ function changeAutoplayMode() {
     do {
         autoplay_mode = parseInt(window.prompt("Autoplay mode #1 - Bet randomly on a number\nAutoplay mode #2 - increment bet in a sequence (1, 2, 5, 10, Coin Flip, Pachinko, Cash Hunt, Crazy Time then start over)\nAutoplay mode #3 - decrement bet in a sequence (Crazy Time, Cash Hunt, Pachunko, Coin Flip, 10, 5, 2, 1 then start over)\nAutoplay mode #4 - sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)\nAutoplay mode #5 - Bet randomly on a number (but skip some rounds)\nAutoplay mode #6 - Bonus round betting only\nAutoplay mode #7 - random bonus games only betting\nAutoplay mode #8 - random bonus games only betting (but skip some rounds)\nAutoplay mode #9 - Bonus round betting only (double bonus so Coin Flip + Pachinko, Coin Flip + Cash Hunt, Coin Flip + Crazy Time, Pachinko + Cash Hunt, Pachinko + Crazy Time, Cash Hunt + Crazy Time)\nAutoplay mode #10 - random bonus games only betting (double bonus)\nAutoplay mode #11 - random bonus games only betting (but skip some rounds) (double bonus)\nAutoplay mode #12 - bet on 1 and 2 only", "1"), 10);
     } while(isNaN(autoplay_mode) || autoplay_mode > 12 || autoplay_mode < 1);
+}
+
+/* =====================
+ * Function name: stopPlayLimit
+ * Function description: this function will stop playing if the balance falls below user limit
+ * Date: 31/01/21
+ * =====================
+ */
+function stopPlayLimit(balance) {
+    // Convert balance to float
+    var balance_as_float = parseFloat(balance);
+
+    // If balance is less than loss limit balance
+    if (balance_as_float < user_loss_limit_balance) {
+        // Debug for the console
+        console.log(spacing);
+        console.log("The bot will stop playing as the loss balance has been reached.");
+        console.log(spacing);
+
+        // Debug for page
+        if (user_on_screen_debug == 1) {
+            // Append to debug area
+            $("#debug_area").append("The bot will stop playing as the loss balance has been reached.<br />");
+
+            // Scroll to top
+            scrollToTopOfDebug();
+        }
+
+        // Set autoplay to erroneous number
+        autoplay_mode = 1000000;
+
+        // Stop insurance bets
+        user_insurance_bet = 0;
+    }
 }
 
 /* =====================

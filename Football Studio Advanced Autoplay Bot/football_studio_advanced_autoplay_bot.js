@@ -60,6 +60,10 @@ var user_clean_interface = 1;
 * ======================================================================== */
 var user_on_screen_debug = 1;
 
+/* ========================================================================
+ * Set the loss limit balance
+ * ======================================================================== */
+var user_loss_limit_balance = 0;
 /* =====================
 * End of bot settings
 * =====================
@@ -221,6 +225,12 @@ function autoPlay() {
 
                 // Scroll to top
                 scrollToTopOfDebug();
+            }
+
+            // Check if loss limit has been reached
+            if (user_loss_limit_balance != 0) {
+                // Check for loss limit
+                stopPlayLimit(balance);
             }
 
             // Autoplay mode #1
@@ -907,6 +917,40 @@ function changeAutoplayMode() {
     do {
         autoplay_mode = parseInt(window.prompt("Autoplay mode #1 - Alternate bets. Example: Bet home, then away, then home, then away, then home, then away, etc\n\nAutoplay mode #2 - Bet on home and away in numbered sequences. Example: if sequence_amount is set to 3 in a row, the bot will play; home, home, home then away, away, away and repeat.\n\nAutoplay mode #3 - Bet randomly on home or away\n\nAutoplay mode #4 - Bet only after a certain sequence of results. Example: if streak_size is set to 4, then place a bet after 4 homes or 4 aways in a row\n\nAutoplay mode #5 - Bet randomly on home or away (with round skipping)", "1"), 10);
     } while(isNaN(autoplay_mode) || autoplay_mode > 5 || autoplay_mode < 1);
+}
+
+/* =====================
+ * Function name: stopPlayLimit
+ * Function description: this function will stop playing if the balance falls below user limit
+ * Date: 31/01/21
+ * =====================
+ */
+function stopPlayLimit(balance) {
+    // Convert balance to float
+    var balance_as_float = parseFloat(balance);
+
+    // If balance is less than loss limit balance
+    if (balance_as_float < user_loss_limit_balance) {
+        // Debug for the console
+        console.log(spacing);
+        console.log("The bot will stop playing as the loss balance has been reached.");
+        console.log(spacing);
+
+        // Debug for page
+        if (user_on_screen_debug == 1) {
+            // Append to debug area
+            $("#debug_area").append("The bot will stop playing as the loss balance has been reached.<br />");
+
+            // Scroll to top
+            scrollToTopOfDebug();
+        }
+
+        // Set autoplay to erroneous number
+        autoplay_mode = 1000000;
+
+        // Stop insurance bets
+        user_insurance_bet = 0;
+    }
 }
 
 /* =====================
