@@ -24,6 +24,7 @@ Welcome to my Evolution Gaming Scripts page! Evolution's autoplay feature is sev
 - All bots have the ability to show on screen debug of play to make things easier to track.
 - All bots allow you to customise how long you play for and how long your breaks will be.
 - All bots allow you to enter "big chat" mode which increase the chat area and font size.
+
 ## Crazy Time Advanced Autoplay Bot
 Crazy Time Advanced Autoplay Bot offers the following autoplay modes;
 - Random bets
