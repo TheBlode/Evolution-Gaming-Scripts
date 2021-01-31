@@ -68,6 +68,17 @@ var user_loss_limit_balance = 0;
  * Set the win limit balance
  * ======================================================================== */
 var user_win_limit_balance = 0;
+
+/* ========================================================================
+ * Set break variables
+ * ======================================================================== */
+var break_times = 0;
+var break_duration = 0;
+var break_counter = 0;
+var time_between_breaks = 0;
+var time_between_breaks_counter = 0;
+var break_time = false;
+
 /* =====================
  * End of bot settings
  * =====================
@@ -139,7 +150,7 @@ function autoPlay() {
         }
 
         // Main bot logic
-        if (regex_formatted != undefined && check == false && bonus_round == false) {
+        if (regex_formatted != undefined && check == false && bonus_round == false && break_time == false) {
             // Flip check flag
             check = true;
 
@@ -247,7 +258,7 @@ function autoPlay() {
             }
 
             // Autoplay mode #1
-            if (autoplay_mode == 1 && bonus_round == false) {
+            if (autoplay_mode == 1 && bonus_round == false && break_time == false) {
                 // Fetch random number
                 bet_type = randomNumber(1, 6);
 
@@ -413,7 +424,7 @@ function autoPlay() {
             }
 
             // Autoplay mode #2
-            if (autoplay_mode == 2 && bonus_round == false) {
+            if (autoplay_mode == 2 && bonus_round == false && break_time == false) {
                 // Place bet
                 if (increment_sequence == 1) {
                     // Output
@@ -581,7 +592,7 @@ function autoPlay() {
             }
 
             // Autoplay mode #3
-            if (autoplay_mode == 3 && bonus_round == false) {
+            if (autoplay_mode == 3 && bonus_round == false && break_time == false) {
                 // Place bet
                 if (decrement_sequence == 1) {
                     // Output
@@ -749,7 +760,7 @@ function autoPlay() {
             }
 
             // Autoplay mode #4
-            if (autoplay_mode == 4 && bonus_round == false) {
+            if (autoplay_mode == 4 && bonus_round == false && break_time == false) {
                 // Place bet
                 if (increment_sequence == 1) {
                     // Output
@@ -930,7 +941,7 @@ function autoPlay() {
             }
 
             // Autoplay mode #5
-            if (autoplay_mode == 5 && bonus_round == false) {
+            if (autoplay_mode == 5 && bonus_round == false && break_time == false) {
                 // Generate number with frequency of skipping rounds.
                 random_number = user_round_skipping + 7;
 
@@ -1110,7 +1121,7 @@ function autoPlay() {
             }
 
             // Autoplay mode #6
-            if (autoplay_mode == 6 && bonus_round == false) {
+            if (autoplay_mode == 6 && bonus_round == false && break_time == false) {
                 // Place bet
                 if (increment_sequence == 1) {
                     // Output
@@ -1183,6 +1194,38 @@ function autoPlay() {
 
         // Increment counter
         i++;
+
+        // Increment break timer
+        if (break_times == 1) {
+            // Check if playing session is over
+            if (time_between_breaks_counter > time_between_breaks) {
+                // Increment break timer
+                break_counter++;
+
+                // Show break timer
+                showBreakScreen(1);
+
+                // Set break flag
+                break_time = true;
+
+                if (break_counter > break_duration) {
+                    // Hide break timer
+                    showBreakScreen(0);
+
+                    // Unset break flag
+                    break_time = false;
+
+                    // Reset session time counter
+                    time_between_breaks_counter = 0;
+
+                    // Reset break time counter
+                    break_counter = 0;
+                }
+            } else {
+                // Increment session timer
+                time_between_breaks_counter++;
+            }
+        }
 
         if (i < how_many_times) {
             setTimeout(f, 500);
@@ -1327,13 +1370,35 @@ function changeOptions() {
 
     // Ask the user if they want to set a loss limit balance
     do {
-        user_loss_limit_balance = parseFloat(window.prompt("Set the loss balance you wish the bot to stop playing when reached.\n\nSet to 0 to disabled.", "0"), 10);
+        user_loss_limit_balance = parseFloat(window.prompt("Set the loss balance you wish the bot to stop playing when reached.\n\nSet to 0 to disable.", "0"), 10);
     } while(isNaN(user_loss_limit_balance));
 
     // Ask the user if they want to set a win limit balance
     do {
-        user_win_limit_balance = parseFloat(window.prompt("Set the win balance you wish the bot to stop playing when reached.\n\nSet to 0 to disabled.", "0"), 10);
+        user_win_limit_balance = parseFloat(window.prompt("Set the win balance you wish the bot to stop playing when reached.\n\nSet to 0 to disable.", "0"), 10);
     } while(isNaN(user_win_limit_balance));
+
+    // Ask the user if they want to be reminded of breaks
+    do {
+        break_times = parseInt(window.prompt("Do you want to be reminded of break times?\n\nSet to 1 to enable reminders or set to 0 to disable.", "0"), 10);
+    } while(isNaN(break_times));
+
+    // Find time between breaks
+    if (break_times == 1) {
+        do {
+            time_between_breaks = parseInt(window.prompt("How long do you want to play before the breaks?\n\nSet a value in minutes.", "0"), 10);
+        } while(isNaN(time_between_breaks) || time_between_breaks < 1);
+
+        // Calculate break duration
+        time_between_breaks = (time_between_breaks * 60) * 2;
+
+        do {
+            break_duration = parseInt(window.prompt("How long do you want the breaks to be?\n\nSet a value in minutes.", "0"), 10);
+        } while(isNaN(break_duration) || break_duration < 1);
+
+        // Calculate break duration
+        break_duration = (break_duration * 60) * 2;
+    }
 
     // Adjust UI
     changeInterface(user_clean_interface);
@@ -1490,6 +1555,25 @@ function stopPlayWinLimit(balance) {
 }
 
 /* =====================
+ * Function name: showBreakScreen
+ * Function description: this function will remind the player to take their scheduled break
+ * Date: 31/01/21
+ * =====================
+ */
+function showBreakScreen(state) {
+    // Output break screen
+    if (state == "1") {
+        // CSS
+        $("#break_screen").css({"position": "absolute", "font-size": "x-large", "width": "100%", "height": "98%", "overflow": "overlay", "line-height": "20pt", "background": "black", "z-index": "1000000", "z-index": "1000000", "text-align": "center"});
+        $("#break_screen").html("Break Time!");
+        $("#break_screen").show();
+    } else {
+        // Hide debug
+        $("#break_screen").hide();
+    }
+}
+
+/* =====================
  * Main code
  * =====================
  */
@@ -1514,6 +1598,12 @@ setTimeout(function() {
     // Create debug area
     var $div = $("<div />").appendTo("body");
     $div.attr("id", "debug_area");
+}, 2000);
+
+setTimeout(function() {
+    // Create debug area
+    var $div = $("<div />").appendTo("body");
+    $div.attr("id", "break_screen");
 }, 2000);
 
 setTimeout(function() {
