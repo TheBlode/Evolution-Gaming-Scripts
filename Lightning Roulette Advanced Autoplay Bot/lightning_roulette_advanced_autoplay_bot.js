@@ -17,7 +17,7 @@
 /* ========================================================================
  * Set autoplay mode and other game settings
  * ======================================================================== */
-var autoplay_mode = 1;
+var autoplay_mode = 2;
 
 /* ========================================================================
  * Disable video (when you set this to 1, video will be disabled)
@@ -25,19 +25,9 @@ var autoplay_mode = 1;
 var disable_video = 1;
 
 /* ========================================================================
- * Set click delay (if you're having issues with clicks on the UI)
- * ======================================================================== */
-var click_delay = 200;
-
-/* ========================================================================
  * Set wager amount in units (default is 1 unit)
  * ======================================================================== */
 var user_wager_amount = 1;
-
-/* ========================================================================
- * Set sequence amount to play with in a row
- * ======================================================================== */
-var user_sequence_amount = 2;
 
 /* ========================================================================
  * Set round skipping frequency. The higher the number, the more rounds will be skipped.
@@ -56,19 +46,15 @@ var user_clean_interface = 1;
  * ======================================================================== */
 var user_on_screen_debug = 1;
 
+/* ========================================================================
+ * Insurance on main bet by betting on one (set to 0 to disable)
+ * ======================================================================== */
+var user_insurance_bet = 1;
+
 /* =====================
  * End of bot settings
  * =====================
  */
-// Set streak size to wait for before betting
-var user_streak_size = 2;
-
-// Autoplay mode #1
-// Bet randomly on a number
-if (autoplay_mode == 1) {
-    // Bet randomly on a number
-}
-
 // Add some spacing for the output for the user
 var spacing = "==========================";
 // Initialise all the script's variables
@@ -77,16 +63,9 @@ var i = 0;
 
 // This variable will determine how long the bot will run for (a setting of 100 means the bot will run for 50 seconds. (The sum is how_many_times / 2) * 1 = x seconds)
 var how_many_times = 1000000;
-var one_streak = 0;
-var two_streak = 0;
-var five_streak = 0;
-var ten_streak = 0;
-var twenty_streak = 0;
-var forty_streak = 0;
-var sequence_counter = 0;
+var timeout = 250;
 var check = false;
 var count = 0;
-var clicking = "";
 var new_round = false;
 var bet_type = "";
 
@@ -181,12 +160,47 @@ function autoPlay() {
             iteration_number = i;
 
             // Set counter value
-            count = iteration_number + 40;
+            count = iteration_number + 80;
 
             // Output final hand to console
             console.log(spacing);
             console.log("The final result is " + result);
             console.log(spacing);
+
+            // Debug for the console
+            console.log(spacing);
+            var winnings = getWinnings();
+            console.log("Your winnings are: " + winnings);
+            console.log(spacing);
+
+            // Debug for page
+            if (user_on_screen_debug == 1) {
+                if (winnings == "0") {
+                // Append to debug area
+                $("#debug_area").append("Your winnings are: <font color=\"red\">" + winnings + "</font><br />");
+                } else {
+                    // Append to debug area
+                    $("#debug_area").append("Your winnings are: <font color=\"green\">" + winnings + "</font><br />");
+                }
+
+                // Scroll to top
+                scrollToTopOfDebug();
+            }
+
+            // Debug for the console
+            console.log(spacing);
+            var balance = getBalance();
+            console.log("Your balance is: " + balance);
+            console.log(spacing);
+
+            // Debug for page
+            if (user_on_screen_debug == 1) {
+                // Append to debug area
+                $("#debug_area").append("Your balance is: " + balance + "<br />");
+
+                // Scroll to top
+                scrollToTopOfDebug();
+            }
 
             // Debug for page
             if (user_on_screen_debug == 1) {
@@ -207,7 +221,7 @@ function autoPlay() {
                 setTimeout(function() {
                     // Bet on the spot
                     betOnSpot(bet_type);
-                }, 5000);
+                }, 4000);
 
                 if (bet_type < 38) {
                     // Output
@@ -246,7 +260,7 @@ function autoPlay() {
                 setTimeout(function() {
                     // Bet on the spot
                     betOnSpot(bet_type);
-                }, 5000);
+                }, 4000);
 
                 // Output
                 console.log(spacing);
@@ -261,6 +275,28 @@ function autoPlay() {
                    scrollToTopOfDebug();
                 }
             }
+
+            if (user_insurance_bet == 1) {
+                bet_type_two = randomNumber(1, 2);
+
+                // Output
+                console.log(spacing);
+                console.log("I'm placing an insurance bet.");
+                console.log(spacing);
+                // Debug for page
+                if (user_on_screen_debug == 1) {
+                    // Append to debug area
+                    $("#debug_area").append("I'm placing an insurance bet.<br />");
+
+                   // Scroll to top
+                   scrollToTopOfDebug();
+                }
+
+                setTimeout(function() {
+                    // Bet on red or black
+                    betRedOrBlack(bet_type_two);
+                }, 4000);
+            }
         }
 
         // Check
@@ -273,7 +309,7 @@ function autoPlay() {
         i++;
 
         if (i < how_many_times) {
-            setTimeout(f, 500);
+            setTimeout(f, timeout);
         }
     }
 
@@ -307,7 +343,7 @@ function click(x, y) {
     });
 
     var el = document.elementFromPoint(x, y);
-console.log(el);
+
     el.dispatchEvent(ev);
 }
 
@@ -339,7 +375,7 @@ function checkForNewRound() {
 function betOnSpot(number_input) {
     switch(number_input) {
         case 1:
-            click(570, 620);
+            click(570, 610);
             break;
         case 2:
             click(570, 580);
@@ -463,6 +499,44 @@ function betOnSpot(number_input) {
 function scrollToTopOfDebug() {
     // Scroll to top of debug area
     $("#debug_area").scrollTop(1000000);
+}
+
+/* =====================
+ * Function name: getBalance
+ * Function description: this function fetch your balance
+ * Date: 07/11/20
+ * =====================
+ */
+function getBalance() {
+    // Grab balance
+    return $("span[data-role='balance-label__value']").html();
+}
+
+/* =====================
+ * Function name: betRedOrBlack
+ * Function description: this function will place a bet on red or black
+ * Date: 07/11/20
+ * =====================
+ */
+function betRedOrBlack(number_input) {
+    if (number_input == 1) {
+        // Bet on red
+        click(730, 680);
+    } else {
+        // Bet on black
+        click(830, 680);
+    }
+}
+
+/* =====================
+ * Function name: getWinnings
+ * Function description: this function fetch your winnings
+ * Date: 07/11/20
+ * =====================
+ */
+function getWinnings() {
+    // Grab balance
+    return $("span[data-role='total-bet-label__value']").html();
 }
 
 /* =====================
