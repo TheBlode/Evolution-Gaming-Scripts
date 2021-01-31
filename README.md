@@ -82,10 +82,18 @@ Lightning Roulette offers the following autoplay modes;
 
 ## Currently known bugs
 - When disabling video during bot play, video cannot be restored.
+- For bots to run effectively, they must be active on your screen. Chrome will slow down JavaScript for non-active windows. To run multiple games with bots at the same time, resize all the windows to fit on the screen.
 
 ## Coming Soon
 - Infinite Blackjack / Power Blackjack / Freebet Blackjack Advanced Autoplay Bots
+- Lightning Dice
 - More betting modes for all bots
 - Chrome extension
 - Autoswitching of autoplay modes based on game results
 - Implementing progressive betting patterns such as Martingale, Fibonacci, D'Alembert etc
+- Publishing my game simulators (which hook into Tracksino) to allow you to run simulations on the live games
+- Gaming breaks
+- Simulation mode (using play money)
+- Jumbo chat
+- Streaks betting for all games
+
