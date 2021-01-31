@@ -889,7 +889,7 @@ function toggleDebugMode(state) {
     // Output debug on game screen if user wants it
     if (state == "1") {
         // CSS
-        $("#debug_area").css({"position": "absolute", "font-size": "x-large", "width": "100%", "height": "98%", "overflow": "overlay", "line-height": "20pt", "background": "black"});
+        $("#debug_area").css({"position": "absolute", "font-size": "x-large", "width": "100%", "height": "98%", "overflow": "overlay", "line-height": "20pt", "background": "black", "z-index": "1000000"});
     } else {
         // Hide debug
         $("#debug_area").hide();
