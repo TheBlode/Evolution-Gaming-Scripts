@@ -83,6 +83,7 @@ Lightning Roulette offers the following autoplay modes;
 ## Currently known bugs
 - When disabling video during bot play, video cannot be restored.
 - For bots to run effectively, they must be active on your screen. Chrome will slow down JavaScript for non-active windows. To run multiple games with bots at the same time, resize all the windows to fit on the screen.
+- Only tested with Chrome. May work with other browsers with some effort.
 
 ## Coming Soon
 - Infinite Blackjack / Power Blackjack / Freebet Blackjack Advanced Autoplay Bots
