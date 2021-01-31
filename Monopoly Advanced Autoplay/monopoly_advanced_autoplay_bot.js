@@ -2060,6 +2060,30 @@ function showBreakScreen(state) {
 }
 
 /* =====================
+ * Function name: bigChat
+ * Function description: this function will display a big chat
+ * Date: 31/01/21
+ * =====================
+ */
+function bigChat(state) {
+    if (state == 1) {
+        // Output break screen
+        $(".scrollableWrapper--2nhZl").css({"height": "230%", "width": "170%"});
+
+        $(".input--2nx2R").css({"left": "120%"});
+
+        $(".message--1ERGD").css({"font-size": "18px", "line-spacing": "5px"});
+
+        $(".senderName--3tGIw").css({"font-size": "18px", "line-spacing": "5px"});
+    } else {
+        // Output break screen
+        $(".scrollableWrapper--2nhZl").css({"height": "100%", "width": "100%"});
+
+        $(".input--2nx2R").css({"left": "0%"});
+    }
+}
+
+/* =====================
  * Main code
  * =====================
  */
