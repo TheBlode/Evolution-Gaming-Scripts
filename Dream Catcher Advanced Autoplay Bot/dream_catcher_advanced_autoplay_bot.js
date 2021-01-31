@@ -1393,7 +1393,7 @@ function changeAutoplayMode() {
     // Get autoplay mode from the user
     do {
         autoplay_mode = parseInt(window.prompt("Autoplay mode #1 - Bet randomly on a number\n\nAutoplay mode #2 - increment bet in a sequence (1, 2, 5, 10, 20, 40 then start over)\n\nAutoplay mode #3 - decrement bet in a sequence (40, 20, 10, 5, 2, 1 then start over)\n\nAutoplay mode #4 - sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)\n\nAutoplay mode #5 - Bet randomly on a number (but skip some rounds)\n\nAutoplay mode #6 - Bet on 1 and 2 only", "1"), 10);
-    } while(isNaN(autoplay_mode) || autoplay_mode > 5 || autoplay_mode < 1);
+    } while(isNaN(autoplay_mode) || autoplay_mode > 6 || autoplay_mode < 1);
 }
 
 /* =====================
