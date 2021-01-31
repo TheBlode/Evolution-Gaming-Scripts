@@ -23,7 +23,7 @@ Welcome to my Evolution Gaming Scripts page! Evolution's autoplay feature is sev
 - All bots have the ability to clean up the game interface to make place less clutters.
 - All bots have the ability to show on screen debug of play to make things easier to track.
 - All bots allow you to customise how long you play for and how long your breaks will be.
-
+- All bots allow you to enter "big chat" mode which increase the chat area and font size.
 ## Crazy Time Advanced Autoplay Bot
 Crazy Time Advanced Autoplay Bot offers the following autoplay modes;
 - Random bets
@@ -95,7 +95,6 @@ Lightning Roulette offers the following autoplay modes;
 - Implementing progressive betting patterns such as Martingale, Fibonacci, D'Alembert etc
 - Publishing my game simulators (which hook into Tracksino) to allow you to run simulations on the live games
 - Simulation mode (using play money)
-- Jumbo chat
 - Streaks betting for all games
 - User guides
 
