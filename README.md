@@ -97,4 +97,5 @@ Lightning Roulette offers the following autoplay modes;
 - Simulation mode (using play money)
 - Jumbo chat
 - Streaks betting for all games
+- User guides
 
