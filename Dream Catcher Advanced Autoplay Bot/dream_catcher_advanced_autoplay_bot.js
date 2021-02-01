@@ -253,6 +253,15 @@ function autoPlay() {
                 scrollToTopOfDebug();
             }
 
+            // Padding for new round
+            if (user_on_screen_debug == 1) {
+                // Append to debug area
+                $("#debug_area").append(spacing + "<br />");
+
+                // Scroll to top
+                scrollToTopOfDebug();
+            }
+
             // Check if loss limit has been reached
             if (user_loss_limit_balance != 0) {
                 // Check for loss limit

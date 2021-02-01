@@ -256,15 +256,6 @@ function autoPlay() {
                 scrollToTopOfDebug();
             }
 
-            // Padding for new round
-            if (user_on_screen_debug == 1) {
-                // Append to debug area
-                $("#debug_area").append(spacing + "<br />");
-
-                // Scroll to top
-                scrollToTopOfDebug();
-            }
-
             // Debug for the console
             console.log(spacing);
             var winnings = getWinnings();
@@ -295,6 +286,15 @@ function autoPlay() {
             if (user_on_screen_debug == 1) {
                 // Append to debug area
                 $("#debug_area").append("Your balance is: " + balance + "<br />");
+
+                // Scroll to top
+                scrollToTopOfDebug();
+            }
+
+            // Padding for new round
+            if (user_on_screen_debug == 1) {
+                // Append to debug area
+                $("#debug_area").append(spacing + "<br />");
 
                 // Scroll to top
                 scrollToTopOfDebug();
