@@ -1599,7 +1599,7 @@ function autoPlay() {
             }
 
             // Autoplay mode #9
-            if (autoplay_mode == 5 && chance_check == false && break_time == false) {
+            if (autoplay_mode == 9 && chance_check == false && break_time == false) {
                 // Place bet
                 // Output
                 console.log(spacing);
