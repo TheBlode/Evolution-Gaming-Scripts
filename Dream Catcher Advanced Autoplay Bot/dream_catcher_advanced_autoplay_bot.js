@@ -126,7 +126,7 @@ function autoPlay() {
     // Debug for page
     if (user_on_screen_debug == 1) {
         // Append to debug area
-        $("#debug_area").append("I'm going to start playing!<br />");
+        $("#debug_area").append(timestamp() + "I'm going to start playing!<br />");
 
         // Scroll to top
         scrollToTopOfDebug();
@@ -188,22 +188,22 @@ function autoPlay() {
             if (user_on_screen_debug == 1) {
                 if (regex_formatted == "1") {
                     // Append to debug area
-                    $("#debug_area").append("The final result is <font color=\"yellow\">" + regex_formatted + "</font><br />");
+                    $("#debug_area").append(timestamp() + "The final result is <font color=\"yellow\">" + regex_formatted + "</font><br />");
                 } else if (regex_formatted == "2") {
                     // Append to debug area
-                    $("#debug_area").append("The final result is <font color=\"blue\">" + regex_formatted + "</font><br />");
+                    $("#debug_area").append(timestamp() + "The final result is <font color=\"blue\">" + regex_formatted + "</font><br />");
                 } else if (regex_formatted == "5") {
                     // Append to debug area
-                    $("#debug_area").append("The final result is <font color=\"purple\">" + regex_formatted + "</font><br />");
+                    $("#debug_area").append(timestamp() + "The final result is <font color=\"purple\">" + regex_formatted + "</font><br />");
                 } else if (regex_formatted == "10") {
                     // Append to debug area
-                    $("#debug_area").append("The final result is <font color=\"green\">" + regex_formatted + "</font><br />");
+                    $("#debug_area").append(timestamp() + "The final result is <font color=\"green\">" + regex_formatted + "</font><br />");
                 } else if (regex_formatted == "20") {
                     // Append to debug area
-                    $("#debug_area").append("The final result is <font color=\"orange\">" + regex_formatted + "</font><br />");
+                    $("#debug_area").append(timestamp() + "The final result is <font color=\"orange\">" + regex_formatted + "</font><br />");
                 } else if (regex_formatted == "40") {
                     // Append to debug area
-                    $("#debug_area").append("The final result is <font color=\"red\">" + regex_formatted + "</font><br />");
+                    $("#debug_area").append(timestamp() + "The final result is <font color=\"red\">" + regex_formatted + "</font><br />");
                 }
 
                 // Scroll to top
@@ -213,7 +213,7 @@ function autoPlay() {
             // Padding for new round
             if (user_on_screen_debug == 1) {
                 // Append to debug area
-                $("#debug_area").append(spacing + "<br />");
+                $("#debug_area").append(timestamp() + spacing + "<br />");
 
                 // Scroll to top
                 scrollToTopOfDebug();
@@ -229,10 +229,10 @@ function autoPlay() {
             if (user_on_screen_debug == 1) {
                 if (winnings == "0") {
                 // Append to debug area
-                $("#debug_area").append("Your winnings are: <font color=\"red\">" + winnings + "</font><br />");
+                $("#debug_area").append(timestamp() + "Your winnings are: <font color=\"red\">" + winnings + "</font><br />");
                 } else {
                     // Append to debug area
-                    $("#debug_area").append("Your winnings are: <font color=\"green\">" + winnings + "</font><br />");
+                    $("#debug_area").append(timestamp() + "Your winnings are: <font color=\"green\">" + winnings + "</font><br />");
                 }
  
                 // Scroll to top
@@ -248,7 +248,7 @@ function autoPlay() {
             // Debug for page
             if (user_on_screen_debug == 1) {
                 // Append to debug area
-                $("#debug_area").append("Your balance is: " + balance + "<br />");
+                $("#debug_area").append(timestamp() + "Your balance is: " + balance + "<br />");
 
                 // Scroll to top
                 scrollToTopOfDebug();
@@ -257,7 +257,7 @@ function autoPlay() {
             // Padding for new round
             if (user_on_screen_debug == 1) {
                 // Append to debug area
-                $("#debug_area").append(spacing + "<br />");
+                $("#debug_area").append(timestamp() + spacing + "<br />");
 
                 // Scroll to top
                 scrollToTopOfDebug();
@@ -289,7 +289,7 @@ function autoPlay() {
                     // Debug for page
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on #1 now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on #1 now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -315,7 +315,7 @@ function autoPlay() {
                     console.log(spacing);
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on #2 now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on #2 now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -341,7 +341,7 @@ function autoPlay() {
                     console.log(spacing);
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on #5 now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on #5 now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -367,7 +367,7 @@ function autoPlay() {
                     console.log(spacing);
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on #10 now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on #10 now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -393,7 +393,7 @@ function autoPlay() {
                     console.log(spacing);
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on #20 now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on #20 now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -419,7 +419,7 @@ function autoPlay() {
                     console.log(spacing);
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on #40 now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on #40 now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -451,7 +451,7 @@ function autoPlay() {
                     console.log(spacing);
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on #1 now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on #1 now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -477,7 +477,7 @@ function autoPlay() {
                     console.log(spacing);
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on #2 now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on #2 now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -503,7 +503,7 @@ function autoPlay() {
                     console.log(spacing);
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on #5 now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on #5 now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -529,7 +529,7 @@ function autoPlay() {
                     console.log(spacing);
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on #10 now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on #10 now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -555,7 +555,7 @@ function autoPlay() {
                     console.log(spacing);
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on #20 now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on #20 now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -581,7 +581,7 @@ function autoPlay() {
                     console.log(spacing);
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on #40 now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on #40 now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -619,7 +619,7 @@ function autoPlay() {
                     console.log(spacing);
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on #1 now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on #1 now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -648,7 +648,7 @@ function autoPlay() {
                     console.log(spacing);
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on #2 now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on #2 now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -674,7 +674,7 @@ function autoPlay() {
                     console.log(spacing);
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on #5 now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on #5 now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -700,7 +700,7 @@ function autoPlay() {
                     console.log(spacing);
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on #10 now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on #10 now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -726,7 +726,7 @@ function autoPlay() {
                     console.log(spacing);
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on #20 now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on #20 now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -752,7 +752,7 @@ function autoPlay() {
                     console.log(spacing);
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on #40 now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on #40 now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -787,7 +787,7 @@ function autoPlay() {
                     console.log(spacing);
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on #1 now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on #1 now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -813,7 +813,7 @@ function autoPlay() {
                     console.log(spacing);
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on #2 now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on #2 now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -839,7 +839,7 @@ function autoPlay() {
                     console.log(spacing);
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on #5 now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on #5 now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -865,7 +865,7 @@ function autoPlay() {
                     console.log(spacing);
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on #10 now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on #10 now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -891,7 +891,7 @@ function autoPlay() {
                     console.log(spacing);
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on #20 now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on #20 now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -917,7 +917,7 @@ function autoPlay() {
                     console.log(spacing);
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on #40 now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on #40 now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -974,7 +974,7 @@ function autoPlay() {
                     console.log(spacing);
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on #1 now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on #1 now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -1000,7 +1000,7 @@ function autoPlay() {
                     console.log(spacing);
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on #2 now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on #2 now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -1026,7 +1026,7 @@ function autoPlay() {
                     console.log(spacing);
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on #5 now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on #5 now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -1052,7 +1052,7 @@ function autoPlay() {
                     console.log(spacing);
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on #10 now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on #10 now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -1078,7 +1078,7 @@ function autoPlay() {
                     console.log(spacing);
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on #20 now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on #20 now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -1104,7 +1104,7 @@ function autoPlay() {
                     console.log(spacing);
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on #40 now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on #40 now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -1130,7 +1130,7 @@ function autoPlay() {
                     console.log(spacing);
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm skipping this round!<br />");
+                        $("#debug_area").append(timestamp() + "I'm skipping this round!<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -1148,7 +1148,7 @@ function autoPlay() {
                     console.log(spacing);
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on #1 now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on #1 now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -1174,7 +1174,7 @@ function autoPlay() {
                     console.log(spacing);
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on #2 now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on #2 now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -1538,7 +1538,7 @@ function stopPlayLimit(balance) {
         // Debug for page
         if (user_on_screen_debug == 1) {
             // Append to debug area
-            $("#debug_area").append("The bot will stop playing as the loss balance has been reached.<br />");
+            $("#debug_area").append(timestamp() + "The bot will stop playing as the loss balance has been reached.<br />");
 
             // Scroll to top
             scrollToTopOfDebug();
@@ -1569,7 +1569,7 @@ function stopPlayWinLimit(balance) {
         // Debug for page
         if (user_on_screen_debug == 1) {
             // Append to debug area
-            $("#debug_area").append("The bot will stop playing as the win balance has been reached.<br />");
+            $("#debug_area").append(timestamp() + "The bot will stop playing as the win balance has been reached.<br />");
 
             // Scroll to top
             scrollToTopOfDebug();
@@ -1639,6 +1639,17 @@ function bigChat(state) {
 
         $(".input--2nx2R").css({"left": "0%"});
     }
+}
+
+/* =====================
+ * Function name: getTimestamp
+ * Function description: this function will return the current time
+ * Date: 13/02/21
+ * =====================
+ */
+function timestamp() {
+    // Return current time
+    return new Date().toLocaleTimeString() + ": ";
 }
 
 /* =====================

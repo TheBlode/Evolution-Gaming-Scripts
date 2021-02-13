@@ -132,7 +132,7 @@ function autoPlay() {
     // Debug for page
     if (user_on_screen_debug == 1) {
         // Append to debug area
-        $("#debug_area").append("I'm going to start playing!<br />");
+        $("#debug_area").append(timestamp() + "I'm going to start playing!<br />");
 
         // Scroll to top
         scrollToTopOfDebug();
@@ -196,13 +196,13 @@ function autoPlay() {
             if (user_on_screen_debug == 1) {
                 if (result_check_found == "Home") {
                     // Append to debug area
-                    $("#debug_area").append("The final result is <font color=\"red\">" + result_check_found + "</font><br />");
+                    $("#debug_area").append(timestamp() + "The final result is <font color=\"red\">" + result_check_found + "</font><br />");
                 } else if (result_check_found == "Away") {
                     // Append to debug area
-                    $("#debug_area").append("The final result is <font color=\"blue\">" + result_check_found + "</font><br />");
+                    $("#debug_area").append(timestamp() + "The final result is <font color=\"blue\">" + result_check_found + "</font><br />");
                 } else {
                     // Append to debug area
-                    $("#debug_area").append("The final result is <font color=\"yellow\">" + result_check_found + "</font><br />");
+                    $("#debug_area").append(timestamp() + "The final result is <font color=\"yellow\">" + result_check_found + "</font><br />");
                 }
 
                 // Scroll to top
@@ -212,7 +212,7 @@ function autoPlay() {
             // Padding for new round
             if (user_on_screen_debug == 1) {
                 // Append to debug area
-                $("#debug_area").append(spacing + "<br />");
+                $("#debug_area").append(timestamp() + spacing + "<br />");
 
                 // Scroll to top
                 scrollToTopOfDebug();
@@ -228,10 +228,10 @@ function autoPlay() {
             if (user_on_screen_debug == 1) {
                 if (winnings == "0") {
                 // Append to debug area
-                $("#debug_area").append("Your winnings are: <font color=\"red\">" + winnings + "</font><br />");
+                $("#debug_area").append(timestamp() + "Your winnings are: <font color=\"red\">" + winnings + "</font><br />");
                 } else {
                     // Append to debug area
-                    $("#debug_area").append("Your winnings are: <font color=\"green\">" + winnings + "</font><br />");
+                    $("#debug_area").append(timestamp() + "Your winnings are: <font color=\"green\">" + winnings + "</font><br />");
                 }
 
                 // Scroll to top
@@ -247,7 +247,7 @@ function autoPlay() {
             // Debug for page
             if (user_on_screen_debug == 1) {
                 // Append to debug area
-                $("#debug_area").append("Your balance is: " + balance + "<br />");
+                $("#debug_area").append(timestamp() + "Your balance is: " + balance + "<br />");
 
                 // Scroll to top
                 scrollToTopOfDebug();
@@ -256,7 +256,7 @@ function autoPlay() {
             // Padding for new round
             if (user_on_screen_debug == 1) {
                 // Append to debug area
-                $("#debug_area").append(spacing + "<br />");
+                $("#debug_area").append(timestamp() + spacing + "<br />");
 
                 // Scroll to top
                 scrollToTopOfDebug();
@@ -294,7 +294,7 @@ function autoPlay() {
                     // Debug for page
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on home now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on home now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -321,7 +321,7 @@ function autoPlay() {
                     // Debug for page
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on away now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on away now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -363,7 +363,7 @@ function autoPlay() {
                     // Debug for page
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on home now. Sequence #" + sequence_start + "<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on home now. Sequence #" + sequence_start + "<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -390,7 +390,7 @@ function autoPlay() {
                     // Debug for page
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on away now. Sequence #" + sequence_start + "<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on away now. Sequence #" + sequence_start + "<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -435,7 +435,7 @@ function autoPlay() {
                     // Debug for page
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("The randomizer chose home as the next bet!<br />");
+                        $("#debug_area").append(timestamp() + "The randomizer chose home as the next bet!<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -446,7 +446,7 @@ function autoPlay() {
                     // Debug for page
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on home now. <br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on home now. <br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -473,7 +473,7 @@ function autoPlay() {
                     // Debug for page
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("The randomizer chose away as the next bet!<br />");
+                        $("#debug_area").append(timestamp() + "The randomizer chose away as the next bet!<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -484,7 +484,7 @@ function autoPlay() {
                     // Debug for page
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on away now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on away now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -523,7 +523,7 @@ function autoPlay() {
                     // Debug for page
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("The randomizer chose home as the next bet!<br />");
+                        $("#debug_area").append(timestamp() + "The randomizer chose home as the next bet!<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -534,7 +534,7 @@ function autoPlay() {
                     // Debug for page
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on home now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on home now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -561,7 +561,7 @@ function autoPlay() {
                     // Debug for page
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("The randomizer chose away as the next bet!<br />");
+                        $("#debug_area").append(timestamp() + "The randomizer chose away as the next bet!<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -572,7 +572,7 @@ function autoPlay() {
                     // Debug for page
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on away now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on away now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -599,7 +599,7 @@ function autoPlay() {
                     // Debug for page
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm skipping this round!<br />");
+                        $("#debug_area").append(timestamp() + "I'm skipping this round!<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -621,7 +621,7 @@ function autoPlay() {
                 // Debug for page
                 if (user_on_screen_debug == 1) {
                     // Append to debug area
-                    $("#debug_area").append("Home wins! There have been " + home_streak + " home wins in a row now.<br />");
+                    $("#debug_area").append(timestamp() + "Home wins! There have been " + home_streak + " home wins in a row now.<br />");
 
                     // Scroll to top
                     scrollToTopOfDebug();
@@ -639,7 +639,7 @@ function autoPlay() {
                 // Debug for page
                 if (user_on_screen_debug == 1) {
                     // Append to debug area
-                    $("#debug_area").append("Away wins! There have been " + away_streak + " away wins in a row now.<br />");
+                    $("#debug_area").append(timestamp() + "Away wins! There have been " + away_streak + " away wins in a row now.<br />");
 
                     // Scroll to top
                     scrollToTopOfDebug();
@@ -661,7 +661,7 @@ function autoPlay() {
                     // Debug for page
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on away now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on away now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -688,7 +688,7 @@ function autoPlay() {
                     // Debug for page
                     if (user_on_screen_debug == 1) {
                         // Append to debug area
-                        $("#debug_area").append("I'm placing a bet on home now.<br />");
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on home now.<br />");
 
                         // Scroll to top
                         scrollToTopOfDebug();
@@ -1052,7 +1052,7 @@ function stopPlayLimit(balance) {
         // Debug for page
         if (user_on_screen_debug == 1) {
             // Append to debug area
-            $("#debug_area").append("The bot will stop playing as the loss balance has been reached.<br />");
+            $("#debug_area").append(timestamp() + "The bot will stop playing as the loss balance has been reached.<br />");
 
             // Scroll to top
             scrollToTopOfDebug();
@@ -1083,7 +1083,7 @@ function stopPlayWinLimit(balance) {
         // Debug for page
         if (user_on_screen_debug == 1) {
             // Append to debug area
-            $("#debug_area").append("The bot will stop playing as the win balance has been reached.<br />");
+            $("#debug_area").append(timestamp() + "The bot will stop playing as the win balance has been reached.<br />");
 
             // Scroll to top
             scrollToTopOfDebug();
@@ -1155,6 +1155,17 @@ function bigChat(state) {
 
         $(".input--2nx2R").css({"left": "0%"});
     }
+}
+
+/* =====================
+ * Function name: getTimestamp
+ * Function description: this function will return the current time
+ * Date: 13/02/21
+ * =====================
+ */
+function timestamp() {
+    // Return current time
+    return new Date().toLocaleTimeString() + ": ";
 }
 
 /* =====================
