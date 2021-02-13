@@ -22,6 +22,7 @@
  * Autoplay mode #10 - random bonus games only betting (double bonus)
  * Autoplay mode #11 - random bonus games only betting (but skip some rounds) (double bonus)
  * Autoplay mode #12 - bet on 1 and 2 only
+ * Autoplay mode #13 - bet on all bonuses
  */
 /* ========================================================================
  * Set autoplay mode and other game settings
@@ -2645,6 +2646,46 @@ function autoPlay() {
                 increment_sequence++;
             }
 
+            // Autoplay mode #13
+            if (autoplay_mode == 13 && break_time == false) {
+                // Place bet
+                // Output
+                console.log(spacing);
+                console.log("I'm placing a bet on all bonus rounds now.");
+                console.log(spacing);
+                // Debug for page
+                if (user_on_screen_debug == 1) {
+                    // Append to debug area
+                    $("#debug_area").append(timestamp() + "I'm placing a bet all bonus rounds now.<br />");
+
+                    // Scroll to top
+                    scrollToTopOfDebug();
+                }
+                clicking = setInterval(function() {
+                    // Check if bet spot is available to click
+                    var test = checkBetSpot();
+
+                    // Increment bonus round counter
+                    bonus_round_counter++;
+
+                    if (test == true && bonus_round_counter > 3) {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpotContainer--3V3jM").eq(7).click();
+                            $(".betSpotContainer--3V3jM").eq(3).click();
+                            $(".betSpotContainer--3V3jM").eq(6).click();
+                            $(".betSpotContainer--3V3jM").eq(2).click();
+
+                            // Clear bonus round flag
+                            bonus_round = false;
+
+                            // Clear interval
+                            clearInterval(clicking);
+                        }
+                    }
+                }, click_delay);
+            }
+
             // Reset skip flag
             skip = false;
         }
@@ -2789,8 +2830,8 @@ function getWinnings() {
 function changeOptions() {
     // Get autoplay mode from the user
     do {
-        autoplay_mode = parseInt(window.prompt("Autoplay mode #1 - Bet randomly on a number\nAutoplay mode #2 - increment bet in a sequence (1, 2, 5, 10, Coin Flip, Pachinko, Cash Hunt, Crazy Time then start over)\nAutoplay mode #3 - decrement bet in a sequence (Crazy Time, Cash Hunt, Pachunko, Coin Flip, 10, 5, 2, 1 then start over)\nAutoplay mode #4 - sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)\nAutoplay mode #5 - Bet randomly on a number (but skip some rounds)\nAutoplay mode #6 - Bonus round betting only\nAutoplay mode #7 - random bonus games only betting\nAutoplay mode #8 - random bonus games only betting (but skip some rounds)\nAutoplay mode #9 - Bonus round betting only (double bonus so Coin Flip + Pachinko, Coin Flip + Cash Hunt, Coin Flip + Crazy Time, Pachinko + Cash Hunt, Pachinko + Crazy Time, Cash Hunt + Crazy Time)\nAutoplay mode #10 - random bonus games only betting (double bonus)\nAutoplay mode #11 - random bonus games only betting (but skip some rounds) (double bonus)\nAutoplay mode #12 - bet on 1 and 2 only", "1"), 10);
-    } while(isNaN(autoplay_mode) || autoplay_mode > 12 || autoplay_mode < 1);
+        autoplay_mode = parseInt(window.prompt("Autoplay mode #1 - Bet randomly on a number\nAutoplay mode #2 - increment bet in a sequence (1, 2, 5, 10, Coin Flip, Pachinko, Cash Hunt, Crazy Time then start over)\nAutoplay mode #3 - decrement bet in a sequence (Crazy Time, Cash Hunt, Pachunko, Coin Flip, 10, 5, 2, 1 then start over)\nAutoplay mode #4 - sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)\nAutoplay mode #5 - Bet randomly on a number (but skip some rounds)\nAutoplay mode #6 - Bonus round betting only\nAutoplay mode #7 - random bonus games only betting\nAutoplay mode #8 - random bonus games only betting (but skip some rounds)\nAutoplay mode #9 - Bonus round betting only (double bonus so Coin Flip + Pachinko, Coin Flip + Cash Hunt, Coin Flip + Crazy Time, Pachinko + Cash Hunt, Pachinko + Crazy Time, Cash Hunt + Crazy Time)\nAutoplay mode #10 - random bonus games only betting (double bonus)\nAutoplay mode #11 - random bonus games only betting (but skip some rounds) (double bonus)\nAutoplay mode #12 - bet on 1 and 2 only\n\n#13 - bet on all bonus rounds", "1"), 10);
+    } while(isNaN(autoplay_mode) || autoplay_mode > 13 || autoplay_mode < 1);
 
     // Ask the user if they want to disable video
     do {
