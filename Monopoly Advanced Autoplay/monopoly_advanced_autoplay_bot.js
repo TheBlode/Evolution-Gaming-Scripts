@@ -18,6 +18,7 @@
  * Autoplay mode #6 - Bet randomly on a number (but skip some rounds)
  * Autoplay mode #7 - random bonus games only betting
  * Autoplay mode #8 - random bonus games only betting (but skip some rounds)
+ * Autoplay mode #9 - double bonus round bet
 /* ========================================================================
  * Set autoplay mode and other game settings
  * ======================================================================== */
@@ -1595,6 +1596,43 @@ function autoPlay() {
                     // Clear bonus round flag
                     bonus_round = false;
                 }
+            }
+
+            // Autoplay mode #9
+            if (autoplay_mode == 5 && chance_check == false && break_time == false) {
+                // Place bet
+                // Output
+                console.log(spacing);
+                console.log("I'm placing a bet on 2 & 4 rolls now.");
+                console.log(spacing);
+                if (user_on_screen_debug == 1) {
+                    // Append to debug area
+                    $("#debug_area").append("I'm placing a bet on 2 & 4 rolls now.<br />");
+
+                    // Scroll to top
+                    scrollToTopOfDebug();
+                }
+                clicking = setInterval(function() {
+                    // Check if bet spot is available to click
+                    var test = checkBetSpot();
+
+                    // Increment bonus round counter
+                    bonus_round_counter++;
+
+                    if (test == true && bonus_round_counter > 3) {
+                        for (var x = 0; x < user_wager_amount; x++) {
+                            // Click betting spot
+                            $(".betSpot--VXrdG").eq(2).click();
+                            $(".betSpot--VXrdG").eq(5).click();
+
+                            // Clear bonus round flag
+                            bonus_round = false;
+
+                            // Clear interval
+                            clearInterval(clicking);
+                        }
+                    }
+                }, click_delay);
             }
 
             if (skip == false) {
