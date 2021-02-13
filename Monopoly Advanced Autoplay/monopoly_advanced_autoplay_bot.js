@@ -222,32 +222,32 @@ function autoPlay() {
 
             // Output final hand to console
             console.log(spacing);
-            console.log("The final result is " + regex_formatted);
+            console.log("The final result is !==== " + regex_formatted + " ====!");
             console.log(spacing);
 
             // Debug for page
             if (user_on_screen_debug == 1) {
                 if (regex_formatted == "1") {
                     // Append to debug area
-                    $("#debug_area").append(timestamp() + "The final result is <font color=\"#05C3DD\">" + regex_formatted + "</font><br />");
+                    $("#debug_area").append(timestamp() + "The final result is !==== <font color=\"#05C3DD\">" + regex_formatted + "</font> ====!<br />");
                 } else if (regex_formatted == "2") {
                     // Append to debug area
-                    $("#debug_area").append(timestamp() + "The final result is <font color=\"#00FF00\">" + regex_formatted + "</font><br />");
+                    $("#debug_area").append(timestamp() + "The final result is !==== <font color=\"#00FF00\">" + regex_formatted + "</font> ====!<br />");
                 } else if (regex_formatted == "5") {
                     // Append to debug area
-                    $("#debug_area").append(timestamp() + "The final result is <font color=\"pink\">" + regex_formatted + "</font><br />");
+                    $("#debug_area").append(timestamp() + "The final result is !==== <font color=\"pink\">" + regex_formatted + "</font> ====!<br />");
                 } else if (regex_formatted == "10") {
                     // Append to debug area
-                    $("#debug_area").append(timestamp() + "The final result is <font color=\"#05C3DD\">" + regex_formatted + "</font><br />");
+                    $("#debug_area").append(timestamp() + "The final result is !==== <font color=\"#05C3DD\">" + regex_formatted + "</font> ====!<br />");
                 } else if (regex_formatted == "2 Rolls") {
                     // Append to debug area
-                    $("#debug_area").append(timestamp() + "The final result is <font color=\"silver\">" + regex_formatted + "</font><br />");
+                    $("#debug_area").append(timestamp() + "The final result is !==== <font color=\"silver\">" + regex_formatted + "</font> ====!<br />");
                 } else if (regex_formatted == "4 Rolls") {
                     // Append to debug area
-                    $("#debug_area").append(timestamp() + "The final result is <font color=\"gold\">" + regex_formatted + "</font><br />");
+                    $("#debug_area").append(timestamp() + "The final result is !==== <font color=\"gold\">" + regex_formatted + "</font> ====!<br />");
                 } else if (regex_formatted == "Chance") {
                     // Append to debug area
-                    $("#debug_area").append(timestamp() + "The final result is <font color=\"yellow\">" + regex_formatted + "</font><br />");
+                    $("#debug_area").append(timestamp() + "The final result is !==== <font color=\"yellow\">" + regex_formatted + "</font> ====!<br />");
                 }
 
                 // Scroll to top

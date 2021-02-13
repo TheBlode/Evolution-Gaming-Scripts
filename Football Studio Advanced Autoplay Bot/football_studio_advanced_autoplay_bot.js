@@ -189,20 +189,20 @@ function autoPlay() {
 
             // Output final hand to console
             console.log(spacing);
-            console.log("The final result is " + result_check_found);
+            console.log("The final result is !==== " + result_check_found + " ====!");
             console.log(spacing);
 
             // Debug for page
             if (user_on_screen_debug == 1) {
                 if (result_check_found == "Home") {
                     // Append to debug area
-                    $("#debug_area").append(timestamp() + "The final result is <font color=\"red\">" + result_check_found + "</font><br />");
+                    $("#debug_area").append(timestamp() + "The final result is !==== <font color=\"red\">" + result_check_found + "</font> ====!<br />");
                 } else if (result_check_found == "Away") {
                     // Append to debug area
-                    $("#debug_area").append(timestamp() + "The final result is <font color=\"blue\">" + result_check_found + "</font><br />");
+                    $("#debug_area").append(timestamp() + "The final result is !==== <font color=\"blue\">" + result_check_found + "</font> ====!<br />");
                 } else {
                     // Append to debug area
-                    $("#debug_area").append(timestamp() + "The final result is <font color=\"yellow\">" + result_check_found + "</font><br />");
+                    $("#debug_area").append(timestamp() + "The final result is !==== <font color=\"yellow\">" + result_check_found + "</font> ====!<br />");
                 }
 
                 // Scroll to top
