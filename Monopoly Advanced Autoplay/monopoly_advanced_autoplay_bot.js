@@ -113,6 +113,8 @@ var clicking_insurance = "";
 var skip = false;
 var increment_sequence = 1;
 var decrement_sequence = 6;
+var old_autoplay_mode = 0;
+var old_user_insurance_bet = 0;
 
 /* =====================
  * Functions that will be used by the bot
@@ -2062,9 +2064,29 @@ function showBreakScreen(state) {
         $("#break_screen").css({"position": "absolute", "font-size": "x-large", "width": "100%", "height": "98%", "overflow": "overlay", "line-height": "20pt", "background": "black", "z-index": "1000000", "z-index": "1000000", "text-align": "center"});
         $("#break_screen").html("Break Time!");
         $("#break_screen").show();
+
+        // Stop playing
+        // Store current values
+        if (autoplay_mode != 1000000) {
+            old_autoplay_mode = autoplay_mode;
+            old_user_insurance_bet = user_insurance_bet;
+        }
+
+        // Set autoplay to erroneous number
+        autoplay_mode = 1000000;
+
+        // Stop insurance bets
+        user_insurance_bet = 0;
     } else {
         // Hide debug
         $("#break_screen").hide();
+
+        // Start playing again
+        // Set autoplay to erroneous number
+        autoplay_mode = old_autoplay_mode;
+
+        // Stop insurance bets
+        user_insurance_bet = old_user_insurance_bet;
     }
 }
 
