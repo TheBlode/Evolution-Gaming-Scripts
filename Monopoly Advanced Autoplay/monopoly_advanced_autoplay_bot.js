@@ -2048,6 +2048,9 @@ function stopPlayWinLimit(balance) {
 
         // Stop insurance bets
         user_insurance_bet = 0;
+
+        // Reset bonus round
+        bonus_round = false;
     }
 }
 
