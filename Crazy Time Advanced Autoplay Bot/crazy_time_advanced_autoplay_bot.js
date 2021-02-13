@@ -3070,6 +3070,9 @@ function showBreakScreen(state) {
 
         // Stop insurance bets
         user_insurance_bet = old_user_insurance_bet;
+
+        // Reset bonus round
+        bonus_round = false;
     }
 }
 
