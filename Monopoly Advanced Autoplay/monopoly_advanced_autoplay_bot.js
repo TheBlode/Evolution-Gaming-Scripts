@@ -2017,7 +2017,7 @@ function toggleDebugMode(state) {
 function changeAutoplayMode() {
     // Get autoplay mode from the user
     do {
-        autoplay_mode = parseInt(window.prompt("Autoplay mode #1 - Bet randomly on a number\n\nAutoplay mode #2 - increment bet in a sequence (1, 2, 5, 10, 2 rolls, 4 rolls then start over)\n\nAutoplay mode #3 - decrement bet in a sequence (4 rolls, 2 rolls, 10, 5, 2, 1 then start over)\n\nAutoplay mode #4 - sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)\n\nAutoplay mode #5 - bonus games only betting\n\nAutoplay mode #6 - Bet randomly on a number (but skip some rounds)\n\nAutoplay mode #7 - random bonus games only betting\n\nAutoplay mode #8 - random bonus games only betting (but skip some rounds)\n\nAutoplay mode #9 - double bonus betting", "1"), 10);
+        autoplay_mode = parseInt(window.prompt("Autoplay mode #1 - Bet randomly on a number\n\nAutoplay mode #2 - increment bet in a sequence (1, 2, 5, 10, 2 rolls, 4 rolls then start over)\n\nAutoplay mode #3 - decrement bet in a sequence (4 rolls, 2 rolls, 10, 5, 2, 1 then start over)\n\nAutoplay mode #4 - sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)\n\nAutoplay mode #5 - bonus games only betting\n\nAutoplay mode #6 - Bet randomly on a number (but skip some rounds)\n\nAutoplay mode #7 - random bonus games only betting\n\nAutoplay mode #8 - random bonus games only betting (but skip some rounds)\n\nAutoplay Mode #9 - bet on both bonus rounds", "1"), 10);
     } while(isNaN(autoplay_mode) || autoplay_mode > 9 || autoplay_mode < 1);
 }
 
