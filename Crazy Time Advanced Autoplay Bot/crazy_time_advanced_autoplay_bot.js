@@ -3050,8 +3050,10 @@ function showBreakScreen(state) {
 
         // Stop playing
         // Store current values
-        old_autoplay_mode = autoplay_mode;
-        old_user_insurance_bet = user_insurance_bet;
+        if (autoplay_mode != 1000000) {
+            old_autoplay_mode = autoplay_mode;
+            old_user_insurance_bet = user_insurance_bet;
+        }
 
         // Set autoplay to erroneous number
         autoplay_mode = 1000000;
