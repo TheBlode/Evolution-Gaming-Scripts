@@ -111,7 +111,6 @@ Lightning Roulette offers the following autoplay modes;
 - Infinite Blackjack / Power Blackjack / Freebet Blackjack Advanced Autoplay Bots
 - Lightning Dice
 - More betting modes for all bots
-- Chrome extension
 - Autoswitching of autoplay modes based on game results
 - Implementing progressive betting patterns such as Martingale, Fibonacci, D'Alembert etc
 - Publishing my game simulators (which hook into Tracksino) to allow you to run simulations on the live games
