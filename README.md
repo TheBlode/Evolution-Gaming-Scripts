@@ -56,7 +56,8 @@ Crazy Time Advanced Autoplay Bot offers the following autoplay modes;
 - Random bonus games only betting (double bonus)
 - Random bonus games only betting (but skip some rounds) (double bonus)
 - Bet on 1 & 2 only
-- Bet on all bonus rounds
+- Bet on all bonus rounds (Cash Hunt, Coin Flip, Pachinko & Crazy Time)
+- Bet on everything but randomly skip one
 - Insurance bets are also offered on this game;
     - Insurance bets can be placed on #1 only
     - Insurance bets can be placed on #1 & #2
