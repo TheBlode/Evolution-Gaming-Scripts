@@ -1881,7 +1881,7 @@ setTimeout(function() {
 
             // Ask user for click delay
             do {
-                click_delay = parseInt(window.prompt("Would you like to adjust the click delay?\n\nThe value is in miliseconds.\n\nDefault is 2 seconds.", "2000"), 10);
+                click_delay = parseInt(window.prompt("Would you like to adjust the click delay?\n\nThe value is in miliseconds.\n\nDefault is 1 seconds.", "1000"), 10);
             } while(isNaN(click_delay) || click_delay < 100);
 
             // Ask user for wager amount
@@ -2276,7 +2276,7 @@ setTimeout(function() {
         /* ========================================================================
          * Set click delay (if you're having issues with clicks on the UI)
          * ======================================================================== */
-        var click_delay = 2000;
+        var click_delay = 1000;
 
         /* ========================================================================
          * Set wager amount in units (default is 1 unit)
@@ -3600,7 +3600,7 @@ setTimeout(function() {
 
             // Ask user for click delay
             do {
-                click_delay = parseInt(window.prompt("Would you like to adjust the click delay?\n\nThe value is in miliseconds.\n\nDefault is 2 seconds.", "2000"), 10);
+                click_delay = parseInt(window.prompt("Would you like to adjust the click delay?\n\nThe value is in miliseconds.\n\nDefault is 1 seconds.", "1000"), 10);
             } while(isNaN(click_delay) || click_delay < 100);
 
             // Ask user for wager amount
@@ -3988,7 +3988,7 @@ setTimeout(function() {
         /* ========================================================================
          * Set click delay (if you're having issues with clicks on the UI)
          * ======================================================================== */
-        var click_delay = 2000;
+        var click_delay = 1000;
 
         /* ========================================================================
          * Set wager amount in units (default is 1 unit)
@@ -6792,7 +6792,7 @@ setTimeout(function() {
 
             // Ask user for click delay
             do {
-                click_delay = parseInt(window.prompt("Would you like to adjust the click delay?\n\nThe value is in miliseconds.\n\nDefault is 2 seconds.", "2000"), 10);
+                click_delay = parseInt(window.prompt("Would you like to adjust the click delay?\n\nThe value is in miliseconds.\n\nDefault is 1 seconds.", "1000"), 10);
             } while(isNaN(click_delay) || click_delay < 100);
 
             // Ask user for wager amount
@@ -8021,7 +8021,7 @@ setTimeout(function() {
 
             // Ask user for click delay
             do {
-                click_delay = parseInt(window.prompt("Would you like to adjust the click delay?\n\nThe value is in miliseconds.\n\nDefault is 2 seconds.", "2000"), 10);
+                click_delay = parseInt(window.prompt("Would you like to adjust the click delay?\n\nThe value is in miliseconds.\n\nDefault is 1 seconds.", "1000"), 10);
             } while(isNaN(click_delay) || click_delay < 100);
 
             // Ask user for wager amount
