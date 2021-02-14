@@ -181,7 +181,7 @@ function autoPlay() {
 
             // Output final hand to console
             console.log(spacing);
-            console.log("The final result is !==== " + regex_formatted + " ====!"");
+            console.log("The final result is !==== " + regex_formatted + " ====!");
             console.log(spacing);
 
             // Debug for page
