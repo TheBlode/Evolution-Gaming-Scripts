@@ -4,6 +4,22 @@
 Welcome to my Evolution Gaming Scripts page! Evolution's autoplay feature is severely lacking in it's functionality for us players so I wrote these scripts to optimize your gaming experience! I hope you enjoy them and they improve your fortunes!
 
 ## How to run these scripts
+## Method 1 (probably the easiest method)
+I have built a Chrome Extension to make it easier to run the bot code. Here are the steps to get started with it;
+
+1) Go to Chrome Extensions page (chrome://extensions/).
+
+2) Enable "Developer Mode" (this is necessary to load the extension.
+
+3) Click "Load Unpacked".
+
+4) Pick the "Chrome Extension" folder.
+
+5) Done! Currently, the bot is hardcoded to work with Unibet. However, you can change the URL to your own casino by editing line 24 in `manifest.json` (located in the Chrome Extension folder).
+
+NB: The Chrome Extension will only work if you load the game directly (ie not in a casino iFrame).
+
+## Method 2 (requires more competence with running code manually)
 - These scripts run entirely inside your browser's console. Nothing else is required.
 - **ALL** bots will only work in Evolution's "classic" UI.
 - Open up your browser's developer tools (usually F12).
@@ -25,6 +41,7 @@ Welcome to my Evolution Gaming Scripts page! Evolution's autoplay feature is sev
 - All bots allow you to customise how long you play for and how long your breaks will be.
 - All bots allow you to enter "big chat" mode which increase the chat area and font size.
 
+## Autoplay Modes
 ## Crazy Time Advanced Autoplay Bot
 Crazy Time Advanced Autoplay Bot offers the following autoplay modes;
 - Random bets
