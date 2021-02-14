@@ -184,7 +184,7 @@ function autoPlay() {
         bigChat(big_chat);
 
         // Main bot logic
-        if (check == false && bonus_round == false && game_state_check != null) {
+        if (check == false && bonus_round == false && game_state_check != null && break_time == false) {
             // Flip check flag
             check = true;
 
