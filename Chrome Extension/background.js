@@ -3972,8 +3972,8 @@ setTimeout(function() {
          * Autoplay mode #9 - Bonus round betting only (double bonus so Coin Flip + Pachinko, Coin Flip + Cash Hunt, Coin Flip + Crazy Time, Pachinko + Cash Hunt, Pachinko + Crazy Time, Cash Hunt + Crazy Time)
          * Autoplay mode #10 - random bonus games only betting (double bonus)
          * Autoplay mode #11 - random bonus games only betting (but skip some rounds) (double bonus)
-         * Autoplay mode #12 - bet on 1 and 2 only
-         * Autoplay mode #13 - bet on all bonuses
+         * Autoplay mode #13 - bet on all bonus rounds (Cash Hunt, Coin Flip, Pachinko & Crazy Time)
+         * Autoplay mode #14 - bet on everything but randomly skip one
          */
         /* ========================================================================
          * Set autoplay mode and other game settings
@@ -6638,6 +6638,100 @@ setTimeout(function() {
                         }, click_delay);
                     }
 
+                    // Autoplay mode #14
+                    if (autoplay_mode == 14 && break_time == false) {
+                        // Fetch random number
+                        skip_bet_type = randomNumber(1, 8);
+
+                        // Format name for output
+                        var skip_bet_name = "";
+
+                        if (skip_bet_type == 1) {
+                            skip_bet_name = "#1";
+                        } else if (skip_bet_type == 2) {
+                            skip_bet_name = "#2";
+                        } else if (skip_bet_type == 3) {
+                            skip_bet_name = "#5";
+                        } else if (skip_bet_type == 4) {
+                            skip_bet_name = "#10";
+                        } else if (skip_bet_type == 5) {
+                            skip_bet_name = "Coin Flip";
+                        } else if (skip_bet_type == 6) {
+                            skip_bet_name = "Pachinko";
+                        } else if (skip_bet_type == 7) {
+                            skip_bet_name = "Cash Hunt";
+                        } else {
+                            skip_bet_name = "Crazy Time";
+                        }
+
+                        // Place bet
+                        // Output
+                        console.log(spacing);
+                        console.log("I'm placing a bet on everthing except " + skip_bet_name + ".");
+                        console.log(spacing);
+                        if (user_on_screen_debug == 1) {
+                            // Append to debug area
+                            $("#debug_area").append(timestamp() + "I'm placing a bet on everything except " + skip_bet_name + ".<br />");
+
+                            // Scroll to top
+                            scrollToTopOfDebug();
+                        }
+                        clicking = setInterval(function() {
+                            // Check if bet spot is available to click
+                            var test = checkBetSpot();
+
+                            if (test == true) {
+                                for (var x = 0; x < user_wager_amount; x++) {
+                                    if (skip_bet_type != 1) {
+                                        // Click betting spot
+                                        $(".betSpotContainer--3V3jM").eq(0).click();
+                                    }
+
+                                    if (skip_bet_type != 2) {
+                                        // Click betting spot
+                                        $(".betSpotContainer--3V3jM").eq(1).click();
+                                    }
+
+                                    if (skip_bet_type != 3) {
+                                        // Click betting spot
+                                        $(".betSpotContainer--3V3jM").eq(4).click();
+                                    }
+
+                                    if (skip_bet_type != 4) {
+                                        // Click betting spot
+                                        $(".betSpotContainer--3V3jM").eq(5).click();
+                                    }
+
+                                    if (skip_bet_type != 5) {
+                                        // Click betting spot
+                                        $(".betSpotContainer--3V3jM").eq(2).click();
+                                    }
+
+                                    if (skip_bet_type != 6) {
+                                        // Click betting spot
+                                        $(".betSpotContainer--3V3jM").eq(3).click();
+                                    }
+
+                                    if (skip_bet_type != 7) {
+                                        // Click betting spot
+                                        $(".betSpotContainer--3V3jM").eq(6).click();
+                                    }
+
+                                    if (skip_bet_type != 8) {
+                                        // Click betting spot
+                                        $(".betSpotContainer--3V3jM").eq(7).click();
+                                    }
+
+                                    // Clear bonus round flag
+                                    bonus_round = false;
+
+                                    // Clear interval
+                                    clearInterval(clicking);
+                                }
+                            }
+                        }, click_delay);
+                    }
+
                     // Reset skip flag
                     skip = false;
                 }
@@ -6782,8 +6876,8 @@ setTimeout(function() {
         function changeOptions() {
             // Get autoplay mode from the user
             do {
-                autoplay_mode = parseInt(window.prompt("Autoplay mode #1 - Bet randomly on a number\nAutoplay mode #2 - increment bet in a sequence (1, 2, 5, 10, Coin Flip, Pachinko, Cash Hunt, Crazy Time then start over)\nAutoplay mode #3 - decrement bet in a sequence (Crazy Time, Cash Hunt, Pachunko, Coin Flip, 10, 5, 2, 1 then start over)\nAutoplay mode #4 - sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)\nAutoplay mode #5 - Bet randomly on a number (but skip some rounds)\nAutoplay mode #6 - Bonus round betting only\nAutoplay mode #7 - random bonus games only betting\nAutoplay mode #8 - random bonus games only betting (but skip some rounds)\nAutoplay mode #9 - Bonus round betting only (double bonus so Coin Flip + Pachinko, Coin Flip + Cash Hunt, Coin Flip + Crazy Time, Pachinko + Cash Hunt, Pachinko + Crazy Time, Cash Hunt + Crazy Time)\nAutoplay mode #10 - random bonus games only betting (double bonus)\nAutoplay mode #11 - random bonus games only betting (but skip some rounds) (double bonus)\nAutoplay mode #12 - bet on 1 and 2 only\n\Autoplay mode #13 - bet on all bonus rounds", "1"), 10);
-            } while(isNaN(autoplay_mode) || autoplay_mode > 13 || autoplay_mode < 1);
+                autoplay_mode = parseInt(window.prompt("Autoplay mode #1 - Bet randomly on a number\nAutoplay mode #2 - increment bet in a sequence (1, 2, 5, 10, Coin Flip, Pachinko, Cash Hunt, Crazy Time then start over)\nAutoplay mode #3 - decrement bet in a sequence (Crazy Time, Cash Hunt, Pachunko, Coin Flip, 10, 5, 2, 1 then start over)\nAutoplay mode #4 - sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)\nAutoplay mode #5 - Bet randomly on a number (but skip some rounds)\nAutoplay mode #6 - Bonus round betting only\nAutoplay mode #7 - random bonus games only betting\nAutoplay mode #8 - random bonus games only betting (but skip some rounds)\nAutoplay mode #9 - Bonus round betting only (double bonus so Coin Flip + Pachinko, Coin Flip + Cash Hunt, Coin Flip + Crazy Time, Pachinko + Cash Hunt, Pachinko + Crazy Time, Cash Hunt + Crazy Time)\nAutoplay mode #10 - random bonus games only betting (double bonus)\nAutoplay mode #11 - random bonus games only betting (but skip some rounds) (double bonus)\nAutoplay mode #12 - bet on 1 and 2 only\n\Autoplay mode #13 - bet on all bonus rounds\n\nAutoplay mode #14 - bet on everything but skip one betting spot.", "1"), 10);
+            } while(isNaN(autoplay_mode) || autoplay_mode > 14 || autoplay_mode < 1);
 
             // Ask the user if they want to disable video
             do {
@@ -6955,8 +7049,8 @@ setTimeout(function() {
         function changeAutoplayMode() {
             // Get autoplay mode from the user
             do {
-                autoplay_mode = parseInt(window.prompt("Autoplay mode #1 - Bet randomly on a number\nAutoplay mode #2 - increment bet in a sequence (1, 2, 5, 10, Coin Flip, Pachinko, Cash Hunt, Crazy Time then start over)\nAutoplay mode #3 - decrement bet in a sequence (Crazy Time, Cash Hunt, Pachunko, Coin Flip, 10, 5, 2, 1 then start over)\nAutoplay mode #4 - sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)\nAutoplay mode #5 - Bet randomly on a number (but skip some rounds)\nAutoplay mode #6 - Bonus round betting only\nAutoplay mode #7 - random bonus games only betting\nAutoplay mode #8 - random bonus games only betting (but skip some rounds)\nAutoplay mode #9 - Bonus round betting only (double bonus so Coin Flip + Pachinko, Coin Flip + Cash Hunt, Coin Flip + Crazy Time, Pachinko + Cash Hunt, Pachinko + Crazy Time, Cash Hunt + Crazy Time)\nAutoplay mode #10 - random bonus games only betting (double bonus)\nAutoplay mode #11 - random bonus games only betting (but skip some rounds) (double bonus)\nAutoplay mode #12 - bet on 1 and 2 only\n\Autoplay mode #13 - bet on all bonus rounds", "1"), 10);
-            } while(isNaN(autoplay_mode) || autoplay_mode > 13 || autoplay_mode < 1);
+                autoplay_mode = parseInt(window.prompt("Autoplay mode #1 - Bet randomly on a number\nAutoplay mode #2 - increment bet in a sequence (1, 2, 5, 10, Coin Flip, Pachinko, Cash Hunt, Crazy Time then start over)\nAutoplay mode #3 - decrement bet in a sequence (Crazy Time, Cash Hunt, Pachunko, Coin Flip, 10, 5, 2, 1 then start over)\nAutoplay mode #4 - sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)\nAutoplay mode #5 - Bet randomly on a number (but skip some rounds)\nAutoplay mode #6 - Bonus round betting only\nAutoplay mode #7 - random bonus games only betting\nAutoplay mode #8 - random bonus games only betting (but skip some rounds)\nAutoplay mode #9 - Bonus round betting only (double bonus so Coin Flip + Pachinko, Coin Flip + Cash Hunt, Coin Flip + Crazy Time, Pachinko + Cash Hunt, Pachinko + Crazy Time, Cash Hunt + Crazy Time)\nAutoplay mode #10 - random bonus games only betting (double bonus)\nAutoplay mode #11 - random bonus games only betting (but skip some rounds) (double bonus)\nAutoplay mode #12 - bet on 1 and 2 only\n\Autoplay mode #13 - bet on all bonus rounds\n\nAutoplay mode #14 - bet on everything but skip one betting spot.", "1"), 10);
+            } while(isNaN(autoplay_mode) || autoplay_mode > 14 || autoplay_mode < 1);
         }
 
         /* =====================
