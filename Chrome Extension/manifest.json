@@ -1,0 +1,25 @@
+{
+    "manifest_version": 2,
+    "name": "Advanced Autoplay Bot",
+    "description": "This extension will run one of the Advanced Autoplay Bots to enhance your gaming experience.",
+    "version": "1.0",
+    "browser_action": {
+        "default_icon": "128.png",
+        "default_popup": "popup.html"
+    },
+    "icons": { "16": "16.png",
+           "48": "48.png",
+          "128": "128.png"
+    },
+    "content_scripts": [{
+        "matches": [
+            "*://*/*/monopoly*",
+            "*://*/*/crazy-time*",
+            "*://*/*/money-wheel*",
+            "*://*/*/top-card*",
+            "*://*/*/evo/*/*"
+        ],
+        "js": ["jquery.js", "background.js"]
+      }],
+    "permissions": ["tabs", "*://*.unibet.com/*", "storage"]
+}
