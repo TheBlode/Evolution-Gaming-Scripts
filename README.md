@@ -9,7 +9,7 @@ I have built a Chrome Extension to make it easier to run the bot code. Here are 
 
 1) Go to Chrome Extensions page (chrome://extensions/).
 
-2) Enable "Developer Mode" (this is necessary to load the extension.
+2) Enable "Developer Mode" (this is necessary to load the extension).
 
 3) Click "Load Unpacked".
 
@@ -79,7 +79,7 @@ Monopoly Autoplay Bot offers the following autoplay modes;
 - Random bets (with round skipping)
 - Random bonus games only betting
 - Random bonus games only betting (but skip some rounds)
-- Double bonus betting
+- Double bonus betting (betting on both 2 rolls and 4 rolls)
 - Insurance bets are also offered on this game;
     - Insurance bets can be placed on #1 only
     - Insurance bets can be placed on #1 & #2
