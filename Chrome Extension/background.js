@@ -7578,7 +7578,7 @@ setTimeout(function() {
         * Autoplay mode #3 - Bet randomly on home or away
         * Autoplay mode #4 - Bet only after a certain sequence of results. Example: if streak_size is set to 4, then place a bet after 4 homes or 4 aways in a row
         * Autoplay mode #5 - Bet randomly on home or away (with round skipping)
-
+        * Autoplay mode #6 - Bet on draw after certain number of rounds without a draw
         */
         /* ========================================================================
         * Set autoplay mode and other game settings
@@ -7680,6 +7680,8 @@ setTimeout(function() {
         var old_autoplay_mode = 0;
         var old_user_insurance_bet = 0;
         var round_count = 0;
+        var draw_streak_size = 0;
+        var draw_streak = 0;
 
         /* =====================
         * Functions that will be used by the bot
@@ -8195,6 +8197,9 @@ setTimeout(function() {
                         // Reset away streak
                         away_streak = 0;
 
+                        // Increment rounds since draw streak
+                        draw_streak++;
+
                         console.log(spacing);
                         console.log("Home wins! There have been " + home_streak + " home wins in a row now.");
                         console.log(spacing);
@@ -8213,6 +8218,9 @@ setTimeout(function() {
                         // Reset home streak
                         home_streak = 0;
 
+                        // Increment rounds since draw streak
+                        draw_streak++;
+
                         console.log(spacing);
                         console.log("Away wins! There have been " + away_streak + " away wins in a row now.");
                         console.log(spacing);
@@ -8228,6 +8236,19 @@ setTimeout(function() {
                         // It's a draw! Increment both sides
                         home_streak++;
                         away_streak++;
+                        draw_streak = 0;
+                    }
+
+                    console.log(spacing);
+                    console.log("There have been " + draw_streak + " rounds without a draw.");
+                    console.log(spacing);
+                    // Debug for page
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                            $("#debug_area").append(timestamp() + "There have been " + draw_streak + " rounds without a draw.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
                     }
 
                     // Autoplay mode #4
@@ -8281,6 +8302,39 @@ setTimeout(function() {
                                     for (var x = 0; x < user_wager_amount; x++) {
                                         // Click betting spot
                                         $(".mainBet--3JDdD").eq(0).click();
+
+                                        // Clear interval
+                                        clearInterval(clicking);
+                                    }
+                                }
+                            }, click_delay);
+                        }
+                    }
+
+                    // Autoplay mode #6
+                    if (autoplay_mode == 6 && break_time == false) {
+                        if (draw_streak >= draw_streak_size) {
+                            // Place bet
+                            // Output
+                            console.log(spacing);
+                            console.log("I'm placing a bet on a draw.");
+                            console.log(spacing);
+                            // Debug for page
+                            if (user_on_screen_debug == 1) {
+                                // Append to debug area
+                                $("#debug_area").append(timestamp() + "I'm placing a bet on a draw.<br />");
+
+                                // Scroll to top
+                                scrollToTopOfDebug();
+                            }
+                            clicking = setInterval(function() {
+                                // Check if bet spot is available to click
+                                var test = checkBetSpot();
+
+                                if (test == true) {
+                                    for (var x = 0; x < user_wager_amount; x++) {
+                                        // Click betting spot
+                                        $(".tie--181yr").eq(0).click();
 
                                         // Clear interval
                                         clearInterval(clicking);
@@ -8434,8 +8488,8 @@ setTimeout(function() {
         function changeOptions() {
             // Get autoplay mode from the user
             do {
-                autoplay_mode = parseInt(window.prompt("Autoplay mode #1 - Alternate bets. Example: Bet home, then away, then home, then away, then home, then away, etc\n\nAutoplay mode #2 - Bet on home and away in numbered sequences. Example: if sequence_amount is set to 3 in a row, the bot will play; home, home, home then away, away, away and repeat.\n\nAutoplay mode #3 - Bet randomly on home or away\n\nAutoplay mode #4 - Bet only after a certain sequence of results. Example: if streak_size is set to 4, then place a bet after 4 homes or 4 aways in a row\n\nAutoplay mode #5 - Bet randomly on home or away (with round skipping)", "1"), 10);
-            } while(isNaN(autoplay_mode) || autoplay_mode > 5 || autoplay_mode < 1);
+                autoplay_mode = parseInt(window.prompt("Autoplay mode #1 - Alternate bets. Example: Bet home, then away, then home, then away, then home, then away, etc\n\nAutoplay mode #2 - Bet on home and away in numbered sequences. Example: if sequence_amount is set to 3 in a row, the bot will play; home, home, home then away, away, away and repeat.\n\nAutoplay mode #3 - Bet randomly on home or away\n\nAutoplay mode #4 - Bet only after a certain sequence of results. Example: if streak_size is set to 4, then place a bet after 4 homes or 4 aways in a row\n\nAutoplay mode #5 - Bet randomly on home or away (with round skipping)\n\nAutoplay mode #6 - Bet on draw after certain number of rounds without a draw", "1"), 10);
+            } while(isNaN(autoplay_mode) || autoplay_mode > 6 || autoplay_mode < 1);
 
             // Ask the user how many rounds would they like the bot to play
             do {
@@ -8613,8 +8667,8 @@ setTimeout(function() {
         function changeAutoplayMode() {
             // Get autoplay mode from the user
             do {
-                autoplay_mode = parseInt(window.prompt("Autoplay mode #1 - Alternate bets. Example: Bet home, then away, then home, then away, then home, then away, etc\n\nAutoplay mode #2 - Bet on home and away in numbered sequences. Example: if sequence_amount is set to 3 in a row, the bot will play; home, home, home then away, away, away and repeat.\n\nAutoplay mode #3 - Bet randomly on home or away\n\nAutoplay mode #4 - Bet only after a certain sequence of results. Example: if streak_size is set to 4, then place a bet after 4 homes or 4 aways in a row\n\nAutoplay mode #5 - Bet randomly on home or away (with round skipping)", "1"), 10);
-            } while(isNaN(autoplay_mode) || autoplay_mode > 5 || autoplay_mode < 1);
+                autoplay_mode = parseInt(window.prompt("Autoplay mode #1 - Alternate bets. Example: Bet home, then away, then home, then away, then home, then away, etc\n\nAutoplay mode #2 - Bet on home and away in numbered sequences. Example: if sequence_amount is set to 3 in a row, the bot will play; home, home, home then away, away, away and repeat.\n\nAutoplay mode #3 - Bet randomly on home or away\n\nAutoplay mode #4 - Bet only after a certain sequence of results. Example: if streak_size is set to 4, then place a bet after 4 homes or 4 aways in a row\n\nAutoplay mode #5 - Bet randomly on home or away (with round skipping)\n\nAutoplay mode #6 - Bet on draw after certain number of rounds without a draw", "1"), 10);
+            } while(isNaN(autoplay_mode) || autoplay_mode > 6 || autoplay_mode < 1);
         }
 
         /* =====================
