@@ -69,6 +69,7 @@ Dream Catcher Advanced Autoplay Bot offers the following autoplay modes;
 - Decremental betting eg: (40, 20, 10, 5, 2, 1 then start over)
 - Sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)
 - Random bets (with round skipping)
+- Bet on everything but randomly skip one
 
 ## Monopoly Advanced Autoplay Bot
 Monopoly Autoplay Bot offers the following autoplay modes;
@@ -81,6 +82,7 @@ Monopoly Autoplay Bot offers the following autoplay modes;
 - Random bonus games only betting
 - Random bonus games only betting (but skip some rounds)
 - Double bonus betting (betting on both 2 rolls and 4 rolls)
+- Bet on everything but randomly skip one
 - Insurance bets are also offered on this game;
     - Insurance bets can be placed on #1 only
     - Insurance bets can be placed on #1 & #2
