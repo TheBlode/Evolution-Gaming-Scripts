@@ -1,63 +1,63 @@
 /* =====================
-* Evolution's Football Studio Advanced Autoplay Bot
-* Written by The_Blode
-* 07/11/20
-* NB! This script must be run in the console of your browser. You must also select the game's iframe by selecting it manually in the Chrome development tools or connecting directly to the iframes URL
-* =====================
+ * Evolution's Football Studio Advanced Autoplay Bot
+ * Written by The_Blode
+ * 07/11/20
+ * NB! This script must be run in the console of your browser. You must also select the game's iframe by selecting it manually in the Chrome development tools or connecting directly to the iframes URL
+ * =====================
 */
 
 /* Autoplay mode #1 - Alternate bets. Example: Bet home, then away, then home, then away, then home, then away, etc
-* Autoplay mode #2 - Bet on home and away in numbered sequences. Example: if sequence_amount is set to 3 in a row, the bot will play; home, home, home then away, away, away and repeat.
-* Autoplay mode #3 - Bet randomly on home or away
-* Autoplay mode #4 - Bet only after a certain sequence of results. Example: if streak_size is set to 4, then place a bet after 4 homes or 4 aways in a row
-* Autoplay mode #5 - Bet randomly on home or away (with round skipping)
-
+ * Autoplay mode #2 - Bet on home and away in numbered sequences. Example: if sequence_amount is set to 3 in a row, the bot will play; home, home, home then away, away, away and repeat.
+ * Autoplay mode #3 - Bet randomly on home or away
+ * Autoplay mode #4 - Bet only after a certain sequence of results. Example: if streak_size is set to 4, then place a bet after 4 homes or 4 aways in a row
+ * Autoplay mode #5 - Bet randomly on home or away (with round skipping)
+ * Autoplay mode #6 - Bet on draw after certain number of rounds without a draw
 */
 /* ========================================================================
-* Set autoplay mode and other game settings
-* ======================================================================== */
+ * Set autoplay mode and other game settings
+ * ======================================================================== */
 var autoplay_mode = 4;
 
 /* ========================================================================
-* Disable video (when you set this to 1, video will be disabled)
-* ======================================================================== */
+ * Disable video (when you set this to 1, video will be disabled)
+ * ======================================================================== */
 var disable_video = 1;
 
 /* ========================================================================
-* Set click delay (if you're having issues with clicks on the UI)
-* ======================================================================== */
+ * Set click delay (if you're having issues with clicks on the UI)
+ * ======================================================================== */
 var click_delay = 200;
 
 /* ========================================================================
-* Set wager amount in units (default is 1 unit)
-* ======================================================================== */
+ * Set wager amount in units (default is 1 unit)
+ * ======================================================================== */
 var user_wager_amount = 1;
 
 /* ========================================================================
-* Set streak size to wait for before betting
-* ======================================================================== */
+ * Set streak size to wait for before betting
+ * ======================================================================== */
 var user_streak_size = 5;
 
 /* ========================================================================
-* Set sequence amount to play with
-* ======================================================================== */
+ * Set sequence amount to play with
+ * ======================================================================== */
 var user_sequence_amount = 3;
 
 /* ========================================================================
-* Set round skipping frequency. The higher the number, the more rounds will be skipped.
-* For use of random modes that allow skipping rounds.
-* ======================================================================== */
+ * Set round skipping frequency. The higher the number, the more rounds will be skipped.
+ * For use of random modes that allow skipping rounds.
+ * ======================================================================== */
 var user_round_skipping = 2;
 
 /* ========================================================================
-* Hide UI elements if you want a cleaner interface to play with
-* Hides all UI elements apart from the betting spots (0 will disable this option)
-* ======================================================================== */
+ * Hide UI elements if you want a cleaner interface to play with
+ * Hides all UI elements apart from the betting spots (0 will disable this option)
+ * ======================================================================== */
 var user_clean_interface = 1;
 
 /* ========================================================================
-* Show on screen debug on the game window
-* ======================================================================== */
+ * Show on screen debug on the game window
+ * ======================================================================== */
 var user_on_screen_debug = 1;
 
 /* ========================================================================
@@ -91,8 +91,8 @@ var time_between_breaks_counter = 0;
 var break_time = false;
 
 /* =====================
-* End of bot settings
-* =====================
+ * End of bot settings
+ * =====================
 */
 // Default variables used in the script
 var bet_type = 1;
@@ -113,16 +113,18 @@ var result_check_found = "";
 var old_autoplay_mode = 0;
 var old_user_insurance_bet = 0;
 var round_count = 0;
+var draw_streak_size = 0;
+var draw_streak = 0;
 
 /* =====================
-* Functions that will be used by the bot
-* =====================
+ * Functions that will be used by the bot
+ * =====================
 */
 /* =====================
-* Function name: autoPlay
-* Function description: this function will perform the autoplaying
-* Date: 07/11/20
-* =====================
+ * Function name: autoPlay
+ * Function description: this function will perform the autoplaying
+ * Date: 07/11/20
+ * =====================
 */
 function autoPlay() {
     // Disable video
@@ -631,6 +633,9 @@ function autoPlay() {
                 // Reset away streak
                 away_streak = 0;
 
+                // Increment rounds since draw streak
+                draw_streak++;
+
                 console.log(spacing);
                 console.log("Home wins! There have been " + home_streak + " home wins in a row now.");
                 console.log(spacing);
@@ -649,6 +654,9 @@ function autoPlay() {
                 // Reset home streak
                 home_streak = 0;
 
+                // Increment rounds since draw streak
+                draw_streak++;
+
                 console.log(spacing);
                 console.log("Away wins! There have been " + away_streak + " away wins in a row now.");
                 console.log(spacing);
@@ -664,6 +672,19 @@ function autoPlay() {
                 // It's a draw! Increment both sides
                 home_streak++;
                 away_streak++;
+                draw_streak = 0;
+            }
+
+            console.log(spacing);
+            console.log("There have been " + draw_streak + " rounds without a draw.");
+            console.log(spacing);
+            // Debug for page
+            if (user_on_screen_debug == 1) {
+                // Append to debug area
+                    $("#debug_area").append(timestamp() + "There have been " + draw_streak + " rounds without a draw.<br />");
+
+                // Scroll to top
+                scrollToTopOfDebug();
             }
 
             // Autoplay mode #4
@@ -717,6 +738,39 @@ function autoPlay() {
                             for (var x = 0; x < user_wager_amount; x++) {
                                 // Click betting spot
                                 $(".mainBet--3JDdD").eq(0).click();
+
+                                // Clear interval
+                                clearInterval(clicking);
+                            }
+                        }
+                    }, click_delay);
+                }
+            }
+
+            // Autoplay mode #6
+            if (autoplay_mode == 6 && break_time == false) {
+                if (draw_streak >= draw_streak_size) {
+                    // Place bet
+                    // Output
+                    console.log(spacing);
+                    console.log("I'm placing a bet on a draw.");
+                    console.log(spacing);
+                    // Debug for page
+                    if (user_on_screen_debug == 1) {
+                        // Append to debug area
+                        $("#debug_area").append(timestamp() + "I'm placing a bet on a draw.<br />");
+
+                        // Scroll to top
+                        scrollToTopOfDebug();
+                    }
+                    clicking = setInterval(function() {
+                        // Check if bet spot is available to click
+                        var test = checkBetSpot();
+
+                        if (test == true) {
+                            for (var x = 0; x < user_wager_amount; x++) {
+                                // Click betting spot
+                                $(".tie--181yr").eq(0).click();
 
                                 // Clear interval
                                 clearInterval(clicking);
@@ -780,10 +834,10 @@ function autoPlay() {
 }
 
 /* =====================
-* Function name: randomNumber
-* Function description: this function will generate a random number
-* Date: 07/11/20
-* =====================
+ * Function name: randomNumber
+ * Function description: this function will generate a random number
+ * Date: 07/11/20
+ * =====================
 */
 function randomNumber(min, max) {
     // Minimum and maximum numbers included 
@@ -791,10 +845,10 @@ function randomNumber(min, max) {
 }
 
 /* =====================
-* Function name: click
-* Function description: this function will send a simulated mouse click
-* Date: 07/11/20
-* =====================
+ * Function name: click
+ * Function description: this function will send a simulated mouse click
+ * Date: 07/11/20
+ * =====================
 */
 function click(x, y) {
     var ev = new MouseEvent('click', {
@@ -811,10 +865,10 @@ function click(x, y) {
 }
 
 /* =====================
-* Function name: checkBetSpot
-* Function description: this function will check if the betting spot is available
-* Date: 07/11/20
-* =====================
+ * Function name: checkBetSpot
+ * Function description: this function will check if the betting spot is available
+ * Date: 07/11/20
+ * =====================
 */
 function checkBetSpot() {
     // Grab betting spot
@@ -829,10 +883,10 @@ function checkBetSpot() {
 }
 
 /* =====================
-* Function name: scrollToTopOfDebug
-* Function description: this function show the freshest line of debug on the onscreen debug
-* Date: 07/11/20
-* =====================
+ * Function name: scrollToTopOfDebug
+ * Function description: this function show the freshest line of debug on the onscreen debug
+ * Date: 07/11/20
+ * =====================
 */
 function scrollToTopOfDebug() {
     // Scroll to top of debug area
@@ -851,10 +905,10 @@ function getBalance() {
 }
 
 /* =====================
-* Function name: getWinnings
-* Function description: this function fetch your winnings
-* Date: 07/11/20
-* =====================
+ * Function name: getWinnings
+ * Function description: this function fetch your winnings
+ * Date: 07/11/20
+ * =====================
 */
 function getWinnings() {
     // Grab balance
@@ -870,8 +924,8 @@ function getWinnings() {
 function changeOptions() {
     // Get autoplay mode from the user
     do {
-        autoplay_mode = parseInt(window.prompt("Autoplay mode #1 - Alternate bets. Example: Bet home, then away, then home, then away, then home, then away, etc\n\nAutoplay mode #2 - Bet on home and away in numbered sequences. Example: if sequence_amount is set to 3 in a row, the bot will play; home, home, home then away, away, away and repeat.\n\nAutoplay mode #3 - Bet randomly on home or away\n\nAutoplay mode #4 - Bet only after a certain sequence of results. Example: if streak_size is set to 4, then place a bet after 4 homes or 4 aways in a row\n\nAutoplay mode #5 - Bet randomly on home or away (with round skipping)", "1"), 10);
-    } while(isNaN(autoplay_mode) || autoplay_mode > 5 || autoplay_mode < 1);
+        autoplay_mode = parseInt(window.prompt("Autoplay mode #1 - Alternate bets. Example: Bet home, then away, then home, then away, then home, then away, etc\n\nAutoplay mode #2 - Bet on home and away in numbered sequences. Example: if sequence_amount is set to 3 in a row, the bot will play; home, home, home then away, away, away and repeat.\n\nAutoplay mode #3 - Bet randomly on home or away\n\nAutoplay mode #4 - Bet only after a certain sequence of results. Example: if streak_size is set to 4, then place a bet after 4 homes or 4 aways in a row\n\nAutoplay mode #5 - Bet randomly on home or away (with round skipping)\n\nAutoplay mode #6 - Bet on draw after certain number of rounds without a draw", "1"), 10);
+    } while(isNaN(autoplay_mode) || autoplay_mode > 6 || autoplay_mode < 1);
 
     // Ask the user how many rounds would they like the bot to play
     do {
@@ -905,6 +959,13 @@ function changeOptions() {
         do {
             sequence_amount = parseInt(window.prompt("How many bets in a row do you want to play in your sequence?\n\nDefault is 2.", "2"), 10);
         } while(isNaN(sequence_amount) || sequence_amount < 1);
+    }
+
+    if (autoplay_mode == 6) {
+        // Ask the user long to wait for a draw
+        do {
+            draw_streak_size = parseInt(window.prompt("How many rounds do you want to wait until you bet on a draw?", "2"), 10);
+        } while(isNaN(draw_streak_size));
     }
 
     // Ask user if they want a clean interface
@@ -1049,8 +1110,8 @@ function toggleDebugMode(state) {
 function changeAutoplayMode() {
     // Get autoplay mode from the user
     do {
-        autoplay_mode = parseInt(window.prompt("Autoplay mode #1 - Alternate bets. Example: Bet home, then away, then home, then away, then home, then away, etc\n\nAutoplay mode #2 - Bet on home and away in numbered sequences. Example: if sequence_amount is set to 3 in a row, the bot will play; home, home, home then away, away, away and repeat.\n\nAutoplay mode #3 - Bet randomly on home or away\n\nAutoplay mode #4 - Bet only after a certain sequence of results. Example: if streak_size is set to 4, then place a bet after 4 homes or 4 aways in a row\n\nAutoplay mode #5 - Bet randomly on home or away (with round skipping)", "1"), 10);
-    } while(isNaN(autoplay_mode) || autoplay_mode > 5 || autoplay_mode < 1);
+        autoplay_mode = parseInt(window.prompt("Autoplay mode #1 - Alternate bets. Example: Bet home, then away, then home, then away, then home, then away, etc\n\nAutoplay mode #2 - Bet on home and away in numbered sequences. Example: if sequence_amount is set to 3 in a row, the bot will play; home, home, home then away, away, away and repeat.\n\nAutoplay mode #3 - Bet randomly on home or away\n\nAutoplay mode #4 - Bet only after a certain sequence of results. Example: if streak_size is set to 4, then place a bet after 4 homes or 4 aways in a row\n\nAutoplay mode #5 - Bet randomly on home or away (with round skipping)\n\nAutoplay mode #6 - Bet on draw after certain number of rounds without a draw", "1"), 10);
+    } while(isNaN(autoplay_mode) || autoplay_mode > 6 || autoplay_mode < 1);
 }
 
 /* =====================
@@ -1218,8 +1279,8 @@ function roundLimitReached() {
 }
 
 /* =====================
-* Main code
-* =====================
+ * Main code
+ * =====================
 */
 // Inject jQuery for us to use
 javascript:(function() {
@@ -1236,7 +1297,7 @@ javascript:(function() {
 })();
 
 // Welcome message!
-window.alert("Welcome to Football Studio Time Advanced Autoplay Bot!\n\nMake sure you enable classic mode before running this bot.");
+window.alert("Welcome to Football Studio Advanced Autoplay Bot!\n\nMake sure you enable classic mode before running this bot.");
 
 setTimeout(function() {
     // Create debug area
