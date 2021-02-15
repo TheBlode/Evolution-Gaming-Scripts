@@ -94,6 +94,7 @@ Football Studio offers the following autoplay modes;
 - Sequence betting eg: (home, home, away, away, home, home, away, away, etc)
 - Streak betting eg: (4 home wins in a row, bet on away)
 - Random bets (with round skipping)
+- Bet on draw after certain number of rounds without a draw
 
 ## Lightning Roulette Advanced Autoplay Bot
 **NB: Lightning Roulette bot is still in active development. It will only work on a standard build of Chrome (with no bookmark bar), with the window maximized and running with a screen resolution of 1280 x 720**
