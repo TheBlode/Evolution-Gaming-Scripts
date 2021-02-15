@@ -70,9 +70,14 @@ var user_loss_limit_balance = 0;
 var user_win_limit_balance = 0;
 
 /* ========================================================================
+ * Round limit
+ * ======================================================================== */
+var user_round_limit = 0;
+
+/* ========================================================================
  * Set big chat
  * ======================================================================== */
-big_chat = 0;
+var big_chat = 0;
 
 /* ========================================================================
  * Set break variables
@@ -101,6 +106,7 @@ var bonus_round_counter = 0;
 var increment_sequence = 1;
 var decrement_sequence = 6;
 var old_autoplay_mode = 0;
+var round_count = 0;
 
 /* =====================
  * Functions that will be used by the bot
@@ -168,6 +174,16 @@ function autoPlay() {
 
             // Set counter value
             count = iteration_number + 40;
+
+           // A new round has occurred! Increment round count
+            round_count++;
+
+            // Check if round limit has been reached
+            if (user_round_limit != 0) {
+                if (round_count >= user_round_limit) {
+                    roundLimitReached();
+                }
+            }
 
             // Check for bonus round
             var bonus_round_check = regex_formatted.match(/x/g);
@@ -1347,6 +1363,11 @@ function changeOptions() {
         autoplay_mode = parseInt(window.prompt("Autoplay mode #1 - Bet randomly on a number\n\nAutoplay mode #2 - increment bet in a sequence (1, 2, 5, 10, 20, 40 then start over)\n\nAutoplay mode #3 - decrement bet in a sequence (40, 20, 10, 5, 2, 1 then start over)\n\nAutoplay mode #4 - sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)\n\nAutoplay mode #5 - Bet randomly on a number (but skip some rounds)\n\nAutoplay mode #6 - Bet on 1 and 2 only", "1"), 10);
     } while(isNaN(autoplay_mode) || autoplay_mode > 6 || autoplay_mode < 1);
 
+    // Ask the user how many rounds would they like the bot to play
+    do {
+        user_round_limit = parseInt(window.prompt("How many rounds to you want the bot to play?\n\nSet to 0 to play unlimited rounds.", "0"), 10);
+    } while(isNaN(user_round_limit));
+
     // Ask the user if they want to disable video
     do {
         disable_video = parseInt(window.prompt("Do you want to disable video in the game?\n\nType 1 to disable and type 0 for enable.", "0"), 10);
@@ -1650,6 +1671,34 @@ function bigChat(state) {
 function timestamp() {
     // Return current time
     return new Date().toLocaleTimeString() + ": ";
+}
+
+/* =====================
+ * Function name: roundLimitReached
+ * Function description: this function will stop playing if round limit has been reached
+ * Date: 15/02/21
+ * =====================
+ */
+function roundLimitReached() {
+    // Debug for the console
+    console.log(spacing);
+    console.log("The bot will stop playing as the round limit has been reached.");
+    console.log(spacing);
+
+    // Debug for page
+    if (user_on_screen_debug == 1) {
+        // Append to debug area
+        $("#debug_area").append(timestamp() + "The bot will stop playing as the round limit has been reached.<br />");
+
+        // Scroll to top
+        scrollToTopOfDebug();
+    }
+
+    // Set autoplay to erroneous number
+    autoplay_mode = 1000000;
+
+    // Stop insurance bets
+    user_insurance_bet = 0;
 }
 
 /* =====================
