@@ -46,6 +46,7 @@ setTimeout(function() {
          * Autoplay mode #7 - random bonus games only betting
          * Autoplay mode #8 - random bonus games only betting (but skip some rounds)
          * Autoplay mode #9 - double bonus round bet
+         * Autoplay mode #10 - bet on everything but randomly skip one
         /* ========================================================================
          * Set autoplay mode and other game settings
          * ======================================================================== */
@@ -1675,6 +1676,102 @@ setTimeout(function() {
                         }, click_delay);
                     }
 
+                    // Autoplay mode #10
+                    if (autoplay_mode == 10 && chance_check == false && break_time == false) {
+                        // Fetch random number
+                        skip_bet_type = randomNumber(1, 6);
+
+                        // Format name for output
+                        var skip_bet_name = "";
+
+                        if (skip_bet_type == 1) {
+                            skip_bet_name = "#1";
+                        } else if (skip_bet_type == 2) {
+                            skip_bet_name = "#2";
+                        } else if (skip_bet_type == 3) {
+                            skip_bet_name = "#5";
+                        } else if (skip_bet_type == 4) {
+                            skip_bet_name = "#10";
+                        } else if (skip_bet_type == 5) {
+                            skip_bet_name = "2 Rolls";
+                        } else {
+                            skip_bet_name = "4 Rolls";
+                        }
+
+                        // Place bet
+                        // Output
+                        console.log(spacing);
+                        console.log("I'm placing a bet on everthing except " + skip_bet_name + ".");
+                        console.log(spacing);
+                        if (user_on_screen_debug == 1) {
+                            // Append to debug area
+                            $("#debug_area").append(timestamp() + "I'm placing a bet on everything except " + skip_bet_name + ".<br />");
+
+                            // Scroll to top
+                            scrollToTopOfDebug();
+                        }
+
+                        // Place bet
+                        // Output
+                        console.log(spacing);
+                        console.log("I'm placing a bet on 2 rolls now.");
+                        console.log(spacing);
+                        if (user_on_screen_debug == 1) {
+                            // Append to debug area
+                            $("#debug_area").append(timestamp() + "I'm placing a bet on 2 rolls now.<br />");
+
+                            // Scroll to top
+                            scrollToTopOfDebug();
+                        }
+                        clicking = setInterval(function() {
+                            // Check if bet spot is available to click
+                            var test = checkBetSpot();
+
+                            // Increment bonus round counter
+                            bonus_round_counter++;
+
+                            if (test == true && bonus_round_counter > 3) {
+                                for (var x = 0; x < user_wager_amount; x++) {
+                                    if (skip_bet_type != 1) {
+                                        // Click betting spot
+                                        $(".betSpot--VXrdG").eq(0).click();
+                                    }
+
+                                    if (skip_bet_type != 2) {
+                                        // Click betting spot
+                                        $(".betSpot--VXrdG").eq(1).click();
+                                    }
+
+                                    if (skip_bet_type != 3) {
+                                        // Click betting spot
+                                        $(".betSpot--VXrdG").eq(3).click();
+                                    }
+
+                                    if (skip_bet_type != 4) {
+                                        // Click betting spot
+                                        $(".betSpot--VXrdG").eq(4).click();
+                                    }
+
+                                    if (skip_bet_type != 5) {
+                                        // Click betting spot
+                                        $(".betSpot--VXrdG").eq(2).click();
+                                    }
+
+                                    if (skip_bet_type != 6) {
+                                        // Click betting spot
+                                        $(".betSpot--VXrdG").eq(5).click();
+                                    }
+
+                                    // Clear bonus round flag
+                                    bonus_round = false;
+
+                                    // Clear interval
+                                    clearInterval(clicking);
+                                }
+                            }
+                        }, click_delay);
+                    }
+
                     if (skip == false) {
                         if (user_insurance_bet == 1) {
                             console.log(spacing);
@@ -1883,8 +1980,8 @@ setTimeout(function() {
         function changeOptions() {
             // Get autoplay mode from the user
             do {
-                autoplay_mode = parseInt(window.prompt("Autoplay mode #1 - Bet randomly on a number\n\nAutoplay mode #2 - increment bet in a sequence (1, 2, 5, 10, 2 rolls, 4 rolls then start over)\n\nAutoplay mode #3 - decrement bet in a sequence (4 rolls, 2 rolls, 10, 5, 2, 1 then start over)\n\nAutoplay mode #4 - sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)\n\nAutoplay mode #5 - bonus games only betting\n\nAutoplay mode #6 - Bet randomly on a number (but skip some rounds)\n\nAutoplay mode #7 - random bonus games only betting\n\nAutoplay mode #8 - random bonus games only betting (but skip some rounds)\n\nAutoplay Mode #9 - bet on both bonus rounds", "1"), 10);
-            } while(isNaN(autoplay_mode) || autoplay_mode > 9 || autoplay_mode < 1);
+                autoplay_mode = parseInt(window.prompt("Autoplay mode #1 - Bet randomly on a number\n\nAutoplay mode #2 - increment bet in a sequence (1, 2, 5, 10, 2 rolls, 4 rolls then start over)\n\nAutoplay mode #3 - decrement bet in a sequence (4 rolls, 2 rolls, 10, 5, 2, 1 then start over)\n\nAutoplay mode #4 - sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)\n\nAutoplay mode #5 - bonus games only betting\n\nAutoplay mode #6 - Bet randomly on a number (but skip some rounds)\n\nAutoplay mode #7 - random bonus games only betting\n\nAutoplay mode #8 - random bonus games only betting (but skip some rounds)\n\nAutoplay Mode #9 - bet on both bonus rounds\n\nAutoplay mode #10 - bet on everything but randomly skip one", "1"), 10);
+            } while(isNaN(autoplay_mode) || autoplay_mode > 10 || autoplay_mode < 1);
 
             // Ask the user how many rounds would they like the bot to play
             do {
@@ -2062,8 +2159,8 @@ setTimeout(function() {
         function changeAutoplayMode() {
             // Get autoplay mode from the user
             do {
-                autoplay_mode = parseInt(window.prompt("Autoplay mode #1 - Bet randomly on a number\n\nAutoplay mode #2 - increment bet in a sequence (1, 2, 5, 10, 2 rolls, 4 rolls then start over)\n\nAutoplay mode #3 - decrement bet in a sequence (4 rolls, 2 rolls, 10, 5, 2, 1 then start over)\n\nAutoplay mode #4 - sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)\n\nAutoplay mode #5 - bonus games only betting\n\nAutoplay mode #6 - Bet randomly on a number (but skip some rounds)\n\nAutoplay mode #7 - random bonus games only betting\n\nAutoplay mode #8 - random bonus games only betting (but skip some rounds)\n\nAutoplay Mode #9 - bet on both bonus rounds", "1"), 10);
-            } while(isNaN(autoplay_mode) || autoplay_mode > 9 || autoplay_mode < 1);
+                autoplay_mode = parseInt(window.prompt("Autoplay mode #1 - Bet randomly on a number\n\nAutoplay mode #2 - increment bet in a sequence (1, 2, 5, 10, 2 rolls, 4 rolls then start over)\n\nAutoplay mode #3 - decrement bet in a sequence (4 rolls, 2 rolls, 10, 5, 2, 1 then start over)\n\nAutoplay mode #4 - sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)\n\nAutoplay mode #5 - bonus games only betting\n\nAutoplay mode #6 - Bet randomly on a number (but skip some rounds)\n\nAutoplay mode #7 - random bonus games only betting\n\nAutoplay mode #8 - random bonus games only betting (but skip some rounds)\n\nAutoplay Mode #9 - bet on both bonus rounds\n\nAutoplay mode #10 - bet on everything but randomly skip one", "1"), 10);
+            } while(isNaN(autoplay_mode) || autoplay_mode > 10 || autoplay_mode < 1);
         }
 
         /* =====================
