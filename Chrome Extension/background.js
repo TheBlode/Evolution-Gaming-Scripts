@@ -46,7 +46,7 @@ var start_check = setInterval(function() {
                 autoplay_mode = data.autoplay_mode;
 
                 // Assign to the script
-                assignChromeStorageLocally("1", bot_type);
+                assignChromeStorageLocally("1", autoplay_mode);
             });
 
             chrome.storage.local.get("disable_video", function(data) {
@@ -221,7 +221,6 @@ function assignChromeStorageLocally(variable, value) {
  */
 function startPlaying() {
     if (start == "1") {
-        click_delay = -1;
         // Calculate break times
         time_between_breaks = (time_between_breaks * 60) * 2;
         break_duration = (break_duration * 60) * 2;

@@ -185,6 +185,16 @@ document.getElementById("start").onclick = function() {
 
     chrome.storage.local.set({"break_duration": temp_break_duration});
 
+   /* =======================
+     * Insurance logic
+     * ======================= */
+    // Fetch Insurance
+    var element = document.getElementById("user_insurance_bet");
+    var selected_user_insurance_bet= element.options[element.selectedIndex].value;
+
+    // Store the Insurance in memory
+    chrome.storage.local.set({"user_insurance_bet": selected_user_insurance_bet});
+
     // Store the start variable in memory so the main bot listener can pick it up
     chrome.storage.local.set({"start": "1"});
 };
@@ -199,7 +209,7 @@ document.getElementById("game_choice").onchange  = function() {
     if (selected_game_value == "1") {
         document.getElementById("autoplay_mode").innerHTML = "<select id=\"monopoly_autoplay\"><option value=\"1\">Bet randomly on a number</option><option value=\"2\">Increment bet in a sequence (1, 2, 5, 10, 2 rolls, 4 rolls then start over)</option><option value=\"3\">Decrement bet in a sequence (4 rolls, 2 rolls, 10, 5, 2, 1 then start over)</option><option value=\"4\">Sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)</option><option value=\"5\">Bonus games only betting</option><option value=\"6\">Bet randomly on a number (but skip some rounds)</option><option value=\"7\">Random bonus games only betting</option><option value=\"8\">Random bonus games only betting (but skip some rounds)</option><option value=\"9\">Double bonus round bet</option><option value=\"10\">Bet on everything but randomly skip one</option></select>";
          
-        document.getElementById("insurance").innerHTML = "Do you want to place insurance bets?:<select id=\"user_insurance_bet\"><option value=\"0\">Disabled</option><option value=\"1\">1</option><option value=\"2\">2</option>";
+        document.getElementById("insurance").innerHTML = "Do you want to place insurance bets?:<select id=\"user_insurance_bet\"><option value=\"0\">Disabled</option><option value=\"1\">1 only</option><option value=\"2\">1 & 2</option>";
     } else if (selected_game_value == "2") {
         document.getElementById("autoplay_mode").innerHTML = "<select id=\"dream_catcher_autoplay\"><option value=\"1\">Bet randomly on a number</option><option value=\"2\">Increment bet in a sequence (1, 2, 5, 10, 20, 40)</option><option value=\"3\">decrement bet in a sequence (40, 20, 10, 5, 2, 1)</option><option value=\"4\">Sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)</option><option value=\"5\">Bet randomly on a number (but skip some rounds)</option><option value=\"6\">Bet on 1 and 2 only</option><option value=\"7\">Bet on everything but randomly skip one</option></select>";
 
@@ -207,7 +217,7 @@ document.getElementById("game_choice").onchange  = function() {
     } else if (selected_game_value == "3") {
         document.getElementById("autoplay_mode").innerHTML = "<select id=\"crazy_time_autoplay\"><option value=\"1\">Bet randomly on a number</option><option value=\"2\">Increment bet in a sequence (1, 2, 5, 10, Coin Flip, Pachinko, Cash Hunt, Crazy Time then start over)</option><option value=\"3\">Decrement bet in a sequence (Crazy Time, Cash Hunt, Pachunko, Coin Flip, 10, 5, 2, 1 then start over)</option><option value=\"4\">Sequence betting eg: (if sequence amount set to 2, then 1-1, 2-2, 5-5, 10-10, etc)</option><option value=\"5\">Bet randomly on a number (but skip some rounds)</option><option value=\"6\">Bonus round betting only</option><option value=\"7\">Random bonus games only betting</option><option value=\"8\">Random bonus games only betting (but skip some rounds)</option><option value=\"9\">Bonus round betting only (double bonus)</option><option value=\"10\">Random bonus games only betting (double bonus)</option><option value=\"11\">Random bonus games only betting (but skip some rounds) (double bonus)</option><option value=\"12\">Random bonus games only betting (but skip some rounds) (double bonus)</option><option value=\"13\">Bet on all bonus rounds (Cash Hunt, Coin Flip, Pachinko & Crazy Time)</option><option value=\"14\">Bet on everything but randomly skip one</option></select>";
 
-        document.getElementById("insurance").innerHTML = "Do you want to place insurance bets?:<select id=\"user_insurance_bet\"><option value=\"0\">Disabled</option><option value=\"1\">1</option><option value=\"2\">2</option>";
+        document.getElementById("insurance").innerHTML = "Do you want to place insurance bets?:<select id=\"user_insurance_bet\"><option value=\"0\">Disabled</option><option value=\"1\">1 only</option><option value=\"2\">1 & 2</option>";
     } else if (selected_game_value == "4") {
         document.getElementById("autoplay_mode").innerHTML = "<select id=\"football_studio_autoplay\"><option value=\"1\">Alternate bets. Example: Bet home, then away, then home, then away, then home, then away, etc</option><option value=\"2\">Bet on home and away in numbered sequences.</option><option value=\"3\">Bet randomly on home or away</option><option value=\"4\">Bet only after a certain sequence of results. </option><option value=\"5\">Bet randomly on home or away (with round skipping)</option><option value=\"6\">Bet on draw after certain number of rounds without a draw</option></select>";
 
