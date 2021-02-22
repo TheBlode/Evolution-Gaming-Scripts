@@ -1,20 +1,5 @@
-document.addEventListener('DOMContentLoaded', function() {
-    var checkPageButton = document.getElementById('checkPage');
-    checkPageButton.addEventListener('click', function() {
-    alert("Here");
-    chrome.tabs.getSelected(null, function(tab) {
-      d = document;
-
-      var f = d.createElement('form');
-      f.action = 'http://gtmetrix.com/analyze.html?bm';
-      f.method = 'post';
-      var i = d.createElement('input');
-      i.type = 'hidden';
-      i.name = 'url';
-      i.value = tab.url;
-      f.appendChild(i);
-      d.body.appendChild(f);
-      f.submit();
-    });
-  }, false);
-}, false);
+// Add event handler for on click event to start bot
+document.getElementById("start").onclick = function() {
+    // Store the start variable in memory so the main bot listener can pick it up
+    chrome.storage.local.set({"start": "1"}, function () { window.alert(`The bot is about to start! Have fun!`)});
+};
