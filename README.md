@@ -3,9 +3,10 @@
 ## Introduction
 Welcome to my Evolution Gaming Scripts page! Evolution's autoplay feature is severely lacking in it's functionality for us players so I wrote these scripts to optimize your gaming experience! I hope you enjoy them and they improve your fortunes!
 
+![alt text](https://i.imgur.com/2aFD9mY.png)
+
 ## How to run these scripts
 ## Method 1 (probably the easiest method)
-UPDATE (23/02/21) - You can load the Chrome Extension by downloading Chrome Extension.crx, dragging and dropping the file into Chrome.
 
 I have built a Chrome Extension to make it easier to run the bot code. Here are the steps to get started with it;
 
