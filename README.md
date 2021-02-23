@@ -5,6 +5,8 @@ Welcome to my Evolution Gaming Scripts page! Evolution's autoplay feature is sev
 
 ## How to run these scripts
 ## Method 1 (probably the easiest method)
+UPDATE (23/02/21) - You can load the Chrome Extension by downloading Chrome Extension.crx, dragging and dropping the file into Chrome.
+
 I have built a Chrome Extension to make it easier to run the bot code. Here are the steps to get started with it;
 
 1) Go to Chrome Extensions page (chrome://extensions/).
