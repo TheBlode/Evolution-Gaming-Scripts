@@ -3,7 +3,7 @@
 ## Introduction
 Welcome to my Evolution Gaming Scripts page! Evolution's autoplay feature is severely lacking in it's functionality for us players so I wrote these scripts to optimize your gaming experience! I hope you enjoy them and they improve your fortunes!
 
-![alt text](https://i.imgur.com/2aFD9mY.png)
+![alt text](https://i.imgur.com/K674L14.png)
 
 NB: It may be against some casinos Terms & Conditions to perform automated actions using this bot. To get around this, use "No Bot" mode which enables hints on where to place your bets manually.
 
