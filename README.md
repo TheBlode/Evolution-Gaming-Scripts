@@ -5,9 +5,10 @@ Welcome to my Evolution Gaming Scripts page! Evolution's autoplay feature is sev
 
 ![alt text](https://i.imgur.com/2aFD9mY.png)
 
+NB: It may be against some casinos Terms & Conditions to perform automated actions using this bot. To get around this, use "No Bot" mode which enables hints on where to place your bets manually.
+
 ## How to run these scripts
 ## Method 1 (probably the easiest method)
-
 I have built a Chrome Extension to make it easier to run the bot code. Here are the steps to get started with it;
 
 1) Go to Chrome Extensions page (chrome://extensions/).
@@ -124,4 +125,5 @@ Lightning Roulette offers the following autoplay modes;
 - Simulation mode (using play money)
 - Streaks betting for all games
 - User guides
+- No Bot mode
 
