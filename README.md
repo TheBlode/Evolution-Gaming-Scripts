@@ -19,7 +19,7 @@ I have built a Chrome Extension to make it easier to run the bot code. Here are 
 
 4) Pick the "Chrome Extension" folder.
 
-5) Done! Currently, the bot is hardcoded to work with Unibet. However, you can change the URL to your own casino by editing line 24 in `manifest.json` (located in the Chrome Extension folder).
+5) Done! Load up your game on your favourite casino and enjoy!
 
 NB: The Chrome Extension will only work if you load the game directly (ie not in a casino iFrame).
 
@@ -125,5 +125,4 @@ Lightning Roulette offers the following autoplay modes;
 - Simulation mode (using play money)
 - Streaks betting for all games
 - User guides
-- No Bot mode
 
