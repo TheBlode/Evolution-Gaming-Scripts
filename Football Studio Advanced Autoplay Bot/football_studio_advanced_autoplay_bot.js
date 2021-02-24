@@ -1290,6 +1290,25 @@ function roundLimitReached() {
 }
 
 /* =====================
+ * Function name: noBotModeMessage
+ * Function description: this function will output messages about the next play on the UI
+ * Date: 24/02/21
+ * =====================
+ */
+function noBotModeMessage(plays) {
+    // Inform user via alert
+    window.alert("Place your next bet on: " + plays);
+
+    // Inform player using console
+    console.log(spacing);
+    console.log("Place your next bet on: " + plays);
+    console.log(spacing);
+
+    // Exit
+    return;
+}
+
+/* =====================
  * Main code
  * =====================
 */
