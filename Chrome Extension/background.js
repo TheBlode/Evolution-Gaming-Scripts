@@ -13,11 +13,13 @@ chrome.storage.local.set({"user_win_limit_balance": "0"});
 chrome.storage.local.set({"time_between_breaks": "0"});
 chrome.storage.local.set({"break_duration": "0"});
 chrome.storage.local.set({"break_times": "0"});
+chrome.storage.local.set({"no_bot_mode": "0"});
 var bot_type = 0;
 var autoplay_mode = 0;
 var disable_video = 0;
 var user_clean_interface = 0;
 var big_chat = 0;
+var no_bot_mode = 0;
 
 // Set global start variable
 var start = "0";
@@ -140,6 +142,13 @@ var start_check = setInterval(function() {
                 assignChromeStorageLocally("14", break_times);
             });
 
+            chrome.storage.local.get("no_bot_mode", function(data) {
+                no_bot_mode = data.no_bot_mode;
+
+                // Assign to the script
+                assignChromeStorageLocally("15", no_bot_mode);
+            });
+
             // Start playing!
             startPlaying();
 
@@ -210,6 +219,10 @@ function assignChromeStorageLocally(variable, value) {
 
     if (variable == "14") {
         break_times = value;
+    }
+
+    if (variable == "15") {
+        no_bot_mode = value;
     }
 }
 
@@ -2145,6 +2158,12 @@ function startPlaying() {
                  * =====================
                  */
                 function checkBetSpot() {
+                    // Check if no bot mode is active
+                    if (no_bot_mode == 1) {
+                        clearInterval(clicking);
+                        clearInterval(clicking_insurance);
+                    }
+
                     // Grab betting spot
                     var betting_spot = $(".perspectiveContainer--TPit_.collapsed--3MolW").length;
 
@@ -3919,6 +3938,11 @@ function startPlaying() {
                  * =====================
                  */
                 function checkBetSpot() {
+                    // Check if no bot mode is active
+                    if (no_bot_mode == 1) {
+                        clearInterval(clicking);
+                    }
+
                     // Grab betting spot
                     var betting_spot = $(".footerBettingGrid--9QTFm.collapsed--3oC2R").length;
 
@@ -7162,6 +7186,15 @@ function startPlaying() {
                  * =====================
                  */
                 function checkBetSpot() {
+                    // Check if no bot mode is active
+                    if (no_bot_mode == 1) {
+                        clearInterval(clicking);
+                        clearInterval(clicking_two);
+                        clearInterval(clicking_three);
+                        clearInterval(clicking_four);
+                        clearInterval(clicking_insurance);
+                    }
+
                     // Grab betting spot
                     var betting_spot = $(".perspectiveContainer--3orzS.collapsed--D0F2p").length;
 
@@ -8408,6 +8441,11 @@ function startPlaying() {
                 * =====================
                 */
                 function checkBetSpot() {
+                    // Check if no bot mode is active
+                    if (no_bot_mode == 1) {
+                        clearInterval(clicking);
+                    }
+
                     // Grab betting spot
                     var betting_spot = $(".perspective--5cLlU.perspectiveActive--2VeJ7").length;
 

@@ -195,6 +195,25 @@ document.getElementById("start").onclick = function() {
     // Store the Insurance in memory
     chrome.storage.local.set({"user_insurance_bet": selected_user_insurance_bet});
 
+    /* =======================
+     * No Bot Mode logic
+     * ======================= */
+    // Get No Bot Mode setting
+    var no_bot_mode_setting = document.getElementById("no_bot_mode").checked;
+
+    // Store temporary variable
+    var temp_no_bot_mode= 0;
+
+    // Store No Bot Mode flag in memory
+    if (no_bot_mode_setting) {
+        // Store No Bot Mode flag in memory
+        temp_no_bot_mode = 1;
+        chrome.storage.local.set({"no_bot_mode": temp_no_bot_mode});
+    } else {
+        temp_no_bot_mode = 0;
+        chrome.storage.local.set({"no_bot_mode": temp_no_bot_mode});
+    }
+
     // Store the start variable in memory so the main bot listener can pick it up
     chrome.storage.local.set({"start": "1"});
 };

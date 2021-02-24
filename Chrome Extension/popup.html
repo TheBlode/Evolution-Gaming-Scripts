@@ -253,8 +253,18 @@
                 <option value="8">8</option>
                 <option value="9">9</option>
                 <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="11">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
                 <option value="21">21</option>
-                <option value="22">2</option>
+                <option value="22">22</option>
                 <option value="23">23</option>
                 <option value="24">24</option>
                 <option value="25">25</option>
@@ -449,15 +459,56 @@
             <label for="break_times">Enable Breaks</label>
             <div id="break_time_settings"></div>
             <br />
-            <!-- Disable video option -->
-            <input type="checkbox" id="disable_video" name="disable_video" value="disable_video">
-            <label for="disable_video">Disable Video</label><br />
-            <input type="checkbox" id="user_clean_interface" name="user_clean_interface" value="user_clean_interface">
-            <label for="user_clean_interface">Clean Interface</label><br />
-            <input type="checkbox" id="big_chat" name="big_chat" value="big_chat">
-            <label for="big_chat">Big Chat</label><br />
-            <input type="checkbox" id="user_on_screen_debug" name="user_on_screen_debug" value="user_on_screen_debug">
-            <label for="user_on_screen_debug">On Screen Debug</label><br /><br />
+            <table>
+                <tr>
+                    <td>
+                        <!-- Disable video option -->
+                        <input type="checkbox" id="disable_video" name="disable_video" value="disable_video">
+                        <label for="disable_video">Disable Video</label>
+                    </td>
+                    <td>
+                        Allows you to disable the live casino video.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="user_clean_interface" name="user_clean_interface" value="user_clean_interface">
+                        <label for="user_clean_interface">Clean Interface</label>
+                    </td>
+                    <td>
+                        Enabling this will allow you to hide certain elements from the game UI<br />
+                        allowing you to have distraction free gaming.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="big_chat" name="big_chat" value="big_chat">
+                        <label for="big_chat">Big Chat</label>
+                    </td>
+                    <td>
+                        Enable this option to make the chat appear bigger in size.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="user_on_screen_debug" name="user_on_screen_debug" value="user_on_screen_debug">
+                        <label for="user_on_screen_debug">On Screen Debug</label>
+                   </td>
+                    <td>
+                        This option will display on-screen debug (this is great if you are multi-tabling.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="no_bot_mode" name="no_bot_mode" value="no_bot_mode">
+                        <label for="no_bot_mode">No Bot Mode</label>
+                    </td>
+                    <td>
+                        It may be against some casino's Terms & Condition to have a machine<br />perform your plays. Activate this to disable automatic play.
+                    </td>
+                </tr>
+            </table>
+            <br />
             <button id="start">Click Here to Start the Bot.</button>
         </center>
         <script src="popup.js"></script>
