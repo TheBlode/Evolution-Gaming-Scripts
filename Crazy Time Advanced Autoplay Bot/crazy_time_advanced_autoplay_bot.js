@@ -132,6 +132,7 @@ var decrement_sequence = 8;
 var old_autoplay_mode = 0;
 var old_user_insurance_bet = 0;
 var round_count = 0;
+var no_bot_mode = 0;
 
 /* =====================
  * Functions that will be used by the bot
@@ -2889,6 +2890,15 @@ function click(x, y) {
  * =====================
  */
 function checkBetSpot() {
+    // Check if no bot mode is active
+    if (no_bot_mode == 1) {
+        clearInterval(clicking);
+        clearInterval(clicking_two);
+        clearInterval(clicking_three);
+        clearInterval(clicking_four);
+        clearInterval(clicking_insurance);
+    }
+
     // Grab betting spot
     var betting_spot = $(".perspectiveContainer--3orzS.collapsed--D0F2p").length;
 
@@ -3030,6 +3040,11 @@ function changeOptions() {
     do {
         big_chat = parseInt(window.prompt("Do you want to activate big chat?\n\nSet to 1 to enable big chat or set to 0 to disable.", "0"), 10);
     } while(isNaN(big_chat) || big_chat > 1);
+
+    // Ask the user if they want to enable no bot mode or not
+    do {
+        no_bot_mode = parseInt(window.prompt("Some casinos do not allow the use of bots to automate play. Do you want to activate \"no bot mode\" in order to avoid issues with ToC? You'll be notified of where to place your bets on the interface but you'll need to manually click the betting spots.", "0"), 10);
+    } while(isNaN(no_bot_mode) || no_bot_mode > 1);
 
     // Enable big chat
     bigChat(big_chat);
