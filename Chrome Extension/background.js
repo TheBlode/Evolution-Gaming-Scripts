@@ -20,6 +20,9 @@ var disable_video = 0;
 var user_clean_interface = 0;
 var big_chat = 0;
 var no_bot_mode = 0;
+var time_between_breaks = 0;
+var break_times = 0;
+var break_duration = 0;
 
 // Set global start variable
 var start = "0";
@@ -601,6 +604,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#1");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -633,6 +638,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#2");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -665,6 +672,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("2 rolls");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -697,6 +706,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#5");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -729,6 +740,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#10");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -761,6 +774,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("4 rolls");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -799,6 +814,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#1");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -831,6 +848,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#2");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -863,6 +882,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("2 rolls");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -895,6 +916,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#5");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -927,6 +950,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#10");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -959,6 +984,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("4 rolls");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -1003,6 +1030,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#1");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -1038,6 +1067,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#2");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -1070,6 +1101,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("2 rolls");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -1102,6 +1135,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#5");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -1134,6 +1169,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#10");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -1166,6 +1203,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("4 rolls");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -1207,6 +1246,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#1");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -1239,6 +1280,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#2");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -1271,6 +1314,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("2 rolls");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -1303,6 +1348,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#5");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -1335,6 +1382,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#10");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -1367,6 +1416,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("4 rolls");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -1424,6 +1475,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("2 rolls");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -1456,6 +1509,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("4 rolls");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -1506,6 +1561,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#1");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -1538,6 +1595,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#2");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -1570,6 +1629,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("2 rolls");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -1602,6 +1663,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#5");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -1634,6 +1697,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#10");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -1666,6 +1731,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("4 rolls");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -1723,6 +1790,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("2 rolls");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -1755,6 +1824,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("4 rolls");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -1799,6 +1870,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("2 rolls");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -1831,6 +1904,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("4 rolls");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -1884,6 +1959,8 @@ function startPlaying() {
                                     // Scroll to top
                                     scrollToTopOfDebug();
                                 }
+                                // Prompts for no bot mode
+                                noBotModeMessage("2 & 4 rolls");
                                 clicking = setInterval(function() {
                                     // Check if bet spot is available to click
                                     var test = checkBetSpot();
@@ -1954,6 +2031,8 @@ function startPlaying() {
                                     // Scroll to top
                                     scrollToTopOfDebug();
                                 }
+                                // Prompts for no bot mode
+                                noBotModeMessage("2 rolls");
                                 clicking = setInterval(function() {
                                     // Check if bet spot is available to click
                                     var test = checkBetSpot();
@@ -2493,6 +2572,25 @@ function startPlaying() {
                 }
 
                 /* =====================
+                 * Function name: noBotModeMessage
+                 * Function description: this function will output messages about the next play on the UI
+                 * Date: 24/02/21
+                 * =====================
+                 */
+                function noBotModeMessage(plays) {
+                    // Inform user via alert
+                    window.alert("Place your next bet on: " + plays);
+
+                    // Inform player using console
+                    console.log(spacing);
+                    console.log("Place your next bet on: " + plays);
+                    console.log(spacing);
+
+                    // Exit
+                    return;
+                }
+
+                /* =====================
                  * Main code
                  * =====================
                  */
@@ -2850,6 +2948,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#1");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -2876,6 +2976,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#2");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -2902,6 +3004,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#5");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -2928,6 +3032,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#10");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -2954,6 +3060,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#20");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -2980,6 +3088,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#40");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -3012,6 +3122,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#1");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -3038,6 +3150,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#2");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -3064,6 +3178,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#5");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -3090,6 +3206,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#10");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -3116,6 +3234,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#20");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -3142,6 +3262,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#40");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -3180,6 +3302,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#1");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -3209,6 +3333,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#2");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -3235,6 +3361,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#5");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -3261,6 +3389,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#10");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -3287,6 +3417,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#20");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -3313,6 +3445,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#40");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -3348,6 +3482,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#1");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -3374,6 +3510,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#2");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -3400,6 +3538,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#5");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -3426,6 +3566,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#10");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -3452,6 +3594,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#20");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -3478,6 +3622,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#40");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -3535,6 +3681,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#1");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -3561,6 +3709,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#2");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -3587,6 +3737,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#5");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -3613,6 +3765,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#10");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -3639,6 +3793,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#20");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -3665,6 +3821,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#40");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -3709,6 +3867,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#1");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -3735,6 +3895,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#2");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -3792,6 +3954,8 @@ function startPlaying() {
                                     // Scroll to top
                                     scrollToTopOfDebug();
                                 }
+                                // Prompts for no bot mode
+                                noBotModeMessage("on everything except " + skip_bet_name);
                                 clicking = setInterval(function() {
                                     // Check if bet spot is available to click
                                     var test = checkBetSpot();
@@ -4252,6 +4416,25 @@ function startPlaying() {
                 }
 
                 /* =====================
+                 * Function name: noBotModeMessage
+                 * Function description: this function will output messages about the next play on the UI
+                 * Date: 24/02/21
+                 * =====================
+                 */
+                function noBotModeMessage(plays) {
+                    // Inform user via alert
+                    window.alert("Place your next bet on: " + plays);
+
+                    // Inform player using console
+                    console.log(spacing);
+                    console.log("Place your next bet on: " + plays);
+                    console.log(spacing);
+
+                    // Exit
+                    return;
+                }
+
+                /* =====================
                  * Main code
                  * =====================
                  */
@@ -4649,6 +4832,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#1");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -4681,6 +4866,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#2");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -4710,6 +4897,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Coin Flip");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -4739,6 +4928,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Pachinko");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -4768,6 +4959,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#5");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -4797,6 +4990,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#10");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -4826,6 +5021,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Cash Hunt");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -4855,6 +5052,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Crazy Time");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -4890,6 +5089,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#1");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -4925,6 +5126,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#2");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -4960,6 +5163,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Coin Flip");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -4995,6 +5200,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Pachinko");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -5030,6 +5237,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#5");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -5065,6 +5274,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#10");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -5100,6 +5311,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Cash Hunt");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -5135,6 +5348,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Crazy Time");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -5182,6 +5397,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#1");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -5214,6 +5431,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#2");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -5243,6 +5462,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Coin Flip");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -5272,6 +5493,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Pachinko");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -5301,6 +5524,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#5");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -5330,6 +5555,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#10");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -5359,6 +5586,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Cash Hunt");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -5388,6 +5617,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Crazy Time");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -5426,6 +5657,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#1");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -5455,6 +5688,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#2");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -5484,6 +5719,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Coin Flip");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -5513,6 +5750,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Pachinko");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -5542,6 +5781,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#5");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -5571,6 +5812,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#10");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -5600,6 +5843,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Cash Hunt");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -5629,6 +5874,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Crazy Time");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -5689,6 +5936,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#1");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -5718,6 +5967,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#2");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -5747,6 +5998,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Coin Flip");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -5776,6 +6029,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Pachinko");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -5805,6 +6060,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#5");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -5834,6 +6091,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#10");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -5863,6 +6122,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Cash Hunt");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -5892,6 +6153,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Crazy Time");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -5943,6 +6206,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Coin Flip");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -5972,6 +6237,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Pachinko");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -6001,6 +6268,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Cash Hunt");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -6030,6 +6299,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Crazy Time");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -6074,6 +6345,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Coin Flip");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -6103,6 +6376,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Pachinko");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -6132,6 +6407,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Cash Hunt");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -6161,6 +6438,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Crazy Time");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -6202,6 +6481,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Coin Flip");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -6231,6 +6512,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Pachinko");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -6260,6 +6543,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Cash Hunt");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -6289,6 +6574,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Crazy Time");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -6340,6 +6627,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Coin Flip and Pachinko");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -6370,6 +6659,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Coin Flip and Cash Hunt");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -6400,6 +6691,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Coin Flip and Crazy Time");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -6430,6 +6723,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Pachinko and Cash Hunt");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -6460,6 +6755,8 @@ function startPlaying() {
                                            // Scroll to top
                                            scrollToTopOfDebug();
                                         }
+                                        // Prompts for no bot mode
+                                        noBotModeMessage("Pachinko and Crazy Time");
                                         clicking = setInterval(function() {
                                             // Check if bet spot is available to click
                                             var test = checkBetSpot();
@@ -6490,6 +6787,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Cash Hunt and Crazy Time");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -6547,6 +6846,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Coin Flip");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -6695,6 +6996,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Coin Flip");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -6903,6 +7206,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#1");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -6935,6 +7240,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#2");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -6976,6 +7283,8 @@ function startPlaying() {
                                     // Scroll to top
                                     scrollToTopOfDebug();
                                 }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("all bonus rounds");
                                 clicking = setInterval(function() {
                                     // Check if bet spot is available to click
                                     var test = checkBetSpot();
@@ -7039,6 +7348,8 @@ function startPlaying() {
                                     // Scroll to top
                                     scrollToTopOfDebug();
                                 }
+                                // Prompts for no bot mode
+                                noBotModeMessage("everything except " + skip_bet_name);
                                 clicking = setInterval(function() {
                                     // Check if bet spot is available to click
                                     var test = checkBetSpot();
@@ -7524,6 +7835,25 @@ function startPlaying() {
                 }
 
                 /* =====================
+                 * Function name: noBotModeMessage
+                 * Function description: this function will output messages about the next play on the UI
+                 * Date: 24/02/21
+                 * =====================
+                 */
+                function noBotModeMessage(plays) {
+                    // Inform user via alert
+                    window.alert("Place your next bet on: " + plays);
+
+                    // Inform player using console
+                    console.log(spacing);
+                    console.log("Place your next bet on: " + plays);
+                    console.log(spacing);
+
+                    // Exit
+                    return;
+                }
+
+                /* =====================
                  * Main code
                  * =====================
                  */
@@ -7887,6 +8217,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Home");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -7914,6 +8246,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Away");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -7983,6 +8317,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Away");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -8039,6 +8375,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Home");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -8077,6 +8415,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Away");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -8127,6 +8467,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Home");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -8165,6 +8507,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Away");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -8273,6 +8617,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Away");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -8300,6 +8646,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Home");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -8333,6 +8681,8 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Draw");
                                     clicking = setInterval(function() {
                                         // Check if bet spot is available to click
                                         var test = checkBetSpot();
@@ -8769,6 +9119,25 @@ function startPlaying() {
 
                     // Stop insurance bets
                     user_insurance_bet = 0;
+                }
+
+                /* =====================
+                 * Function name: noBotModeMessage
+                 * Function description: this function will output messages about the next play on the UI
+                 * Date: 24/02/21
+                 * =====================
+                 */
+                function noBotModeMessage(plays) {
+                    // Inform user via alert
+                    window.alert("Place your next bet on: " + plays);
+
+                    // Inform player using console
+                    console.log(spacing);
+                    console.log("Place your next bet on: " + plays);
+                    console.log(spacing);
+
+                    // Exit
+                    return;
                 }
 
                 /* =====================
