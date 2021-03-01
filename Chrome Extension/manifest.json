@@ -13,13 +13,9 @@
     },
     "content_scripts": [{
         "matches": [
-            "*://*/*/monopoly*",
-            "*://*/*/crazy-time*",
-            "*://*/*/money-wheel*",
-            "*://*/*/top-card*",
-            "*://*/*/evo/*/*"
+            "*://*/*/evo/*"
         ],
         "js": ["jquery.js", "background.js"]
       }],
-    "permissions": ["tabs", "*://*.unibet.com/*", "storage"]
+    "permissions": ["activeTab", "storage"]
 }

@@ -3,6 +3,10 @@
 ## Introduction
 Welcome to my Evolution Gaming Scripts page! Evolution's autoplay feature is severely lacking in it's functionality for us players so I wrote these scripts to optimize your gaming experience! I hope you enjoy them and they improve your fortunes!
 
+![alt text](https://i.imgur.com/K674L14.png)
+
+NB: It may be against some casinos Terms & Conditions to perform automated actions using this bot. To get around this, use "No Bot" mode which enables hints on where to place your bets manually.
+
 ## How to run these scripts
 ## Method 1 (probably the easiest method)
 I have built a Chrome Extension to make it easier to run the bot code. Here are the steps to get started with it;
@@ -15,11 +19,16 @@ I have built a Chrome Extension to make it easier to run the bot code. Here are 
 
 4) Pick the "Chrome Extension" folder.
 
-5) Done! Currently, the bot is hardcoded to work with Unibet. However, you can change the URL to your own casino by editing line 24 in `manifest.json` (located in the Chrome Extension folder).
+5) Done! Load up your game on your favourite casino and enjoy!
 
 NB: The Chrome Extension will only work if you load the game directly (ie not in a casino iFrame).
 
-## Method 2 (requires more competence with running code manually)
+## Method 2 (slightly easier than method 3)
+You can choose to inject the bot code using one of the many Code Injection extensions available on the Chrome Web Store. There are many to choose from here;
+
+https://chrome.google.com/webstore/search/inject%20code?hl=en&_category=extensions
+
+## Method 3 (requires more competence with running code manually)
 - These scripts run entirely inside your browser's console. Nothing else is required.
 - **ALL** bots will only work in Evolution's "classic" UI.
 - Open up your browser's developer tools (usually F12).

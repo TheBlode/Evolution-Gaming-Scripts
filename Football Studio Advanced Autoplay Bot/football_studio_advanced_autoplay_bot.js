@@ -115,6 +115,7 @@ var old_user_insurance_bet = 0;
 var round_count = 0;
 var draw_streak_size = 0;
 var draw_streak = 0;
+var no_bot_mode = 0;
 
 /* =====================
  * Functions that will be used by the bot
@@ -317,6 +318,8 @@ function autoPlay() {
                         // Scroll to top
                         scrollToTopOfDebug();
                     }
+                    // Prompts for no bot mode
+                    noBotModeMessage("Home");
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -344,6 +347,8 @@ function autoPlay() {
                         // Scroll to top
                         scrollToTopOfDebug();
                     }
+                    // Prompts for no bot mode
+                    noBotModeMessage("Away");
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -386,6 +391,8 @@ function autoPlay() {
                         // Scroll to top
                         scrollToTopOfDebug();
                     }
+                    // Prompts for no bot mode
+                    noBotModeMessage("Home");
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -413,6 +420,8 @@ function autoPlay() {
                         // Scroll to top
                         scrollToTopOfDebug();
                     }
+                    // Prompts for no bot mode
+                    noBotModeMessage("Away");
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -469,6 +478,8 @@ function autoPlay() {
                         // Scroll to top
                         scrollToTopOfDebug();
                     }
+                    // Prompts for no bot mode
+                    noBotModeMessage("Home");
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -507,6 +518,8 @@ function autoPlay() {
                         // Scroll to top
                         scrollToTopOfDebug();
                     }
+                    // Prompts for no bot mode
+                    noBotModeMessage("Away");
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -557,6 +570,8 @@ function autoPlay() {
                         // Scroll to top
                         scrollToTopOfDebug();
                     }
+                    // Prompts for no bot mode
+                    noBotModeMessage("Home");
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -595,6 +610,8 @@ function autoPlay() {
                         // Scroll to top
                         scrollToTopOfDebug();
                     }
+                    // Prompts for no bot mode
+                    noBotModeMessage("Away");
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -703,6 +720,8 @@ function autoPlay() {
                         // Scroll to top
                         scrollToTopOfDebug();
                     }
+                    // Prompts for no bot mode
+                    noBotModeMessage("Away");
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -730,6 +749,8 @@ function autoPlay() {
                         // Scroll to top
                         scrollToTopOfDebug();
                     }
+                    // Prompts for no bot mode
+                    noBotModeMessage("Home");
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -763,6 +784,8 @@ function autoPlay() {
                         // Scroll to top
                         scrollToTopOfDebug();
                     }
+                    // Prompts for no bot mode
+                    noBotModeMessage("Draw");
                     clicking = setInterval(function() {
                         // Check if bet spot is available to click
                         var test = checkBetSpot();
@@ -871,6 +894,11 @@ function click(x, y) {
  * =====================
 */
 function checkBetSpot() {
+    // Check if no bot mode is active
+    if (no_bot_mode == 1) {
+        clearInterval(clicking);
+    }
+
     // Grab betting spot
     var betting_spot = $(".perspective--5cLlU.perspectiveActive--2VeJ7").length;
 
@@ -1014,6 +1042,11 @@ function changeOptions() {
     do {
         big_chat = parseInt(window.prompt("Do you want to activate big chat?\n\nSet to 1 to enable big chat or set to 0 to disable.", "0"), 10);
     } while(isNaN(big_chat) || big_chat > 1);
+
+    // Ask the user if they want to enable no bot mode or not
+    do {
+        no_bot_mode = parseInt(window.prompt("Some casinos do not allow the use of bots to automate play. Do you want to activate \"no bot mode\" in order to avoid issues with ToC? You'll be notified of where to place your bets on the interface but you'll need to manually click the betting spots.", "0"), 10);
+    } while(isNaN(no_bot_mode) || no_bot_mode > 1);
 
     // Enable big chat
     bigChat(big_chat);
@@ -1276,6 +1309,25 @@ function roundLimitReached() {
 
     // Stop insurance bets
     user_insurance_bet = 0;
+}
+
+/* =====================
+ * Function name: noBotModeMessage
+ * Function description: this function will output messages about the next play on the UI
+ * Date: 24/02/21
+ * =====================
+ */
+function noBotModeMessage(plays) {
+    // Inform user via alert
+    window.alert("Place your next bet on: " + plays);
+
+    // Inform player using console
+    console.log(spacing);
+    console.log("Place your next bet on: " + plays);
+    console.log(spacing);
+
+    // Exit
+    return;
 }
 
 /* =====================
