@@ -114,6 +114,8 @@ Lightning Roulette offers the following autoplay modes;
 - random number betting (without skipping any rounds)
 
 ## Sequence of 10 Catcher
+![alt text](https://i.imgur.com/neP92nV.png)
+
 The Sequence of 10 Catcher is a small script that will allow users to catch rounds where #1, the most common number on the gaming wheels, hasn't appeared for 10 or more rounds. Whilst this is a somewhat rare instance (from statistics, it happens anywhere from 3 times a day to 10 times a day), it's an opportunity to make steady profit. Simply run `Sequence of 10.exe` and you will be notified after 7 consecutive rounds without a #1 with an on-screen prompt. You'll have 3 rounds to get logged into the game and place your bet.
 
 For this kind of betting, you can experiment with a betting progression of your choice, I have seen instances where a #1 didn't appear for 20 rounds so be careful with intensive progressions like Martingale. You can use what I call an "elongated Martingale" progression which is the Martingale but stretched over the series of these instances. For example;
