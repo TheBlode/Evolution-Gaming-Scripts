@@ -127,6 +127,16 @@ For this kind of betting, you can experiment with a betting progression of your 
 - Current Balance = 13 units. Bet 8 units. First sequence of 10 rounds without a #1 - #1 appeared at the 11th spin. +16 units.
 - Current Balance = 25 units.
 
+To run and use the script;
+
+1) Run the script.
+
+2) Select a sound file to use as a notification (this will allow you to use your computer to do other things and still get notified).
+
+3) When a sequence of 7 is detected, the notification sound will play and a splash screen notification will be displayed on the screen. The splash screen should not steal focus from other applications.
+
+4) To hide the notification and stop playing the music, press Control key + 1.
+
 ## Troubleshooting
 - If clicks are not registering on your game, try adjusting the click_delay value in the script to a higher or lower value.
 
