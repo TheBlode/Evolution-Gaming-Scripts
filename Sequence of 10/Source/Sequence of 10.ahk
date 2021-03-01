@@ -12,6 +12,9 @@ mo_sequence = ""
 ct_sequence = ""
 fs_sequence = ""
 
+; Get mp3 file to play to the user
+FileSelectFile, music_file, , , Please select the music file you want to play when a sequence is detected
+
 Loop
 	{
 	; Check sequence for Dream Catcher
@@ -98,28 +101,28 @@ Loop
 	}
 
 	; Detect sequences
-	IfGreater, dc_sequence, 7
+	IfGreater, dc_sequence, 6
 	{
 		; Alert user
-		SoundPlay, Smells.mp3
+		SoundPlay, %music_file%
 
 		; Display message to user
 		SplashTextOn, 200, 200, DC, DC Sequence Detected, Start betting after 2 more spins
 	}
 
-	IfGreater, mo_sequence, 7
+	IfGreater, mo_sequence, 6
 	{
 		; Alert user
-		SoundPlay, Smells.mp3
+		SoundPlay, %music_file%
 
 		; Display message to user
 		SplashTextOn, 200, 200, MO,  Monopoly Sequence Detected, Start betting after 2 more spins
 	}
 
-	IfGreater, ct_sequence, 7
+	IfGreater, ct_sequence, 6
 	{
 		; Alert user
-		SoundPlay, Smells.mp3
+		SoundPlay, %music_file%
 
 		; Display message to user
 		SplashTextOn, 200, 200, CT,  Crazy Time Sequence Detected, Start betting after 2 more spins
@@ -128,7 +131,7 @@ Loop
 	IfEqual, fs_sequence, A
 	{
 		; Alert user
-		SoundPlay, Smells.mp3
+		SoundPlay, %music_file%
 
 		; Display message to user
 		SplashTextOn, 200, 200, CT,  10 rounds without away win!
@@ -137,7 +140,7 @@ Loop
 	IfEqual, fs_sequence, H
 	{
 		; Alert user
-		SoundPlay, Smells.mp3
+		SoundPlay, %music_file%
 
 		; Display message to user
 		SplashTextOn, 200, 200, CT,  10 rounds without home win!
@@ -146,7 +149,7 @@ Loop
 	IfEqual, fs_sequence, D
 	{
 		; Alert user
-		SoundPlay, Smells.mp3
+		SoundPlay, %music_file%
 
 		; Display message to user
 		SplashTextOn, 200, 200, CT,  25 rounds without draw!
