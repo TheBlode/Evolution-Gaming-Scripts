@@ -5,9 +5,11 @@ Welcome to my Evolution Gaming Scripts page! Evolution's autoplay feature is sev
 
 ![alt text](https://i.imgur.com/K674L14.png)
 
-NB: It may be against some casinos Terms & Conditions to perform automated actions using this bot. To get around this, use "No Bot" mode which enables hints on where to place your bets manually.
+**NB: It may be against some casinos Terms & Conditions to perform automated actions using this bot. To get around this, use "No Bot Mode" which disables automated play and enables hints on where to place your bets manually.**
 
 ## How to run these scripts
+**ALL** bots will only work with Evolution's "classic" UI so make sure that is enabled before starting.
+
 ## Method 1 (probably the easiest method)
 I have built a Chrome Extension to make it easier to run the bot code. Here are the steps to get started with it;
 
@@ -30,7 +32,7 @@ https://chrome.google.com/webstore/search/inject%20code?hl=en&_category=extensio
 
 ## Method 3 (requires more competence with running code manually)
 - These scripts run entirely inside your browser's console. Nothing else is required.
-- **ALL** bots will only work in Evolution's "classic" UI.
+- **ALL** bots will only work with Evolution's "classic" UI.
 - Open up your browser's developer tools (usually F12).
 - Make sure you select the iFrame that the game is loaded into;
     - You can right click on the game to discover the game's direct URL and can load the game directly in your browser with no need to select the iFrame. The iFrame URLs for Unibet are as follows;
@@ -107,10 +109,19 @@ Football Studio offers the following autoplay modes;
 
 ## Lightning Roulette Advanced Autoplay Bot
 **NB: Lightning Roulette bot is still in active development. It will only work on a standard build of Chrome (with no bookmark bar), with the window maximized and running with a screen resolution of 1280 x 720**
-
 Lightning Roulette offers the following autoplay modes;
 - random number betting (and skipping some rounds)
 - random number betting (without skipping any rounds)
+
+## Sequence of 10 Catcher
+The Sequence of 10 Catcher is a small script that will allow users to catch rounds where #1, the most common number on the gaming wheels, hasn't appeared for 10 or more rounds. Whilst this is a somewhat rare instance (from statistics, it happens anywhere from 3 times a day to 10 times a day), it's an opportunity to make steady profit. Simply run `Sequence of 10.exe` and you will be notified after 7 consecutive rounds without a #1 with an on-screen prompt. You'll have 3 rounds to get logged into the game and place your bet.
+
+For this kind of betting, you can experiment with a betting progression of your choice, I have seen instances where a #1 didn't appear for 20 rounds so be careful with intensive progressions like Martingale. You can use what I call an "elongated Martingale" progression which is the Martingale but stretched over the series of these instances. For example;
+- Current Balance = 20 units. Bet 1 unit. First sequence of 10 rounds without a #1 - #1 appeared at the 12th spin. -1 unit.
+- Current Balance = 19 units. Bet 2 units. First sequence of 10 rounds without a #1 - #1 appeared at the 14th spin. -2 units.
+- Current Balance = 17 units. Bet 4 units. First sequence of 10 rounds without a #1 - #1 appeared at the 16th spin. -4 units.
+- Current Balance = 13 units. Bet 8 units. First sequence of 10 rounds without a #1 - #1 appeared at the 11th spin. +16 units.
+- Current Balance = 25 units.
 
 ## Troubleshooting
 - If clicks are not registering on your game, try adjusting the click_delay value in the script to a higher or lower value.
@@ -118,16 +129,18 @@ Lightning Roulette offers the following autoplay modes;
 ## Currently known bugs
 - When disabling video during bot play, video cannot be restored.
 - For bots to run effectively, they must be active on your screen. Chrome will slow down JavaScript for non-active windows. To run multiple games with bots at the same time, resize all the windows to fit on the screen.
+- Settings can only be applied once using the Chrome Extension.
 - Only tested with Chrome. May work with other browsers with some effort.
 
 ## Coming Soon
-- Infinite Blackjack / Power Blackjack / Freebet Blackjack Advanced Autoplay Bots
-- Lightning Dice
-- More betting modes for all bots
-- Autoswitching of autoplay modes based on game results
+- Infinite Blackjack / Power Blackjack / Freebet Blackjack Advanced Autoplay Bots.
+- Lightning Dice.
+- More betting modes for all bots.
+- Autoswitching of autoplay modes based on game results.
 - Implementing progressive betting patterns such as Martingale, Fibonacci, D'Alembert etc
-- Publishing my game simulators (which hook into Tracksino) to allow you to run simulations on the live games
-- Simulation mode (using play money)
-- Streaks betting for all games
-- User guides
+- Publishing my game simulators (which hook into Tracksino) to allow you to run simulations on the live games.
+- Simulation mode (using play money).
+- Streaks betting for all games.
+- User guides.
+- Chrome Store Extension (currently it's in review by Google).
 
