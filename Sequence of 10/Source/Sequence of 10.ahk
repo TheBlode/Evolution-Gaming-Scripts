@@ -107,7 +107,7 @@ Loop
 		SoundPlay, %music_file%
 
 		; Display message to user
-		SplashTextOn, 200, 200, DC, DC Sequence Detected, Start betting after 2 more spins
+		SplashTextOn, 200, 50, DC, DC Sequence Detected, Start betting after 2 more spins
 	}
 
 	IfGreater, mo_sequence, 6
@@ -116,7 +116,7 @@ Loop
 		SoundPlay, %music_file%
 
 		; Display message to user
-		SplashTextOn, 200, 200, MO,  Monopoly Sequence Detected, Start betting after 2 more spins
+		SplashTextOn, 200, 50, MO,  Monopoly Sequence Detected, Start betting after 2 more spins
 	}
 
 	IfGreater, ct_sequence, 6
@@ -125,7 +125,7 @@ Loop
 		SoundPlay, %music_file%
 
 		; Display message to user
-		SplashTextOn, 200, 200, CT,  Crazy Time Sequence Detected, Start betting after 2 more spins
+		SplashTextOn, 200, 50, CT,  Crazy Time Sequence Detected, Start betting after 2 more spins
 	}
 
 	IfEqual, fs_sequence, A
@@ -134,7 +134,7 @@ Loop
 		SoundPlay, %music_file%
 
 		; Display message to user
-		SplashTextOn, 200, 200, CT,  10 rounds without away win!
+		SplashTextOn, 200, 50, CT,  10 rounds without away win!
 	}
 
 	IfEqual, fs_sequence, H
@@ -143,7 +143,7 @@ Loop
 		SoundPlay, %music_file%
 
 		; Display message to user
-		SplashTextOn, 200, 200, CT,  10 rounds without home win!
+		SplashTextOn, 200, 50, CT,  10 rounds without home win!
 	}
 
 	IfEqual, fs_sequence, D
@@ -152,9 +152,18 @@ Loop
 		SoundPlay, %music_file%
 
 		; Display message to user
-		SplashTextOn, 200, 200, CT,  25 rounds without draw!
+		SplashTextOn, 200, 50, CT,  25 rounds without draw!
 	}
 
 	; Sleep for a bit
 	Sleep, 1000
+}
+
+^1::
+{
+	; Play silence
+	SoundPlay, empty.mp3
+
+	; Hide splash screen
+	SplashTextOff
 }
