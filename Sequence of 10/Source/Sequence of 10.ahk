@@ -12,6 +12,23 @@ mo_sequence = ""
 ct_sequence = ""
 fs_sequence = ""
 
+; Welcome user!
+MsgBox, , Welcome!, Welcome to the Sequence of 10 Catcher for Crazy Time, Monopoly & Dream Catcher wheels!
+
+Loop
+{
+	; Get sequence number
+	InputBox, sequenceno, Sequence Number, How many rounds before a sequence of 10 would you like to be reminded? (must be a number between 5 and 9)
+
+	IfGreaterOrEqual, sequenceno, 5
+	{
+		IfLess, sequenceno, 10
+		{
+			break
+		}
+	}
+}
+
 ; Get mp3 file to play to the user
 FileSelectFile, music_file, , , Please select the music file you want to play when a sequence is detected
 
@@ -101,7 +118,7 @@ Loop
 	}
 
 	; Detect sequences
-	IfGreater, dc_sequence, 6
+	IfGreater, dc_sequence, %sequenceno%
 	{
 		; Alert user
 		SoundPlay, %music_file%
@@ -110,7 +127,7 @@ Loop
 		SplashTextOn, 200, 50, DC, DC Sequence Detected, Start betting after 2 more spins
 	}
 
-	IfGreater, mo_sequence, 6
+	IfGreater, mo_sequence, %sequenceno%
 	{
 		; Alert user
 		SoundPlay, %music_file%
@@ -119,7 +136,7 @@ Loop
 		SplashTextOn, 200, 50, MO,  Monopoly Sequence Detected, Start betting after 2 more spins
 	}
 
-	IfGreater, ct_sequence, 6
+	IfGreater, ct_sequence, %sequenceno%
 	{
 		; Alert user
 		SoundPlay, %music_file%
