@@ -216,6 +216,16 @@ document.getElementById("start").onclick = function() {
         chrome.storage.local.set({"no_bot_mode": temp_no_bot_mode});
     }
 
+    /* =======================
+     * User round skipping frequency logic
+     * ======================= */
+    // Fetch user round skipping value
+    var element = document.getElementById("user_round_skipping");
+    var selected_user_round_skipping = element.options[element.selectedIndex].value;
+
+    // Store the click delay in memory
+    chrome.storage.local.set({"user_round_skipping": selected_user_round_skipping})
+
     // Store the start variable in memory so the main bot listener can pick it up
     chrome.storage.local.set({"start": "1"});
 };

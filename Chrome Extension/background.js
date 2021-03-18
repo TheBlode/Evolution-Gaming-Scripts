@@ -14,6 +14,7 @@ chrome.storage.local.set({"time_between_breaks": "0"});
 chrome.storage.local.set({"break_duration": "0"});
 chrome.storage.local.set({"break_times": "0"});
 chrome.storage.local.set({"no_bot_mode": "0"});
+chrome.storage.local.set({"user_round_skipping": "0"});
 var bot_type = 0;
 var autoplay_mode = 0;
 var disable_video = 0;
@@ -23,6 +24,7 @@ var no_bot_mode = 0;
 var time_between_breaks = 0;
 var break_times = 0;
 var break_duration = 0;
+var user_round_skipping = 0;
 
 // Set global start variable
 var start = "0";
@@ -152,6 +154,13 @@ var start_check = setInterval(function() {
                 assignChromeStorageLocally("15", no_bot_mode);
             });
 
+            chrome.storage.local.get("user_round_skipping", function(data) {
+                user_round_skipping = data.user_round_skipping;
+
+                // Assign to the script
+                assignChromeStorageLocally("16", user_round_skipping);
+            });
+
             // Start playing!
             startPlaying();
 
@@ -227,6 +236,10 @@ function assignChromeStorageLocally(variable, value) {
     if (variable == "15") {
         no_bot_mode = value;
     }
+
+    if (variable == "16") {
+        user_round_skipping = value;
+    }
 }
 
 /* =====================
@@ -237,10 +250,6 @@ function assignChromeStorageLocally(variable, value) {
  */
 function startPlaying() {
     if (start == "1") {
-        // Calculate break times
-        time_between_breaks = (time_between_breaks * 60) * 2;
-        break_duration = (break_duration * 60) * 2;
-
         // Get confirmation that classic mode is enabled
         setTimeout(function() {
             do {
@@ -256,6 +265,10 @@ function startPlaying() {
                 // We're gone
                 return;
             }
+
+            // Calculate break times
+            time_between_breaks = (time_between_breaks * 60) * 2;
+            break_duration = (break_duration * 60) * 2;
 
             // If selection is 1, then start Monopoly bot logic
             if (bot_type == 1) {
@@ -305,12 +318,6 @@ function startPlaying() {
                  * Set sequence amount to play with in a row
                  * ======================================================================== */
                 var user_sequence_amount = 2;
-
-                /* ========================================================================
-                 * Set round skipping frequency. The higher the number, the more rounds will be skipped.
-                 * For use of random modes that allow skipping rounds.
-                 * ======================================================================== */
-                var user_round_skipping = 2;
 
                 /* ========================================================================
                  * Hide UI elements if you want a cleaner interface to play with
@@ -2298,13 +2305,6 @@ function startPlaying() {
                  * =====================
                  */
                 function changeOptions() {
-                    if (autoplay_mode == 6 || autoplay_mode == 8) {
-                        // Ask the user how often they want to skip rounds
-                        do {
-                            user_round_skipping = parseInt(window.prompt("How often do you want the bot to skip rounds?\n\nDefault is 2 but the higher you set this amount, the more rounds the bot will skip.", "2"), 10);
-                        } while(isNaN(user_round_skipping) || user_round_skipping < 2);
-                    }
-
                     if (autoplay_mode == 4) {
                         // Ask the user how often they want to skip rounds
                         do {
@@ -2688,12 +2688,6 @@ function startPlaying() {
                  * Set sequence amount to play with in a row
                  * ======================================================================== */
                 var user_sequence_amount = 2;
-
-                /* ========================================================================
-                 * Set round skipping frequency. The higher the number, the more rounds will be skipped.
-                 * For use of random modes that allow skipping rounds.
-                 * ======================================================================== */
-                var user_round_skipping = 2;
 
                 /* ========================================================================
                  * Hide UI elements if you want a cleaner interface to play with
@@ -4153,13 +4147,6 @@ function startPlaying() {
                  * =====================
                  */
                 function changeOptions() {
-                    if (autoplay_mode == 5) {
-                        // Ask the user how often they want to skip rounds
-                        do {
-                            user_round_skipping = parseInt(window.prompt("How often do you want the bot to skip rounds?\n\nDefault is 2 but the higher you set this amount, the more rounds the bot will skip.", "2"), 10);
-                        } while(isNaN(user_round_skipping) || user_round_skipping < 2);
-                    }
-
                     if (autoplay_mode == 4) {
                         // Ask the user how often they want to skip rounds
                         do {
@@ -4540,12 +4527,6 @@ function startPlaying() {
                  * Set sequence amount to play with in a row
                  * ======================================================================== */
                 var user_sequence_amount = 2;
-
-                /* ========================================================================
-                 * Set round skipping frequency. The higher the number, the more rounds will be skipped.
-                 * For use of random modes that allow skipping rounds.
-                 * ======================================================================== */
-                var user_round_skipping = 2;
 
                 /* ========================================================================
                  * Hide UI elements if you want a cleaner interface to play with
@@ -7581,13 +7562,6 @@ function startPlaying() {
                  * =====================
                  */
                 function changeOptions() {
-                    if (autoplay_mode == 5 || autoplay_mode == 8 || autoplay_mode == 11) {
-                        // Ask the user how often they want to skip rounds
-                        do {
-                            user_round_skipping = parseInt(window.prompt("How often do you want the bot to skip rounds?\n\nDefault is 2 but the higher you set this amount, the more rounds the bot will skip.", "2"), 10);
-                        } while(isNaN(user_round_skipping) || user_round_skipping < 2);
-                    }
-
                     if (autoplay_mode == 4) {
                         // Ask the user how often they want to skip rounds
                         do {
@@ -7971,12 +7945,6 @@ function startPlaying() {
                 * Set sequence amount to play with
                 * ======================================================================== */
                 var user_sequence_amount = 3;
-
-                /* ========================================================================
-                * Set round skipping frequency. The higher the number, the more rounds will be skipped.
-                * For use of random modes that allow skipping rounds.
-                * ======================================================================== */
-                var user_round_skipping = 2;
 
                 /* ========================================================================
                 * Hide UI elements if you want a cleaner interface to play with
@@ -8873,13 +8841,6 @@ function startPlaying() {
                  * =====================
                  */
                 function changeOptions() {
-                    if (autoplay_mode == 5) {
-                        // Ask the user how often they want to skip rounds
-                        do {
-                            user_round_skipping = parseInt(window.prompt("How often do you want the bot to skip rounds?\n\nDefault is 2 but the higher you set this amount, the more rounds the bot will skip.", "2"), 10);
-                        } while(isNaN(user_round_skipping) || user_round_skipping < 2);
-                    }
-
                     if (autoplay_mode == 2) {
                         // Ask the user how often they want to skip rounds
                         do {
