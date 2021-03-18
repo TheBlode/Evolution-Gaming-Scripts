@@ -130,7 +130,7 @@ var no_bot_mode = 0;
 function autoPlay() {
     // Disable video
     if (disable_video == 1) {
-        var html = document.getElementsByClassName("transformWrapper--1ywHP")[0].innerHTML = "";
+        var html = document.getElementsByClassName("box--EckIM")[0].innerHTML = "";
     }
 
     // Debug for the console
