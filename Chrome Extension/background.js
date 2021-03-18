@@ -2582,13 +2582,15 @@ function startPlaying() {
                  * =====================
                  */
                 function noBotModeMessage(plays) {
-                    // Inform user via alert
-                    window.alert("Place your next bet on: " + plays);
+                    if (no_bot_mode == 1) {
+                        // Inform user via alert
+                        window.alert("Place your next bet on: " + plays);
 
-                    // Inform player using console
-                    console.log(spacing);
-                    console.log("Place your next bet on: " + plays);
-                    console.log(spacing);
+                        // Inform player using console
+                        console.log(spacing);
+                        console.log("Place your next bet on: " + plays);
+                        console.log(spacing);
+                    }
 
                     // Exit
                     return;
@@ -4426,13 +4428,15 @@ function startPlaying() {
                  * =====================
                  */
                 function noBotModeMessage(plays) {
-                    // Inform user via alert
-                    window.alert("Place your next bet on: " + plays);
+                    if (no_bot_mode == 1) {
+                        // Inform user via alert
+                        window.alert("Place your next bet on: " + plays);
 
-                    // Inform player using console
-                    console.log(spacing);
-                    console.log("Place your next bet on: " + plays);
-                    console.log(spacing);
+                        // Inform player using console
+                        console.log(spacing);
+                        console.log("Place your next bet on: " + plays);
+                        console.log(spacing);
+                    }
 
                     // Exit
                     return;
@@ -7861,13 +7865,15 @@ function startPlaying() {
                  * =====================
                  */
                 function noBotModeMessage(plays) {
-                    // Inform user via alert
-                    window.alert("Place your next bet on: " + plays);
+                    if (no_bot_mode == 1) {
+                        // Inform user via alert
+                        window.alert("Place your next bet on: " + plays);
 
-                    // Inform player using console
-                    console.log(spacing);
-                    console.log("Place your next bet on: " + plays);
-                    console.log(spacing);
+                        // Inform player using console
+                        console.log(spacing);
+                        console.log("Place your next bet on: " + plays);
+                        console.log(spacing);
+                    }
 
                     // Exit
                     return;
@@ -9148,13 +9154,15 @@ function startPlaying() {
                  * =====================
                  */
                 function noBotModeMessage(plays) {
-                    // Inform user via alert
-                    window.alert("Place your next bet on: " + plays);
+                    if (no_bot_mode == 1) {
+                        // Inform user via alert
+                        window.alert("Place your next bet on: " + plays);
 
-                    // Inform player using console
-                    console.log(spacing);
-                    console.log("Place your next bet on: " + plays);
-                    console.log(spacing);
+                        // Inform player using console
+                        console.log(spacing);
+                        console.log("Place your next bet on: " + plays);
+                        console.log(spacing);
+                    }
 
                     // Exit
                     return;
