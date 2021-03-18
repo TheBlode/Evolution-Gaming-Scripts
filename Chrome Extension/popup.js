@@ -185,15 +185,17 @@ document.getElementById("start").onclick = function() {
 
     chrome.storage.local.set({"break_duration": temp_break_duration});
 
-   /* =======================
+    /* =======================
      * Insurance logic
      * ======================= */
-    // Fetch Insurance
-    var element = document.getElementById("user_insurance_bet");
-    var selected_user_insurance_bet= element.options[element.selectedIndex].value;
+    if (selected_game_value == 1 || selected_game_value == 3) {
+        // Fetch Insurance
+        var element = document.getElementById("user_insurance_bet");
+        var selected_user_insurance_bet= element.options[element.selectedIndex].value;
 
-    // Store the Insurance in memory
-    chrome.storage.local.set({"user_insurance_bet": selected_user_insurance_bet});
+        // Store the Insurance in memory
+        chrome.storage.local.set({"user_insurance_bet": selected_user_insurance_bet});
+    }
 
     /* =======================
      * No Bot Mode logic
