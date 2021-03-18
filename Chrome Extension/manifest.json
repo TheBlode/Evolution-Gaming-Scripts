@@ -15,7 +15,8 @@
         "matches": [
             "*://*/*/evo/*"
         ],
-        "js": ["jquery.js", "background.js"]
+        "js": ["jquery.js", "background.js"],
+        "persistent": true
       }],
-    "permissions": ["activeTab", "storage"]
+    "permissions": ["tabs", "storage"]
 }
