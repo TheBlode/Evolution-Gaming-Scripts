@@ -109,6 +109,13 @@ var decrement_sequence = 6;
 var old_autoplay_mode = 0;
 var round_count = 0;
 var no_bot_mode = 0;
+var player_win = false;
+var number_one_bet = false;
+var number_two_bet = false;
+var number_five_bet = false;
+var number_ten_bet = false;
+var number_twenty_bet = false;
+var number_forty_bet = false;
 
 /* =====================
  * Functions that will be used by the bot
@@ -240,6 +247,65 @@ function autoPlay() {
                 scrollToTopOfDebug();
             }
 
+            // Reset player win flag
+            player_win = false;
+
+            // Check if the player placed a bet in the previous round
+            if (number_one_bet == true || number_two_bet == true || number_five_bet == true || number_ten_bet == true || number_twenty_bet == true || number_forty_bet == true) {
+                // Player bet was placed in the previous round...but did they win?
+                if (regex_formatted == "1" && number_one_bet == true) {
+                    player_win = true;
+                } else if (regex_formatted == "2" && number_two_bet == true) {
+                    player_win = true;
+                } else if (regex_formatted == "5" && number_five_bet == true) {
+                    player_win = true;
+                } else if (regex_formatted == "10" && number_ten_bet == true) {
+                    player_win = true;
+                } else if (regex_formatted == "20" && number_twenty_bet == true) {
+                    player_win = true;
+                } else if (regex_formatted == "40" && number_forty_bet == true) {
+                    player_win = true;
+                }
+            }
+
+            if (player_win == true) {
+                // Output final hand to console
+                console.log(spacing);
+                console.log("You WON this round! Congrats!");
+                console.log(spacing);
+
+                // Debug for page
+                if (user_on_screen_debug > 1) {
+                    // Append to debug area
+                    $("#debug_area").append(timestamp() + "You WON this round! Congrats!</font><br />");
+                     
+                    // Scroll to top
+                    scrollToTopOfDebug();
+                }
+            } else {
+                // Output final hand to console
+                console.log(spacing);
+                console.log("You LOST this round! Better luck next time!");
+                console.log(spacing);
+
+                // Debug for page
+                if (user_on_screen_debug > 1) {
+                    // Append to debug area
+                    $("#debug_area").append(timestamp() + "You LOST this round! Better luck next time!</font><br />");
+                     
+                    // Scroll to top
+                    scrollToTopOfDebug();
+                }
+            }
+
+            // Reset bet values
+            number_one_bet = false;
+            number_two_bet = false;
+            number_five_bet = false;
+            number_ten_bet = false;
+            number_twenty_bet = false;
+            number_forty_bet = false;
+
             // Debug for the console
             console.log(spacing);
             var winnings = getWinnings();
@@ -326,6 +392,9 @@ function autoPlay() {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(0).click();
 
+                                // Flag bet
+                                number_one_bet = true;
+
                                 // Clear interval
                                 clearInterval(clicking);
                             }
@@ -353,6 +422,9 @@ function autoPlay() {
                             for (var x = 0; x < user_wager_amount; x++) {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(1).click();
+
+                                // Flag bet
+                                number_two_bet = true;
 
                                 // Clear interval
                                 clearInterval(clicking);
@@ -382,6 +454,9 @@ function autoPlay() {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(2).click();
 
+                                // Flag bet
+                                number_five_bet = true;
+
                                 // Clear interval
                                 clearInterval(clicking);
                             }
@@ -409,6 +484,9 @@ function autoPlay() {
                             for (var x = 0; x < user_wager_amount; x++) {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(3).click();
+
+                                // Flag bet
+                                number_ten_bet = true;
 
                                 // Clear interval
                                 clearInterval(clicking);
@@ -438,6 +516,9 @@ function autoPlay() {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(4).click();
 
+                                // Flag bet
+                                number_twenty_bet = true;
+
                                 // Clear interval
                                 clearInterval(clicking);
                             }
@@ -465,6 +546,9 @@ function autoPlay() {
                             for (var x = 0; x < user_wager_amount; x++) {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(5).click();
+
+                                // Flag bet
+                                number_forty_bet = true;
 
                                 // Clear interval
                                 clearInterval(clicking);
@@ -500,6 +584,9 @@ function autoPlay() {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(0).click();
 
+                                // Flag bet
+                                number_one_bet = true;
+
                                 // Clear interval
                                 clearInterval(clicking);
                             }
@@ -527,6 +614,9 @@ function autoPlay() {
                             for (var x = 0; x < user_wager_amount; x++) {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(1).click();
+
+                                // Flag bet
+                                number_two_bet = true;
 
                                 // Clear interval
                                 clearInterval(clicking);
@@ -556,6 +646,9 @@ function autoPlay() {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(2).click();
 
+                                // Flag bet
+                                number_five_bet = true;
+
                                 // Clear interval
                                 clearInterval(clicking);
                             }
@@ -583,6 +676,9 @@ function autoPlay() {
                             for (var x = 0; x < user_wager_amount; x++) {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(3).click();
+
+                                // Flag bet
+                                number_ten_bet = true;
 
                                 // Clear interval
                                 clearInterval(clicking);
@@ -612,6 +708,9 @@ function autoPlay() {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(4).click();
 
+                                // Flag bet
+                                number_twenty_bet = true;
+
                                 // Clear interval
                                 clearInterval(clicking);
                             }
@@ -639,6 +738,9 @@ function autoPlay() {
                             for (var x = 0; x < user_wager_amount; x++) {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(5).click();
+
+                                // Flag bet
+                                number_forty_bet = true;
 
                                 // Clear interval
                                 clearInterval(clicking);
@@ -680,6 +782,9 @@ function autoPlay() {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(0).click();
 
+                                // Flag bet
+                                number_one_bet = true;
+
                                 // Clear interval
                                 clearInterval(clicking);
                             }
@@ -711,6 +816,9 @@ function autoPlay() {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(1).click();
 
+                                // Flag bet
+                                number_two_bet = true;
+
                                 // Clear interval
                                 clearInterval(clicking);
                             }
@@ -738,6 +846,9 @@ function autoPlay() {
                             for (var x = 0; x < user_wager_amount; x++) {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(2).click();
+
+                                // Flag bet
+                                number_five_bet = true;
 
                                 // Clear interval
                                 clearInterval(clicking);
@@ -767,6 +878,9 @@ function autoPlay() {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(3).click();
 
+                                // Flag bet
+                                number_ten_bet = true;
+
                                 // Clear interval
                                 clearInterval(clicking);
                             }
@@ -795,6 +909,9 @@ function autoPlay() {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(4).click();
 
+                                // Flag bet
+                                number_twenty_bet = true;
+
                                 // Clear interval
                                 clearInterval(clicking);
                             }
@@ -822,6 +939,9 @@ function autoPlay() {
                             for (var x = 0; x < user_wager_amount; x++) {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(5).click();
+
+                                // Flag bet
+                                number_forty_bet = true;
 
                                 // Clear interval
                                 clearInterval(clicking);
@@ -860,6 +980,9 @@ function autoPlay() {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(0).click();
 
+                                // Flag bet
+                                number_one_bet = true;
+
                                 // Clear interval
                                 clearInterval(clicking);
                             }
@@ -887,6 +1010,9 @@ function autoPlay() {
                             for (var x = 0; x < user_wager_amount; x++) {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(1).click();
+
+                                // Flag bet
+                                number_two_bet = true;
 
                                 // Clear interval
                                 clearInterval(clicking);
@@ -916,6 +1042,9 @@ function autoPlay() {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(2).click();
 
+                                // Flag bet
+                                number_five_bet = true;
+
                                 // Clear interval
                                 clearInterval(clicking);
                             }
@@ -943,6 +1072,9 @@ function autoPlay() {
                             for (var x = 0; x < user_wager_amount; x++) {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(3).click();
+
+                                // Flag bet
+                                number_ten_bet = true;
 
                                 // Clear interval
                                 clearInterval(clicking);
@@ -972,6 +1104,9 @@ function autoPlay() {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(4).click();
 
+                                // Flag bet
+                                number_twenty_bet = true;
+
                                 // Clear interval
                                 clearInterval(clicking);
                             }
@@ -999,6 +1134,9 @@ function autoPlay() {
                             for (var x = 0; x < user_wager_amount; x++) {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(5).click();
+
+                                // Flag bet
+                                number_forty_bet = true;
 
                                 // Clear interval
                                 clearInterval(clicking);
@@ -1059,6 +1197,9 @@ function autoPlay() {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(0).click();
 
+                                // Flag bet
+                                number_one_bet = true;
+
                                 // Clear interval
                                 clearInterval(clicking);
                             }
@@ -1086,6 +1227,9 @@ function autoPlay() {
                             for (var x = 0; x < user_wager_amount; x++) {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(1).click();
+
+                                // Flag bet
+                                number_two_bet = true;
 
                                 // Clear interval
                                 clearInterval(clicking);
@@ -1115,6 +1259,9 @@ function autoPlay() {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(2).click();
 
+                                // Flag bet
+                                number_five_bet = true;
+
                                 // Clear interval
                                 clearInterval(clicking);
                             }
@@ -1142,6 +1289,9 @@ function autoPlay() {
                             for (var x = 0; x < user_wager_amount; x++) {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(3).click();
+
+                                // Flag bet
+                                number_ten_bet = true;
 
                                 // Clear interval
                                 clearInterval(clicking);
@@ -1171,6 +1321,9 @@ function autoPlay() {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(4).click();
 
+                                // Flag bet
+                                number_twenty_bet = true;
+
                                 // Clear interval
                                 clearInterval(clicking);
                             }
@@ -1198,6 +1351,9 @@ function autoPlay() {
                             for (var x = 0; x < user_wager_amount; x++) {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(5).click();
+
+                                // Flag bet
+                                number_forty_bet = true;
 
                                 // Clear interval
                                 clearInterval(clicking);
@@ -1245,6 +1401,9 @@ function autoPlay() {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(0).click();
 
+                                // Flag bet
+                                number_one_bet = true;
+
                                 // Clear interval
                                 clearInterval(clicking);
                             }
@@ -1272,6 +1431,9 @@ function autoPlay() {
                             for (var x = 0; x < user_wager_amount; x++) {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(1).click();
+
+                                // Flag bet
+                                number_two_bet = true;
 
                                 // Clear interval
                                 clearInterval(clicking);
@@ -1332,31 +1494,49 @@ function autoPlay() {
                             if (skip_bet_type != 1) {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(0).click();
+
+                                // Flag bet
+                                number_one_bet = true;
                             }
 
                             if (skip_bet_type != 2) {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(1).click();
+
+                                // Flag bet
+                                number_two_bet = true;
                             }
 
                             if (skip_bet_type != 3) {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(2).click();
+
+                                // Flag bet
+                                number_five_bet = true;
                             }
 
                             if (skip_bet_type != 4) {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(3).click();
+
+                                // Flag bet
+                                number_ten_bet = true;
                             }
 
                             if (skip_bet_type != 5) {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(4).click();
+
+                                // Flag bet
+                                number_twenty_bet = true;
                             }
 
                             if (skip_bet_type != 6) {
                                 // Click betting spot
                                 $(".betSpot---OSvn").eq(5).click();
+
+                                // Flag bet
+                                number_forty_bet = true;
                             }
 
                             // Clear bonus round flag
