@@ -229,6 +229,13 @@ document.getElementById("start").onclick = function() {
     // Store the click delay in memory
     chrome.storage.local.set({"user_round_skipping": selected_user_round_skipping})
 
+    // Fetch progression type
+    var element = document.getElementById("betting_progression");
+    var selected_betting_progression = element.options[element.selectedIndex].value;
+
+    // Store the game type in memory
+    chrome.storage.local.set({"betting_progression": selected_betting_progression});
+
     // Store the start variable in memory so the main bot listener can pick it up
     chrome.storage.local.set({"start": "1"});
 };

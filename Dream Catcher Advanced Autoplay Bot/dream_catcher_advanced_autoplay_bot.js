@@ -81,6 +81,11 @@ var user_round_limit = 0;
 var big_chat = 0;
 
 /* ========================================================================
+ * Betting progression
+ * ======================================================================== */
+var betting_progression = 1;
+
+/* ========================================================================
  * Set break variables
  * ======================================================================== */
 var break_times = 0;
@@ -116,6 +121,7 @@ var number_five_bet = false;
 var number_ten_bet = false;
 var number_twenty_bet = false;
 var number_forty_bet = false;
+var blode_progression = 1;
 
 /* =====================
  * Functions that will be used by the bot
@@ -305,6 +311,94 @@ function autoPlay() {
             number_ten_bet = false;
             number_twenty_bet = false;
             number_forty_bet = false;
+
+            // Progression logic
+            if (player_win == false) {
+                // Martingale
+                if (betting_progression == 2) {
+                    user_wager_amount = user_wager_amount * 2;
+                }
+            } else {
+                    user_wager_amount = 1
+            }
+
+            // Special Blode progression
+            if (betting_progression == 3) {
+                // Blode progression
+                if (blode_progression == 1) {
+                    // Beginning of progression
+                    user_wager_amount = 1;
+
+                    // Increase progression
+                    blode_progression++;
+                } else if (blode_progression == 2) {
+                    // Beginning of progression
+                    user_wager_amount = 2;
+
+                    // Increase progression
+                    blode_progression++;
+                } else if (blode_progression == 3) {
+                    // Beginning of progression
+                    user_wager_amount = 3;
+
+                    // Increase progression
+                    blode_progression++;
+                } else if (blode_progression == 4) {
+                    // Beginning of progression
+                    user_wager_amount = 4;
+
+                    // Increase progression
+                    blode_progression++;
+                } else if (blode_progression == 5) {
+                    // Beginning of progression
+                    user_wager_amount = 1;
+
+                    // Increase progression
+                    blode_progression++;
+                } else if (blode_progression == 6) {
+                    // Beginning of progression
+                    user_wager_amount = 1;
+
+                    // Increase progression
+                    blode_progression++;
+                } else if (blode_progression == 7) {
+                    // Beginning of progression
+                    user_wager_amount = 2;
+
+                    // Increase progression
+                    blode_progression++;
+                } else if (blode_progression == 8) {
+                    // Beginning of progression
+                    user_wager_amount = 2;
+
+                    // Increase progression
+                    blode_progression++;
+                } else if (blode_progression == 9) {
+                    // Beginning of progression
+                    user_wager_amount = 3;
+
+                    // Increase progression
+                    blode_progression++;
+                } else if (blode_progression == 10) {
+                    // Beginning of progression
+                    user_wager_amount = 3;
+
+                    // Increase progression
+                    blode_progression++;
+                } else if (blode_progression == 11) {
+                    // Beginning of progression
+                    user_wager_amount = 4;
+
+                    // Increase progression
+                    blode_progression++;
+                } else if (blode_progression == 12) {
+                    // Beginning of progression
+                    user_wager_amount = 4;
+
+                // Increase progression
+                blode_progression = 1;
+                }
+            }
 
             // Debug for the console
             console.log(spacing);
