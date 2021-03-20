@@ -414,7 +414,7 @@ function startPlaying() {
                     console.log(spacing);
 
                     // Debug for page
-                    if (user_on_screen_debug == 1) {
+                    if (user_on_screen_debug > 1) {
                         // Append to debug area
                         $("#debug_area").append(timestamp() + "I'm going to start playing!<br />");
 
@@ -511,7 +511,7 @@ function startPlaying() {
                             console.log(spacing);
 
                             // Debug for page
-                            if (user_on_screen_debug == 1) {
+                            if (user_on_screen_debug > 1) {
                                 if (regex_formatted == "1") {
                                     // Append to debug area
                                     $("#debug_area").append(timestamp() + "The final result is !==== <font color=\"#05C3DD\">" + regex_formatted + "</font> ====!<br />");
@@ -546,7 +546,7 @@ function startPlaying() {
                             console.log(spacing);
 
                             // Debug for page
-                            if (user_on_screen_debug == 1) {
+                            if (user_on_screen_debug > 1) {
                                 if (winnings == "0") {
                                     // Append to debug area
                                     $("#debug_area").append(timestamp() + "Your winnings are: <font color=\"red\">" + winnings + "</font><br />");
@@ -566,7 +566,7 @@ function startPlaying() {
                             console.log(spacing);
 
                             // Debug for page
-                            if (user_on_screen_debug == 1) {
+                            if (user_on_screen_debug > 1) {
                                 // Append to debug area
                                 $("#debug_area").append(timestamp() + "Your balance is: " + balance + "<br />");
 
@@ -575,7 +575,7 @@ function startPlaying() {
                             }
 
                             // Padding for new round
-                            if (user_on_screen_debug == 1) {
+                            if (user_on_screen_debug > 1) {
                                 // Append to debug area
                                 $("#debug_area").append(timestamp() + spacing + "<br />");
 
@@ -607,7 +607,7 @@ function startPlaying() {
                                     console.log("I'm placing a bet on #1 now.");
                                     console.log(spacing);
                                     // Debug for page
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #1 now.<br />");
 
@@ -641,7 +641,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #2 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #2 now.<br />");
 
@@ -675,7 +675,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on 2 rolls now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on 2 rolls now.<br />");
 
@@ -709,7 +709,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #5 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #5 now.<br />");
 
@@ -743,7 +743,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #10 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #10 now.<br />");
 
@@ -777,7 +777,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on 4 rolls now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on 4 rolls now.<br />");
 
@@ -817,7 +817,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #1 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #1 now.<br />");
 
@@ -851,7 +851,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #2 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #2 now.<br />");
 
@@ -885,7 +885,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on 2 rolls now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on 2 rolls now.<br />");
 
@@ -919,7 +919,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #5 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #5 now.<br />");
 
@@ -953,7 +953,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #10 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #10 now.<br />");
 
@@ -987,7 +987,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on 4 rolls now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on 4 rolls now.<br />");
 
@@ -1033,7 +1033,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #1 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #1 now.<br />");
 
@@ -1070,7 +1070,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #2 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #2 now.<br />");
 
@@ -1104,7 +1104,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on 2 rolls now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on 2 rolls.<br />");
 
@@ -1138,7 +1138,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #5 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #5 now.<br />");
 
@@ -1172,7 +1172,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #10 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #10 now.<br />");
 
@@ -1206,7 +1206,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on 4 rolls now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on 4 rolls now.<br />");
 
@@ -1249,7 +1249,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #1 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #1 now.<br />");
 
@@ -1283,7 +1283,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #2 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #2 now.<br />");
 
@@ -1317,7 +1317,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on 2 rolls now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on 2 rolls now.<br />");
 
@@ -1351,7 +1351,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #5 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #5 now.<br />");
 
@@ -1385,7 +1385,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #10 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #10 now.<br />");
 
@@ -1419,7 +1419,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on 4 rolls now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on 4 rolls now.<br />");
 
@@ -1478,7 +1478,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on 2 rolls now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on 2 rolls now.<br />");
 
@@ -1512,7 +1512,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on 4 rolls now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on 4 rolls now.<br />");
 
@@ -1564,7 +1564,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #1 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #1 now.<br />");
 
@@ -1598,7 +1598,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #2 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #2 now.<br />");
 
@@ -1632,7 +1632,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on 2 rolls now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on 2 rolls now.<br />");
 
@@ -1666,7 +1666,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #5 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #5 now.<br />");
 
@@ -1700,7 +1700,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #10 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #10 now.<br />");
 
@@ -1734,7 +1734,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on 4 rolls now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on 4 rolls now.<br />");
 
@@ -1769,7 +1769,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm skipping this round!");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm skipping this round!<br />");
 
@@ -1793,7 +1793,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on 2 rolls now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on 2 rolls now.<br />");
 
@@ -1827,7 +1827,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on 4 rolls now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on 4 rolls now.<br />");
 
@@ -1873,7 +1873,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on 2 rolls now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on 2 rolls now.<br />");
 
@@ -1907,7 +1907,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on 4 rolls now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on 4 rolls now.<br />");
 
@@ -1942,7 +1942,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm skipping this round!");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm skipping this round!<br />");
 
@@ -1962,7 +1962,7 @@ function startPlaying() {
                                 console.log(spacing);
                                 console.log("I'm placing a bet on 2 & 4 rolls now.");
                                 console.log(spacing);
-                                if (user_on_screen_debug == 1) {
+                                if (user_on_screen_debug > 1) {
                                     // Append to debug area
                                     $("#debug_area").append(timestamp() + "I'm placing a bet on 2 & 4 rolls now.<br />");
 
@@ -2021,7 +2021,7 @@ function startPlaying() {
                                 console.log(spacing);
                                 console.log("I'm placing a bet on everthing except " + skip_bet_name + ".");
                                 console.log(spacing);
-                                if (user_on_screen_debug == 1) {
+                                if (user_on_screen_debug > 1) {
                                     // Append to debug area
                                     $("#debug_area").append(timestamp() + "I'm placing a bet on everything except " + skip_bet_name + ".<br />");
 
@@ -2034,7 +2034,7 @@ function startPlaying() {
                                 console.log(spacing);
                                 console.log("I'm placing a bet on 2 rolls now.");
                                 console.log(spacing);
-                                if (user_on_screen_debug == 1) {
+                                if (user_on_screen_debug > 1) {
                                     // Append to debug area
                                     $("#debug_area").append(timestamp() + "I'm placing a bet on 2 rolls now.<br />");
 
@@ -2097,7 +2097,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing an insurance bet on #1!");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing an insurance bet on #1!<br />");
 
@@ -2127,7 +2127,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing an insurance bet on #1 & #2!");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing an insurance bet on #1 & #2!<br />");
 
@@ -2425,7 +2425,7 @@ function startPlaying() {
                         console.log(spacing);
 
                         // Debug for page
-                        if (user_on_screen_debug == 1) {
+                        if (user_on_screen_debug > 1) {
                             // Append to debug area
                             $("#debug_area").append(timestamp() + "The bot will stop playing as the loss balance has been reached.<br />");
 
@@ -2459,7 +2459,7 @@ function startPlaying() {
                         console.log(spacing);
 
                         // Debug for page
-                        if (user_on_screen_debug == 1) {
+                        if (user_on_screen_debug > 1) {
                             // Append to debug area
                             $("#debug_area").append(timestamp() + "The bot will stop playing as the win balance has been reached.<br />");
 
@@ -2571,7 +2571,7 @@ function startPlaying() {
                     console.log(spacing);
 
                     // Debug for page
-                    if (user_on_screen_debug == 1) {
+                    if (user_on_screen_debug > 1) {
                         // Append to debug area
                         $("#debug_area").append(timestamp() + "The bot will stop playing as the round limit has been reached.<br />");
 
@@ -2782,7 +2782,7 @@ function startPlaying() {
                     console.log(spacing);
 
                     // Debug for page
-                    if (user_on_screen_debug == 1) {
+                    if (user_on_screen_debug > 1) {
                         // Append to debug area
                         $("#debug_area").append(timestamp() + "I'm going to start playing!<br />");
 
@@ -2853,7 +2853,7 @@ function startPlaying() {
                             console.log(spacing);
 
                             // Debug for page
-                            if (user_on_screen_debug == 1) {
+                            if (user_on_screen_debug > 1) {
                                 if (regex_formatted == "1") {
                                     // Append to debug area
                                     $("#debug_area").append(timestamp() + "The final result is !==== <font color=\"yellow\">" + regex_formatted + "</font> ====!<br />");
@@ -2879,7 +2879,7 @@ function startPlaying() {
                             }
 
                             // Padding for new round
-                            if (user_on_screen_debug == 1) {
+                            if (user_on_screen_debug > 1) {
                                 // Append to debug area
                                 $("#debug_area").append(timestamp() + spacing + "<br />");
 
@@ -2894,7 +2894,7 @@ function startPlaying() {
                             console.log(spacing);
 
                             // Debug for page
-                            if (user_on_screen_debug == 1) {
+                            if (user_on_screen_debug > 1) {
                                 if (winnings == "0") {
                                 // Append to debug area
                                 $("#debug_area").append(timestamp() + "Your winnings are: <font color=\"red\">" + winnings + "</font><br />");
@@ -2914,7 +2914,7 @@ function startPlaying() {
                             console.log(spacing);
 
                             // Debug for page
-                            if (user_on_screen_debug == 1) {
+                            if (user_on_screen_debug > 1) {
                                 // Append to debug area
                                 $("#debug_area").append(timestamp() + "Your balance is: " + balance + "<br />");
 
@@ -2923,7 +2923,7 @@ function startPlaying() {
                             }
 
                             // Padding for new round
-                            if (user_on_screen_debug == 1) {
+                            if (user_on_screen_debug > 1) {
                                 // Append to debug area
                                 $("#debug_area").append(timestamp() + spacing + "<br />");
 
@@ -2955,7 +2955,7 @@ function startPlaying() {
                                     console.log("I'm placing a bet on #1 now.");
                                     console.log(spacing);
                                     // Debug for page
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #1 now.<br />");
 
@@ -2983,7 +2983,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #2 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #2 now.<br />");
 
@@ -3011,7 +3011,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #5 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #5 now.<br />");
 
@@ -3039,7 +3039,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #10 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #10 now.<br />");
 
@@ -3067,7 +3067,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #20 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #20 now.<br />");
 
@@ -3095,7 +3095,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #40 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #40 now.<br />");
 
@@ -3129,7 +3129,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #1 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #1 now.<br />");
 
@@ -3157,7 +3157,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #2 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #2 now.<br />");
 
@@ -3185,7 +3185,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #5 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #5 now.<br />");
 
@@ -3213,7 +3213,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #10 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #10 now.<br />");
 
@@ -3241,7 +3241,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #20 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #20 now.<br />");
 
@@ -3269,7 +3269,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #40 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #40 now.<br />");
 
@@ -3309,7 +3309,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #1 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #1 now.<br />");
 
@@ -3340,7 +3340,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #2 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #2 now.<br />");
 
@@ -3368,7 +3368,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #5 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #5 now.<br />");
 
@@ -3396,7 +3396,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #10 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #10 now.<br />");
 
@@ -3424,7 +3424,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #20 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #20 now.<br />");
 
@@ -3452,7 +3452,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #40 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #40 now.<br />");
 
@@ -3489,7 +3489,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #1 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #1 now.<br />");
 
@@ -3517,7 +3517,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #2 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #2 now.<br />");
 
@@ -3545,7 +3545,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #5 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #5 now.<br />");
 
@@ -3573,7 +3573,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #10 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #10 now.<br />");
 
@@ -3601,7 +3601,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #20 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #20 now.<br />");
 
@@ -3629,7 +3629,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #40 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #40 now.<br />");
 
@@ -3688,7 +3688,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #1 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #1 now.<br />");
 
@@ -3716,7 +3716,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #2 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #2 now.<br />");
 
@@ -3744,7 +3744,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #5 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #5 now.<br />");
 
@@ -3772,7 +3772,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #10 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #10 now.<br />");
 
@@ -3800,7 +3800,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #20 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #20 now.<br />");
 
@@ -3828,7 +3828,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #40 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #40 now.<br />");
 
@@ -3856,7 +3856,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm skipping this round!");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm skipping this round!<br />");
 
@@ -3874,7 +3874,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #1 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #1 now.<br />");
 
@@ -3902,7 +3902,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #2 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #2 now.<br />");
 
@@ -3961,7 +3961,7 @@ function startPlaying() {
                                 console.log(spacing);
                                 console.log("I'm placing a bet on everthing except " + skip_bet_name + ".");
                                 console.log(spacing);
-                                if (user_on_screen_debug == 1) {
+                                if (user_on_screen_debug > 1) {
                                     // Append to debug area
                                     $("#debug_area").append(timestamp() + "I'm placing a bet on everything except " + skip_bet_name + ".<br />");
 
@@ -4280,7 +4280,7 @@ function startPlaying() {
                         console.log(spacing);
 
                         // Debug for page
-                        if (user_on_screen_debug == 1) {
+                        if (user_on_screen_debug > 1) {
                             // Append to debug area
                             $("#debug_area").append(timestamp() + "The bot will stop playing as the loss balance has been reached.<br />");
 
@@ -4311,7 +4311,7 @@ function startPlaying() {
                         console.log(spacing);
 
                         // Debug for page
-                        if (user_on_screen_debug == 1) {
+                        if (user_on_screen_debug > 1) {
                             // Append to debug area
                             $("#debug_area").append(timestamp() + "The bot will stop playing as the win balance has been reached.<br />");
 
@@ -4419,7 +4419,7 @@ function startPlaying() {
                     console.log(spacing);
 
                     // Debug for page
-                    if (user_on_screen_debug == 1) {
+                    if (user_on_screen_debug > 1) {
                         // Append to debug area
                         $("#debug_area").append(timestamp() + "The bot will stop playing as the round limit has been reached.<br />");
 
@@ -4653,7 +4653,7 @@ function startPlaying() {
                     console.log(spacing);
 
                     // Debug for page
-                    if (user_on_screen_debug == 1) {
+                    if (user_on_screen_debug > 1) {
                         // Append to debug area
                         $("#debug_area").append(timestamp() + "I'm going to start playing!<br />");
 
@@ -4744,7 +4744,7 @@ function startPlaying() {
                             console.log(spacing);
 
                             // Debug for page
-                            if (user_on_screen_debug == 1) {
+                            if (user_on_screen_debug > 1) {
                                 if (regex_formatted == "1") {
                                     // Append to debug area
                                     $("#debug_area").append(timestamp() + "The final result is !==== <font color=\"#05C3DD\">" + regex_formatted + "</font> ====!<br />");
@@ -4782,7 +4782,7 @@ function startPlaying() {
                             console.log(spacing);
 
                             // Debug for page
-                            if (user_on_screen_debug == 1) {
+                            if (user_on_screen_debug > 1) {
                                 if (winnings == "0") {
                                 // Append to debug area
                                 $("#debug_area").append(timestamp() + "Your winnings are: <font color=\"red\">" + winnings + "</font><br />");
@@ -4802,7 +4802,7 @@ function startPlaying() {
                             console.log(spacing);
 
                             // Debug for page
-                            if (user_on_screen_debug == 1) {
+                            if (user_on_screen_debug > 1) {
                                 // Append to debug area
                                 $("#debug_area").append(timestamp() + "Your balance is: " + balance + "<br />");
 
@@ -4811,7 +4811,7 @@ function startPlaying() {
                             }
 
                             // Padding for new round
-                            if (user_on_screen_debug == 1) {
+                            if (user_on_screen_debug > 1) {
                                 // Append to debug area
                                 $("#debug_area").append(timestamp() + spacing + "<br />");
 
@@ -4843,7 +4843,7 @@ function startPlaying() {
                                     console.log("I'm placing a bet on #1 now.");
                                     console.log(spacing);
                                     // Debug for page
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #1 now.<br />");
 
@@ -4877,7 +4877,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #2 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #2 now.<br />");
 
@@ -4908,7 +4908,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Coin Flip now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Coin Flip now.<br />");
 
@@ -4939,7 +4939,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Pachinko now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Pachinko now.<br />");
 
@@ -4970,7 +4970,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #5 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #5 now.<br />");
 
@@ -5001,7 +5001,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #10 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #10 now.<br />");
 
@@ -5032,7 +5032,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Cash Hunt now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Cash Hunt now.<br />");
 
@@ -5063,7 +5063,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Crazy Time now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Crazy Time now.<br />");
 
@@ -5100,7 +5100,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #1 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #1 now.<br />");
 
@@ -5137,7 +5137,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #2 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #2 now.<br />");
 
@@ -5174,7 +5174,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Coin Flip now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Coin Flip now.<br />");
 
@@ -5211,7 +5211,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Pachinko now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Pachinko now.<br />");
 
@@ -5248,7 +5248,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #5 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #5 now.<br />");
 
@@ -5285,7 +5285,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #10 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #10 now.<br />");
 
@@ -5322,7 +5322,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Cash Hunt now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Cash Hunt now.<br />");
 
@@ -5359,7 +5359,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Crazy Time now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Crazy Time now.<br />");
 
@@ -5408,7 +5408,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #1 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #1 now.<br />");
 
@@ -5442,7 +5442,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #2 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #2 now.<br />");
 
@@ -5473,7 +5473,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Coin Flip now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Coin Flip now.<br />");
 
@@ -5504,7 +5504,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Pachinko now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Pachinko now.<br />");
 
@@ -5535,7 +5535,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #5 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #5 now.<br />");
 
@@ -5566,7 +5566,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #10 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #10 now.<br />");
 
@@ -5597,7 +5597,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Cash Hunt now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Cash Hunt now.<br />");
 
@@ -5628,7 +5628,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Crazy Time now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Crazy Time now.<br />");
 
@@ -5668,7 +5668,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #1 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #1 now.<br />");
 
@@ -5699,7 +5699,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #2 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #2 now.<br />");
 
@@ -5730,7 +5730,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Coin Flip now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Coin Flip now.<br />");
 
@@ -5761,7 +5761,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Pachinko now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Pachinko now.<br />");
 
@@ -5792,7 +5792,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #5 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #5 now.<br />");
 
@@ -5823,7 +5823,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #10 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #10 now.<br />");
 
@@ -5854,7 +5854,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Cash Hunt now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Cash Hunt now.<br />");
 
@@ -5885,7 +5885,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Crazy Time now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Crazy Time now.<br />");
 
@@ -5947,7 +5947,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #1 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #1 now.<br />");
 
@@ -5978,7 +5978,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #2 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #2 now.<br />");
 
@@ -6009,7 +6009,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Coin Flip now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Coin Flip now.<br />");
 
@@ -6040,7 +6040,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Pachinko now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Pachinko now.<br />");
 
@@ -6071,7 +6071,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #5 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #5 now.<br />");
 
@@ -6102,7 +6102,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #10 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #10 now.<br />");
 
@@ -6133,7 +6133,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Cash Hunt now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Cash Hunt now.<br />");
 
@@ -6164,7 +6164,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Crazy Time now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Crazy Time now.<br />");
 
@@ -6196,7 +6196,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm skipping this round!");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm skipping this round!<br />");
 
@@ -6217,7 +6217,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Coin Flip now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Coin Flip now.<br />");
 
@@ -6248,7 +6248,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Pachinko now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Pachinko now.<br />");
 
@@ -6279,7 +6279,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Cash Hunt now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Cash Hunt now.<br />");
 
@@ -6310,7 +6310,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Crazy Time now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Crazy Time now.<br />");
 
@@ -6356,7 +6356,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Coin Flip now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Coin Flip now.<br />");
 
@@ -6387,7 +6387,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Pachinko now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Pachinko now.<br />");
 
@@ -6418,7 +6418,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Cash Hunt now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Cash Hunt now.<br />");
 
@@ -6449,7 +6449,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Crazy Time now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Crazy Time now.<br />");
 
@@ -6492,7 +6492,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Coin Flip now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Coin Flip now.<br />");
 
@@ -6523,7 +6523,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Pachinko now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Pachinko now.<br />");
 
@@ -6554,7 +6554,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Cash Hunt now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Cash Hunt now.<br />");
 
@@ -6585,7 +6585,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Crazy Time now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Crazy Time now.<br />");
 
@@ -6617,7 +6617,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm skipping this round!");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm skipping this round!<br />");
 
@@ -6638,7 +6638,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Coin Flip now and Pachinko.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Coin Flip and Pachinko now.<br />");
 
@@ -6670,7 +6670,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Coin Flip and Cash Hunt now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Coin Flip and Cash Hunt now.<br />");
 
@@ -6702,7 +6702,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Coin Flip and Crazy Time now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Coin Flip and Crazy Time now.<br />");
 
@@ -6734,7 +6734,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Pachinko and Cash Hunt now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Pachinko and Cash Hunt now.<br />");
 
@@ -6766,7 +6766,7 @@ function startPlaying() {
                                         console.log(spacing);
                                         console.log("I'm placing a bet on Pachinko and Crazy Time now.");
                                         console.log(spacing);
-                                        if (user_on_screen_debug == 1) {
+                                        if (user_on_screen_debug > 1) {
                                             // Append to debug area
                                             $("#debug_area").append(timestamp() + "I'm placing a bet on Pachinko and Crazy Time now.<br />");
 
@@ -6798,7 +6798,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Cash Hunt and Crazy Time now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Cash Hunt and Crazy Time now.<br />");
 
@@ -6857,7 +6857,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Coin Flip now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Coin Flip now.<br />");
 
@@ -6890,7 +6890,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Pachinko now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Pachinko now.<br />");
 
@@ -6923,7 +6923,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Cash Hunt now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Cash Hunt now.<br />");
 
@@ -6956,7 +6956,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Crazy Time now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Crazy Time now.<br />");
 
@@ -7013,7 +7013,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Coin Flip now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Coin Flip now.<br />");
 
@@ -7046,7 +7046,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Pachinko now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Pachinko now.<br />");
 
@@ -7079,7 +7079,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Cash Hunt now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Cash Hunt now.<br />");
 
@@ -7112,7 +7112,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on Crazy Time now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on Crazy Time now.<br />");
 
@@ -7146,7 +7146,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm skipping this round!");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm skipping this round!<br />");
 
@@ -7164,7 +7164,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing an insurance bet on #1!");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing an insurance bet on #1<br />");
 
@@ -7194,7 +7194,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing an insurance bet on #1 & #2!");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing an insurance bet on #1 & #2<br />");
 
@@ -7233,7 +7233,7 @@ function startPlaying() {
                                     console.log("I'm placing a bet on #1 now.");
                                     console.log(spacing);
                                     // Debug for page
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #1 now.<br />");
 
@@ -7267,7 +7267,7 @@ function startPlaying() {
                                     console.log(spacing);
                                     console.log("I'm placing a bet on #2 now.");
                                     console.log(spacing);
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on #2 now.<br />");
 
@@ -7310,7 +7310,7 @@ function startPlaying() {
                                 console.log("I'm placing a bet on all bonus rounds now.");
                                 console.log(spacing);
                                 // Debug for page
-                                if (user_on_screen_debug == 1) {
+                                if (user_on_screen_debug > 1) {
                                     // Append to debug area
                                     $("#debug_area").append(timestamp() + "I'm placing a bet all bonus rounds now.<br />");
 
@@ -7375,7 +7375,7 @@ function startPlaying() {
                                 console.log(spacing);
                                 console.log("I'm placing a bet on everthing except " + skip_bet_name + ".");
                                 console.log(spacing);
-                                if (user_on_screen_debug == 1) {
+                                if (user_on_screen_debug > 1) {
                                     // Append to debug area
                                     $("#debug_area").append(timestamp() + "I'm placing a bet on everything except " + skip_bet_name + ".<br />");
 
@@ -7708,7 +7708,7 @@ function startPlaying() {
                         console.log(spacing);
 
                         // Debug for page
-                        if (user_on_screen_debug == 1) {
+                        if (user_on_screen_debug > 1) {
                             // Append to debug area
                             $("#debug_area").append(timestamp() + "The bot will stop playing as the loss balance has been reached.<br />");
 
@@ -7742,7 +7742,7 @@ function startPlaying() {
                         console.log(spacing);
 
                         // Debug for page
-                        if (user_on_screen_debug == 1) {
+                        if (user_on_screen_debug > 1) {
                             // Append to debug area
                             $("#debug_area").append(timestamp() + "The bot will stop playing as the win balance has been reached.<br />");
 
@@ -7858,7 +7858,7 @@ function startPlaying() {
                     console.log(spacing);
 
                     // Debug for page
-                    if (user_on_screen_debug == 1) {
+                    if (user_on_screen_debug > 1) {
                         // Append to debug area
                         $("#debug_area").append(timestamp() + "The bot will stop playing as the round limit has been reached.<br />");
 
@@ -8076,7 +8076,7 @@ function startPlaying() {
                     console.log(spacing);
 
                     // Debug for page
-                    if (user_on_screen_debug == 1) {
+                    if (user_on_screen_debug > 1) {
                         // Append to debug area
                         $("#debug_area").append(timestamp() + "I'm going to start playing!<br />");
 
@@ -8149,7 +8149,7 @@ function startPlaying() {
                             console.log(spacing);
 
                             // Debug for page
-                            if (user_on_screen_debug == 1) {
+                            if (user_on_screen_debug > 1) {
                                 if (result_check_found == "Home") {
                                     // Append to debug area
                                     $("#debug_area").append(timestamp() + "The final result is !==== <font color=\"red\">" + result_check_found + "</font> ====!<br />");
@@ -8166,7 +8166,7 @@ function startPlaying() {
                             }
 
                             // Padding for new round
-                            if (user_on_screen_debug == 1) {
+                            if (user_on_screen_debug > 1) {
                                 // Append to debug area
                                 $("#debug_area").append(timestamp() + spacing + "<br />");
 
@@ -8181,7 +8181,7 @@ function startPlaying() {
                             console.log(spacing);
 
                             // Debug for page
-                            if (user_on_screen_debug == 1) {
+                            if (user_on_screen_debug > 1) {
                                 if (winnings == "0") {
                                 // Append to debug area
                                 $("#debug_area").append(timestamp() + "Your winnings are: <font color=\"red\">" + winnings + "</font><br />");
@@ -8201,7 +8201,7 @@ function startPlaying() {
                             console.log(spacing);
 
                             // Debug for page
-                            if (user_on_screen_debug == 1) {
+                            if (user_on_screen_debug > 1) {
                                 // Append to debug area
                                 $("#debug_area").append(timestamp() + "Your balance is: " + balance + "<br />");
 
@@ -8210,7 +8210,7 @@ function startPlaying() {
                             }
 
                             // Padding for new round
-                            if (user_on_screen_debug == 1) {
+                            if (user_on_screen_debug > 1) {
                                 // Append to debug area
                                 $("#debug_area").append(timestamp() + spacing + "<br />");
 
@@ -8248,7 +8248,7 @@ function startPlaying() {
                                     console.log("I'm placing a bet on home now.");
                                     console.log(spacing);
                                     // Debug for page
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on home now.<br />");
 
@@ -8277,7 +8277,7 @@ function startPlaying() {
                                     console.log("I'm placing a bet on away now.");
                                     console.log(spacing);
                                     // Debug for page
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on away now.<br />");
 
@@ -8321,7 +8321,7 @@ function startPlaying() {
                                     console.log("I'm placing a bet on home now. Sequence #" + sequence_start);
                                     console.log(spacing);
                                     // Debug for page
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on home now. Sequence #" + sequence_start + "<br />");
 
@@ -8348,7 +8348,7 @@ function startPlaying() {
                                     console.log("I'm placing a bet on away now.Sequence #" + sequence_start);
                                     console.log(spacing);
                                     // Debug for page
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on away now. Sequence #" + sequence_start + "<br />");
 
@@ -8395,7 +8395,7 @@ function startPlaying() {
                                     console.log("The randomizer chose home as the next bet!");
                                     console.log(spacing);
                                     // Debug for page
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "The randomizer chose home as the next bet!<br />");
 
@@ -8406,7 +8406,7 @@ function startPlaying() {
                                     console.log("I'm placing a bet on home now.");
                                     console.log(spacing);
                                     // Debug for page
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on home now. <br />");
 
@@ -8435,7 +8435,7 @@ function startPlaying() {
                                     console.log("The randomizer chose away as the next bet!");
                                     console.log(spacing);
                                     // Debug for page
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "The randomizer chose away as the next bet!<br />");
 
@@ -8446,7 +8446,7 @@ function startPlaying() {
                                     console.log("I'm placing a bet on away now.");
                                     console.log(spacing);
                                     // Debug for page
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on away now.<br />");
 
@@ -8487,7 +8487,7 @@ function startPlaying() {
                                     console.log("The randomizer chose home as the next bet!");
                                     console.log(spacing);
                                     // Debug for page
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "The randomizer chose home as the next bet!<br />");
 
@@ -8498,7 +8498,7 @@ function startPlaying() {
                                     console.log("I'm placing a bet on home now.");
                                     console.log(spacing);
                                     // Debug for page
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on home now.<br />");
 
@@ -8527,7 +8527,7 @@ function startPlaying() {
                                     console.log("The randomizer chose away as the next bet!");
                                     console.log(spacing);
                                     // Debug for page
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "The randomizer chose away as the next bet!<br />");
 
@@ -8538,7 +8538,7 @@ function startPlaying() {
                                     console.log("I'm placing a bet on away now.");
                                     console.log(spacing);
                                     // Debug for page
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on away now.<br />");
 
@@ -8567,7 +8567,7 @@ function startPlaying() {
                                     console.log("I'm skipping this round!");
                                     console.log(spacing);
                                     // Debug for page
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm skipping this round!<br />");
 
@@ -8592,7 +8592,7 @@ function startPlaying() {
                                 console.log("Home wins! There have been " + home_streak + " home wins in a row now.");
                                 console.log(spacing);
                                 // Debug for page
-                                if (user_on_screen_debug == 1) {
+                                if (user_on_screen_debug > 1) {
                                     // Append to debug area
                                     $("#debug_area").append(timestamp() + "Home wins! There have been " + home_streak + " home wins in a row now.<br />");
 
@@ -8613,7 +8613,7 @@ function startPlaying() {
                                 console.log("Away wins! There have been " + away_streak + " away wins in a row now.");
                                 console.log(spacing);
                                 // Debug for page
-                                if (user_on_screen_debug == 1) {
+                                if (user_on_screen_debug > 1) {
                                     // Append to debug area
                                     $("#debug_area").append(timestamp() + "Away wins! There have been " + away_streak + " away wins in a row now.<br />");
 
@@ -8631,7 +8631,7 @@ function startPlaying() {
                             console.log("There have been " + draw_streak + " rounds without a draw.");
                             console.log(spacing);
                             // Debug for page
-                            if (user_on_screen_debug == 1) {
+                            if (user_on_screen_debug > 1) {
                                 // Append to debug area
                                     $("#debug_area").append(timestamp() + "There have been " + draw_streak + " rounds without a draw.<br />");
 
@@ -8648,7 +8648,7 @@ function startPlaying() {
                                     console.log("I'm placing a bet on away now.");
                                     console.log(spacing);
                                     // Debug for page
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on away now.<br />");
 
@@ -8677,7 +8677,7 @@ function startPlaying() {
                                     console.log("I'm placing a bet on home now.");
                                     console.log(spacing);
                                     // Debug for page
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on home now.<br />");
 
@@ -8712,7 +8712,7 @@ function startPlaying() {
                                     console.log("I'm placing a bet on a draw.");
                                     console.log(spacing);
                                     // Debug for page
-                                    if (user_on_screen_debug == 1) {
+                                    if (user_on_screen_debug > 1) {
                                         // Append to debug area
                                         $("#debug_area").append(timestamp() + "I'm placing a bet on a draw.<br />");
 
@@ -9008,7 +9008,7 @@ function startPlaying() {
                         console.log(spacing);
 
                         // Debug for page
-                        if (user_on_screen_debug == 1) {
+                        if (user_on_screen_debug > 1) {
                             // Append to debug area
                             $("#debug_area").append(timestamp() + "The bot will stop playing as the loss balance has been reached.<br />");
 
@@ -9039,7 +9039,7 @@ function startPlaying() {
                         console.log(spacing);
 
                         // Debug for page
-                        if (user_on_screen_debug == 1) {
+                        if (user_on_screen_debug > 1) {
                             // Append to debug area
                             $("#debug_area").append(timestamp() + "The bot will stop playing as the win balance has been reached.<br />");
 
@@ -9145,7 +9145,7 @@ function startPlaying() {
                     console.log(spacing);
 
                     // Debug for page
-                    if (user_on_screen_debug == 1) {
+                    if (user_on_screen_debug > 1) {
                         // Append to debug area
                         $("#debug_area").append(timestamp() + "The bot will stop playing as the round limit has been reached.<br />");
 
