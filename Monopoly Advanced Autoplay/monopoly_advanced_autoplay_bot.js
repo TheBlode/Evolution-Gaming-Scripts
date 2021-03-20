@@ -336,6 +336,97 @@ function autoPlay() {
                 }
             }
 
+            // If player bet, increase progression
+            if (number_one_bet == true || number_two_bet == true || number_five_bet == true || number_ten_bet == true || two_rolls_bet == true || four_rolls_bet == true) {
+                // Progression logic
+                if (player_win == false) {
+                    // Martingale
+                    if (betting_progression == 2) {
+                        user_wager_amount = user_wager_amount * 2;
+                    }
+                } else {
+                    user_wager_amount = 1
+                }
+
+                // Special Blode progression
+                if (betting_progression == 3) {
+                    // Blode progression
+                    if (blode_progression == 1) {
+                        // Beginning of progression
+                        user_wager_amount = 1;
+
+                        // Increase progression
+                        blode_progression++;
+                    } else if (blode_progression == 2) {
+                        // Beginning of progression
+                        user_wager_amount = 2;
+
+                        // Increase progression
+                        blode_progression++;
+                    } else if (blode_progression == 3) {
+                        // Beginning of progression
+                        user_wager_amount = 3;
+
+                        // Increase progression
+                        blode_progression++;
+                    } else if (blode_progression == 4) {
+                        // Beginning of progression
+                        user_wager_amount = 4;
+
+                        // Increase progression
+                        blode_progression++;
+                    } else if (blode_progression == 5) {
+                        // Beginning of progression
+                        user_wager_amount = 1;
+
+                        // Increase progression
+                        blode_progression++;
+                    } else if (blode_progression == 6) {
+                        // Beginning of progression
+                        user_wager_amount = 1;
+
+                        // Increase progression
+                        blode_progression++;
+                    } else if (blode_progression == 7) {
+                        // Beginning of progression
+                        user_wager_amount = 2;
+
+                        // Increase progression
+                        blode_progression++;
+                    } else if (blode_progression == 8) {
+                        // Beginning of progression
+                        user_wager_amount = 2;
+
+                        // Increase progression
+                        blode_progression++;
+                    } else if (blode_progression == 9) {
+                        // Beginning of progression
+                        user_wager_amount = 3;
+
+                        // Increase progression
+                        blode_progression++;
+                    } else if (blode_progression == 10) {
+                        // Beginning of progression
+                        user_wager_amount = 3;
+
+                        // Increase progression
+                        blode_progression++;
+                    } else if (blode_progression == 11) {
+                        // Beginning of progression
+                        user_wager_amount = 4;
+
+                        // Increase progression
+                        blode_progression++;
+                    } else if (blode_progression == 12) {
+                        // Beginning of progression
+                        user_wager_amount = 4;
+
+                        // Increase progression
+                        blode_progression = 1;
+                    }
+                }
+            }
+
             // Reset bet values
             number_one_bet = false;
             number_two_bet = false;
@@ -343,94 +434,6 @@ function autoPlay() {
             number_ten_bet = false;
             two_rolls_bet = false;
             four_rolls_bet = false;
-
-            // Progression logic
-            if (player_win == false) {
-                // Martingale
-                if (betting_progression == 2) {
-                    user_wager_amount = user_wager_amount * 2;
-                }
-            } else {
-                    user_wager_amount = 1
-            }
-
-            // Special Blode progression
-            if (betting_progression == 3) {
-                // Blode progression
-                if (blode_progression == 1) {
-                    // Beginning of progression
-                    user_wager_amount = 1;
-
-                    // Increase progression
-                    blode_progression++;
-                } else if (blode_progression == 2) {
-                    // Beginning of progression
-                    user_wager_amount = 2;
-
-                    // Increase progression
-                    blode_progression++;
-                } else if (blode_progression == 3) {
-                    // Beginning of progression
-                    user_wager_amount = 3;
-
-                    // Increase progression
-                    blode_progression++;
-                } else if (blode_progression == 4) {
-                    // Beginning of progression
-                    user_wager_amount = 4;
-
-                    // Increase progression
-                    blode_progression++;
-                } else if (blode_progression == 5) {
-                    // Beginning of progression
-                    user_wager_amount = 1;
-
-                    // Increase progression
-                    blode_progression++;
-                } else if (blode_progression == 6) {
-                    // Beginning of progression
-                    user_wager_amount = 1;
-
-                    // Increase progression
-                    blode_progression++;
-                } else if (blode_progression == 7) {
-                    // Beginning of progression
-                    user_wager_amount = 2;
-
-                    // Increase progression
-                    blode_progression++;
-                } else if (blode_progression == 8) {
-                    // Beginning of progression
-                    user_wager_amount = 2;
-
-                    // Increase progression
-                    blode_progression++;
-                } else if (blode_progression == 9) {
-                    // Beginning of progression
-                    user_wager_amount = 3;
-
-                    // Increase progression
-                    blode_progression++;
-                } else if (blode_progression == 10) {
-                    // Beginning of progression
-                    user_wager_amount = 3;
-
-                    // Increase progression
-                    blode_progression++;
-                } else if (blode_progression == 11) {
-                    // Beginning of progression
-                    user_wager_amount = 4;
-
-                    // Increase progression
-                    blode_progression++;
-                } else if (blode_progression == 12) {
-                    // Beginning of progression
-                    user_wager_amount = 4;
-
-                // Increase progression
-                blode_progression = 1;
-                }
-            }
 
             // Debug for the console
             console.log(spacing);
