@@ -123,15 +123,18 @@ document.getElementById("start").onclick = function() {
      * On Screen Debug logic
      * ======================= */
     // Get on screen debug setting
-    var user_on_screen_debug_setting = document.getElementById("user_on_screen_debug").checked;
-
-    // Store temporary variable
+    var form = document.getElementById("on_screen_debug");
+    var user_on_screen_debug_setting = form.elements["on_screen_debug"].value
     var temp_user_on_screen_debug= 0;
 
     // Store on screen debug flag in memory
-    if (user_on_screen_debug_setting) {
+    if (user_on_screen_debug_setting == 1) {
         // Store on screen debug flag in memory
         temp_user_on_screen_debug = 1;
+        chrome.storage.local.set({"user_on_screen_debug": temp_user_on_screen_debug});
+    } else if (user_on_screen_debug_setting == 2) {
+        // Store on screen debug flag in memory
+        temp_user_on_screen_debug = 2;
         chrome.storage.local.set({"user_on_screen_debug": temp_user_on_screen_debug});
     } else {
         temp_user_on_screen_debug = 0;

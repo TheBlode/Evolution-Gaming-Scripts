@@ -1305,8 +1305,11 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="checkbox" id="user_on_screen_debug" name="user_on_screen_debug" value="user_on_screen_debug">
-                        <label for="user_on_screen_debug">On Screen Debug</label>
+                    <form id="on_screen_debug">
+                        <label><input type="radio" name="on_screen_debug" value="0" checked>Debug (Off)</label><br />
+                        <label><input type="radio" name="on_screen_debug" value="1">Debug (Full Screen)</label><br />
+                        <label><input type="radio" name="on_screen_debug" value="2">Debug (Compact)</label>
+                    </form>
                    </td>
                     <td>
                         This option will display on-screen debug (this is great if you are multi-tabling.

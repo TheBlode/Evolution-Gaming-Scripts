@@ -405,7 +405,7 @@ function startPlaying() {
                 function autoPlay() {
                     // Disable video
                     if (disable_video == 1) {
-                        var html = document.getElementsByClassName("box--EckIM")[0].innerHTML = "";
+                        $("#video-wrapper").html("");
                     }
 
                     // Debug for the console
@@ -467,6 +467,9 @@ function startPlaying() {
                                     roundLimitReached();
                                 }
                             }
+
+                            // Increment round count
+                            round_count++;
 
                             // Check for bonus round
                             var bonus_round_check = regex_formatted.match(/r/g);
@@ -2386,6 +2389,8 @@ function startPlaying() {
                     if (state == "1") {
                         // CSS
                         $("#debug_area").css({"position": "absolute", "font-size": "x-large", "width": "100%", "height": "98%", "overflow": "overlay", "line-height": "20pt", "background": "black", "z-index": "1000000"});
+                    } else if (state == "2") {
+                        $("#debug_area").css({"position": "relative", "font-size": "small", "width": "33%", "height": "53%", "overflow": "overlay", "line-height": "20pt", "background": "black", "z-index": "1000000", "float": "right"});
                     } else {
                         // Hide debug
                         $("#debug_area").hide();
@@ -2521,18 +2526,24 @@ function startPlaying() {
                 function bigChat(state) {
                     if (state == 1) {
                         // Output break screen
-                        $(".scrollableWrapper--2nhZl").css({"height": "230%", "width": "170%"});
+                        $(".scrollableWrapper--2nhZl").css({"height": "270%", "width": "120%"});
 
                         $(".input--2nx2R").css({"left": "120%"});
 
-                        $(".message--1ERGD").css({"font-size": "18px", "line-spacing": "5px"});
+                        $(".message--1ERGD").css({"font-size": "18px", "line-height": "30px", "background": "black"});
 
                         $(".senderName--3tGIw").css({"font-size": "18px", "line-spacing": "5px"});
+
+                        $(".messageList--3vpQn").css({"width": "140%"});
+
+                        $(".contentWrapper--RB3-t").scrollTop(10000000);
                     } else {
                         // Output break screen
                         $(".scrollableWrapper--2nhZl").css({"height": "100%", "width": "100%"});
 
                         $(".input--2nx2R").css({"left": "0%"});
+
+                        $(".messageList--3vpQn").css({"width": "100%"});
                     }
                 }
 
@@ -2762,7 +2773,7 @@ function startPlaying() {
                 function autoPlay() {
                     // Disable video
                     if (disable_video == 1) {
-                        var html = document.getElementsByClassName("box--EckIM")[0].innerHTML = "";
+                        $("#video-wrapper").html("");
                     }
 
                     // Debug for the console
@@ -2822,6 +2833,9 @@ function startPlaying() {
                                     roundLimitReached();
                                 }
                             }
+
+                            // Increment round count
+                            round_count++;
 
                             // Check for bonus round
                             var bonus_round_check = regex_formatted.match(/x/g);
@@ -4230,6 +4244,8 @@ function startPlaying() {
                     if (state == "1") {
                         // CSS
                         $("#debug_area").css({"position": "absolute", "font-size": "x-large", "width": "100%", "height": "98%", "overflow": "overlay", "line-height": "20pt", "background": "black", "z-index": "1000000", "z-index": "1000000"});
+                    } else if (state == "2") {
+                        $("#debug_area").css({"position": "relative", "font-size": "small", "width": "33%", "height": "53%", "overflow": "overlay", "line-height": "20pt", "background": "black", "z-index": "1000000", "float": "right"});
                     } else {
                         // Hide debug
                         $("#debug_area").hide();
@@ -4354,18 +4370,28 @@ function startPlaying() {
                 function bigChat(state) {
                     if (state == 1) {
                         // Output break screen
-                        $(".scrollableWrapper--2nhZl").css({"height": "230%", "width": "170%"});
+                        $(".scrollableWrapper--2nhZl").css({"height": "270%", "width": "120%"});
 
                         $(".input--2nx2R").css({"left": "120%"});
 
-                        $(".message--1ERGD").css({"font-size": "18px", "line-spacing": "5px"});
+                        $(".message--1ERGD").css({"font-size": "18px", "line-height": "30px", "background": "black"});
 
                         $(".senderName--3tGIw").css({"font-size": "18px", "line-spacing": "5px"});
+
+                        $(".messageList--3vpQn").css({"width": "140%"});
+
+                        $(".spots--3txwK").css({"margin-left": "150px"});
+
+                        $(".contentWrapper--RB3-t").scrollTop(10000000);
                     } else {
                         // Output break screen
                         $(".scrollableWrapper--2nhZl").css({"height": "100%", "width": "100%"});
 
                         $(".input--2nx2R").css({"left": "0%"});
+
+                        $(".messageList--3vpQn").css({"width": "100%"});
+
+                        $(".spots--3txwK").css({"margin-left": "0px"});
                     }
                 }
 
@@ -4618,7 +4644,7 @@ function startPlaying() {
                 function autoPlay() {
                     // Disable video
                     if (disable_video == 1) {
-                        var html = document.getElementsByClassName("box--EckIM")[0].innerHTML = "";
+                        $("#video-wrapper").html("");
                     }
 
                     // Debug for the console
@@ -4679,6 +4705,9 @@ function startPlaying() {
                                     roundLimitReached();
                                 }
                             }
+
+                            // Increment round count
+                            round_count++;
 
                             // Check for bonus round
                             var bonus_round_check = regex_formatted.match(/b/g);
@@ -7643,6 +7672,8 @@ function startPlaying() {
                     if (state == "1") {
                         // CSS
                         $("#debug_area").css({"position": "absolute", "font-size": "x-large", "width": "100%", "height": "98%", "overflow": "overlay", "line-height": "20pt", "background": "black", "z-index": "1000000"});
+                    } else if (state == "2") {
+                        $("#debug_area").css({"position": "relative", "font-size": "small", "width": "33%", "height": "53%", "overflow": "overlay", "line-height": "20pt", "background": "black", "z-index": "1000000", "float": "right"});
                     } else {
                         // Hide debug
                         $("#debug_area").hide();
@@ -7778,18 +7809,28 @@ function startPlaying() {
                 function bigChat(state) {
                     if (state == 1) {
                         // Output break screen
-                        $(".scrollableWrapper--2nhZl").css({"height": "230%", "width": "170%"});
+                        $(".scrollableWrapper--2nhZl").css({"height": "270%", "width": "120%"});
 
                         $(".input--2nx2R").css({"left": "120%"});
 
-                        $(".message--1ERGD").css({"font-size": "18px", "line-spacing": "5px"});
+                        $(".message--1ERGD").css({"font-size": "18px", "line-height": "30px", "background": "black"});
 
                         $(".senderName--3tGIw").css({"font-size": "18px", "line-spacing": "5px"});
+
+                        $(".contentWrapper--RB3-t").scrollTop(10000000);
+
+                        $(".messageList--3vpQn").css({"width": "140%"});
+
+                        $(".grid--2CRmd").css({"margin-left": "400px"});
                     } else {
                         // Output break screen
                         $(".scrollableWrapper--2nhZl").css({"height": "100%", "width": "100%"});
 
                         $(".input--2nx2R").css({"left": "0%"});
+
+                        $(".grid--2CRmd").css({"margin-left": "0px"});
+
+                        $(".messageList--3vpQn").css({"width": "100%"});
                     }
                 }
 
@@ -8026,7 +8067,7 @@ function startPlaying() {
                 function autoPlay() {
                     // Disable video
                     if (disable_video == 1) {
-                        var html = document.getElementsByClassName("box--EckIM")[0].innerHTML = "";
+                        $("#video-wrapper").html("");
                     }
 
                     // Debug for the console
@@ -8050,7 +8091,7 @@ function startPlaying() {
 
                         // Disable video
                         if (disable_video == 1) {
-                            var html = document.getElementsByClassName("transformWrapper--1ywHP")[0].innerHTML = "";
+                            $("#video-wrapper").html("");
                         }
 
                         // Get winning result
@@ -8092,6 +8133,9 @@ function startPlaying() {
                                     roundLimitReached();
                                 }
                             }
+
+                            // Increment round count
+                            round_count++;
 
                             // Clear interval
                             clearInterval(clicking);
@@ -8928,6 +8972,8 @@ function startPlaying() {
                     if (state == "1") {
                         // CSS
                         $("#debug_area").css({"position": "absolute", "font-size": "x-large", "width": "100%", "height": "98%", "overflow": "overlay", "line-height": "20pt", "background": "black", "z-index": "1000000"});
+                    } else if (state == "2") {
+                        $("#debug_area").css({"position": "relative", "font-size": "small", "width": "33%", "height": "53%", "overflow": "overlay", "line-height": "20pt", "background": "black", "z-index": "1000000", "float": "right"});
                     } else {
                         // Hide debug
                         $("#debug_area").hide();
@@ -9054,18 +9100,24 @@ function startPlaying() {
                 function bigChat(state) {
                     if (state == 1) {
                         // Output break screen
-                        $(".scrollableWrapper--2nhZl").css({"height": "230%", "width": "170%"});
+                        $(".scrollableWrapper--2nhZl").css({"height": "270%", "width": "120%"});
 
                         $(".input--2nx2R").css({"left": "120%"});
 
-                        $(".message--1ERGD").css({"font-size": "18px", "line-spacing": "5px"});
+                        $(".message--1ERGD").css({"font-size": "18px", "line-height": "30px", "background": "black"});
 
                         $(".senderName--3tGIw").css({"font-size": "18px", "line-spacing": "5px"});
+
+                        $(".messageList--3vpQn").css({"width": "140%"});
+
+                        $(".contentWrapper--RB3-t").scrollTop(10000000);
                     } else {
                         // Output break screen
                         $(".scrollableWrapper--2nhZl").css({"height": "100%", "width": "100%"});
 
                         $(".input--2nx2R").css({"left": "0%"});
+
+                        $(".messageList--3vpQn").css({"width": "100%"});
                     }
                 }
 
