@@ -3,7 +3,7 @@
 ## Introduction
 Welcome to my Evolution Gaming Scripts page! Evolution's autoplay feature is severely lacking in it's functionality for us players so I wrote these scripts to optimize your gaming experience! I hope you enjoy them and they improve your fortunes!
 
-![alt text](https://i.imgur.com/K674L14.png)
+![alt text](https://i.imgur.com/8xFPJ7v.png)
 
 **NB: It may be against some casinos Terms & Conditions to perform automated actions using this bot. To get around this, use "No Bot Mode" which disables automated play and enables hints on where to place your bets manually.**
 
@@ -48,7 +48,7 @@ https://chrome.google.com/webstore/search/inject%20code?hl=en&_category=extensio
     - Control + 2 - allows you to change just the betting mode / autoplay mode.
 - All bots have win thresholds and loss thresholds which you can customise when you run the bot code.
 - All bots have the ability to clean up the game interface to make place less clutters.
-- All bots have the ability to show on screen debug of play to make things easier to track.
+- All bots have the ability to show on screen debug of play to make things easier to track. It can be displayed full screen or in compact mode.
 - All bots allow you to customise how long you play for and how long your breaks will be.
 - All bots allow you to enter "big chat" mode which increase the chat area and font size.
 

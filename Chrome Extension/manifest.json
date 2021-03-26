@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
-    "name": "Advanced Autoplay Bot",
-    "description": "This extension will run one of the Advanced Autoplay Bots to enhance your gaming experience.",
+    "name": "Advanced Autoplay",
+    "description": "This extension will run one of the Advanced Autoplay programs to enhance your gaming experience.",
     "version": "1.0",
     "browser_action": {
         "default_icon": "128.png",

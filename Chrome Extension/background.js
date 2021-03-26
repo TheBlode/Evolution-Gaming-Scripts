@@ -42,7 +42,7 @@ var start_check = setInterval(function() {
         // If player has stated they want to play...play!
         if (start == "1") {
             // Alert the user the bot will start
-            window.alert(`Welcome to the Advanced Autoplay Bot!\n\nPlease make sure you have classic mode enabled on your game before proceeding.\n\nYou have 30 seconds to activate it.`);
+            window.alert(`Welcome to the Advanced Autoplay!\n\nPlease make sure you have classic mode enabled on your game before proceeding.\n\nYou have 30 seconds to activate it.`);
 
             chrome.storage.local.get("game_choice", function(data) {
                 bot_type = data.game_choice;
@@ -265,15 +265,19 @@ function startPlaying() {
     if (start == "1") {
         // Get confirmation that classic mode is enabled
         setTimeout(function() {
-            do {
-                // Grab answer from the user
-                var classic_mode = parseInt(window.prompt("Is classic mode enabled on your game?\n\nType 1 for yes or 0 for no.", "0"), 10);
-            } while(isNaN(classic_mode) || classic_mode > 1);
+            // Grab answer from the user
+            if (window.confirm("Is classic mode enabled on your game?")) {
+                // Classic mode is enabled
+                classic_mode = 1;
+            } else {
+                // Classic mode is enabled
+                classic_mode = 0;
+            }
 
             // If classic mode is not enabled...exit
             if (classic_mode != 1) {
                 // Exit message
-                window.alert("You have not enabled classic mode. The Advanced Autoplay Bot requires classic mode to work.\n\nPlease refresh your page to try again.");
+                window.alert("You have not enabled classic mode. The Advanced Autoplay requires classic mode to work.\n\nPlease refresh your page to try again.");
 
                 // We're gone
                 return;
@@ -2044,6 +2048,9 @@ function startPlaying() {
                                         scrollToTopOfDebug();
                                     }
 
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Skip this round!");
+
                                     // Clear bonus round flag
                                     bonus_round = false;
                                 }
@@ -2228,6 +2235,9 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Skip this round!");
 
                                     // Clear bonus round flag
                                     bonus_round = false;
@@ -2907,12 +2917,15 @@ function startPlaying() {
                 function noBotModeMessage(plays) {
                     if (no_bot_mode == 1) {
                         // Inform user via alert
-                        window.alert("Place your next bet on: " + plays);
+                        $("#popup").html("Place your next bet on: " + plays);
 
                         // Inform player using console
                         console.log(spacing);
                         console.log("Place your next bet on: " + plays);
                         console.log(spacing);
+                    } else {
+                        // Hide popup
+                        $("#popup").hide();
                     }
 
                     // Exit
@@ -2947,6 +2960,15 @@ function startPlaying() {
                     // Create debug area
                     var $div = $("<div />").appendTo("body");
                     $div.attr("id", "break_screen");
+                }, 2000);
+
+
+                setTimeout(function() {
+                    // Create debug area
+                    var $div = $("<div />").appendTo("body");
+                    $div.attr("id", "popup");
+
+                    $("#popup").css({"background": "white", "width": "40%", "height": "29px", "position": "absolute", "margin-left": "30%", "margin-right": "30%", "z-index": "10000000", "border": "5px solid black", "border-radius": "10px", "color": "black", "font-size": "18px", "padding-left": "17px", "padding-top": "8px"});
                 }, 2000);
 
                 setTimeout(function() {
@@ -4423,6 +4445,9 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Skip this round!");
                                 }
                             }
 
@@ -5027,12 +5052,15 @@ function startPlaying() {
                 function noBotModeMessage(plays) {
                     if (no_bot_mode == 1) {
                         // Inform user via alert
-                        window.alert("Place your next bet on: " + plays);
+                        $("#popup").html("Place your next bet on: " + plays);
 
                         // Inform player using console
                         console.log(spacing);
                         console.log("Place your next bet on: " + plays);
                         console.log(spacing);
+                    } else {
+                        // Hide popup
+                        $("#popup").hide();
                     }
 
                     // Exit
@@ -5067,6 +5095,14 @@ function startPlaying() {
                     // Create debug area
                     var $div = $("<div />").appendTo("body");
                     $div.attr("id", "break_screen");
+                }, 2000);
+
+                setTimeout(function() {
+                    // Create debug area
+                    var $div = $("<div />").appendTo("body");
+                    $div.attr("id", "popup");
+
+                    $("#popup").css({"background": "white", "width": "40%", "height": "29px", "position": "absolute", "margin-left": "30%", "margin-right": "30%", "z-index": "10000000", "border": "5px solid black", "border-radius": "10px", "color": "black", "font-size": "18px", "padding-left": "17px", "padding-top": "8px"});
                 }, 2000);
 
                 setTimeout(function() {
@@ -7074,6 +7110,9 @@ function startPlaying() {
                                         scrollToTopOfDebug();
                                     }
 
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Skip this round!");
+
                                     // Clear bonus round flag
                                     bonus_round = false;
                                 }
@@ -7530,6 +7569,9 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Skip this round!");
 
                                     // Clear bonus round flag
                                     bonus_round = false;
@@ -8119,6 +8161,9 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Skip this round!");
 
                                     // Clear bonus round flag
                                     bonus_round = false;
@@ -8899,12 +8944,15 @@ function startPlaying() {
                 function noBotModeMessage(plays) {
                     if (no_bot_mode == 1) {
                         // Inform user via alert
-                        window.alert("Place your next bet on: " + plays);
+                        $("#popup").html("Place your next bet on: " + plays);
 
                         // Inform player using console
                         console.log(spacing);
                         console.log("Place your next bet on: " + plays);
                         console.log(spacing);
+                    } else {
+                        // Hide popup
+                        $("#popup").hide();
                     }
 
                     // Exit
@@ -8939,6 +8987,14 @@ function startPlaying() {
                     // Create debug area
                     var $div = $("<div />").appendTo("body");
                     $div.attr("id", "break_screen");
+                }, 2000);
+
+                setTimeout(function() {
+                    // Create debug area
+                    var $div = $("<div />").appendTo("body");
+                    $div.attr("id", "popup");
+
+                    $("#popup").css({"background": "white", "width": "40%", "height": "29px", "position": "absolute", "margin-left": "30%", "margin-right": "30%", "z-index": "10000000", "border": "5px solid black", "border-radius": "10px", "color": "black", "font-size": "18px", "padding-left": "17px", "padding-top": "8px"});
                 }, 2000);
 
                 setTimeout(function() {
@@ -9591,6 +9647,9 @@ function startPlaying() {
                                         // Scroll to top
                                         scrollToTopOfDebug();
                                     }
+
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("Skip this round!");
                                 }
                             }
 
@@ -10186,12 +10245,15 @@ function startPlaying() {
                 function noBotModeMessage(plays) {
                     if (no_bot_mode == 1) {
                         // Inform user via alert
-                        window.alert("Place your next bet on: " + plays);
+                        $("#popup").html("Place your next bet on: " + plays);
 
                         // Inform player using console
                         console.log(spacing);
                         console.log("Place your next bet on: " + plays);
                         console.log(spacing);
+                    } else {
+                        // Hide popup
+                        $("#popup").hide();
                     }
 
                     // Exit
@@ -10226,6 +10288,14 @@ function startPlaying() {
                     // Create debug area
                     var $div = $("<div />").appendTo("body");
                     $div.attr("id", "break_screen");
+                }, 2000);
+
+                setTimeout(function() {
+                    // Create debug area
+                    var $div = $("<div />").appendTo("body");
+                    $div.attr("id", "popup");
+
+                    $("#popup").css({"background": "white", "width": "40%", "height": "29px", "position": "absolute", "margin-left": "30%", "margin-right": "30%", "z-index": "10000000", "border": "5px solid black", "border-radius": "10px", "color": "black", "font-size": "18px", "padding-left": "17px", "padding-top": "8px"});
                 }, 2000);
 
                 setTimeout(function() {
