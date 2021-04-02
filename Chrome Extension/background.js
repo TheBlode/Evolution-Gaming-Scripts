@@ -16,6 +16,7 @@ chrome.storage.local.set({"break_times": "0"});
 chrome.storage.local.set({"no_bot_mode": "0"});
 chrome.storage.local.set({"user_round_skipping": "0"});
 chrome.storage.local.set({"betting_progression": "0"});
+chrome.storage.local.set({"responsible_mode": "0"});
 var bot_type = 0;
 var autoplay_mode = 0;
 var disable_video = 0;
@@ -27,6 +28,7 @@ var break_times = 0;
 var break_duration = 0;
 var user_round_skipping = 0;
 var betting_progression = 1;
+var responsible_mode = 0;
 
 // Set global start variable
 var start = "0";
@@ -170,6 +172,13 @@ var start_check = setInterval(function() {
                 assignChromeStorageLocally("17", betting_progression);
             });
 
+            chrome.storage.local.get("responsible_mode", function(data) {
+                responsible_mode = data.responsible_mode;
+
+                // Assign to the script
+                assignChromeStorageLocally("18", responsible_mode);
+            });
+
             // Start playing!
             startPlaying();
 
@@ -252,6 +261,10 @@ function assignChromeStorageLocally(variable, value) {
 
     if (variable == "17") {
         betting_progression = value;
+    }
+
+    if (variable == "18") {
+        responsible_mode = value;
     }
 }
 
@@ -2968,7 +2981,122 @@ function startPlaying() {
                     var $div = $("<div />").appendTo("body");
                     $div.attr("id", "popup");
 
-                    $("#popup").css({"background": "white", "width": "40%", "height": "29px", "position": "absolute", "margin-left": "30%", "margin-right": "30%", "z-index": "10000000", "border": "5px solid black", "border-radius": "10px", "color": "black", "font-size": "18px", "padding-left": "17px", "padding-top": "8px"});
+                    $("#popup").css({"background": "white", "width": "30%", "height": "29px", "position": "absolute", "margin-left": "34%", "margin-right": "30%", "z-index": "10000000", "border": "5px solid black", "border-radius": "10px", "color": "black", "font-size": "18px", "padding-left": "17px", "padding-top": "8px"});
+                }, 2000);
+
+                setTimeout(function() {
+                    if (responsible_mode == 1) {
+                        // Create debug area
+                        var $div = $("<div />").appendTo("body");
+                        $div.attr("id", "responsible");
+
+                        $("#responsible").css({"background": "yellow", "width": "100%", "height": "3%", "position": "absolute", "margin": "0 auto", "color": "black", "font-size": "20px", "padding": "10px", "z-index": "10000000", "top": "49%"});
+
+                        $("#responsible").html("When the fun stops...STOP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NEVER gamble more than you can afford to lose&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+
+                        (function($) {
+                            $.fn.textWidth = function(){
+                                var calc = "<span style=\"display:none\">" + $(this).text() + "</span>";
+                                $("body").append(calc);
+                                var width = 800;
+                                $("body").find("span:last").remove();
+                                return width;
+                            };
+
+                            $.fn.marquee = function(args) {
+                                var that = $(this);
+                                var textWidth = that.textWidth(),
+                                    offset = that.width(),
+                                    width = offset,
+                                    css = {
+                                        "text-indent" : that.css("text-indent"),
+                                        "overflow" : that.css("overflow"),
+                                        "white-space" : that.css("white-space")
+                                    },
+                                    marqueeCss = {
+                                        "text-indent" : width,
+                                        "overflow" : "hidden",
+                                        "white-space" : "nowrap"
+                                    },
+                                    args = $.extend(true, { count: -1, speed: 1e1, leftToRight: false }, args),
+                                        i = 0,
+                                        stop = textWidth*-1,
+                                        dfd = $.Deferred();
+
+                                    function go() {
+                                        if (!that.length) return dfd.reject();
+
+                                        if (width == stop) {
+                                            i++;
+                                            if (i == args.count) {
+                                                that.css(css);
+                                                return dfd.resolve();
+                                            }
+
+                                            if (args.leftToRight) {
+                                                width = textWidth*-1;
+                                            } else {
+                                                // Add responsible new gambling message
+                                                var responsible_gambling_messages = [
+                                                    "When the fun stops...STOP PLAYING!",
+                                                    "Be a PROUD QUITTER!",
+                                                    "Never bet more than you can afford to lose!",
+                                                    "In gambling, the many must lose in order that the few may win.",
+                                                    "There are many harsh lessons to be learned from gambling, but the harshest one of all is the difference between having fun and being smart.",
+                                                    "Quit while you're ahead. All the best gamblers do.",
+                                                    "Of all gambling strategies, knowing when to quit may be the best!",
+                                                    "The only sure thing about luck is that it will change.",
+                                                    "The only way to be a millionaire gambler is to start out as a billionaire!",
+                                                    "In the end, the house ALWAYS WINS!",
+                                                    "This is a CASINO, not a CHARITY!",
+                                                    "Gambling is predictable, that is you can't be the winner forever",
+                                                    "LUCK RUNS OUT!",
+                                                    "It's only a gambling problem when you lose. Stop before it's too late.",
+                                                    "Gambling is a family disease. One person may be addicted but the whole family suffers.",
+                                                    "Change your life TODAY, don't gamble on the FUTURE, act NOW WITHOUT DELAY!",
+                                                    "The safest way to double your money is to fold it over once and put it in your pocket!",
+                                                    "The best throw of the dice is to throw them away...",
+                                                    "A gambler is nothing but a man or woman who makes his living out of false hope.",
+                                                ];
+
+                                                // Get random messages
+                                                var message_one = responsible_gambling_messages[Math.floor(Math.random() * responsible_gambling_messages.length)];
+                                                var message_two = responsible_gambling_messages[Math.floor(Math.random() * responsible_gambling_messages.length)];
+
+                                                $("#responsible").html(message_one + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + message_two + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+                                                width = offset;
+                                            }
+                                        }
+
+                                        that.css("text-indent", width + "px");
+
+                                        if (args.leftToRight) {
+                                            width++;
+                                        } else {
+                                            width--;
+                                        }
+
+                                        setTimeout(go, args.speed);
+                                    };
+
+                                    if (args.leftToRight) {
+                                        width = textWidth*-1;
+                                        width++;
+                                        stop = offset;
+                                    } else {
+                                        width--;            
+                                    }
+
+                                    that.css(marqueeCss);
+
+                                    go();
+
+                                    return dfd.promise();
+                                };
+                            })(jQuery);
+
+                        $("#responsible").marquee({speed: 10});
+                    }
                 }, 2000);
 
                 setTimeout(function() {

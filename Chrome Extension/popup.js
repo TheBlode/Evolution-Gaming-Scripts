@@ -236,6 +236,25 @@ document.getElementById("start").onclick = function() {
     // Store the game type in memory
     chrome.storage.local.set({"betting_progression": selected_betting_progression});
 
+    /* =======================
+     * Responsible Mode logic
+     * ======================= */
+    // Get No Bot Mode setting
+    var responsible_mode_setting = document.getElementById("responsible_mode").checked;
+
+    // Store temporary variable
+    var temp_responsible_mode= 0;
+
+    // Store No Bot Mode flag in memory
+    if (responsible_mode_setting) {
+        // Store No Bot Mode flag in memory
+        temp_responsible_mode = 1;
+        chrome.storage.local.set({"responsible_mode": temp_responsible_mode});
+    } else {
+        temp_responsible_mode = 0;
+        chrome.storage.local.set({"responsible_mode": temp_responsible_mode});
+    }
+
     // Store the start variable in memory so the main bot listener can pick it up
     chrome.storage.local.set({"start": "1"});
 };
