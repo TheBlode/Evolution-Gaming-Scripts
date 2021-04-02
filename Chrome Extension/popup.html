@@ -14,6 +14,69 @@
                 position: relative;
                 vertical-align:middle;
             }
+
+            /* The switch - the box around the slider */
+            .switch {
+                position: relative;
+                display: inline-block;
+                width: 30px;
+                height: 15px;
+            }
+
+            /* Hide default HTML checkbox */
+            .switch input {
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+
+            /* The slider */
+            .slider {
+                position: absolute;
+                cursor: pointer;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #ccc;
+                -webkit-transition: .4s;
+                transition: .4s;
+            }
+
+            .slider:before {
+                position: absolute;
+                content: "";
+                height: 16px;
+                width: 14px;
+                left: 0px;
+                bottom: 0px;
+                background-color: white;
+                -webkit-transition: .4s;
+                transition: .4s;
+            }
+
+            input:checked + .slider {
+                background-color: #2196F3;
+            }
+
+            input:focus + .slider {
+                box-shadow: 0 0 1px #2196F3;
+            }
+
+            input:checked + .slider:before {
+                -webkit-transform: translateX(16px);
+                -ms-transform: translateX(16px);
+                transform: translateX(16px);
+            }
+
+            /* Rounded sliders */
+            .slider.round {
+                border-radius: 34px;
+            }
+
+            .slider.round:before {
+                border-radius: 50%;
+            }
         </style>
         <center><img src="title.png" /></center>
         <center>
@@ -1309,7 +1372,11 @@
             </tr>
             <tr>
                 <td>
-                <input type="checkbox" id="break_times" name="break_times" value="break_times">
+                <!-- Rounded switch -->
+                <label class="switch">
+                    <input type="checkbox" id="break_times" name="break_times" value="break_times">
+                    <span class="slider round"></span>
+                </label>
                 <label for="break_times">Enable Breaks</label><br />
                 <div id="break_time_settings"></div>
                   </td>
@@ -1317,20 +1384,32 @@
             <tr>
                 <td>
                     <!-- Disable video option -->
-                    <input type="checkbox" id="disable_video" name="disable_video" value="disable_video">
+                    <!-- Rounded switch -->
+                    <label class="switch">
+                        <input type="checkbox" id="disable_video" name="disable_video" value="disable_video">
+                        <span class="slider round"></span>
+                    </label>
                     <label for="disable_video">Disable Video</label> - Allows you to disable the live casino video.
 
                 </td>
             </tr>
             <tr>
                 <td>
-                    <input type="checkbox" id="user_clean_interface" name="user_clean_interface" value="user_clean_interface">
+                    <!-- Rounded switch -->
+                    <label class="switch">
+                        <input type="checkbox" id="user_clean_interface" name="user_clean_interface" value="user_clean_interface">
+                        <span class="slider round"></span>
+                    </label>
                     <label for="user_clean_interface">Clean Interface</label> - Enabling this will allow you to hide certain elements from the game UI allowing you to have distraction free gaming.
                 </td>
             </tr>
             <tr>
                 <td>
-                    <input type="checkbox" id="big_chat" name="big_chat" value="big_chat">
+                    <!-- Rounded switch -->
+                    <label class="switch">
+                        <input type="checkbox" id="big_chat" name="big_chat" value="big_chat">
+                        <span class="slider round"></span>
+                    </label>
                     <label for="big_chat">Big Chat</label> - Enable this option to make the chat appear bigger in size.
                 </td>
             </tr>
@@ -1345,8 +1424,22 @@
             </tr>
             <tr>
                 <td>
-                    <input type="checkbox" id="no_bot_mode" name="no_bot_mode" value="no_bot_mode">
+                    <!-- Rounded switch -->
+                    <label class="switch">
+                        <input type="checkbox" id="no_bot_mode" name="no_bot_mode" value="no_bot_mode">
+                        <span class="slider round"></span>
+                    </label>
                     <label for="no_bot_mode">No Bot Mode</label> - It may be against some casino's Terms & Condition to have a machine<br />perform your plays. Activate this to disable automatic play and to receive advice only.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <!-- Rounded switch -->
+                    <label class="switch">
+                        <input type="checkbox" id="responsible_mode" name="responsible_mode" value="responsible_mode">
+                        <span class="slider round"></span>
+                    </label>
+                    <label for="responsible_mode">Responsible Gambling Mode</label> - If you're a gambling addict, enable this mode to see helpful messages while gambling.
                 </td>
             </tr>
             </table>
