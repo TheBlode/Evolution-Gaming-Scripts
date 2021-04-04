@@ -18,5 +18,5 @@
         "js": ["jquery.js", "background.js"],
         "persistent": true
       }],
-    "permissions": ["tabs", "storage"]
+    "permissions": ["storage"]
 }
