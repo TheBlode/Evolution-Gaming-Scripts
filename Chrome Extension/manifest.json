@@ -1,6 +1,6 @@
 {
     "manifest_version": 2,
-    "name": "Advanced Autoplay",
+    "name": "Live Casino Advanced Autoplay",
     "description": "This extension will run one of the Advanced Autoplay programs to enhance your gaming experience.",
     "version": "1.0",
     "browser_action": {
@@ -13,7 +13,7 @@
     },
     "content_scripts": [{
         "matches": [
-            "*://*.evo-games.com/*/evo/*"
+            "*://*/*/evo/*"
         ],
         "js": ["jquery.js", "background.js"],
         "persistent": true

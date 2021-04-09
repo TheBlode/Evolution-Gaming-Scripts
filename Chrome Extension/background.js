@@ -629,7 +629,7 @@ function startPlaying() {
                             }
 
                             // If player bet, increase progression
-                            if (number_one_bet == true || number_two_bet == true || number_five_bet == true || number_ten_bet == true || two_rolls_bet == true || four_rolls_bet == true) {
+                            if (number_one_bet == true || number_two_bet == true || number_five_bet == true || number_ten_bet == true || two_rolls_bet == true || four_rolls_bet == true || no_bot_mode == 1) {
                                 // Progression logic
                                 if (player_win == false) {
                                     // Martingale
@@ -2590,6 +2590,9 @@ function startPlaying() {
                     if (no_bot_mode == 1) {
                         clearInterval(clicking);
                         clearInterval(clicking_insurance);
+
+                        // Exit
+                        return;
                     }
 
                     // Grab betting spot
@@ -3409,7 +3412,7 @@ function startPlaying() {
                             }
 
                             // If player bet, increase progression
-                            if (number_one_bet == true || number_two_bet == true || number_five_bet == true || number_ten_bet == true || number_twenty_bet == true || number_forty_bet == true) {
+                            if (number_one_bet == true || number_two_bet == true || number_five_bet == true || number_ten_bet == true || number_twenty_bet == true || number_forty_bet == true || no_bot_mode == 1) {
                                 // Progression logic
                                 if (player_win == false) {
                                     // Martingale
@@ -4856,6 +4859,9 @@ function startPlaying() {
                     // Check if no bot mode is active
                     if (no_bot_mode == 1) {
                         clearInterval(clicking);
+
+                        // Exit
+                        return;
                     }
 
                     // Grab betting spot
@@ -5589,7 +5595,7 @@ function startPlaying() {
                             }
 
                             // If player bet, increase progression
-                            if (number_one_bet == true || number_two_bet == true || number_five_bet == true || number_ten_bet == true || coin_flip_bet == true || pachinko_bet == true || cash_hunt_bet == true || crazy_time_bet == true) {
+                            if (number_one_bet == true || number_two_bet == true || number_five_bet == true || number_ten_bet == true || coin_flip_bet == true || pachinko_bet == true || cash_hunt_bet == true || crazy_time_bet == true || no_bot_mode == 1) {
                                 // Progression logic
                                 if (player_win == false) {
                                     // Martingale
@@ -8728,6 +8734,9 @@ function startPlaying() {
                         clearInterval(clicking_three);
                         clearInterval(clicking_four);
                         clearInterval(clicking_insurance);
+
+                        // Exit
+                        return;
                     }
 
                     // Grab betting spot
@@ -10036,6 +10045,9 @@ function startPlaying() {
                     // Check if no bot mode is active
                     if (no_bot_mode == 1) {
                         clearInterval(clicking);
+
+                        // Exit
+                        return;
                     }
 
                     // Grab betting spot
