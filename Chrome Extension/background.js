@@ -2952,20 +2952,6 @@ function startPlaying() {
                  * Main code
                  * =====================
                  */
-                // Inject jQuery for us to use
-                javascript:(function() {
-                    function l(u, i) {
-                        var d = document;
-                        if (!d.getElementById(i)) {
-                            var s = d.createElement('script');
-                            s.src = u;
-                            s.id = i;
-                            d.body.appendChild(s);
-                        }
-                    }
-                    l('//code.jquery.com/jquery-3.2.1.min.js', 'jquery')
-                })();
-
                 setTimeout(function() {
                     // Create debug area
                     var $div = $("<div />").appendTo("body");
@@ -5205,20 +5191,6 @@ function startPlaying() {
                  * Main code
                  * =====================
                  */
-                // Inject jQuery for us to use
-                javascript:(function() {
-                    function l(u, i) {
-                        var d = document;
-                        if (!d.getElementById(i)) {
-                            var s = d.createElement('script');
-                            s.src = u;
-                            s.id = i;
-                            d.body.appendChild(s);
-                        }
-                    }
-                    l('//code.jquery.com/jquery-3.2.1.min.js', 'jquery')
-                })();
-
                 setTimeout(function() {
                     // Create debug area
                     var $div = $("<div />").appendTo("body");
@@ -9100,20 +9072,6 @@ function startPlaying() {
                  * Main code
                  * =====================
                  */
-                // Inject jQuery for us to use
-                    javascript:(function() {
-                        function l(u, i) {
-                            var d = document;
-                            if (!d.getElementById(i)) {
-                                var s = d.createElement('script');
-                                s.src = u;
-                                s.id = i;
-                                d.body.appendChild(s);
-                            }
-                        }
-                        l('//code.jquery.com/jquery-3.2.1.min.js', 'jquery')
-                    })();
-
                 setTimeout(function() {
                     // Create debug area
                     var $div = $("<div />").appendTo("body");
@@ -10404,20 +10362,6 @@ function startPlaying() {
                 * Main code
                 * =====================
                 */
-                // Inject jQuery for us to use
-                javascript:(function() {
-                    function l(u, i) {
-                        var d = document;
-                        if (!d.getElementById(i)) {
-                            var s = d.createElement('script');
-                            s.src = u;
-                            s.id = i;
-                            d.body.appendChild(s);
-                        }
-                    }
-                    l('//code.jquery.com/jquery-3.2.1.min.js', 'jquery')
-                })();
-
                 setTimeout(function() {
                     // Create debug area
                     var $div = $("<div />").appendTo("body");
