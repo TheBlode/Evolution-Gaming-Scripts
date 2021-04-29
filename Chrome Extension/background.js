@@ -326,6 +326,7 @@ function startPlaying() {
                  * Autoplay mode #10 - bet on everything but randomly skip one
                  * Autoplay mode #11 - bet on 2 rolls only
                  * Autoplay mode #12 - bet on 4 rolls only
+                 * Autoplay mode #13 - Alternate #5 & #10 with #1 and #2
                 /* ========================================================================
                  * Set autoplay mode and other game settings
                  * ======================================================================== */
@@ -431,6 +432,7 @@ function startPlaying() {
                 var two_rolls_bet = false;
                 var four_rolls_bet = false;
                 var blode_progression = 1;
+                var toggle = false;
 
                 /* =====================
                  * Functions that will be used by the bot
@@ -2528,6 +2530,91 @@ function startPlaying() {
                                             }
                                         }
                                     }, click_delay);
+                            }
+
+                            // Autoplay mode #13
+                            if (autoplay_mode == 13 && chance_check == false && break_time == false) {
+                                // Place bet
+                                toggle = !toggle;
+
+                                if (toggle == true) {
+                                    // Output
+                                    console.log(spacing);
+                                    console.log("I'm placing a bet on #1, #2 & #5 now.");
+                                    console.log(spacing);
+                                    if (user_on_screen_debug > 1) {
+                                        // Append to debug area
+                                        $("#debug_area").append(timestamp() + "I'm placing a bet on #1, #2 & #5 now.<br />");
+
+                                        // Scroll to top
+                                        scrollToTopOfDebug();
+                                    }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#1, #2 & #5");
+                                    clicking = setInterval(function() {
+                                        // Check if bet spot is available to click
+                                        var test = checkBetSpot();
+
+                                        // Increment bonus round counter
+                                        bonus_round_counter++;
+
+                                        if (test == true && bonus_round_counter > 3) {
+                                            for (var x = 0; x < user_wager_amount; x++) {
+                                                // Click betting spot
+                                                $(".betSpot--VXrdG").eq(0).click();
+                                                $(".betSpot--VXrdG").eq(1).click();
+                                                $(".betSpot--VXrdG").eq(3).click();
+
+                                                // Flag bet
+                                                number_one_bet = true;
+
+                                                // Clear bonus round flag
+                                                bonus_round = false;
+
+                                                // Clear interval
+                                                clearInterval(clicking);
+                                            }
+                                        }
+                                    }, click_delay);
+                                } else {
+                                    // Output
+                                    console.log(spacing);
+                                    console.log("I'm placing a bet on #1, #2 & #10 now.");
+                                    console.log(spacing);
+                                    if (user_on_screen_debug > 1) {
+                                        // Append to debug area
+                                        $("#debug_area").append(timestamp() + "I'm placing a bet on #1, #2 & #10 now.<br />");
+
+                                        // Scroll to top
+                                        scrollToTopOfDebug();
+                                    }
+                                    // Prompts for no bot mode
+                                    noBotModeMessage("#1, #2 & #10");
+                                    clicking = setInterval(function() {
+                                        // Check if bet spot is available to click
+                                        var test = checkBetSpot();
+
+                                        // Increment bonus round counter
+                                        bonus_round_counter++;
+
+                                        if (test == true && bonus_round_counter > 3) {
+                                            for (var x = 0; x < user_wager_amount; x++) {
+                                                // Click betting spot
+                                                $(".betSpot--VXrdG").eq(0).click();
+                                                $(".betSpot--VXrdG").eq(1).click();
+                                                $(".betSpot--VXrdG").eq(4).click();
+                                                // Flag bet
+                                                number_two_bet = true;
+
+                                                // Clear bonus round flag
+                                                bonus_round = false;
+
+                                                // Clear interval
+                                                clearInterval(clicking);
+                                            }
+                                        }
+                                    }, click_delay);
+                                }
                             }
 
                             if (skip == false) {
